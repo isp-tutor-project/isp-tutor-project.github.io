@@ -1,0 +1,18 @@
+{
+    "_MODULEDATA":"v1.0.0",
+    "SScene8": {
+        "Stitle": {
+            "layoutsource":"$EFL_eftext.S8.Stitle"           
+        },
+        "SsubTitle1": {
+            "layoutsource":"$EFL_eftext.S8.SsubTitle1"
+        },
+        "SsubTitle2": {
+            "layoutsource":"$EFL_eftext.S8.SsubTitle2"
+        },        
+
+
+        "Sicon1": {},
+        "Sicon2": {}
+    }
+}

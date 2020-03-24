@@ -1,0 +1,10 @@
+{
+    "_MODULEDATA":"v1.0.0",
+    "SSceneBL": {
+        "StitleBL": {
+            "layoutsource":"$EFL_eftext.StitleBL",
+            "datasource": "$EFL_efdata.SBLStitle",
+            "fontSize":60
+        }
+    }
+}

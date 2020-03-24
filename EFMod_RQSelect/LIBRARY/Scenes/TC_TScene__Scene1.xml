@@ -1,0 +1,115 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Scenes/TC_TScene__Scene1" itemID="5b8db5f5-000007c2" linkageExportForAS="true" linkageClassName="TC_TScene__Scene1" lastModified="1539615426">
+  <persistentData>
+    <PD n="CreateJSToolkit_timelinedata" v="version&#xA;0.1&#xA;loop&#xA;true"/>
+  </persistentData>
+  <timeline>
+    <DOMTimeline name="TC_TScene__Scene1">
+      <layers>
+        <DOMLayer name="SIntro1" color="#FF800A" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/Custom Controls/TC_TIntroControl__RQIntro" name="Sintro1">
+                  <matrix>
+                    <Matrix a="1.06379699707031" d="1.06379699707031" tx="131" ty="157.75"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="265.5" y="68.15"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="SIntro2" color="#9933CC" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/Custom Controls/TC_TIntroControl__RQIntro" name="Sintro2">
+                  <matrix>
+                    <Matrix a="1.06379699707031" d="1.06379699707031" tx="436" ty="383.4"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="265.5" y="68.15"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="SIntro3" color="#00FFFF" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/Custom Controls/TC_TIntroControl__RQIntro" name="Sintro3">
+                  <matrix>
+                    <Matrix a="1.06379699707031" d="1.06379699707031" tx="741" ty="609.05"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="265.5" y="68.2"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="SIntro4" color="#FF4F4F" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/Custom Controls/TC_TIntroControl__RQIntro" name="Sintro4">
+                  <matrix>
+                    <Matrix a="1.06379699707031" d="1.06379699707031" tx="1046.05" ty="834.75"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="265.5" y="68.15"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Sample" color="#FF4FFF" current="true" isSelected="true" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/Custom Controls/TC_TObject__RedShirtGraphic" name="Ssample">
+                  <matrix>
+                    <Matrix a="1.06475830078125" d="1.06475830078125" tx="131" ty="578.4"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="275.1" y="200.1"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Layer_2" color="#9933CC">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements/>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="SceneRegion" color="#00FFFF" locked="true" outline="true" useOutlineView="true" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMGroup>
+                  <members>
+                    <DOMSymbolInstance libraryItemName="_Tutor Global Assets_/TC_TVirtual__SceneRgn">
+                      <transformationPoint>
+                        <Point x="960" y="600"/>
+                      </transformationPoint>
+                    </DOMSymbolInstance>
+                  </members>
+                </DOMGroup>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

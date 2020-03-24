@@ -1,0 +1,24 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Imports/Crystal/TL_Crystal__Movie" itemID="5b98411b-00000a7a" linkageExportForAS="true" linkageClassName="TL_Crystal__Movie" lastModified="1536783306">
+  <timeline>
+    <DOMTimeline name="TL_Crystal__Movie">
+      <layers>
+        <DOMLayer name="Layer_2" color="#9933CC" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMRectangleObject objectWidth="600.3" objectHeight="435.1" x="0" y="0" selected="true" lockFlag="true">
+                  <matrix>
+                    <Matrix a="1.00015258789063"/>
+                  </matrix>
+                  <fill>
+                    <SolidColor color="#0000FF"/>
+                  </fill>
+                </DOMRectangleObject>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

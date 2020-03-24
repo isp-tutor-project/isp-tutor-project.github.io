@@ -1,0 +1,31 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Assets/Custom Controls/IntroControl Assets/ButtonNormal" itemID="5b8dc00e-000007ee" lastModified="1539635251">
+  <timeline>
+    <DOMTimeline name="ButtonNormal">
+      <layers>
+        <DOMLayer name="Layer_1" color="#00FFFF" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMRectangleObject objectWidth="597" objectHeight="202" x="176" y="141.95" selected="true" lockFlag="true" topLeftRadius="22.75" topRightRadius="22.75" bottomLeftRadius="22.75" bottomRightRadius="22.75">
+                  <matrix>
+                    <Matrix a="0.88946533203125" d="0.675140380859375" tx="-156.55" ty="-95.85"/>
+                  </matrix>
+                  <fill>
+                    <SolidColor color="#4273F8"/>
+                  </fill>
+                  <stroke>
+                    <SolidStroke scaleMode="normal" weight="9">
+                      <fill>
+                        <SolidColor color="#999999"/>
+                      </fill>
+                    </SolidStroke>
+                  </stroke>
+                </DOMRectangleObject>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

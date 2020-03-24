@@ -1,0 +1,23 @@
+{
+    "_MODULEDATA":"v1.0.0",
+    "SScene6b": {
+        "Shand": {
+            "xname":"hand2"
+        },
+        "Sbucket": {
+            "xname":"bucket1"
+        },
+        "Sglass": {
+            "xname":"glass1"
+        },
+        "Sclock": {
+            "xname":"clock1"
+        },
+        "SbackGround": {
+            "xname":"backGround1"
+        },
+        "SiceCube": {
+            "xname":"iceCube1"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Assets/Static Text Objects/TC_TText__Area2Or" itemID="5b96dd14-00001de1" lastModified="1536613652">
+  <timeline>
+    <DOMTimeline name="TC_TText__Area2Or">
+      <layers>
+        <DOMLayer name="Layer_1" color="#00FFFF" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMDynamicText name="Sor" selected="true" fontRenderingMode="standard" top="726.95" width="52.4" height="48.65" isSelectable="false" lineType="multiline">
+                  <matrix>
+                    <Matrix tx="2" ty="-724.95"/>
+                  </matrix>
+                  <textRuns>
+                    <DOMTextRun>
+                      <characters>OR</characters>
+                      <textAttrs>
+                        <DOMTextAttrs alignment="center" aliasText="false" autoKern="false" lineHeight="41.45" size="32" bitmapSize="640" face="PTSans-Bold" fillColor="#333333"/>
+                      </textAttrs>
+                    </DOMTextRun>
+                  </textRuns>
+                </DOMDynamicText>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

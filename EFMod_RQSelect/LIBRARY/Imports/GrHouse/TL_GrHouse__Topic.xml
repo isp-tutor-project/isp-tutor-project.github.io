@@ -1,0 +1,24 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Imports/GrHouse/TL_GrHouse__Topic" itemID="5b956f49-00000b1b" lastModified="1536520009">
+  <timeline>
+    <DOMTimeline name="TL_GrHouse__Topic">
+      <layers>
+        <DOMLayer name="Layer_2" color="#9933CC" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMRectangleObject objectWidth="1048.75" objectHeight="708.1" x="0" y="0" lockFlag="true">
+                  <matrix>
+                    <Matrix a="1.00018310546875"/>
+                  </matrix>
+                  <fill>
+                    <SolidColor color="#0000FF"/>
+                  </fill>
+                </DOMRectangleObject>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

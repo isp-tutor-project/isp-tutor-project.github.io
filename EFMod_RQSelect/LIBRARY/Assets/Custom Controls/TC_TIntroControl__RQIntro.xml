@@ -1,0 +1,152 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Assets/Custom Controls/TC_TIntroControl__RQIntro" itemID="5b8e7c4d-00000f40" lastModified="1539635469">
+  <persistentData>
+    <PD n="CreateJSToolkit_timelinedata" v="version&#xA;0.1&#xA;loop&#xA;true"/>
+  </persistentData>
+  <timeline>
+    <DOMTimeline name="TC_TIntroControl__RQIntro">
+      <layers>
+        <DOMLayer name="Arrow" color="#00FFFF" current="true" isSelected="true" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/Custom Controls/IntroControl Assets/arrow" name="Sarrow">
+                  <matrix>
+                    <Matrix tx="512.1" ty="91.3"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="47.9" y="42.85"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Bubble Text" color="#9933CC" locked="true" autoNamed="false" visible="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="_HTMLControls/TC_THtmlText__Text1" name="STextBox2">
+                  <matrix>
+                    <Matrix a="2.46470642089844" d="1.4212646484375" tx="522.6" ty="-100"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="50.15" y="49.85"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="BubbleSelect" color="#00FFFF" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/Custom Controls/IntroControl Assets/BubbleSelected" name="SbubbleSelect">
+                  <matrix>
+                    <Matrix tx="481" ty="-116"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="151" y="97.5"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="BubbleNormal" color="#FF800A" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/Custom Controls/IntroControl Assets/BubbleNormal" name="SbubbleNormal">
+                  <matrix>
+                    <Matrix tx="481" ty="-116"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="151" y="97.5"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="BubbleShadow" color="#FF800A" autoNamed="false" visible="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/Custom Controls/IntroControl Assets/BubbleShadow" name="SbubbleShadow">
+                  <matrix>
+                    <Matrix tx="481" ty="-116"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="151" y="97.5"/>
+                  </transformationPoint>
+                  <filters>
+                    <DropShadowFilter blurX="30" blurY="30" color="#999999" distance="30" quality="2"/>
+                  </filters>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Box Text" color="#FF4FFF" locked="true" autoNamed="false" visible="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="_HTMLControls/TC_THtmlText__Text1" name="STextBox1">
+                  <matrix>
+                    <Matrix a="4.63966369628906" d="1.02694702148438" tx="54.8" ty="2.5"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="50.1" y="50.1"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="BoxSelect" color="#669900" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/Custom Controls/IntroControl Assets/ButtonSelected" name="SboxSelect">
+                  <transformationPoint>
+                    <Point x="265.5" y="68.15"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="BoxNormal" color="#009999" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/Custom Controls/IntroControl Assets/ButtonNormal" name="SboxNormal">
+                  <transformationPoint>
+                    <Point x="265.5" y="68.15"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Box1Float" color="#FF0000" autoNamed="false" visible="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/Custom Controls/IntroControl Assets/ButtonShadow" name="SboxShadow">
+                  <transformationPoint>
+                    <Point x="265.5" y="68.15"/>
+                  </transformationPoint>
+                  <filters>
+                    <DropShadowFilter blurX="15" blurY="15" color="#999999" distance="15" quality="2"/>
+                  </filters>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

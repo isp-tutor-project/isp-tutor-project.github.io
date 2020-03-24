@@ -1,0 +1,13 @@
+{
+    "_MODULEDATA":"v1.0.0",
+    "SScene3": {
+        "Stitle": {
+            "layoutsource":"$EFL_eftext.Stitle",
+            "datasource": [{"src":"$EFL_efdata.S3StitleC",  "features":"FTR_CHOICE"},
+                           {"src":"$EFL_efdata.S3StitleNC", "features":"FTR_NOCHOICE"}],
+            "fontSize":60
+        },
+        "Sbutton1": {},
+        "Sbutton2": {}
+    }
+}

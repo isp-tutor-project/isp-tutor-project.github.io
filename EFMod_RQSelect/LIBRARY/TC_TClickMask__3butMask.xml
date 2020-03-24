@@ -1,0 +1,24 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="TC_TClickMask__3butMask" itemID="5be8faea-000004f8" lastModified="1541995242">
+  <timeline>
+    <DOMTimeline name="TC_TClickMask__3butMask">
+      <layers>
+        <DOMLayer name="Layer_1" color="#00FFFF" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMRectangleObject objectWidth="1151.95" objectHeight="450" x="405" y="570.9" selected="true" lockFlag="true">
+                  <matrix>
+                    <Matrix tx="-405" ty="-570.9"/>
+                  </matrix>
+                  <fill>
+                    <SolidColor color="#FFFFFF" alpha="0.00784313725490196"/>
+                  </fill>
+                </DOMRectangleObject>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

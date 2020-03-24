@@ -1,0 +1,1264 @@
+{
+	"SSceneBL": {
+		"tracks": {
+			"track1": {
+				"en": {
+					"node": "(root)BASELINEINTRO",
+					"html": "<p>{{$EFO_EG_A3|introtitle}}</p>",
+					"text": "{{$EFO_EG_A3|introtitle}}",
+					"templateRef": {},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".......a..............."
+				}
+			}
+		}
+	},
+	"SScene1": {
+		"tracks": {
+			"track1": {
+				"en": {
+					"node": "(root)INTRO",
+					"html": "<p>{{$EFO_EG_BOTH|track1}}</p>",
+					"text": "{{$EFO_EG_BOTH|track1}}",
+					"templateRef": {
+						"$EFO_EG_BOTH|track1": "$EFT_experimentalGroup.ontologyKey"
+					},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".......a..............."
+				}
+			},
+			"track2": {
+				"en": {
+					"node": "(root)INTRO",
+					"html": "<p>{{$EFO_EG_A?|track2}}</p>",
+					"text": "{{$EFO_EG_A?|track2}}",
+					"cueSet": "............................................................................",
+					"templateRef": {
+						"$EFO_EG_A?|track2": "$EFT_experimentalGroup.ontologyKey"
+					},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					]
+				}
+			},
+			"track3": {
+				"en": {
+					"node": "(root)INTRO",
+					"html": "<p>{{$EFO_EG_A?|track3}}</p>",
+					"text": "{{$EFO_EG_A?|track3}}",
+					"cueSet": "............................................................................",
+					"templateRef": {
+						"$EFO_EG_A?|track3": "$EFT_experimentalGroup.ontologyKey"
+					},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					]
+				}
+			},
+			"track4": {
+				"en": {
+					"node": "(root)INTRO",
+					"html": "<p>{{$EFO_EG_A?|track4}}</p>",
+					"text": "{{$EFO_EG_A?|track4}}",
+					"cueSet": ".........................................................................................................",
+					"templateRef": {
+						"$EFO_EG_A?|track4": "$EFT_experimentalGroup.ontologyKey"
+					},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					]
+				}
+			},
+			"track5": {
+				"en": {
+					"node": "(root)INTRO",
+					"html": "<p>{{$EFO_EG_A?|track5}}</p>",
+					"text": "{{$EFO_EG_A?|track5}}",
+					"cueSet": ".................................................................................................................",
+					"templateRef": {
+						"$EFO_EG_A?|track5": "$EFT_experimentalGroup.ontologyKey"
+					},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					]
+				}
+			},
+			"track6": {
+				"en": {
+					"node": "(root)INTRO",
+					"html": "<p>{{$EFO_EG_A?|track6}}</p>",
+					"text": "{{$EFO_EG_A?|track6}}",
+					"cueSet": "....................................................................................................................................................................................",
+					"templateRef": {
+						"$EFO_EG_A?|track6": "$EFT_experimentalGroup.ontologyKey"
+					},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					]
+				}
+			},
+			"track7": {
+				"en": {
+					"node": "(root)INTRO",
+					"html": "<p>{{$EFO_EG_A?|track7}}</p>",
+					"text": "{{$EFO_EG_A?|track7}}",
+					"cueSet": "....................................................................................................................................................................................",
+					"templateRef": {
+						"$EFO_EG_A?|track7": "$EFT_experimentalGroup.ontologyKey"
+					},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					]
+				}
+			},
+			"track8": {
+				"en": {
+					"node": "(root)INTRO",
+					"html": "<p>{{$EFO_EG_BOTH|track8}}</p>",
+					"text": "{{$EFO_EG_BOTH|track8}}",
+					"templateRef": {
+						"$EFO_EG_BOTH|track8": "$EFT_experimentalGroup.ontologyKey"
+					},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": "......................."
+				}
+			},
+			"track9": {
+				"en": {
+					"node": "(root)INTRO",
+					"html": "<p>{{$EFO_EG_BOTH|track9}}</p>",
+					"text": "{{$EFO_EG_BOTH|track9}}",
+					"templateRef": {
+						"$EFO_EG_BOTH|track9": "$EFT_experimentalGroup.ontologyKey"
+					},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": "......................."
+				}
+			}
+		}
+	},
+	"SScene2": {
+		"tracks": {
+			"track1": {
+				"en": {
+					"node": "(root)INTRO",
+					"html": "<p>Here are some different areas of science.</p>",
+					"text": "Here are some different areas of science.",
+					"templateRef": {},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": "........................................."
+				}
+			},
+			"track2": {
+				"en": {
+					"node": "(root)INTRO",
+					"html": "<p>One area of science is Physical & Chemical Changes.</p>",
+					"text": "One area of science is Physical & Chemical Changes.",
+					"templateRef": {},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": "..................................................."
+				}
+			},
+			"track3": {
+				"en": {
+					"node": "(root)INTRO",
+					"html": "<p>Within that area, you could study the topic: Crystal growth or Soda/mint reactions.</p>",
+					"text": "Within that area, you could study the topic: Crystal growth or Soda/mint reactions.",
+					"templateRef": {},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": "..................................................................................."
+				}
+			},
+			"track4": {
+				"en": {
+					"node": "(root)INTRO",
+					"html": "<p>Another area of science is Heat & Temperature.</p>",
+					"text": "Another area of science is Heat & Temperature.",
+					"templateRef": {},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".............................................."
+				}
+			},
+			"track5": {
+				"en": {
+					"node": "(root)INTRO",
+					"html": "<p>Within that area, you could study the topics Ice melting time or temperature of a gas.</p>",
+					"text": "Within that area, you could study the topics Ice melting time or temperature of a gas.",
+					"templateRef": {},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": "......................................................................................"
+				}
+			},
+			"track6": {
+				"en": {
+					"node": "(root)INTRO",
+					"html": "<p>Another area of science is Forces & Motion.</p>",
+					"text": "Another area of science is Forces & Motion.",
+					"templateRef": {},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": "..........................................."
+				}
+			},
+			"track7": {
+				"en": {
+					"node": "(root)INTRO",
+					"html": "<p>Within that area, you could study the topics: Speed of balls at the bottom of ramps or Time for objects to sink.</p>",
+					"text": "Within that area, you could study the topics: Speed of balls at the bottom of ramps or Time for objects to sink.",
+					"templateRef": {},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": "................................................................................................................"
+				}
+			},
+			"track8": {
+				"en": {
+					"node": "(root)INTRO",
+					"html": "<p>Another area of science is Plant Reproduction.</p>",
+					"text": "Another area of science is Plant Reproduction.",
+					"templateRef": {},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": "........................................"
+				}
+			},
+			"track9": {
+				"en": {
+					"node": "(root)INTRO",
+					"html": "<p>Within that area, you could study the topics: Flower Reproduction or Algae Reproduction.</p>",
+					"text": "Within that area, you could study the topics: Flower Reproduction or Algae Reproduction.",
+					"templateRef": {},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".................................................................................."
+				}
+			},
+			"track10CHOICE": {
+				"en": {
+					"node": "(root)INTRO",
+					"html": "<p>{{$EFO_EG_A1|track10}}</p>",
+					"text": "{{$EFO_EG_A1|track10}}",
+					"templateRef": {},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": "........................................................."
+				}
+			},
+			"track10NOCHOICE": {
+				"en": {
+					"node": "(root)INTRO",
+					"html": "<p>{{$EFO_EG_A2|track10}}{{$EFO_S_A?|nochoicearea}}{{$EFO_EG_A2|track10b}}</p>",
+					"text": "{{$EFO_EG_A2|track10}}{{$EFO_S_A?|nochoicearea}}{{$EFO_EG_A2|track10b}}",
+					"templateRef": {
+						"$EFO_S_A?|nochoicearea": "$EFM_selectedArea.ontologyKey"
+					},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0,
+						0,
+						0
+					],
+					"volume": [
+						1,
+						1,
+						1
+					],
+					"cueSet": "........................................................."
+				}
+			}
+		}
+	},
+	"SScene2a": {
+		"tracks": {
+			"track1": {
+				"en": {
+					"node": "(root)INTRO",
+					"html": "<p>{{$EFO_EG_A1|track10}}</p>",
+					"text": "{{$EFO_EG_A1|track10}}",
+					"templateRef": {},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": "........................................................."
+				}
+			}
+		}
+	},
+	"SScene3": {
+		"tracks": {
+			"track1CHOICE": {
+				"en": {
+					"node": "(root)TOPICSELECTION",
+					"html": "<p>{{$EFO_S_A?|withinarea}}{{$EFO_EG_A?|selecttopic}}</p>",
+					"text": "{{$EFO_S_A?|withinarea}}{{$EFO_EG_A?|selecttopic}}",
+					"templateRef": {
+						"$EFO_S_A?|withinarea": "$EFM_selectedArea.ontologyKey",
+						"$EFO_EG_A?|selecttopic": "$EFT_experimentalGroup.ontologyKey"
+					},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0,
+						0
+					],
+					"volume": [
+						1,
+						1
+					],
+					"cueSet": "........................................."
+				}
+			},
+			"track1NOCHOICE": {
+				"en": {
+					"node": "(root)TOPICSELECTION",
+					"html": "<p>{{$EFO_S_A?|withinarea}}{{$EFO_S_A?_T?|wewillselect}}{{$EFO_EG_A?|selecttopic}}</p>",
+					"text": "{{$EFO_S_A?|withinarea}}{{$EFO_S_A?_T?|wewillselect}}{{$EFO_EG_A?|selecttopic}}",
+					"templateRef": {
+						"$EFO_S_A?|withinarea": "$EFM_selectedArea.ontologyKey",
+						"$EFO_S_A?_T?|wewillselect": "$EFM_selectedTopic.ontologyKey",
+						"$EFO_EG_A?|selecttopic": "$EFT_experimentalGroup.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0,
+						0,
+						0
+					],
+					"volume": [
+						1,
+						1,
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			}
+		}
+	},
+	"SScene4": {
+		"tracks": {
+			"track1": {
+				"en": {
+					"node": "(root)TOPICSELECTION",
+					"html": "<p>{{$EFO_S_A?_T?|belowarevariables}}{{$EFO_EG_A?|cantest}}</p>",
+					"text": "{{$EFO_S_A?_T?|belowarevariables}}{{$EFO_EG_A?|cantest}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|belowarevariables": "$EFM_selectedTopic.ontologyKey",
+						"$EFO_EG_A?|cantest": "$EFT_experimentalGroup.ontologyKey"
+					},
+					"templates": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0,
+						0
+					],
+					"volume": [
+						1,
+						1
+					],
+					"cueSet": "........................................."
+				}
+			},
+			"track2": {
+				"en": {
+					"node": "(root)ENUMVARIABLE1",
+					"html": "<p>{{$EFO_S_A?_T?|enumVar1}}</p>",
+					"text": "{{$EFO_S_A?_T?|enumVar1}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumVar1": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			},
+			"track3": {
+				"en": {
+					"node": "(root)ENUMVARIABLE2",
+					"html": "<p>{{$EFO_S_A?_T?|enumVar2}}</p>",
+					"text": "{{$EFO_S_A?_T?|enumVar2}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumVar2": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			},
+			"track4": {
+				"en": {
+					"node": "(root)ENUMVARIABLE3",
+					"html": "<p>{{$EFO_S_A?_T?|enumVar3}}</p>",
+					"text": "{{$EFO_S_A?_T?|enumVar3}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumVar3": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			},
+			"track5": {
+				"en": {
+					"node": "(root)ENUMVARIABLE4",
+					"html": "<p>{{$EFO_S_A?_T?|enumUtt4}}</p>",
+					"text": "{{$EFO_S_A?_T?|enumUtt4}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumUtt4": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			}
+		}
+	},
+	"SScene5": {
+		"tracks": {
+			"track1": {
+				"en": {
+					"node": "(root)APPARATUS",
+					"html": "Let's see the procedure for one practice trial for this experiment.",
+					"text": "Let's see the procedure for one practice trial for this experiment.",
+					"templateRef": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			}
+		}
+	},
+	"SScene5a": {
+		"tracks": {
+			"track1a": {
+				"en": {
+					"node": "(root)APbPARATUS",
+					"html": "<p>{{$EFO_EG_BOTH|S5aT1a}}</p>",
+					"text": "{{$EFO_EG_BOTH|S5aT1a}}",
+					"templateRef": {
+						"$EFO_EG_BOTH|S5aT1a": "$EFT_experimentalGroup.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			},
+			"track1": {
+				"en": {
+					"node": "(root)Material Enumeration",
+					"html": "{{$EFO_S_A?_T?|enumMat1}}",
+					"text": "{{$EFO_S_A?_T?|enumMat1}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumMat1": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			},
+			"track2": {
+				"en": {
+					"node": "(root)Material Enumeration",
+					"html": "{{$EFO_S_A?_T?|enumMat2}}",
+					"text": "{{$EFO_S_A?_T?|enumMat2}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumMat2": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			},
+			"track3": {
+				"en": {
+					"node": "(root)Material Enumeration",
+					"html": "{{$EFO_S_A?_T?|enumMat3}}",
+					"text": "{{$EFO_S_A?_T?|enumMat3}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumMat3": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			},
+			"track4": {
+				"en": {
+					"node": "(root)Material Enumeration",
+					"html": "{{$EFO_S_A?_T?|enumMat4}}",
+					"text": "{{$EFO_S_A?_T?|enumMat4}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumMat4": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			},
+			"track5": {
+				"en": {
+					"node": "(root)Material Enumeration",
+					"html": "{{$EFO_S_A?_T?|enumMat5}}",
+					"text": "{{$EFO_S_A?_T?|enumMat5}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumMat5": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			},
+			"track6": {
+				"en": {
+					"node": "(root)Material Enumeration",
+					"html": "{{$EFO_S_A?_T?|enumMat6}}",
+					"text": "{{$EFO_S_A?_T?|enumMat6}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumMat6": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			},
+			"track7": {
+				"en": {
+					"node": "(root)Material Enumeration",
+					"html": "{{$EFO_S_A?_T?|enumMat7}}",
+					"text": "{{$EFO_S_A?_T?|enumMat7}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumMat7": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			},
+			"track8": {
+				"en": {
+					"node": "(root)Material Enumeration",
+					"html": "{{$EFO_S_A?_T?|enumMat8}}",
+					"text": "{{$EFO_S_A?_T?|enumMat8}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumMat8": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			}
+		}
+	},
+	"SScene6a": {
+		"tracks": {
+			"track1": {
+				"en": {
+					"node": "(root)PROCESS",
+					"html": "{{$EFO_S_A?_T?|enumProcess1}}",
+					"text": "{{$EFO_S_A?_T?|enumProcess1}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumProcess1": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			}
+		}
+	},
+	"SScene6b": {
+		"tracks": {
+			"track1": {
+				"en": {
+					"node": "(root)PROCESS",
+					"html": "{{$EFO_S_A?_T?|enumProcess2}}",
+					"text": "{{$EFO_S_A?_T?|enumProcess2}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumProcess2": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			}
+		}
+	},
+	"SScene6c": {
+		"tracks": {
+			"track1": {
+				"en": {
+					"node": "(root)PROCESS",
+					"html": "{{$EFO_S_A?_T?|enumProcess3}}",
+					"text": "{{$EFO_S_A?_T?|enumProcess3}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumProcess3": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			}
+		}
+	},
+	"SScene6d": {
+		"tracks": {
+			"track1": {
+				"en": {
+					"node": "(root)PROCESS",
+					"html": "{{$EFO_S_A?_T?|enumProcess4}}",
+					"text": "{{$EFO_S_A?_T?|enumProcess4}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumProcess4": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			}
+		}
+	},
+	"SScene6e": {
+		"tracks": {
+			"track1": {
+				"en": {
+					"node": "(root)PROCESS",
+					"html": "{{$EFO_S_A?_T?|enumProcess5}}",
+					"text": "{{$EFO_S_A?_T?|enumProcess5}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumProcess5": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			}
+		}
+	},
+	"SScene6f": {
+		"tracks": {
+			"track1": {
+				"en": {
+					"node": "(root)PROCESS",
+					"html": "{{$EFO_S_A?_T?|enumProcess6}}",
+					"text": "{{$EFO_S_A?_T?|enumProcess6}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumProcess6": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			}
+		}
+	},
+	"SScene7": {
+		"tracks": {
+			"track1": {
+				"en": {
+					"node": "(root)DEMO",
+					"html": "Push the button in the middle of the screen to see the procedure for one practice trial for this experiment.",
+					"text": "Push the button in the middle of the screen to see the procedure for one practice trial for this experiment.",
+					"templateRef": {},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			}
+		}
+	},
+	"SScene8": {
+		"tracks": {
+			"track0": {
+				"en": {
+					"node": "(root)VARIABLES_AND_VALUES",
+					"html": "{{$EFO_S_A?_T?|fourcanchange}}",
+					"text": "{{$EFO_S_A?_T?|fourcanchange}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|fourcanchange": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			},
+			"track1": {
+				"en": {
+					"node": "(root)VARIABLES_AND_VALUES",
+					"html": "{{$EFO_S_A?_T?|enumValueUtt1a}}",
+					"text": "{{$EFO_S_A?_T?|enumValueUtt1a}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumValueUtt1a": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".................a.......................",
+					"templates": {}
+				}
+			},
+			"track1a": {
+				"en": {
+					"node": "(root)VARIABLES_AND_VALUES",
+					"html": "{{$EFO_S_A?_T?|enumValueUtt1b}}",
+					"text": "{{$EFO_S_A?_T?|enumValueUtt1b}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumValueUtt1b": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": "........................................",
+					"templates": {}
+				}
+			},
+			"track2": {
+				"en": {
+					"node": "(root)VARIABLES_AND_VALUES",
+					"html": "{{$EFO_S_A?_T?|enumValueUtt2a}}",
+					"text": "{{$EFO_S_A?_T?|enumValueUtt2a}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumValueUtt2a": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": "................a........................",
+					"templates": {}
+				}
+			},
+			"track2a": {
+				"en": {
+					"node": "(root)VARIABLES_AND_VALUES",
+					"html": "{{$EFO_S_A?_T?|enumValueUtt2b}}",
+					"text": "{{$EFO_S_A?_T?|enumValueUtt2b}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumValueUtt2b": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			},
+			"track3": {
+				"en": {
+					"node": "(root)VARIABLES_AND_VALUES",
+					"html": "{{$EFO_S_A?_T?|enumValueUtt3a}}",
+					"text": "{{$EFO_S_A?_T?|enumValueUtt3a}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumValueUtt3a": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": "................a........................",
+					"templates": {}
+				}
+			},
+			"track3a": {
+				"en": {
+					"node": "(root)VARIABLES_AND_VALUES",
+					"html": "{{$EFO_S_A?_T?|enumValueUtt3b}}",
+					"text": "{{$EFO_S_A?_T?|enumValueUtt3b}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumValueUtt3b": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			},
+			"track4": {
+				"en": {
+					"node": "(root)VARIABLES_AND_VALUES",
+					"html": "{{$EFO_S_A?_T?|enumValueUtt4a}}",
+					"text": "{{$EFO_S_A?_T?|enumValueUtt4a}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumValueUtt4a": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".................a.......................",
+					"templates": {}
+				}
+			},
+			"track4a": {
+				"en": {
+					"node": "(root)VARIABLES_AND_VALUES",
+					"html": "{{$EFO_S_A?_T?|enumValueUtt4b}}",
+					"text": "{{$EFO_S_A?_T?|enumValueUtt4b}}",
+					"templateRef": {
+						"$EFO_S_A?_T?|enumValueUtt4b": "$EFM_selectedTopic.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			}
+		}
+	},
+	"SScene9": {
+		"tracks": {
+			"track1CHOICE": {
+				"en": {
+					"node": "(root)SELECTTV",
+					"html": "{{$EFO_EG_A?|selecttv}}",
+					"text": "{{$EFO_EG_A?|selecttv}}",
+					"templateRef": {
+						"$EFO_EG_A?|selecttv": "$EFT_experimentalGroup.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0
+					],
+					"volume": [
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			},
+			"track1NOCHOICE": {
+				"en": {
+					"node": "(root)SELECTTV",
+					"html": "{{$EFO_EG_A?|selecttv}}{{$EFO_S_A?_T?_RQ?|ExpSelected2}}{{$EFO_EG_A?|selecttv2}}",
+					"text": "{{$EFO_EG_A?|selecttv}}{{$EFO_S_A?_T?_RQ?|ExpSelected2}}{{$EFO_EG_A?|selecttv2}}",
+					"templateRef": {
+						"$EFO_EG_A?|selecttv": "$EFT_experimentalGroup.ontologyKey",
+						"$EFO_S_A?_T?_RQ?|ExpSelected2": "$EFM_selectedRQ.ontologyKey",
+						"$EFO_EG_A?|selecttv2": "$EFT_experimentalGroup.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0,
+						0,
+						0
+					],
+					"volume": [
+						1,
+						1,
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			}
+		}
+	},
+	"SScene10": {
+		"tracks": {
+			"track1": {
+				"en": {
+					"node": "(root)VALIDATERQ",
+					"html": "{{$EFO_EG_A?|rqselected}}{{$EFO_S_A?_T?_RQ?|rqselected}}{{$EFO_S_A?_T?|rqselectedall}}",
+					"text": "{{$EFO_EG_A?|rqselected}}{{$EFO_S_A?_T?_RQ?|rqselected}}{{$EFO_S_A?_T?|rqselectedall}}",
+					"templateRef": {
+						"$EFO_EG_A?|rqselected": "$EFT_experimentalGroup.ontologyKey",
+						"$EFO_S_A?_T?_RQ?|rqselected": "$EFM_selectedRQ.ontologyKey",
+						"$EFO_S_A?_T?|rqselectedall": "$EFM_selectedRQ.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0,
+						0,
+						0
+					],
+					"volume": [
+						1,
+						1,
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			}
+		}
+	},
+	"SScene11": {
+		"tracks": {
+			"track1": {
+				"en": {
+					"node": "(root)RQSELECTCOMPLETE",
+					"html": "{{$EFO_EG_A?|okselected}}{{$EFO_S_A?_T?_RQ?|rqselected}}{{$EFO_S_A?_T?|rqselectedall}}",
+					"text": "{{$EFO_EG_A?|okselected}}{{$EFO_S_A?_T?_RQ?|rqselected}}{{$EFO_S_A?_T?|rqselectedall}}",
+					"templateRef": {
+						"$EFO_EG_A?|okselected": "$EFT_experimentalGroup.ontologyKey",
+						"$EFO_S_A?_T?_RQ?|rqselected": "$EFM_selectedRQ.ontologyKey",
+						"$EFO_S_A?_T?|rqselectedall": "$EFM_selectedRQ.ontologyKey"
+					},
+					"segments": [],
+					"timedSet": [],
+					"trim": [
+						0,
+						0,
+						0
+					],
+					"volume": [
+						1,
+						1,
+						1
+					],
+					"cueSet": ".........................................",
+					"templates": {}
+				}
+			}
+		}
+	}
+}

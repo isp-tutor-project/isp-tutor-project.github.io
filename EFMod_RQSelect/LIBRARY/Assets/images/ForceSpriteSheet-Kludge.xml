@@ -1,0 +1,26 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Assets/images/ForceSpriteSheet-Kludge" itemID="5b900969-00001914" linkageExportForAS="true" linkageClassName="ForceSpriteSheet-Kludge" lastModified="1537551004">
+  <timeline>
+    <DOMTimeline name="ForceSpriteSheet-Kludge">
+      <layers>
+        <DOMLayer name="Layer_1" color="#00FFFF" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMBitmapInstance libraryItemName="Assets/images/Arrows.png">
+                  <matrix>
+                    <Matrix tx="-563" ty="-343"/>
+                  </matrix>
+                </DOMBitmapInstance>
+                <DOMBitmapInstance selected="true" libraryItemName="Assets/images/tshirtstickfigures.png">
+                  <matrix>
+                    <Matrix tx="-376" ty="192"/>
+                  </matrix>
+                </DOMBitmapInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

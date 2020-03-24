@@ -1,0 +1,49 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Assets/Custom Controls/IntroControl Assets/arrow" itemID="5b8dbdcf-000007dd" lastModified="1539635379">
+  <timeline>
+    <DOMTimeline name="arrow">
+      <layers>
+        <DOMLayer name="Layer_1" color="#00FFFF" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <LinearGradient>
+                        <matrix>
+                          <Matrix a="0.0584716796875" d="0.05999755859375" tx="47.9" ty="42.85"/>
+                        </matrix>
+                        <GradientEntry ratio="0"/>
+                        <GradientEntry color="#363636" ratio="0"/>
+                        <GradientEntry color="#FFFFFF" ratio="1"/>
+                      </LinearGradient>
+                    </FillStyle>
+                  </fills>
+                  <strokes>
+                    <StrokeStyle index="1">
+                      <SolidStroke scaleMode="normal">
+                        <fill>
+                          <SolidColor/>
+                        </fill>
+                      </SolidStroke>
+                    </StrokeStyle>
+                  </strokes>
+                  <edges>
+                    <Edge fillStyle0="1" strokeStyle="1" edges="!0 -126/0 420!0 420|128 415!128 415[282 416 411 449!411 449[821 556 820 940!820 940/345 940!345 940/1160 1840!1160 1840/1916 900!1916 900/1420 900!1420 900[1417 836 1391 739!1391 739[1339 546 1225 386!1225 386[858 -128 0 -126"/>
+                    <Edge cubics="!0 -126(;0,-126 0,420 0,420q0 -126 0 420);"/>
+                    <Edge cubics="!0 420(;0,420 822,325 820,940q0 420Q0 420q128 415Q282 416q411 449Q821 556q820 940);"/>
+                    <Edge cubics="!820 940(;820,940 345,940 345,940q820 940 345 940);"/>
+                    <Edge cubics="!345 940(;345,940 1160,1840 1160,1840q345 940 1160 1840);"/>
+                    <Edge cubics="!1160 1840(;1160,1840 1916,900 1916,900q1160 1840 1916 900);"/>
+                    <Edge cubics="!1916 900(;1916,900 1420,900 1420,900q1916 900 1420 900);"/>
+                    <Edge cubics="!1420 900(;1420,900 1372,-130 0,-126q1420 900Q1417 836q1391 739Q1339 546q1225 386Q858 -128q0 -126);"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

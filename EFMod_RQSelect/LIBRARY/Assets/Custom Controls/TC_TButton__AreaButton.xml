@@ -1,0 +1,83 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Assets/Custom Controls/TC_TButton__AreaButton" itemID="5b998d2b-00001283" symbolType="button" lastModified="1539632967" lastUniqueIdentifier="2">
+  <persistentData>
+    <PD n="CreateJSToolkit_timelinedata" v="version&#xA;0.1&#xA;loop&#xA;true"/>
+  </persistentData>
+  <timeline>
+    <DOMTimeline name="TC_TButton__AreaButton">
+      <layers>
+        <DOMLayer name="Layer_4" color="#FF4FFF">
+          <frames>
+            <DOMFrame index="0" duration="5" keyMode="9728">
+              <elements/>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Layer_3" color="#FF800A">
+          <frames>
+            <DOMFrame index="0" duration="5" keyMode="9728">
+              <elements/>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Layer_1" color="#00FFFF" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/AreaButton Assets/TC_TObject__AreaButtonUp" name="instance">
+                  <transformationPoint>
+                    <Point x="343.25" y="187.65"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="1" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/AreaButton Assets/TC_TObject__AreaButtonOver" name="instance_1" centerPoint3DX="343.25" centerPoint3DY="187.65">
+                  <transformationPoint>
+                    <Point x="343.25" y="187.65"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="2" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/AreaButton Assets/TC_TObject__AreaButtonDn" name="instance_2">
+                  <matrix>
+                    <Matrix tx="-1"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="343.25" y="187.65"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="3" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/AreaButton Assets/TC_TObject__AreaButtonDn" name="instance_3" centerPoint3DX="342.25" centerPoint3DY="187.65">
+                  <matrix>
+                    <Matrix tx="-1"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="343.25" y="187.65"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="4" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/AreaButton Assets/TC_TObject__AreaButtonDn" name="instance_4" centerPoint3DX="342.25" centerPoint3DY="187.65">
+                  <matrix>
+                    <Matrix tx="-1"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="343.25" y="187.65"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

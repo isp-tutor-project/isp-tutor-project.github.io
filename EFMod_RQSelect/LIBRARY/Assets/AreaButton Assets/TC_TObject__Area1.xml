@@ -1,0 +1,130 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Assets/AreaButton Assets/TC_TObject__Area1" itemID="5b95a03a-0000072f" lastModified="1539624152">
+  <timeline>
+    <DOMTimeline name="TC_TObject__Area1">
+      <layers>
+        <DOMLayer name="Sor" color="#FF800A" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/Static Text Objects/TC_TText__Area1Or" name="Sor">
+                  <matrix>
+                    <Matrix tx="341.95" ty="180.85"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="28.2" y="26.3"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="SsubTitle2" color="#FF4FFF" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/Static Text Objects/TC_TText__Area1st2" name="SsubTitle2">
+                  <matrix>
+                    <Matrix tx="349.6" ty="310.9"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="153.5" y="22.7"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="SsubTitle1" color="#009999" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/Static Text Objects/TC_TText__Area1st1" name="SsubTitle1">
+                  <matrix>
+                    <Matrix tx="76.2" ty="310.9"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="115.7" y="22.7"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Stitle" color="#FF0000" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/Static Text Objects/TC_TText__Area1Title" name="Stitle">
+                  <matrix>
+                    <Matrix tx="128.85" ty="18.35"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="214.4" y="26.3"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Svar2" color="#669900" current="true" isSelected="true" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Imports/Soda/TL_Soda__Topic" name="Svar2">
+                  <matrix>
+                    <Matrix a="0.252304077148438" d="0.252349853515625" tx="468.7" ty="83"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="125.85" y="451.75"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Svar1" color="#FF4F4F" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Imports/Crystal/TL_Crystal__Topic" name="Svar1" cacheAsBitmap="true">
+                  <matrix>
+                    <Matrix a="0.577102661132813" d="0.577102661132813" tx="88.1" ty="83"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="182.3" y="197.55"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="TC_TObject__AreaSelected" color="#9933CC" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/AreaButton Assets/TC_TObject__AreaSelected" name="Sselected">
+                  <transformationPoint>
+                    <Point x="343.25" y="187.65"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="TC_TObject__AreaNormal" color="#00FFFF" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/AreaButton Assets/TC_TObject__AreaNormal">
+                  <transformationPoint>
+                    <Point x="343.25" y="187.65"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

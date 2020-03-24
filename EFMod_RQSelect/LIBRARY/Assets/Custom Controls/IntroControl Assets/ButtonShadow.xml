@@ -1,0 +1,24 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Assets/Custom Controls/IntroControl Assets/ButtonShadow" itemID="5b8ed247-000012f6" lastModified="1536086599">
+  <timeline>
+    <DOMTimeline name="ButtonShadow">
+      <layers>
+        <DOMLayer name="Layer_1" color="#00FFFF" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMRectangleObject objectWidth="597" objectHeight="202" x="176" y="141.95" lockFlag="true" topLeftRadius="22.75" topRightRadius="22.75" bottomLeftRadius="22.75" bottomRightRadius="22.75">
+                  <matrix>
+                    <Matrix a="0.88946533203125" d="0.675140380859375" tx="-156.55" ty="-95.85"/>
+                  </matrix>
+                  <fill>
+                    <SolidColor color="#666666"/>
+                  </fill>
+                </DOMRectangleObject>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

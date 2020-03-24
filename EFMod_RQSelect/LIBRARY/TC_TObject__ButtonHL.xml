@@ -1,0 +1,28 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="TC_TObject__ButtonHL" itemID="5be8f982-00000405" lastModified="1541994882">
+  <timeline>
+    <DOMTimeline name="TC_TObject__ButtonHL">
+      <layers>
+        <DOMLayer name="Layer_1" color="#00FFFF" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMRectangleObject objectWidth="1143.95" objectHeight="133.95" x="410" y="418.95" selected="true" lockFlag="true">
+                  <matrix>
+                    <Matrix tx="-410" ty="-418.95"/>
+                  </matrix>
+                  <stroke>
+                    <SolidStroke scaleMode="normal" weight="11.05">
+                      <fill>
+                        <SolidColor color="#00CCFF"/>
+                      </fill>
+                    </SolidStroke>
+                  </stroke>
+                </DOMRectangleObject>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

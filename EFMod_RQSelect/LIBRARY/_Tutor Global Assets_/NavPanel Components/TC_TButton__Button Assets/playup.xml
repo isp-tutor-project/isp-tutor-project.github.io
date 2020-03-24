@@ -1,0 +1,39 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="_Tutor Global Assets_/NavPanel Components/TC_TButton__Button Assets/playup" itemID="5b9e98ab-00000b30" lastModified="1537120908">
+  <timeline>
+    <DOMTimeline name="playup">
+      <layers>
+        <DOMLayer name="Layer_1" color="#00FFFF" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMOvalObject objectWidth="171.95" objectHeight="171.95" x="-53" y="-74" endAngle="0">
+                  <matrix>
+                    <Matrix a="0" b="-1" c="1" d="0" tx="-15.95" ty="33"/>
+                  </matrix>
+                  <fill>
+                    <SolidColor color="#FFFFFF"/>
+                  </fill>
+                  <stroke>
+                    <SolidStroke scaleMode="normal" weight="10.6">
+                      <fill>
+                        <SolidColor color="#333333"/>
+                      </fill>
+                    </SolidStroke>
+                  </stroke>
+                </DOMOvalObject>
+                <DOMSymbolInstance libraryItemName="_Tutor Global Assets_/NavPanel Components/TC_TButton__Button Assets/playButtonTop" symbolType="button">
+                  <matrix>
+                    <Matrix tx="-14" ty="-35.6"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="19" y="35.6"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

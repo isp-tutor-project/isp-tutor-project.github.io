@@ -1,0 +1,39 @@
+{
+    "_MODULEDATA":"v1.0.0",
+    "SScene10": {
+        "Stitle": {
+            "layoutsource":"$EFL_eftext.Stitle",
+            "datasource": "$EFL_efdata.S10.Stitle",
+             "fontSize":50
+        },
+        "Sbutton1": {
+            "buttonHTML": {
+                "comment":"NOTE we use the name Stext of the controls sub-component that we are styling",
+                "layoutsource":"$EFL_eftext.Stext",
+                "datasource":"$EFL_efdata.S10.Sbutton1",
+                "fontSize":60
+            }
+        },
+        "Sbutton2": {
+            "buttonHTML": {
+                "layoutsource":"$EFL_eftext.Stext",
+                "datasource":"$EFL_efdata.S10.Sbutton2",
+                "fontSize":60
+            }
+        },
+        "Sbutton3": {
+            "buttonHTML": {
+                "layoutsource":"$EFL_eftext.Stext",
+                "datasource":"$EFL_efdata.S10.Sbutton3",
+                "fontSize":60
+            }
+        },
+        "Sbutton4": {
+            "buttonHTML": {
+                "layoutsource":"$EFL_eftext.Stext",
+                "datasource":"$EFL_efdata.S10.Sbutton4",
+                "fontSize":60
+            }
+        }
+    }
+}

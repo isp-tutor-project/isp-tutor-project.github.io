@@ -1,0 +1,232 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Scenes/TC_TScene__Scene9" itemID="5ba00e0b-000018e6" linkageExportForAS="true" linkageClassName="TC_TScene__Scene9" lastModified="1543611786">
+  <persistentData>
+    <PD n="CreateJSToolkit_timelinedata" v="version&#xA;0.1&#xA;loop&#xA;true"/>
+  </persistentData>
+  <timeline>
+    <DOMTimeline name="TC_TScene__Scene9">
+      <layers>
+        <DOMLayer name="SbuttonHL1" color="#FF4FFF" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="TC_TObject__ButtonHL" name="SbuttonHL1">
+                  <matrix>
+                    <Matrix tx="410" ty="418.95"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="571.95" y="66.95"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="SclickMask1" color="#FF800A" autoNamed="false" visible="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="TC_TClickMask__3butMask" name="SclickMask1" selected="true">
+                  <matrix>
+                    <Matrix d="0.328887939453125" tx="402" ty="412.65"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="576" y="225"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="SbuttonHL2" color="#FF4FFF" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="TC_TObject__ButtonHL" name="SbuttonHL2">
+                  <matrix>
+                    <Matrix tx="410" ty="573.95"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="571.95" y="66.95"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="SclickMask2" color="#FF800A" autoNamed="false" visible="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="TC_TClickMask__3butMask" name="SclickMask2">
+                  <matrix>
+                    <Matrix d="0.328887939453125" tx="402" ty="567.65"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="576" y="225"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="SbuttonHL3" color="#FF4FFF" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="TC_TObject__ButtonHL" name="SbuttonHL3">
+                  <matrix>
+                    <Matrix tx="410" ty="728.95"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="571.95" y="66.95"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="SclickMask3" color="#FF800A" autoNamed="false" visible="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="TC_TClickMask__3butMask" name="SclickMask3">
+                  <matrix>
+                    <Matrix d="0.328887939453125" tx="402" ty="722.65"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="576" y="225"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="SbuttonHL4" color="#FF4FFF" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="TC_TObject__ButtonHL" name="SbuttonHL4">
+                  <matrix>
+                    <Matrix tx="410" ty="883.95"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="571.95" y="66.95"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="SclickMask4" color="#FF800A" current="true" isSelected="true" autoNamed="false" visible="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="TC_TClickMask__3butMask" name="SclickMask4">
+                  <matrix>
+                    <Matrix d="0.328887939453125" tx="402" ty="877.65"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="576" y="225"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Sbutton1" color="#009999" locked="true" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/TC_THtmlButton__VarSelector" name="Sbutton1" symbolType="button">
+                  <matrix>
+                    <Matrix a="1.02963256835938" d="0.573883056640625" tx="423.3" ty="434.25"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Sbutton2" color="#FF4F4F" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/TC_THtmlButton__VarSelector" name="Sbutton2" symbolType="button">
+                  <matrix>
+                    <Matrix a="1.02963256835938" d="0.573883056640625" tx="423.3" ty="589.35"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Sbutton3" color="#669900" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/TC_THtmlButton__VarSelector" name="Sbutton3" symbolType="button">
+                  <matrix>
+                    <Matrix a="1.02963256835938" d="0.573883056640625" tx="423.3" ty="744.45"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Sbutton4" color="#FF0000" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Assets/TC_THtmlButton__VarSelector" name="Sbutton4" symbolType="button">
+                  <matrix>
+                    <Matrix a="1.02963256835938" d="0.573883056640625" tx="423.3" ty="899.5"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Stitle" color="#00FFFF" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="_HTMLControls/TC_THtmlText__Text1" name="Stitle">
+                  <matrix>
+                    <Matrix a="14.6008453369141" d="2.30412292480469" tx="287.05" ty="127.5"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="49.3" y="50.15"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="SceneRegion" color="#00FFFF" locked="true" outline="true" useOutlineView="true" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="_Tutor Global Assets_/TC_TVirtual__SceneRgn">
+                  <transformationPoint>
+                    <Point x="960" y="600"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

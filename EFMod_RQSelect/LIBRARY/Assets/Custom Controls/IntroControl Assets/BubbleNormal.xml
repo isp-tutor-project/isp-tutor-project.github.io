@@ -1,0 +1,31 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Assets/Custom Controls/IntroControl Assets/BubbleNormal" itemID="5b8dc4ab-0000081a" lastModified="1539635316">
+  <timeline>
+    <DOMTimeline name="BubbleNormal">
+      <layers>
+        <DOMLayer name="Layer_1" color="#00FFFF" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMOvalObject objectWidth="301.95" objectHeight="195" x="775" y="96.95" endAngle="0">
+                  <matrix>
+                    <Matrix tx="-775" ty="-96.95"/>
+                  </matrix>
+                  <fill>
+                    <SolidColor color="#4273F8"/>
+                  </fill>
+                  <stroke>
+                    <SolidStroke scaleMode="normal" weight="10.1">
+                      <fill>
+                        <SolidColor color="#999999"/>
+                      </fill>
+                    </SolidStroke>
+                  </stroke>
+                </DOMOvalObject>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

@@ -1,0 +1,24 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Assets/Custom Controls/IntroControl Assets/BubbleShadow" itemID="5b8ed178-000012ec" lastModified="1536086392">
+  <timeline>
+    <DOMTimeline name="BubbleShadow">
+      <layers>
+        <DOMLayer name="Layer_1" color="#00FFFF" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMOvalObject objectWidth="301.95" objectHeight="195" x="775" y="96.95" endAngle="0">
+                  <matrix>
+                    <Matrix tx="-775" ty="-96.95"/>
+                  </matrix>
+                  <fill>
+                    <SolidColor color="#666666"/>
+                  </fill>
+                </DOMOvalObject>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

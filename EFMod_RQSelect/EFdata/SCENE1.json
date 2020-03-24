@@ -1,0 +1,62 @@
+{
+    "_MODULEDATA":"v1.0.0",
+    "SScene1": {
+        "Sintro1": {
+            "STextBox1": {
+                "layoutsource":"$EFL_eftext.STextBox1",
+                "htmlData":{
+                    "html": "<p>Select General Area</p>"
+                }
+            },
+            "STextBox2": {
+                "layoutsource":"$EFL_eftext.STextBox2",
+                "htmlData":{
+                    "html": "<p>Psychology</p>"
+                }
+            }
+        },        
+        "Sintro2": {
+            "STextBox1": {
+                "layoutsource":"$EFL_eftext.STextBox1",
+                "htmlData":{
+                    "html": "<p>Select Topic</p>"
+                }
+            },
+            "STextBox2": {
+                "layoutsource":"$EFL_eftext.STextBox2",
+                "htmlData":{
+                    "html": "<p>Attention to Color</p>"
+                }
+            }
+        },        
+        "Sintro3": {
+            "STextBox1": {
+                "layoutsource":"$EFL_eftext.STextBox1",
+                "htmlData":{
+                    "html": "<p>Select Research Question</p>"
+                }
+            },
+            "STextBox2": {
+                "layoutsource":"$EFL_eftext.STextBox2",
+                "htmlData":{
+                    "html": "<p>Does the color<br>of the T-shirt a person is wearing affect attention?</p>"
+                },
+                "fontSize":24
+            }
+        },        
+        "Sintro4": {
+            "STextBox1": {
+                "layoutsource":"$EFL_eftext.STextBox1",
+                "htmlData":{
+                    "html": "<p>Set Up & Evaluate Experiments</p>"
+                }
+            },
+            "STextBox2": {
+                "layoutsource":"$EFL_eftext.STextBox2",
+                "htmlData":{
+                    "html": ""
+                }
+            }
+        }
+    }
+}

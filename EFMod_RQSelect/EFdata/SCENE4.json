@@ -1,0 +1,30 @@
+{
+    "_MODULEDATA":"v1.0.0",
+    "SScene4": {
+        "Stitle": {
+            "layoutsource":"$EFL_eftext.Stitle",
+            "datasource": "$EFL_efdata.S4Stitle",
+            "fontSize":60
+        },
+        "Svar1": {
+            "layoutsource":"$EFL_eftext.Svar1",
+            "datasource": "$EFL_efdata.S4Svar1",
+            "fontSize":40
+        },
+        "Svar2": {
+            "layoutsource":"$EFL_eftext.Svar2",
+            "datasource": "$EFL_efdata.S4Svar2",
+            "fontSize":40
+        },
+        "Svar3": {
+            "layoutsource":"$EFL_eftext.Svar3",
+            "datasource": "$EFL_efdata.S4Svar3",
+            "fontSize":40
+        },
+        "Svar4": {
+            "layoutsource":"$EFL_eftext.Svar4",
+            "datasource": "$EFL_efdata.S4Svar4",
+            "fontSize":40
+        }
+    }
+}

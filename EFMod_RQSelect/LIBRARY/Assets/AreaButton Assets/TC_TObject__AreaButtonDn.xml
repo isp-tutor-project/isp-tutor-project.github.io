@@ -1,0 +1,31 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Assets/AreaButton Assets/TC_TObject__AreaButtonDn" itemID="5b998c51-00001269" lastModified="1536789618">
+  <timeline>
+    <DOMTimeline name="TC_TObject__AreaButtonDn">
+      <layers>
+        <DOMLayer name="Layer_1" color="#00FFFF" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMRectangleObject objectWidth="686.5" objectHeight="375.3" x="175.05" y="275.75" lockFlag="true" topLeftRadius="19.5" topRightRadius="19.5" bottomLeftRadius="19.5" bottomRightRadius="19.5">
+                  <matrix>
+                    <Matrix tx="-175.05" ty="-275.75"/>
+                  </matrix>
+                  <fill>
+                    <SolidColor color="#FFFF00" alpha="0.0862745098039216"/>
+                  </fill>
+                  <stroke>
+                    <SolidStroke scaleMode="normal" weight="7.05">
+                      <fill>
+                        <SolidColor color="#FFFF00"/>
+                      </fill>
+                    </SolidStroke>
+                  </stroke>
+                </DOMRectangleObject>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

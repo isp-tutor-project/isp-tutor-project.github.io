@@ -1,0 +1,45 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Assets/images/TC_TObject__arrow" itemID="5b9aeaf8-00001e66" lastModified="1536879352">
+  <timeline>
+    <DOMTimeline name="TC_TObject__arrow">
+      <layers>
+        <DOMLayer name="Layer_1" color="#00FFFF" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMShape selected="true" isDrawingObject="true">
+                  <matrix>
+                    <Matrix tx="-342.3" ty="-569.25"/>
+                  </matrix>
+                  <fills>
+                    <FillStyle index="1">
+                      <SolidColor color="#0098FF"/>
+                    </FillStyle>
+                  </fills>
+                  <strokes>
+                    <StrokeStyle index="1">
+                      <SolidStroke scaleMode="normal" weight="1.95">
+                        <fill>
+                          <SolidColor color="#999999"/>
+                        </fill>
+                      </SolidStroke>
+                    </StrokeStyle>
+                  </strokes>
+                  <edges>
+                    <Edge fillStyle1="1" strokeStyle="1" edges="!8946 11983/8266 12604!8266 12604/8265 12224!8265 12224/6846 12225!6846 12225/6847 11764!6847 11764/8266 11765!8266 11765/8265 11385!8265 11385/8946 11983"/>
+                    <Edge cubics="!8946 11983(;8946,11983 8266,12604 8266,12604q8946 11983 8266 12604);"/>
+                    <Edge cubics="!8265 11385(;8265,11385 8946,11983 8946,11983q8265 11385 8946 11983);"/>
+                    <Edge cubics="!8266 11765(;8266,11765 8265,11385 8265,11385q8266 11765 8265 11385);"/>
+                    <Edge cubics="!8266 12604(;8266,12604 8265,12224 8265,12224q8266 12604 8265 12224);"/>
+                    <Edge cubics="!6846 12225(;6846,12225 6847,11764 6847,11764q6846 12225 6847 11764);"/>
+                    <Edge cubics="!6847 11764(;6847,11764 8266,11765 8266,11765q6847 11764 8266 11765);"/>
+                    <Edge cubics="!8265 12224(;8265,12224 6846,12225 6846,12225q8265 12224 6846 12225);"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>
