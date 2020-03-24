@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ISP Tutor</title>
+        <link rel="stylesheet" href="main.css">
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <!-- Google Material Icons (Home Icon) -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Adobe Animate (RQ and TED) -->
+        <script src="https://code.createjs.com/createjs-2015.11.26.combined.js"></script>
+
+        <script src="database.js"></script>
+        <!-- Load the SystemJS module loader and the tutor engine module -->
+        <script src="./node_modules/systemjs/dist/system.src.js"></script>
+        <script src="./dist/TutorEngineOne.js"></script>
+        <script src="EFTutorLoader.js"></script>
+    </head>
+
+    <body>
+
+        <!-- Home Page -->
+        <div class="page" id="home-page">
+            <img id="title-logo" src="isptutorlogo_narrow.png" alt="ISP Tutor">
+            <div>
+            <span id="sign-in-text"></span>
+            <!-- <span id="sign-out-region"></span> -->
+            </div>
+            <div class="border-container">
+                <div class="container">
+                    <!--
+                    <button type="button" id="rq-button" class="module-button disabled" disabled>Research Question</button>
+                    <button type="button" id="hypo-button" class="module-button disabled" disabled>Hypothesis</button>
+                    <button type="button" id="ted-button" class="module-button disabled" disabled hidden>TED Tutor</button>
+                    -->
+                    <span> What should we do from here?</span>
+                    <ol>
+                        <li>redirect back to demo index.html page?</li>
+                        <li>implement demo index.html page here?</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Module Page (for RQ and TED) -->
+        <div class="page" id="module-page" style="margin:0px;">
+            <div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:1920px; height:1200px">
+                <canvas id="canvas" width="1920" height="1200"
+                    style="position: absolute; display: none; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+                <div id="dom_overlay_container"
+                    style="pointer-events:none; overflow:hidden; width:1920px; height:1200px; position: absolute; left: 0px; top: 0px; display: none;">
+                </div>
+            </div>
+            <div id='_preload_div_'
+                style='position:absolute; top:0; left:0; display: inline-block; height:1200px; width: 1920px; text-align: center;'>
+                <span style='display: inline-block; height: 100%; vertical-align: middle;'></span> <img
+                    src=images/_preloader.gif style='vertical-align: middle; max-height: 100%' /></div>
+            <i id="home-icon" class="material-icons">home</i>
+        </div>
+
+        <!-- Home Icon Overlay -->
+        <div id="home-overlay" class="border-container overlay">
+            <div class="container">
+                <h3>If you go back to the home page, you will lose all your progress. Are you sure you wish to proceed?</h3>
+                <br>
+                <div class="inline-btn-container">
+                    <button id="yes-btn" type="button" class="inline-btn">Yes</button>
+                    <button id="cancel-btn" type="button" class="inline-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tutor Completion Overlay-->
+        <div id="completion-overlay" class="border-container overlay">
+            <div class="container">
+                <h3>You are now done with this section. Click Home to move on to the next section.</h3>
+                <br>
+                <div class="inline-btn-container">
+                    <button id="completion-home-btn" type="button" class="inline-btn">Home</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Snackbar -->
+        <div id="snackbar">Some text some message..</div>
+
+        <!-- Load the JS to control account registration system -->
+        <script src="./rqselectPage.js"></script>
+    </body>
+</html>

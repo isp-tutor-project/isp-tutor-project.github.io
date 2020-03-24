@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ISP Tutor</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <!-- Google Material Icons (Home Icon) -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Adobe Animate (RQ and TED) -->
+    <script src="https://code.createjs.com/createjs-2015.11.26.combined.js"></script>
+
+    <script src="database.js"></script>
+    <!-- Loads the ontologies -->
+    <script src="ontology.js"></script>
+    <script src="hypoOntology.js"></script>
+    <!-- Load the JS for the Hypo module -->
+    <script src="hypo.js"></script>
+    <script src="conditions.js"></script>
+  </head>
+
+  <body>
+
+
+    <!-- Home Page -->
+    <div class="page" id="home-page">
+      <img id="title-logo" src="isptutorlogo_narrow.png" alt="ISP Tutor">
+      <div>
+        <span id="sign-in-text"></span>
+        <!-- <span id="sign-out-region"></span> -->
+      </div>
+      <div class="border-container">
+        <div class="container">
+          <!--
+          <button type="button" id="rq-button" class="module-button disabled" disabled>Research Question</button>
+          <button type="button" id="hypo-button" class="module-button disabled" disabled>Hypothesis</button>
+          <button type="button" id="ted-button" class="module-button disabled" disabled hidden>TED Tutor</button>
+          -->
+          <span> What should we do from here?</span>
+          <ol>
+            <li>redirect back to demo index.html page?</li>
+            <li>implement demo index.html page here?</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hypo Page -->
+    <div class="page" id="hypo-page">
+      <canvas id="hypo-canvas" width="1200" height="750">
+        Error: HTML5 canvas is not working. Please make sure JavaScript is enabled.
+      </canvas>
+      <!-- Note!!! In the Youtube URL below, the enablejsapi parameter must be set to 1 and the rel parameter set to 0!!! This is so the hypo.js code can pause the video when necessary, and block related videos from appearing -->
+      <iframe id="instruction_video_overlay" width="800" height="450" enablejsapi="1"
+        src="https://www.youtube.com/embed/ATlmZHaw8ys?rel=0" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    
+      <img id="temperature_gif_overlay" class="overlay" src="HypoGraphics/slide2/temperaturegif.gif">
+    
+      <div id="quiz_overlay" class="overlay">
+        <ul>
+          <li><u>How often a city is hit by a hurricane</u> and <u>how often it floods</u></li>
+          <li><u>Margarine (butter) sales</u> and <u>divorce rate</u></li>
+          <li><u>Humidity</u> and <u>the amount of water in the air</u></li>
+          <li><u>How hard you push on an object</u> and <u>how much the object moves</u></li>
+          <li><u>Friction</u> and <u>force of resistance to motion on a surface</u></li>
+        </ul>
+      </div>
+    
+      <form id="quiz_questions_overlay" class="overlay">
+        <select id="quiz_q1" class="quiz_questions">
+          <option value="" disabled selected hidden>Choose one...</option>
+          <option>Definition</option>
+          <option>Causes</option>
+          <option>Correlation</option>
+        </select>
+        <br>
+        <select id="quiz_q2" class="quiz_questions">
+          <option value="" disabled selected hidden>Choose one...</option>
+          <option>Definition</option>
+          <option>Causes</option>
+          <option>Correlation</option>
+        </select>
+        <br>
+        <select id="quiz_q3" class="quiz_questions">
+          <option value="" disabled selected hidden>Choose one...</option>
+          <option>Definition</option>
+          <option>Causes</option>
+          <option>Correlation</option>
+        </select>
+        <br>
+        <select id="quiz_q4" class="quiz_questions">
+          <option value="" disabled selected hidden>Choose one...</option>
+          <option>Definition</option>
+          <option>Causes</option>
+          <option>Correlation</option>
+        </select>
+        <br>
+        <select id="quiz_q5" class="quiz_questions">
+          <option value="" disabled selected hidden>Choose one...</option>
+          <option>Definition</option>
+          <option>Causes</option>
+          <option>Correlation</option>
+        </select>
+      </form>
+    
+      <div id="start_page_overlay" class="overlay">
+        <h3>Definitions</h3>
+        <p>
+          Your <b>research question</b>: Does the water temperature affect the weight of the crystal growth on a string?
+        </p>
+        <p>
+          You will be asked to make a <b>prediction</b> for your research question. Your prediction could either be:
+        </p>
+        <ul>
+          <li>Hot water makes crystals grow more than room temperature water (This is the same thing as saying "Higher
+            water temperature leads to <u>more</u> crystal growth.")
+            <p>
+              <ul>
+                <li>OR</li>
+              </ul>
+            </p>
+          </li>
+          <li>Room temperature water makes crystals grow more than hot water. (This is the same as saying "Higher water
+            temperature leads to <u>less</u> crystal growth.")</li>
+        </ul>
+        <p>
+          You will be asked to make a <b>Hypothesis</b> for your prediction. A Hypothesis is defined as a more detailed
+          scientific <i>explanation</i> of your prediction.
+        </p>
+      </div>
+
+      <div id="concept_map_notepad_overlay" class="overlay notepad">
+        <div class="notepad-heading">
+          <b>Note Pad</b>
+          <br />
+          (You can use this space to write out your hypothesis.)
+          <hr />
+        </div>
+        <div id="notepad_notes" class="notepad-body" contenteditable="true"></div>
+      </div>
+
+      <div id="save_concept_map_overlay" class="overlay save-cpt-map">
+        <div class="save-cpt-map-heading">
+          If you wish to continue, please draw your concept map in your background research notebook now.
+          You won't be able to see it after moving on. (Or cancel to keep working on your concept map.)
+        </div>
+        <div class="inline-btn-container">
+          <button type="button" class="inline-btn" id="cpt_map_cancel_save">Cancel</button>
+          <button type="button" class="inline-btn" id="cpt_map_save">OK</button>
+        </div>
+      </div>
+
+      <div id="leave_concept_map_overlay" class="overlay leave-cpt-map">
+        <div class="leave-cpt-map-heading">You will lose your work if you leave this page.</div>
+        <div class="inline-btn-container">
+          <button type="button" class="inline-btn" id="cpt_map_cancel_leave_page">Cancel</button>
+          <button type="button" class="inline-btn" id="cpt_map_leave_page">Proceed</button>
+        </div>
+      </div>
+
+      <iframe id="brm_instruction_overlay" class="overlay" width="1080px" height="680px" frameborder="no" scrolling="auto"
+        src="https://storage.googleapis.com/cmuintgames/INHelperBRM2/index.html"></iframe>
+    </div>
+
+    <!-- Home Icon Overlay -->
+    <div id="home-overlay" class="border-container overlay">
+      <div class="container">
+        <h3>If you go back to the home page, you will lose all your progress. Are you sure you wish to proceed?</h3>
+        <br>
+        <div class="inline-btn-container">
+          <button id="yes-btn" type="button" class="inline-btn">Yes</button>
+          <button id="cancel-btn" type="button" class="inline-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tutor Completion Overlay-->
+    <div id="completion-overlay" class="border-container overlay">
+      <div class="container">
+        <h3>You are now done with this section. Click Home to move on to the next section.</h3>
+        <br>
+        <div class="inline-btn-container">
+          <button id="completion-home-btn" type="button" class="inline-btn">Home</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Snackbar -->
+    <div id="snackbar">Some text some message..</div>
+
+    <!-- Load the JS to control account registration system -->
+    <script src="hypothesisPage.js"></script>
+
+  </body>
+</html>

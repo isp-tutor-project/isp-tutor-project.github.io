@@ -1,0 +1,475 @@
+{
+    "GLOBALDATA": "v1.0.0",
+    "_ONTOLOGY": {
+        "LV": {
+            "descr": "List Values",
+            "O1": {
+                "descr": "Could/Couldn't lists",
+                "A": {
+                    "name": "Could"
+                },
+                "B": {
+                    "name": "Could Not"
+                }
+            },
+            "H1": {
+                "descr": "TED List Header Values",
+                "A": {
+                    "name": "Variables"
+                },
+                "B": {
+                    "name": "Condition 1"
+                },
+                "C": {
+                    "name": "Condition 2"
+                },
+                "D": {
+                    "name": "Could Cause a Difference"
+                }
+            },
+            "PH1": {
+                "descr": "placeHolder",
+                "name": "Tap to Choose"
+            }
+        },
+        "S": {
+            "name": "Areas of Science",
+            "PH1": {
+                "descr": "placeHolder",
+                "name": "Tap to Choose"
+            },
+            "A1": {
+                "id": "",
+                "name": "Physics-Chemistry",
+                "T1": {
+                    "id": "",
+                    "name": "Crystal Growth",
+                    "V1": {
+                        "id": "Svar1",
+                        "name": "Water Temperature",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Hot"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Cold"
+                        }
+                    },
+                    "V2": {
+                        "id": "Svar2",
+                        "name": "Crystal Type",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Salt"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Brown Sugar"
+                        }
+                    },
+                    "V3": {
+                        "id": "Svar3",
+                        "name": "Seed Crystal Size",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "None"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "A little"
+                        }
+                    },
+                    "V4": {
+                        "id": "Svar4",
+                        "name": "Type of String",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Twine"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Yarn"
+                        }
+                    }
+                },
+                "T2": {
+                    "id": "",
+                    "name": "Soda-Mint Reaction",
+                    "V1": {
+                        "id": "Svar1",
+                        "name": "Type of Sweetener",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Sugar"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Sugar-Free"
+                        }
+                    },
+                    "V2": {
+                        "id": "Svar2",
+                        "name": "Amount of Caffeine",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "With Caffeine"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Caffeine Free"
+                        }
+                    },
+                    "V3": {
+                        "id": "Svar3",
+                        "name": "Texture of Mint",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Rough"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Smooth"
+                        }
+                    },
+                    "V4": {
+                        "id": "Svar4",
+                        "name": "Amount of CO2",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Higher"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Lower"
+                        }
+                    }
+                }
+            },
+            "A2": {
+                "id": "",
+                "name": "Heat-Temperature",
+                "T1": {
+                    "id": "",
+                    "name": "Melting of Ice",
+                    "V1": {
+                        "id": "",
+                        "name": "Initial Ice Temperature",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "0 degrees"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "-20 degrees"
+                        }
+                    },
+                    "V2": {
+                        "id": "Svar2",
+                        "name": "Initial Water Temperature",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Hot"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Cold"
+                        }
+                    },
+                    "V3": {
+                        "id": "Svar3",
+                        "name": "Pattern on Glass",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Pattern"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "no Pattern"
+                        }
+                    },
+                    "V4": {
+                        "id": "Svar4",
+                        "name": "Shape of Glass",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Short"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Tall"
+                        }
+                    }
+                },
+                "T2": {
+                    "id": "",
+                    "name": "Temperature of a Gas",
+                    "V1": {
+                        "id": "Svar1",
+                        "name": "Balloon Color",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Black"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Gray"
+                        }
+                    },
+                    "V2": {
+                        "id": "Svar2",
+                        "name": "Balloon Material",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Foil"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Latex"
+                        }
+                    },
+                    "V3": {
+                        "id": "Svar3",
+                        "name": "Amount of Sunlight",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Full Sun"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Partial Shade"
+                        }
+                    },
+                    "V4": {
+                        "id": "Svar4",
+                        "name": "Type of Chair",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Wooden Chair"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Canvas Chair"
+                        }
+                    }
+                }
+            },
+            "A3": {
+                "id": "",
+                "name": "Forces and Motion",
+                "T1": {
+                    "id": "",
+                    "name": "Inclined Planes",
+                    "V1": {
+                        "id": "",
+                        "name": "Slope",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Steep"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Not Steep"
+                        }
+                    },
+                    "V2": {
+                        "id": "Svar2",
+                        "name": "Color of Ball",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Yellow"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Pink"
+                        }
+                    },
+                    "V3": {
+                        "id": "Svar3",
+                        "name": "Starting Position",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Top"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Middle"
+                        }
+                    },
+                    "V4": {
+                        "id": "Svar4",
+                        "name": "Ramp Surface",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Rough"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Smooth"
+                        }
+                    }
+                },
+                "T2": {
+                    "id": "",
+                    "name": "Sinking Objects",
+                    "V1": {
+                        "id": "Svar1",
+                        "name": "Density of Water",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Plain Water"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Salt Water"
+                        }
+                    },
+                    "V2": {
+                        "id": "Svar2",
+                        "name": "Shape of Object",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Sphere"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Tear Drop"
+                        }
+                    },
+                    "V3": {
+                        "id": "Svar3",
+                        "name": "Volume of Object",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Small"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Large"
+                        }
+                    },
+                    "V4": {
+                        "id": "Svar4",
+                        "name": "Density of Object",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Glass"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Lead"
+                        }
+                    }
+                }
+            },
+            "A4": {
+                "id": "",
+                "name": "Plant-Growth",
+                "T1": {
+                    "id": "",
+                    "name": "Flower Reproduction",
+                    "V1": {
+                        "id": "",
+                        "name": "Number of Bees",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "None"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Whole Hive"
+                        }
+                    },
+                    "V2": {
+                        "id": "Svar2",
+                        "name": "Amount of Sunlight",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Full Sun"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Partial Shade"
+                        }
+                    },
+                    "V3": {
+                        "id": "Svar3",
+                        "name": "Amount of Fertilizer",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "None"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Some"
+                        }
+                    },
+                    "V4": {
+                        "id": "Svar4",
+                        "name": "Type of Water",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Rain Water"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Tap Water"
+                        }
+                    }
+                },
+                "T2": {
+                    "id": "",
+                    "name": "Algae Growth",
+                    "V1": {
+                        "id": "Svar1",
+                        "name": "Water Temperature",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Room Temperature"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "Warmer"
+                        }
+                    },
+                    "V2": {
+                        "id": "Svar2",
+                        "name": "Amount of Music",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Constant Music"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "No Music"
+                        }
+                    },
+                    "V3": {
+                        "id": "Svar3",
+                        "name": "CO2 in Water",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "A Lot"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "None"
+                        }
+                    },
+                    "V4": {
+                        "id": "Svar4",
+                        "name": "Sunlight Exposure",
+                        "A": {
+                            "id": "Svar1a",
+                            "name": "Some"
+                        },
+                        "B": {
+                            "id": "Svar1b",
+                            "name": "None"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
