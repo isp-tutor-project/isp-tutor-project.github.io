@@ -61,16 +61,16 @@
             </div>
             <div class="right">
                 <h3>
-                        Download or Print the <a target="_new" href="./Worksheet_ScienceInquiryLesson_FINAL.pdf">Science Inquiry Worksheet</a> 
-                        before you start and fill it out during or after you 
-                        complete each step.
+                    Download or Print the <a target="_new" href="./Worksheet_ScienceInquiryLesson_FINAL.pdf">Science Inquiry Worksheet</a> 
+                    before you start and fill it out during or after you 
+                    complete each step.
                 </h3>
 
                 <ol>
                     
                     <li>
                         Complete the Good Research Question Lesson! <br/>
-                        <button type="button" class="btn" id="good_rq_button" disabled>
+                        <button type="button" class="btn" id="good_rq_button">
                             Begin Step 1
                         </button>
                     </li>
@@ -82,7 +82,7 @@
                     </li>
                     <li>
                         Do background research about your research question. <br />
-                        <button type="button" class="btn" id="brm_button" disabled>
+                        <button type="button" class="btn" id="brm_button">
                             Begin Step 3
                         </button>
                     </li>
@@ -124,9 +124,17 @@
 
         <script>
             window.addEventListener("load", function() {
+                document.getElementById("good_rq_button").addEventListener("click", (e) => {
+                    e.preventDefault();
+                    alert("good rq button clicked");
+                });
                 document.getElementById("rq_button").addEventListener("click", (e) => {
                     e.preventDefault();
                     window.location.href = "/rqselect.html";
+                });
+                document.getElementById("brm_button").addEventListener("click", (e) => {
+                    e.preventDefault();
+                    alert("brm button clicked");
                 });
                 document.getElementById("hypo_button").addEventListener("click", (e) => {
                     e.preventDefault();
