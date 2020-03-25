@@ -1,1 +1,107 @@
-hello
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./main.css" >
+    </head>
+    <style>
+        button:disabled {
+            pointer-events: none;
+            cursor: not-allowed;
+            
+        }
+
+        #top {
+            margin-left: 80px;
+            margin-right: 80px;
+
+        }
+        #teacher {
+            max-width: 300px;
+            height: auto;
+        }
+        .left {
+            width: 30%;
+            display: inline-block;            
+        }
+        .right {
+            width: 60%;
+            display: inline-block;
+        }
+    </style>
+    <body>
+        <div id="top">
+            <p>
+                Students: are you ready to begin your science fair poster
+                journey? You will be taken through the very important first
+                steps of doing a science fair project: Picking a good research
+                question, doing research on your research question, and then 
+                creating a hypothesis for your research question. You will be 
+                focusing on an experiment about Crystal Growth in this lesson
+            </p>
+        </div>
+        <div>
+            <div class="left">
+                <img id="teacher" src="./teacherPointing.jpg" />
+            </div>
+            <div class="right">
+                <h3>
+                    To do this, complete the following steps:
+                </h3>
+
+                <ol>
+                    <li>
+                        <p>
+                        Download or Print the <a target="_new" href="./Worksheet_ScienceInquiryLesson_FINAL.pdf">Science Inquiry Worksheet</a> 
+                        before you start and fill it out during or after you 
+                        complete each step.
+                        </p>
+                    </li>
+                    <li>
+                        Complete the Good Research Question Lesson! <br/>
+                        <button type="button" class="btn" id="good_rq_button" disabled>
+                            Begin Step 2
+                        </button>
+                    </li>
+                    <li>
+                        Select a Research Question! <br />
+                        <button type="button" class="btn" id="rq_button">
+                            Begin Step 3
+                        </button>
+                    </li>
+                    <li>
+                        Do background research about your research question. <br />
+                        <button type="button" class="btn" id="brm_button" disabled>
+                            Begin Step 4
+                        </button>
+                    </li>
+                    <li>
+                        Create a hypothesis for your research question. <br />
+                        <button type="button" class="btn" id="hypo_button">
+                            Begin Step 5
+                        </button>
+                    </li>
+                    <li>
+                        Make sure your worksheet is complete and share it with your teacher!
+                    </li>
+                </ol>    
+                                
+                <h3>
+                    Great work!
+                </h3>
+                
+            </div>        
+        </div>
+        <script>
+            window.addEventListener("load", function() {
+                document.getElementById("rq_button").addEventListener("click", (e) => {
+                    e.preventDefault();
+                    window.location.href = "/rqselect.html";
+                });
+                document.getElementById("hypo_button").addEventListener("click", (e) => {
+                    e.preventDefault();
+                    window.location.href = "/hypo.html";
+                });
+            });
+        </script>
+    </body>
+</html>
