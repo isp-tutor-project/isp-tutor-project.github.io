@@ -130,8 +130,7 @@ function gotoHypoPage() {
 document.getElementById("completion-home-btn").addEventListener("click", e => {
     // cleanModulePage();
     document.getElementById("completion-overlay").style.display = "none";
-    window.location.href = "https://www.isptutor.org/science-inquiry-lesson";
-
+    window.location.href = "/";
     // openPage("home-page");
     // initHomePage();
 });
