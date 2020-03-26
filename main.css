@@ -57,9 +57,9 @@ button {
   border: none;
   cursor: pointer;
   /* width: 100%; */
-  width: 250px;
+  width: 275px;
   font-size: 20px;
-  text-align: center;
+  
 }
 
 button:hover {
@@ -156,7 +156,7 @@ button:hover {
   display: inline-block;
   width: 25%;
   padding: 10px 0px;
-  margin: 10px 20px;
+  margin: 40px 20px;
 }
 
 .disabled {
