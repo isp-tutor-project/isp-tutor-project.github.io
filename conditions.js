@@ -62,10 +62,22 @@ completePage       |completePage                |completePage
 
 const conditionHypoTasks = {
     "demo": [
-        "startPage",
+        // "startPage",
+        // "definitionPage1",
+        // "definitionPage2",
+        // "definitionPage3",
+        // "definitionPage4",
+        // "definitionPage5",
+        // "definitionPage6",
+        // "definitionPage7",
+        // "definitionPage8",
+        // "definitionPage9",
+        // "definitionPage10",
+        // "backToYourRQ",
         "predictionPage2",
-        "graphPage1",
-        "graphPage2",
+        // "graphPage1",
+        // "graphPage2",
+        "notePadPage",
         "finalConceptMap",
         "completePage"
     ],
