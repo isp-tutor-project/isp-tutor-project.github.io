@@ -131,7 +131,7 @@ let optionWidth;
 // for storing steps taken by user
 //    steps include an action, an object, an index, a timestamp, and possibly
 //    additional text
-let steps = [];
+let steps;
 
 // this queue is for the preloader to contain all the image files that have
 // been preloaded
@@ -213,6 +213,11 @@ let initialHypoLockedReason = "";
 // ditto for the second prediction
 let finalHypoLocked;
 let finalHypoLockedReason = "";
+
+let currentHypo;
+let currentBubbles;
+let arrowz;
+
 // ============================================================================
 // ================================= Firebase =================================
 // ============================================================================
@@ -454,7 +459,8 @@ const pageNamesToFunctions = {
     "brmPage": brmPage,
     "predictionPage2": predictionPage2,
     "finalConceptMap": finalConceptMap,
-    "completePage": completePage
+    "completePage": completePage,
+    "notePadPage": notePadPage,
 };
 
 // init is the first function to be called
@@ -551,6 +557,7 @@ function initHypoPage() {
         { id: "ivToDvWithArrow", src: "HypoGraphics/iv2dvWithArrow.png" },
         { id: "yellowBtn", src: "HypoGraphics/buttonyellow.png" },
         { id: "orangeBtn", src: "HypoGraphics/buttonorange.png" },
+        { id: "lightbulb", src: "HypoGraphics/lightbulb.jpg" },
     ]);
 
     // required to enable mouse hover events
@@ -1279,8 +1286,9 @@ function backToYourRQ() {
     });
 
     let text1 = new createjs.Text(
-        "Now that you've seen how to set up your hypothesis by linking " +
-        "concepts, let's go back to your original research question...",
+        "Now that you’ve learned about the different ways that concepts can be " +
+        "related in your concept map, let’s go back to your original research " +
+        "question...",
         "22px Arial",
         "#000"
     ).set({
@@ -1453,7 +1461,7 @@ function getImageForPrediction(prediction) {
 function graphPage1() {
     stage.removeAllChildren();
     
-    let prediction = (firstPrediction) ? "increase" : "decrease";
+    let prediction = (secondPrediction === "increase") ? "increase" : "decrease";
     
     let text1 = new createjs.Text(
         "You predicted that as the initial water temperature increases, the " +
@@ -1481,7 +1489,7 @@ function graphPage1() {
 function graphPage2() {
     stage.removeAllChildren();
 
-    let prediction = (firstPrediction) ? "increase" : "decrease";
+    let prediction = (secondPrediction === "increase") ? "increase" : "decrease";
     
     let image = getImageForPrediction(prediction);
     image.set({x: 400, y: 150});
@@ -1812,15 +1820,27 @@ function fetchPrevSavedHypo(whichHypo) {
     });
 }
 
+function initializeConceptMap(whichHypo) {
+    if (!currentHypo || currentHypo !== whichHypo) {
+        currentHypo = whichHypo;
+        steps = [];
+        currentBubbles = [];
+        arrowz = [];
+    }
+}
+
 function initialConceptMap() {
+    initializeConceptMap("initial");
     conceptMapPage3("initial");
 }
 
 function oppositeDirectionConceptMap() {
+    initializeConceptMap("opposite");
     conceptMapPage3("opposite");
 }
 
 function finalConceptMap() {
+    initializeConceptMap("final")
     conceptMapPage3("final");
 }
 
@@ -1847,440 +1867,569 @@ function initialConceptMapPlaceholder() {
     stage.addChild(image1, backButton, nextButton);
 }
 
-function conceptMapPage2(whichHypo) {
-    // reset steps to empty list so:
-    // 1) steps are kept in sync with nodes/arrows if the student returns from prev page
-    // 2) steps for subsequent concept maps aren't merely appended
-    steps = [];
-    let hypoSaved = false;
-    let prediction;
-    if ("initial" === whichHypo) {
-        prediction = firstPrediction;
-    } else if ("opposite" === whichHypo) {
-        prediction = !firstPrediction;
-    } else if ("final" === whichHypo) {
-        prediction = secondPrediction;
-    } else {
-        console.error("invalid concept map version: ", whichHypo);
-        return;
+// function conceptMapPage2(whichHypo) {
+//     // reset steps to empty list so:
+//     // 1) steps are kept in sync with nodes/arrows if the student returns from prev page
+//     // 2) steps for subsequent concept maps aren't merely appended
+//     steps = [];
+//     let hypoSaved = false;
+//     let prediction;
+//     if ("initial" === whichHypo) {
+//         prediction = firstPrediction;
+//     } else if ("opposite" === whichHypo) {
+//         prediction = !firstPrediction;
+//     } else if ("final" === whichHypo) {
+//         prediction = secondPrediction;
+//     } else {
+//         console.error("invalid concept map version: ", whichHypo);
+//         return;
+//     }
+//     let predictionStr = boolPredictionToString(prediction);
+
+//     stage.removeAllChildren();
+//     // add error field
+//     errorField = new createjs.Container();
+//     errorField.y = 10;
+
+//     // add text field
+//     textField = new createjs.Container();
+//     textField.x = CANVAS_WIDTH / 8 - 100;
+//     textField.y = CANVAS_HEIGHT / 16;
+
+//     let title = new createjs.Text(
+//         "Concepts (Note: Na+ is sodium and Cl- is chlorine, which make up salt (NaCl))",
+//         "bold 16px Arial",
+//         "#000"
+//     ).set({
+//         x: (CANVAS_WIDTH / 2) - textField.x - 100, y: 20, textAlign: "center"
+//     });
+
+//     let fieldBackground = new createjs.Shape();
+//     fieldBackground
+//         .graphics
+//         .setStrokeStyle(1)
+//         .beginStroke("#000")
+//         .drawRect(0, 0, CANVAS_WIDTH - (2 * textField.x) - 200, CANVAS_HEIGHT / 4 + 25);
+//     textField.addChild(title, fieldBackground);
+
+//     // increment for staggered bubbles
+//     let increment = 0;
+//     let buttonSize = 25;
+//     // this is to make the concepts panel
+//     let leftMargin = 30;
+//     let topMargin = 60;
+//     let rightMargin = 20 + buttonSize;
+//     let spacing = 35;
+//     for (let i = 0; i < nodes.length; i++) {
+//         let nodeText = new createjs.Text(nodes[i], "16px Arial", "#000");
+//         let plusButton;
+//         let xButton;
+//         if (i < 4) {
+//             nodeText.x = leftMargin;
+//             nodeText.y = topMargin + i * spacing;
+//             plusButton = createPlusButton(
+//                 CANVAS_WIDTH * (3 / 8) - rightMargin - buttonSize - 1,
+//                 nodeText.y - 5,
+//                 buttonSize
+//             );
+//             xButton = createXButton(CANVAS_WIDTH * (3 / 8) - rightMargin,
+//                                     nodeText.y - 5,
+//                                     buttonSize);
+//         } else {
+//             nodeText.x = CANVAS_WIDTH / 2 - CANVAS_WIDTH / 8 + leftMargin;
+//             nodeText.y = topMargin + (i - 4) * spacing;
+//             plusButton = createPlusButton(
+//                 CANVAS_WIDTH * (6 / 8) - rightMargin - buttonSize - 1,
+//                 nodeText.y - 5,
+//                 buttonSize
+//             );
+//             xButton = createXButton(CANVAS_WIDTH * (6 / 8) - rightMargin,
+//                                     nodeText.y - 5,
+//                                     buttonSize);
+//         }
+//         // fancy function closure trick below
+//         let storedBubble = null;
+//         plusButton.on("click", e => {
+//             if (storedBubble == null) {
+//                 let bubble = createBubble(CANVAS_WIDTH / 2 + increment,
+//                                           CANVAS_HEIGHT / 2 + increment,
+//                                           nodes[i],
+//                                           "#4286f4",
+//                                           "none");
+//                 bubble.idx = i;
+//                 steps.push({
+//                     action: "NODE_CREATE",
+//                     object: nodes[bubble.idx],
+//                     index: bubble.idx,
+//                     info: "N/A",
+//                     timestamp: (new Date()).toLocaleString()
+//                 });
+//                 storedBubble = bubble;
+//                 stage.addChild(bubble);
+//                 increment += 5;
+//             }
+//         });
+//         xButton.on("click", e => {
+//             if (storedBubble != null) {
+//                 for (let child of storedBubble.children) {
+//                     if (child.name == "inConnector" || child.name == "outConnector") {
+//                         removeArrowAndLabel(child.arrow);
+//                     }
+//                 }
+//                 stage.removeChild(storedBubble);
+//                 steps.push({
+//                     action: "NODE_DELETE",
+//                     object: nodes[storedBubble.idx],
+//                     index: storedBubble.idx,
+//                     info: "N/A",
+//                     timestamp: (new Date()).toLocaleString()
+//                 });
+//                 storedBubble = null;
+//             }
+//         });
+//         textField.addChild(nodeText, plusButton, xButton);
+//     }
+
+//     let rewatchVideoButton = createTextWidthButton(
+//         CANVAS_WIDTH - 150, CANVAS_HEIGHT / 11, "Re-watch how-to video", "#2858a9"
+//     );
+//     rewatchVideoButton.on("click", e => {
+//         open(window.location.origin + "/cptMapInstructionalVideo.html", "_blank");
+//     });
+
+//     // add notebook (scrolling textarea)
+//     let notepad = new createjs.DOMElement("concept_map_notepad_overlay").set({
+//         x: (CANVAS_WIDTH / 5) * 2 / PIXEL_RATIO,
+//         y: 25 * 2 / PIXEL_RATIO,
+//         scaleX: 0.2 * 2 / PIXEL_RATIO,
+//         scaleY: 0.2 * 2 / PIXEL_RATIO
+//     });
+//     notepad.htmlElement.style.display = "block";
+//     // clear any notes any previous arrivals on this page
+//     getEleById("notepad_notes").innerHTML = "";
+
+//     // adding IV bubble, DV bubble, and arrow
+//     let ivBubble = createFixedBubble(
+//         IV_X, IV_Y, capitalizeFirstLetter(iv), "#99bbff", "increase", false
+//     );
+//     let dvBubble = createFixedBubble(
+//         DV_X, DV_Y, capitalizeFirstLetter(dvabb), "#99bbff", predictionStr, true
+//     );
+//     let arrow = createUnlabeledArrow(ivBubble.x + BUBBLE_WIDTH / 2,
+//                                      ivBubble.y,
+//                                      dvBubble.x - BUBBLE_WIDTH / 2,
+//                                      dvBubble.y);
+
+//     // save Warning popup
+//     let saveWarning = new createjs.DOMElement("save_concept_map_overlay").set({
+//         x: 110 * 2 / PIXEL_RATIO, y: 70 * 2 / PIXEL_RATIO,
+//         scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
+//     });
+//     let cancelSaveBtn = getEleById("cpt_map_cancel_save");
+//     let saveBtn = getEleById("cpt_map_save");
+    
+//     function cancelSaveHandler() {
+//         saveWarning.htmlElement.style.display = "none";
+//     }
+
+//     function saveHandler() {
+//         saveWarning.htmlElement.style.display = "none";
+//         logData2(ivBubble, whichHypo);
+//         hypoSaved = true;
+//         if ("initial" === whichHypo) {
+//             firstPredictionLocked = true;
+//             firstPredictionLockedReason = "You have already saved your hypothesis."
+//         } else if ("final" === whichHypo) {
+//             secondPredictionLocked = true;
+//             secondPredictionLockedReason = "You have already saved your hypothesis."
+//         }
+//         stage.removeChild(verifyButton);
+//         stage.addChild(nextButton);
+//         showSnackbar("Please draw your concept map in your notebook before continuing");
+//         // updateErrorField(
+//         //     "Please draw your concept map in your notebook before continuing",
+//         //     "bold 22px Arial",
+//         //     "#FFA500"
+//         // );
+//         stage.update();
+//     }
+    
+//     // back button leave page warning popup
+//     let leavePageWarning = new createjs.DOMElement("leave_concept_map_overlay").set({
+//         x: 110 * 2 / PIXEL_RATIO, y: 70 * 2 / PIXEL_RATIO,
+//         scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
+//     });
+
+//     let cancelLeavePageBtn = getEleById("cpt_map_cancel_leave_page");
+//     let leavePageBtn = getEleById("cpt_map_leave_page");
+
+//     function cancelLeavePageHandler() {
+//         leavePageWarning.htmlElement.style.display = "none";
+//     }
+
+//     function leavePageHandler() {
+//         leavePageWarning.htmlElement.style.display = "none";
+//         clearDOMEventListeners();
+//         prevHypoTask();
+//     }
+
+//     cancelSaveBtn.addEventListener('click', cancelSaveHandler);
+//     saveBtn.addEventListener("click", saveHandler);
+//     cancelLeavePageBtn.addEventListener('click', cancelLeavePageHandler);
+//     leavePageBtn.addEventListener('click', leavePageHandler);
+
+//     function clearDOMEventListeners() {
+//         saveBtn.removeEventListener("click", saveHandler);
+//         cancelSaveBtn.removeEventListener("click", cancelSaveHandler);
+//         leavePageBtn.removeEventListener("click", leavePageHandler);
+//         cancelLeavePageBtn.removeEventListener("click", cancelLeavePageHandler);
+//     }
+
+//     let backButton = createBackButton();
+//     backButton.on("click", e => {
+//         notepad.htmlElement.style.display = "none";
+//         if (hypoSaved) {
+//             clearDOMEventListeners();
+//             prevHypoTask();
+//         } else {
+//             leavePageWarning.htmlElement.style.display = "block";
+//         }
+//     });
+
+//     // verify button
+//     let verifyButton = createRightButton("Check");
+//     verifyButton.on("click", e => {
+//         if (verifyConceptMap(ivBubble)) {
+//             // if everything is ok, show the save warning popup
+//             saveWarning.htmlElement.style.display = "block";
+//         }
+//     });
+
+//     let nextButton = createNextButton();
+//     nextButton.on("click", e => {
+//         notepad.htmlElement.style.display = "none";
+//         clearDOMEventListeners();
+//         nextHypoTask();
+//     });
+
+//     stage.addChild(
+//         errorField, textField, rewatchVideoButton, notepad,
+//         ivBubble, dvBubble, arrow,
+//         backButton, verifyButton,
+//         saveWarning, leavePageWarning
+//     );
+
+//     // stage handlers
+//     stage.on("stagemouseup", removePanel);
+//     stage.on("stagemouseup", removeErrorField);
+//     stage.update();
+
+//     fetchPrevSavedHypo(whichHypo)
+//     .then((hypoData) => {
+//         if (null !== hypoData) {
+//             hypoSaved = true;
+//             stage.removeChild(verifyButton);
+//             stage.addChild(nextButton);
+//             stage.update();
+//             showSnackbar("Your hypothesis has already been saved. You can not make any changes.");
+//             // updateErrorField(
+//             //     "Your hypothesis has already been saved. You can not make any changes.",
+//             //     "22px Arial",
+//             //     "#000"
+//             // );
+//             // rehydrateHypothesis(hypoData, ivBubble, dvBubble);
+//         }
+//     })
+//     .catch(function (error) {
+//         console.error(error);
+//     });
+// }
+
+// function calcBounds(ctr) {
+//     return {
+//         left: ctr.x - (CONNECTOR_RADIUS / 2) - 2,
+//         right: ctr.x + (CONNECTOR_RADIUS / 2) + 2,
+//         top: ctr.y - (CONNECTOR_RADIUS / 2) - 2,
+//         bottom: ctr.y + (CONNECTOR_RADIUS / 2) + 2
+//     };
+// }
+
+// function withinBounds(bounds, x, y) {
+//     let retVal = false;
+//     // console.log(`testing if ${x},${y} is within ${JSON.stringify(bounds)} `);
+//     if (x >= bounds.left) {
+//         console.log('x >= bounds.left');
+//         if (x <= bounds.right) {
+//             console.log(' x <= bounds.right');
+//             if (y >= bounds.top) {
+//                 console.log('y >= bounds.top');
+//                 if (y <= bounds.bottom) {
+//                     console.log('y <= bounds.bottom');
+//                     retVal = true;
+//                 }
+//             }
+//         }
+//     }
+//     // return ( x >= ctr.left && x <= ctr.right && y >= ctr.top && y <= ctr.bottom);
+//     return retVal;
+// }
+
+// function dumpState(stge, stepz, nodez, bubblez) {
+//     // arrows: $ {
+//     //     JSON.stringify(arrowz, null, 4)
+//     // }
+//     let names = stge.children.map((child) => child.name);
+//     // console.log(names);
+//     let allBubbles = [];
+//     stge.children.forEach((child) => {
+//         if (child.name === "bubble" || child.name === "fixed bubble") {
+//             let tmp = {
+//                 type: child.name,
+//                 label: child.text,
+//                 x: child.x,
+//                 y: child.y
+//             };
+//             if (child.topConnector) {
+//                 let connectorY = tmp.y - (BUBBLE_HEIGHT / 2);                
+//                 if (child.inConnector) {
+//                     tmp.inConnector = {
+//                         x: tmp.x,
+//                         y: connectorY,
+//                     };
+//                     tmp.inConnector.bounds = calcBounds(tmp.inConnector);
+//                     // if (child.inConnector.arrow) {
+//                     //     tmp.inConnector.arrow = child.inConnector.arrow;
+//                     // }
+//                 }
+//                 if (child.outConnector) {
+//                     tmp.outConnector = {
+//                         x: tmp.x,
+//                         y: connectorY                    };
+//                     tmp.outConnector.bounds = calcBounds(tmp.outConnector);
+//                     // if (child.outConnector.arrow) {
+//                     //     tmp.outConnector.arrow = child.outConnector.arrow;
+//                     // }
+//                 }
+//             } else {
+//                 let inX = tmp.x - (BUBBLE_WIDTH / 2);
+//                 let outX = tmp.x + (BUBBLE_HEIGHT/ 2);
+//                 tmp.inConnector = {
+//                     x: inX,
+//                     y: tmp.y
+//                 };
+//                 tmp.inConnector.bounds = calcBounds(tmp.inConnector);
+//                 // if (child.inConnector.arrow) {
+//                 //     tmp.inConnector.arrow = child.inConnector.arrow;
+//                 // }
+//                 tmp.outConnector = {
+//                     x: outX,
+//                     y: tmp.y
+//                 };
+//                 tmp.outConnector.bounds = calcBounds(tmp.outConnector);
+//                 // if (child.outConnector.arrow) {
+//                 //     tmp.outConnector.arrow = child.outConnector.arrow;
+//                 // }
+//             }
+//             allBubbles.push(tmp);
+//         }
+//     });
+//     // console.log(allBubbles);
+//     let arrows = [];
+//     stge.children.forEach((child) => {
+//         if (child.name === "arrow") {
+//             let arrow = {
+//                 name: "arrow",
+//                 label: child.label.text,
+//                 start: {
+//                     x: child.x,
+//                     y: child.y
+//                 },
+//                 end: {
+//                     x: child.endX,
+//                     y: child.endY
+//                 }
+//             };
+            
+//             for (let i=0; i<allBubbles.length; i++) {
+//                 let bub = allBubbles[i];
+//                 if (bub.outConnector) {
+//                     if (withinBounds(bub.outConnector.bounds,
+//                                     arrow.start.x,
+//                                     arrow.start.y)) {
+//                         console.log(`within bounds of ${bub.label} outConnector`);                 
+//                         arrow["from"] = bub.label;
+//                     }
+//                 }
+//                 if (bub.inConnector) {
+//                     if (withinBounds(bub.inConnector.bounds,
+//                                     arrow.end.x,
+//                                     arrow.end.y)) {
+//                         console.log(`within bounds of ${bub.label} inConnector`);
+//                         arrow["to"] = bub.label;
+//                     }
+//                 }
+//             }
+//             arrows.push(arrow);
+//         }
+//     });
+//     let bubs = bubblez.map((bub) => bub.text);
+//     console.log(`
+//     bubbles: ${JSON.stringify(allBubbles, null, 4)}
+//     arrows: ${JSON.stringify(arrows, null, 4)}
+//     `);
+//     // bubbles: $ {
+//     //     JSON.stringify(bubs, null, 0)
+//     // }
+
+//     // nodes: $ {
+//     //     JSON.stringify(nodez, null, 0)
+//     // }
+
+//     // steps: $ {
+//     //     JSON.stringify(stepz, null, 4)
+//     // }
+
+//     // console.log(arrows);
+// }
+
+function redrawHypo() {
+    for (let bubble of currentBubbles) {
+        // console.log(bubble);
+        stage.addChild(bubble);
     }
-    let predictionStr = boolPredictionToString(prediction);
+    let arrowSteps = steps.filter((step) => step.action.startsWith("ARROW"));
+    // console.log(arrowSteps);
+    for (let arrow of arrowz) {
+        stage.addChild(arrow);
+    }
+}
+function capitalize(sentence) {
+    const dontCapitalize = ["from", "in", "of", "on", "the"];
+    let words = sentence.split(' ');
+    let newWords = words.map((word) => {
+        if (dontCapitalize.includes(word)) {
+            return word;
+        } else {
+            let newWord = word[0].toUpperCase() + word.slice(1);
+            return newWord;
+        }
+    });
+    return newWords.join(' ');
+}
+function joinAndCapitalize(sentences) {
+    let newSentences = sentences.map((sentence) => capitalize(sentence));
+    return newSentences.join("\n\n");
+}
 
+function notePadPage() {
     stage.removeAllChildren();
-    // add error field
-    errorField = new createjs.Container();
-    errorField.y = 10;
+    let lightBulb = new createjs.Bitmap(queue.getResult("lightbulb")).set({
+        x: 10, y: 10, scaleX: 0.5, scaleY: 0.5
+    });
 
-    // add text field
-    textField = new createjs.Container();
-    textField.x = CANVAS_WIDTH / 8 - 100;
-    textField.y = CANVAS_HEIGHT / 16;
-
-    let title = new createjs.Text(
-        "Concepts (Note: Na+ is sodium and Cl- is chlorine, which make up salt (NaCl))",
-        "bold 16px Arial",
+    let remindersTxt = new createjs.Text(
+        "Write your hypothesis in the notepad to the right.  Try to incorporate " +
+        "some of the terminology listed on the left, specifically concepts which " +
+        "support your hypothesis and the relationships between them.\n\n" +
+        "NOTE: You may only need to add one or two concepts to explain the " +
+        "relationship between the independent and dependent variables.",
+        "bold 22px Arial",
         "#000"
     ).set({
-        x: (CANVAS_WIDTH / 2) - textField.x - 100, y: 20, textAlign: "center"
+        x: 80, y: 10, textAlign: "left", lineHeight: 24, lineWidth: CANVAS_WIDTH - 160
     });
 
-    let fieldBackground = new createjs.Shape();
-    fieldBackground
-        .graphics
-        .setStrokeStyle(1)
-        .beginStroke("#000")
-        .drawRect(0, 0, CANVAS_WIDTH - (2 * textField.x) - 200, CANVAS_HEIGHT / 4 + 25);
-    textField.addChild(title, fieldBackground);
-
-    // increment for staggered bubbles
-    let increment = 0;
-    let buttonSize = 25;
-    // this is to make the concepts panel
-    let leftMargin = 30;
-    let topMargin = 60;
-    let rightMargin = 20 + buttonSize;
-    let spacing = 35;
-    for (let i = 0; i < nodes.length; i++) {
-        let nodeText = new createjs.Text(nodes[i], "16px Arial", "#000");
-        let plusButton;
-        let xButton;
-        if (i < 4) {
-            nodeText.x = leftMargin;
-            nodeText.y = topMargin + i * spacing;
-            plusButton = createPlusButton(
-                CANVAS_WIDTH * (3 / 8) - rightMargin - buttonSize - 1,
-                nodeText.y - 5,
-                buttonSize
-            );
-            xButton = createXButton(CANVAS_WIDTH * (3 / 8) - rightMargin,
-                                    nodeText.y - 5,
-                                    buttonSize);
-        } else {
-            nodeText.x = CANVAS_WIDTH / 2 - CANVAS_WIDTH / 8 + leftMargin;
-            nodeText.y = topMargin + (i - 4) * spacing;
-            plusButton = createPlusButton(
-                CANVAS_WIDTH * (6 / 8) - rightMargin - buttonSize - 1,
-                nodeText.y - 5,
-                buttonSize
-            );
-            xButton = createXButton(CANVAS_WIDTH * (6 / 8) - rightMargin,
-                                    nodeText.y - 5,
-                                    buttonSize);
-        }
-        // fancy function closure trick below
-        let storedBubble = null;
-        plusButton.on("click", e => {
-            if (storedBubble == null) {
-                let bubble = createBubble(CANVAS_WIDTH / 2 + increment,
-                                          CANVAS_HEIGHT / 2 + increment,
-                                          nodes[i],
-                                          "#4286f4",
-                                          "none");
-                bubble.idx = i;
-                steps.push({
-                    action: "NODE_CREATE",
-                    object: nodes[bubble.idx],
-                    index: bubble.idx,
-                    info: "N/A",
-                    timestamp: (new Date()).toLocaleString()
-                });
-                storedBubble = bubble;
-                stage.addChild(bubble);
-                increment += 5;
-            }
-        });
-        xButton.on("click", e => {
-            if (storedBubble != null) {
-                for (let child of storedBubble.children) {
-                    if (child.name == "inConnector" || child.name == "outConnector") {
-                        removeArrowAndLabel(child.arrow);
-                    }
-                }
-                stage.removeChild(storedBubble);
-                steps.push({
-                    action: "NODE_DELETE",
-                    object: nodes[storedBubble.idx],
-                    index: storedBubble.idx,
-                    info: "N/A",
-                    timestamp: (new Date()).toLocaleString()
-                });
-                storedBubble = null;
-            }
-        });
-        textField.addChild(nodeText, plusButton, xButton);
-    }
-
-    let rewatchVideoButton = createTextWidthButton(
-        CANVAS_WIDTH - 150, CANVAS_HEIGHT / 11, "Re-watch how-to video", "#2858a9"
-    );
-    rewatchVideoButton.on("click", e => {
-        open(window.location.origin + "/cptMapInstructionalVideo.html", "_blank");
+    let rqLabel = new createjs.Text("Your Research Question:", "bold 20px Arial", "#000").set({
+        x: 50, y: 180
+    });
+    let rqText = new createjs.Text(getRQ(), "16px Arial", "#000").set({
+        x: 50, y: 210, lineHeight: 20, lineWidth: 700
     });
 
-    // add notebook (scrolling textarea)
+    let predLabel = new createjs.Text("Your Prediction:", "bold 20px Arial", "#000").set({
+        x: 50, y: 265
+    });
+    let predictionText = 
+        `As ${iv.toLowerCase()} (independent variable) increases, the ${dv.toLowerCase()} (dependent variable) will ${secondPrediction}.`;
+    let predText = new createjs.Text(predictionText, "16px Arial", "#000").set({
+        x:50, y: 295, lineHeight: 20, lineWidth: 700
+    });
+
+    let cptsLabel = new createjs.Text("Concepts:", "bold 20px Arial", "#000").set({
+        x: 50, y: 350
+    });    
+    let cptsText = new createjs.Text(joinAndCapitalize(nodes), "16px Arial", "#000").set({
+        x: 50, y: 380, lineHeight: 12
+    });
+
+    let relsLabel = new createjs.Text("Relationships:", "bold 20px Arial", "#000").set({
+        x: 480, y: 350
+    });
+    let rels = ["Definition", "Cause", "Correlation"].join("\n\n");
+    let relsText = new createjs.Text(rels, "16px Arial", "#000").set({
+        x: 480, y: 380, lineHeight: 12
+    });
+
+    let causesLabel = new createjs.Text("Types of Causes:", "bold 20px Arial", "#000").set({
+        x: 480, y: 470
+    });
+    let causesText = new createjs.Text(joinAndCapitalize(causes), "16px Arial", "#000").set({
+        x: 480, y: 505, lineHeight: 12
+    });
+
     let notepad = new createjs.DOMElement("concept_map_notepad_overlay").set({
-        x: (CANVAS_WIDTH / 5) * 2 / PIXEL_RATIO,
-        y: 25 * 2 / PIXEL_RATIO,
-        scaleX: 0.2 * 2 / PIXEL_RATIO,
-        scaleY: 0.2 * 2 / PIXEL_RATIO
+        x: 192 * (2 / PIXEL_RATIO),
+        y: 43 * (2 / PIXEL_RATIO),
+        scaleX: .20 * (2 / PIXEL_RATIO),
+        scaleY: .20 * (2 / PIXEL_RATIO),
+        name: "notepad"
     });
     notepad.htmlElement.style.display = "block";
-    // clear any notes any previous arrivals on this page
-    getEleById("notepad_notes").innerHTML = "";
-
-    // adding IV bubble, DV bubble, and arrow
-    let ivBubble = createFixedBubble(
-        IV_X, IV_Y, capitalizeFirstLetter(iv), "#99bbff", "increase", false
-    );
-    let dvBubble = createFixedBubble(
-        DV_X, DV_Y, capitalizeFirstLetter(dvabb), "#99bbff", predictionStr, true
-    );
-    let arrow = createUnlabeledArrow(ivBubble.x + BUBBLE_WIDTH / 2,
-                                     ivBubble.y,
-                                     dvBubble.x - BUBBLE_WIDTH / 2,
-                                     dvBubble.y);
-
-    // save Warning popup
-    let saveWarning = new createjs.DOMElement("save_concept_map_overlay").set({
-        x: 110 * 2 / PIXEL_RATIO, y: 70 * 2 / PIXEL_RATIO,
-        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
-    });
-    let cancelSaveBtn = getEleById("cpt_map_cancel_save");
-    let saveBtn = getEleById("cpt_map_save");
-    
-    function cancelSaveHandler() {
-        saveWarning.htmlElement.style.display = "none";
-    }
-
-    function saveHandler() {
-        saveWarning.htmlElement.style.display = "none";
-        logData2(ivBubble, whichHypo);
-        hypoSaved = true;
-        if ("initial" === whichHypo) {
-            firstPredictionLocked = true;
-            firstPredictionLockedReason = "You have already saved your hypothesis."
-        } else if ("final" === whichHypo) {
-            secondPredictionLocked = true;
-            secondPredictionLockedReason = "You have already saved your hypothesis."
-        }
-        stage.removeChild(verifyButton);
-        stage.addChild(nextButton);
-        showSnackbar("Please draw your concept map in your notebook before continuing");
-        // updateErrorField(
-        //     "Please draw your concept map in your notebook before continuing",
-        //     "bold 22px Arial",
-        //     "#FFA500"
-        // );
-        stage.update();
-    }
-    
-    // back button leave page warning popup
-    let leavePageWarning = new createjs.DOMElement("leave_concept_map_overlay").set({
-        x: 110 * 2 / PIXEL_RATIO, y: 70 * 2 / PIXEL_RATIO,
-        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
-    });
-
-    let cancelLeavePageBtn = getEleById("cpt_map_cancel_leave_page");
-    let leavePageBtn = getEleById("cpt_map_leave_page");
-
-    function cancelLeavePageHandler() {
-        leavePageWarning.htmlElement.style.display = "none";
-    }
-
-    function leavePageHandler() {
-        leavePageWarning.htmlElement.style.display = "none";
-        clearDOMEventListeners();
-        prevHypoTask();
-    }
-
-    cancelSaveBtn.addEventListener('click', cancelSaveHandler);
-    saveBtn.addEventListener("click", saveHandler);
-    cancelLeavePageBtn.addEventListener('click', cancelLeavePageHandler);
-    leavePageBtn.addEventListener('click', leavePageHandler);
-
-    function clearDOMEventListeners() {
-        saveBtn.removeEventListener("click", saveHandler);
-        cancelSaveBtn.removeEventListener("click", cancelSaveHandler);
-        leavePageBtn.removeEventListener("click", leavePageHandler);
-        cancelLeavePageBtn.removeEventListener("click", cancelLeavePageHandler);
-    }
 
     let backButton = createBackButton();
-    backButton.on("click", e => {
-        notepad.htmlElement.style.display = "none";
-        if (hypoSaved) {
-            clearDOMEventListeners();
-            prevHypoTask();
-        } else {
-            leavePageWarning.htmlElement.style.display = "block";
-        }
-    });
-
-    // verify button
-    let verifyButton = createRightButton("Check");
-    verifyButton.on("click", e => {
-        if (verifyConceptMap(ivBubble)) {
-            // if everything is ok, show the save warning popup
-            saveWarning.htmlElement.style.display = "block";
-        }
-    });
-
     let nextButton = createNextButton();
-    nextButton.on("click", e => {
+    backButton.on("click", function() {
         notepad.htmlElement.style.display = "none";
-        clearDOMEventListeners();
+        prevHypoTask();
+    });
+
+    nextButton.on("click", function() {
+        notepad.htmlElement.style.display = "none";
         nextHypoTask();
     });
-
+    
     stage.addChild(
-        errorField, textField, rewatchVideoButton, notepad,
-        ivBubble, dvBubble, arrow,
-        backButton, verifyButton,
-        saveWarning, leavePageWarning
+        lightBulb,
+        remindersTxt, 
+        rqLabel, rqText, 
+        predLabel, predText,
+        cptsLabel, cptsText, 
+        relsLabel, relsText, 
+        causesLabel, causesText,
+        notepad,
+        backButton, nextButton
     );
-
-    // stage handlers
-    stage.on("stagemouseup", removePanel);
-    stage.on("stagemouseup", removeErrorField);
-    stage.update();
-
-    fetchPrevSavedHypo(whichHypo)
-    .then((hypoData) => {
-        if (null !== hypoData) {
-            hypoSaved = true;
-            stage.removeChild(verifyButton);
-            stage.addChild(nextButton);
-            stage.update();
-            showSnackbar("Your hypothesis has already been saved. You can not make any changes.");
-            // updateErrorField(
-            //     "Your hypothesis has already been saved. You can not make any changes.",
-            //     "22px Arial",
-            //     "#000"
-            // );
-            // rehydrateHypothesis(hypoData, ivBubble, dvBubble);
-        }
-    })
-    .catch(function (error) {
-        console.error(error);
-    });
-}
-
-function calcBounds(ctr) {
-    return {
-        left: ctr.x - (CONNECTOR_RADIUS / 2) - 2,
-        right: ctr.x + (CONNECTOR_RADIUS / 2) + 2,
-        top: ctr.y - (CONNECTOR_RADIUS / 2) - 2,
-        bottom: ctr.y + (CONNECTOR_RADIUS / 2) + 2
-    };
-}
-
-function withinBounds(bounds, x, y) {
-    let retVal = false;
-    // console.log(`testing if ${x},${y} is within ${JSON.stringify(bounds)} `);
-    if (x >= bounds.left) {
-        console.log('x >= bounds.left');
-        if (x <= bounds.right) {
-            console.log(' x <= bounds.right');
-            if (y >= bounds.top) {
-                console.log('y >= bounds.top');
-                if (y <= bounds.bottom) {
-                    console.log('y <= bounds.bottom');
-                    retVal = true;
-                }
-            }
-        }
-    }
-    // return ( x >= ctr.left && x <= ctr.right && y >= ctr.top && y <= ctr.bottom);
-    return retVal;
-}
-
-function dumpState(stge, stepz, nodez, bubblez) {
-    // arrows: $ {
-    //     JSON.stringify(arrowz, null, 4)
-    // }
-    let names = stge.children.map((child) => child.name);
-    // console.log(names);
-    let allBubbles = [];
-    stge.children.forEach((child) => {
-        if (child.name === "bubble" || child.name === "fixed bubble") {
-            let tmp = {
-                type: child.name,
-                label: child.text,
-                x: child.x,
-                y: child.y
-            };
-            if (child.topConnector) {
-                let connectorY = tmp.y - (BUBBLE_HEIGHT / 2);                
-                if (child.inConnector) {
-                    tmp.inConnector = {
-                        x: tmp.x,
-                        y: connectorY,
-                    };
-                    tmp.inConnector.bounds = calcBounds(tmp.inConnector);
-                    // if (child.inConnector.arrow) {
-                    //     tmp.inConnector.arrow = child.inConnector.arrow;
-                    // }
-                }
-                if (child.outConnector) {
-                    tmp.outConnector = {
-                        x: tmp.x,
-                        y: connectorY                    };
-                    tmp.outConnector.bounds = calcBounds(tmp.outConnector);
-                    // if (child.outConnector.arrow) {
-                    //     tmp.outConnector.arrow = child.outConnector.arrow;
-                    // }
-                }
-            } else {
-                let inX = tmp.x - (BUBBLE_WIDTH / 2);
-                let outX = tmp.x + (BUBBLE_HEIGHT/ 2);
-                tmp.inConnector = {
-                    x: inX,
-                    y: tmp.y
-                };
-                tmp.inConnector.bounds = calcBounds(tmp.inConnector);
-                // if (child.inConnector.arrow) {
-                //     tmp.inConnector.arrow = child.inConnector.arrow;
-                // }
-                tmp.outConnector = {
-                    x: outX,
-                    y: tmp.y
-                };
-                tmp.outConnector.bounds = calcBounds(tmp.outConnector);
-                // if (child.outConnector.arrow) {
-                //     tmp.outConnector.arrow = child.outConnector.arrow;
-                // }
-            }
-            allBubbles.push(tmp);
-        }
-    });
-    // console.log(allBubbles);
-    let arrows = [];
-    stge.children.forEach((child) => {
-        if (child.name === "arrow") {
-            let arrow = {
-                name: "arrow",
-                label: child.label.text,
-                start: {
-                    x: child.x,
-                    y: child.y
-                },
-                end: {
-                    x: child.endX,
-                    y: child.endY
-                }
-            };
-            
-            for (let i=0; i<allBubbles.length; i++) {
-                let bub = allBubbles[i];
-                if (bub.outConnector) {
-                    if (withinBounds(bub.outConnector.bounds,
-                                    arrow.start.x,
-                                    arrow.start.y)) {
-                        console.log(`within bounds of ${bub.label} outConnector`);                 
-                        arrow["from"] = bub.label;
-                    }
-                }
-                if (bub.inConnector) {
-                    if (withinBounds(bub.inConnector.bounds,
-                                    arrow.end.x,
-                                    arrow.end.y)) {
-                        console.log(`within bounds of ${bub.label} inConnector`);
-                        arrow["to"] = bub.label;
-                    }
-                }
-            }
-            arrows.push(arrow);
-        }
-    });
-    let bubs = bubblez.map((bub) => bub.text);
-    console.log(`
-    bubbles: ${JSON.stringify(allBubbles, null, 4)}
-    arrows: ${JSON.stringify(arrows, null, 4)}
-    `);
-    // bubbles: $ {
-    //     JSON.stringify(bubs, null, 0)
-    // }
-
-    // nodes: $ {
-    //     JSON.stringify(nodez, null, 0)
-    // }
-
-    // steps: $ {
-    //     JSON.stringify(stepz, null, 4)
-    // }
-
-    // console.log(arrows);
 }
 
 function conceptMapPage3(whichHypo)
 {
+    stage.removeAllChildren();
+    // errorField = createErrorField();
+    // errorField.y = 10;
+
     // reset steps to empty list so:
     // 1) steps are kept in sync with nodes/arrows if the student returns
     //    from prev page
     // 2) steps for subsequent concept maps aren't merely appended
-    steps = [];
+    // steps = [];
+    // let currentBubbles = [];
     let hypoSaved = false;
     let prediction;
+    let ivBubble;
+    let dvBubble;
+    let arrow;
+    let showHelp;
+
     if ("initial" === whichHypo) {
         prediction = firstPrediction;
     } else if ("opposite" === whichHypo) {
@@ -2291,13 +2440,12 @@ function conceptMapPage3(whichHypo)
         console.error("invalid concept map version: ", whichHypo);
         return;
     }
-    let predictionStr = boolPredictionToString(prediction);
+    // let predictionStr = boolPredictionToString(prediction);
 
-    stage.removeAllChildren();
-    errorField = createErrorField();
-    errorField.y = 10;
+    let lightBulb = new createjs.Bitmap(queue.getResult("lightbulb")).set({
+        x: 10, y: 10, scaleX: 0.5, scaleY: 0.5
+    });
 
-    let currentBubbles = [];
     let remindersTxt = new createjs.Text(
         "NOTE: ONLY include the concepts which you think are MOST closely related " +
         "to each other in your concept map.\n" +
@@ -2306,12 +2454,81 @@ function conceptMapPage3(whichHypo)
         "16px Arial",
         "#000"
     ).set({
-        x: 10, y: 75, textAlign: "left", lineHeight: 25 
+        x: 80, y: 10, textAlign: "left", lineHeight: 25
     });
     let cptsButton = createTextWidthButton(CANVAS_WIDTH / 2,
-                                           50,
-                                           " Select a Concept to Add ",
-                                           "#2858a9");
+        80,
+        " Select a Concept to Add ",
+        "#2858a9");
+    
+    let help1 = new createjs.DOMElement("concept_map_help_popup1").set({
+        x: 110 * 2 / PIXEL_RATIO,
+        y: 70 * 2 / PIXEL_RATIO,
+        scaleX: 0.2 * 2 / PIXEL_RATIO,
+        scaleY: 0.2 * 2 / PIXEL_RATIO
+    });
+
+    let help2 = new createjs.DOMElement("concept_map_help_popup2").set({
+        x: 110 * 2 / PIXEL_RATIO,
+        y: 70 * 2 / PIXEL_RATIO,
+        scaleX: 0.2 * 2 / PIXEL_RATIO,
+        scaleY: 0.2 * 2 / PIXEL_RATIO
+    });
+
+    let help3 = new createjs.DOMElement("concept_map_help_popup3").set({
+        x: 110 * 2 / PIXEL_RATIO,
+        y: 70 * 2 / PIXEL_RATIO,
+        scaleX: 0.2 * 2 / PIXEL_RATIO,
+        scaleY: 0.2 * 2 / PIXEL_RATIO
+    });
+
+    // save Warning popup
+    let saveWarning = new createjs.DOMElement("save_concept_map_overlay").set({
+        x: 110 * 2 / PIXEL_RATIO,
+        y: 70 * 2 / PIXEL_RATIO,
+        scaleX: 0.2 * 2 / PIXEL_RATIO,
+        scaleY: 0.2 * 2 / PIXEL_RATIO
+    });
+
+    let dismissHelp1  = getEleById("dismiss_cpt_map_help1");
+    let dismissHelp2  = getEleById("dismiss_cpt_map_help2");
+    let dismissHelp3  = getEleById("dismiss_cpt_map_help3");
+    let cancelSaveBtn = getEleById("cpt_map_cancel_save");
+    let saveBtn       = getEleById("cpt_map_save");
+    let backButton    = createBackButton();
+    let nextButton    = createNextButton();
+    nextButton.disable();
+    
+    let verifyButton  = createTextWidthButton(
+        CANVAS_WIDTH / 2,
+        CANVAS_HEIGHT * 0.95,
+        " I'm Finished ",
+        "#2858a9"
+    );
+    
+    if (currentBubbles.length !== 0) {
+        redrawHypo();
+        ivBubble = currentBubbles.filter((bub) => bub.text.toLowerCase() === iv.toLowerCase())[0];
+        dvBubble = currentBubbles.filter((bub) => bub.text.toLowerCase() === dvabb.toLowerCase())[0];
+        showHelp = false;
+    } else {
+        ivBubble = createFixedBubble(
+            IV_X, IV_Y, capitalizeFirstLetter(iv), "#99bbff", "increase", false
+        );
+        dvBubble = createFixedBubble(
+            DV_X, DV_Y, capitalizeFirstLetter(dvabb), "#99bbff", prediction, true
+        );
+        arrow = createUnlabeledArrow(ivBubble.x + BUBBLE_WIDTH / 2,
+            ivBubble.y,
+            dvBubble.x - BUBBLE_WIDTH / 2,
+            dvBubble.y);
+        currentBubbles.push(ivBubble);
+        currentBubbles.push(dvBubble);
+        arrowz.push(arrow);
+        stage.addChild(ivBubble, dvBubble, arrow);
+        showHelp = true;
+    }
+ 
     function selectConceptHandler(value) {
         let bubble = createDeletableBubble(CANVAS_WIDTH / 2,
                                            CANVAS_HEIGHT / 2,
@@ -2326,8 +2543,8 @@ function conceptMapPage3(whichHypo)
             info: "N/A",
             timestamp: (new Date()).toLocaleDateString()
         });
-        stage.removeChild(nextButton);
-        stage.addChild(verifyButton);
+        // stage.removeChild(nextButton);
+        // stage.addChild(verifyButton);
         bubble.closeButton.on("click", e => {
             for (let child of bubble.children) {
                 if ((child.name == "inConnector") || 
@@ -2347,11 +2564,11 @@ function conceptMapPage3(whichHypo)
             if (tmp) {
                 currentBubbles = currentBubbles.filter((ele) => ele !== tmp);
             }
-            dumpState(stage, steps, nodes, currentBubbles);
+            // dumpState(stage, steps, nodes, currentBubbles);
         });
         currentBubbles.push(bubble);
         stage.addChild(bubble);
-        dumpState(stage, steps, nodes, currentBubbles);
+        // dumpState(stage, steps, nodes, currentBubbles);
     }
     
     cptsButton.on("click", e => {
@@ -2361,48 +2578,30 @@ function conceptMapPage3(whichHypo)
                                     currentBubbles,
                                     selectConceptHandler);
         stage.addChild(panel);
+        stage.update();
+        // stage.setChildIndex(panel, stage.numChildren -1);
     });
 
-    let rewatchVideoButton = createTextWidthButton(
-        CANVAS_WIDTH - 200, 50, "Re-watch how-to video", "#2858a9"
-    );
-    rewatchVideoButton.on("click", e => {
-        open(window.location.origin + "/cptMapInstructionalVideo.html", "_blank");
-    });
+    // let rewatchVideoButton = createTextWidthButton(
+    //     CANVAS_WIDTH - 200, 50, "Re-watch how-to video", "#2858a9"
+    // );
+    // rewatchVideoButton.on("click", e => {
+    //     open(window.location.origin + "/cptMapInstructionalVideo.html", "_blank");
+    // });
 
     // add notebook (scrolling textarea)
-    let notepad = new createjs.DOMElement("concept_map_notepad_overlay").set({
-        x: 230 * (2 / PIXEL_RATIO),
-        y: 20 * (2 / PIXEL_RATIO),
-        scaleX: .2 * (2 / PIXEL_RATIO),
-        scaleY: .2 * (2 / PIXEL_RATIO),
-        name: "notepad"
-    });
-    notepad.htmlElement.style.display = "block";
-    // clear any notes any previous arrivals on this page
-    getEleById("notepad_notes").innerHTML = "";
+    // let notepad = new createjs.DOMElement("concept_map_notepad_overlay").set({
+    //     x: 230 * (2 / PIXEL_RATIO),
+    //     y: 20 * (2 / PIXEL_RATIO),
+    //     scaleX: .2 * (2 / PIXEL_RATIO),
+    //     scaleY: .2 * (2 / PIXEL_RATIO),
+    //     name: "notepad"
+    // });
+    // notepad.htmlElement.style.display = "block";
+    // // clear any notes any previous arrivals on this page
+    // getEleById("notepad_notes").innerHTML = "";
 
-    let ivBubble = createFixedBubble(
-        IV_X, IV_Y, capitalizeFirstLetter(iv), "#99bbff", "increase", false
-    );
-    let dvBubble = createFixedBubble(
-        DV_X, DV_Y, capitalizeFirstLetter(dvabb), "#99bbff", predictionStr, true
-    );
-    let arrow = createUnlabeledArrow(ivBubble.x + BUBBLE_WIDTH / 2,
-                                     ivBubble.y,
-                                     dvBubble.x - BUBBLE_WIDTH / 2,
-                                     dvBubble.y);
-
-    // save Warning popup
-    let saveWarning = new createjs.DOMElement("save_concept_map_overlay").set({
-        x: 110 * 2 / PIXEL_RATIO,
-        y: 70 * 2 / PIXEL_RATIO,
-        scaleX: 0.2 * 2 / PIXEL_RATIO,
-        scaleY: 0.2 * 2 / PIXEL_RATIO
-    });
-    let cancelSaveBtn = getEleById("cpt_map_cancel_save");
-    let saveBtn = getEleById("cpt_map_save");
-
+ 
     function cancelSaveHandler() {
         saveWarning.htmlElement.style.display = "none";
     }
@@ -2418,66 +2617,86 @@ function conceptMapPage3(whichHypo)
             secondPredictionLocked = true;
             secondPredictionLockedReason = "You have already saved your hypothesis."
         }
-        stage.removeChild(verifyButton);
-        stage.addChild(nextButton);
-        showSnackbar("Please draw your concept map in your notebook before continuing");
+        // stage.removeChild(verifyButton);
+        // stage.addChild(nextButton);
+        // showSnackbar("Please draw your concept map in your notebook before continuing");
         // updateErrorField(
         //     "Please draw your concept map in your notebook before continuing",
         //     "bold 22px Arial",
         //     "#FFA500"
         // );
         stage.update();
+        clearDOMEventListeners();
+        nextHypoTask();
     }
 
     // back button leave page warning popup
-    let leavePageWarning = new createjs.DOMElement("leave_concept_map_overlay").set({
-        x: 110 * 2 / PIXEL_RATIO,
-        y: 70 * 2 / PIXEL_RATIO,
-        scaleX: 0.2 * 2 / PIXEL_RATIO,
-        scaleY: 0.2 * 2 / PIXEL_RATIO
-    });
+    // let leavePageWarning = new createjs.DOMElement("leave_concept_map_overlay").set({
+    //     x: 110 * 2 / PIXEL_RATIO,
+    //     y: 70 * 2 / PIXEL_RATIO,
+    //     scaleX: 0.2 * 2 / PIXEL_RATIO,
+    //     scaleY: 0.2 * 2 / PIXEL_RATIO
+    // });
 
-    let cancelLeavePageBtn = getEleById("cpt_map_cancel_leave_page");
-    let leavePageBtn = getEleById("cpt_map_leave_page");
+    // let cancelLeavePageBtn = getEleById("cpt_map_cancel_leave_page");
+    // let leavePageBtn = getEleById("cpt_map_leave_page");
 
-    function cancelLeavePageHandler() {
-        leavePageWarning.htmlElement.style.display = "none";
-    }
-
-    function leavePageHandler() {
-        leavePageWarning.htmlElement.style.display = "none";
-        clearDOMEventListeners();
-        prevHypoTask();
-    }
-
-    cancelSaveBtn.addEventListener('click', cancelSaveHandler);
-    saveBtn.addEventListener("click", saveHandler);
-    cancelLeavePageBtn.addEventListener('click', cancelLeavePageHandler);
-    leavePageBtn.addEventListener('click', leavePageHandler);
+    // function cancelLeavePageHandler() {
+    //     leavePageWarning.htmlElement.style.display = "none";
+    // }
 
     function clearDOMEventListeners() {
         saveBtn.removeEventListener("click", saveHandler);
         cancelSaveBtn.removeEventListener("click", cancelSaveHandler);
-        leavePageBtn.removeEventListener("click", leavePageHandler);
-        cancelLeavePageBtn.removeEventListener("click", cancelLeavePageHandler);
+        // leavePageBtn.removeEventListener("click", leavePageHandler);
+        // cancelLeavePageBtn.removeEventListener("click", cancelLeavePageHandler);
     }
 
-    let backButton = createBackButton();
+    // function leavePageHandler() {
+    //     // leavePageWarning.htmlElement.style.display = "none";
+    //     clearDOMEventListeners();
+    //     prevHypoTask();
+    // }
+    function hideHelp1() {
+        help1.htmlElement.style.display = "none";
+        help2.htmlElement.style.display = "block";
+    }
+    function hideHelp2() {
+        help2.htmlElement.style.display = "none";
+        help3.htmlElement.style.display = "block";
+    }
+    function hideHelp3() {
+        help3.htmlElement.style.display = "none";
+    }
+
+    dismissHelp1.addEventListener("click", hideHelp1);
+    dismissHelp2.addEventListener("click", hideHelp2);
+    dismissHelp3.addEventListener("click", hideHelp3);
+
+    cancelSaveBtn.addEventListener('click', cancelSaveHandler);
+    saveBtn.addEventListener("click", saveHandler);
+    // cancelLeavePageBtn.addEventListener('click', cancelLeavePageHandler);
+    // leavePageBtn.addEventListener('click', leavePageHandler);
+
+
     backButton.on("click", e => {
-        notepad.htmlElement.style.display = "none";
-        if (hypoSaved) {
-            clearDOMEventListeners();
-            prevHypoTask();
-        } else {
-            leavePageWarning.htmlElement.style.display = "block";
-        }
+        // notepad.htmlElement.style.display = "none";
+        // if (hypoSaved) {
+        clearDOMEventListeners();
+        prevHypoTask();
+        // } else {
+            //     leavePageWarning.htmlElement.style.display = "block";
+        // }
     });
 
-    let verifyButton = createRightButton("Check", "#2858a9");
     verifyButton.on("click", e => {
         if (verifyConceptMap(ivBubble)) {
+            showSnackbar("Everything is now labeled and connected properly. This does " +
+                "not mean that your work is conceptually correct.",
+            );
+            nextButton.enable();
             // if everything is ok, show the save warning popup
-            saveWarning.htmlElement.style.display = "block";
+            // saveWarning.htmlElement.style.display = "block";
             // console.log("verified");
             // stage.removeChild(verifyButton);
             // stage.addChild(nextButton);
@@ -2486,23 +2705,33 @@ function conceptMapPage3(whichHypo)
         }
     });
 
-    let nextButton = createNextButton();
     nextButton.on("click", e => {
-        notepad.htmlElement.style.display = "none";
-        clearDOMEventListeners();
-        nextHypoTask();
+        // notepad.htmlElement.style.display = "none";
+        saveWarning.htmlElement.style.display = "block";
+        // clearDOMEventListeners();
+        // nextHypoTask();
     });
 
+    if (showHelp) {
+        help1.htmlElement.style.display = "block";
+    }
+
     stage.addChild(
-        errorField,
+        lightBulb,
         remindersTxt,
-        cptsButton, rewatchVideoButton, notepad,
-        ivBubble, dvBubble, arrow,
-        backButton, verifyButton,
-        saveWarning, leavePageWarning
+        cptsButton, 
+        backButton, verifyButton, nextButton,
+        saveWarning, help1, help2, help3
     );
+
+    // leavePageWarning
+    // notepad,
+    // errorField,
+    // rewatchVideoButton,
+    // ivBubble, dvBubble, arrow,
+
     stage.on("stagemouseup", removePanel);
-    stage.on("stagemouseup", removeErrorField);
+    // stage.on("stagemouseup", removeErrorField);
     stage.update();
 
     fetchPrevSavedHypo(whichHypo)
@@ -2531,153 +2760,153 @@ function conceptMapPage3(whichHypo)
 // rebuilds the concept map'a nodes, directions, arrows, and labels from what is 
 // stored in firebase (hypoData).  requires ivBubble and dvBubble as these nodes aren't
 // saved in the db
-function rehydrateHypothesis(hypoData, ivBubble, dvBubble) {
-    // showSnackbar('Changes to previously saved hypothesis will not be saved.');
-    // console.log(hypoData);
-    let nodeOrder = hypoData.nodes.slice(0, -1);
-    // let directions = hypoData.directions.slice(0, -1);
-    // let arrowLabels = hypoData.arrowLabels;
-    let steps = hypoData.steps;
-    let bubbles = [ivBubble, dvBubble];
-    let nodez = [];
-    let arrows = [];
-    steps.forEach((step) => {
-        let nodeText = null;
-        let nd = null;
-        let from_, to_;
-        let index;
-        let tmp;
-        switch (step.action) {
-            case "NODE_CREATE":
-                nodez.push({
-                    'text': step.object,
-                    'index': step.index,
-                    'direction': step.info
-                });
-                break;
-            case "NODE_DELETE":
-                // remove the node
-                nodeText = step.object;
-                nodez = nodez.filter(x => x.text !== nodeText);
-                // delete all arrows leading in or out from this now non-existant node
-                arrows = arrows.filter(x => x.from === nodeText);
-                arrows = arrows.filter(x => x.to === nodeText);
-                break;
-            case "NODE_CHANGE_DIRECTION":
-                nd = nodez.find(x => x.text === step.object);
-                if (undefined !== nd) {
-                    nd.direction = step.info;
-                }
-                break;
-            case "ARROW_CREATE":
-                [from_, to_] = step.object.split('::')
-                index = step.index;
-                arrows.push({
-                    'object': step.object,
-                    'from': from_,
-                    'to': to_,
-                    'index': index,
-                    'label': null
-                });
-                break;
-            case "ARROW_DELETE":
-                arrows = arrows.filter(x => x.object !== step.object);
-                break;
-            case "ARROW_CHANGE_LABEL":
-                [from_, to_] = step.object.split('::');
-                tmp = arrows.find(x => x.from === from_ && x.to === to_);
-                if (undefined !== tmp) {
-                    let _label = step.info;
-                    _label = _label.replace('Cause:', 'Cause:\n');
-                    tmp.label = _label;
-                }
-                break;
-            default:
-                console.error('unknown step action:', step.action);
-                break;
-        }
-    });
-    // console.log(steps);
-    // console.log(nodez);
-    console.log(arrows);
-    let sortedNodes = [];
-    nodeOrder.forEach((txt) => {
-        let _cn = nodez.find(x => x.text === txt);
-        sortedNodes.push(_cn);
-    });
-    let labels = sortedNodes.map(x => x.text);
-    let directions = sortedNodes.map(x => x.direction);
-    let tmp = createEvenlySpacedBubbles2(
-        300, CANVAS_WIDTH - 300, 400, labels, directions
-    );
-    tmp.forEach((bubble) => {
-        bubbles.push(bubble);
-    });
-    let bubblesInfo = getBubblesInfo(bubbles);
-    console.log(bubblesInfo);
-    arrows.forEach((arrow) => {
-        let _from = arrow.from;
-        let _to = arrow.to;
-        let label = arrow.label;
-        let _start = bubblesInfo[_from].out;
-        let _end = bubblesInfo[_to].in;
-        let arr = createArrow(_start.x, _start.y, _end.x, _end.y, label);
-        stage.addChild(arr);
-    });
-    stage.update();
-}
+// function rehydrateHypothesis(hypoData, ivBubble, dvBubble) {
+//     // showSnackbar('Changes to previously saved hypothesis will not be saved.');
+//     // console.log(hypoData);
+//     let nodeOrder = hypoData.nodes.slice(0, -1);
+//     // let directions = hypoData.directions.slice(0, -1);
+//     // let arrowLabels = hypoData.arrowLabels;
+//     let steps = hypoData.steps;
+//     let bubbles = [ivBubble, dvBubble];
+//     let nodez = [];
+//     let arrows = [];
+//     steps.forEach((step) => {
+//         let nodeText = null;
+//         let nd = null;
+//         let from_, to_;
+//         let index;
+//         let tmp;
+//         switch (step.action) {
+//             case "NODE_CREATE":
+//                 nodez.push({
+//                     'text': step.object,
+//                     'index': step.index,
+//                     'direction': step.info
+//                 });
+//                 break;
+//             case "NODE_DELETE":
+//                 // remove the node
+//                 nodeText = step.object;
+//                 nodez = nodez.filter(x => x.text !== nodeText);
+//                 // delete all arrows leading in or out from this now non-existant node
+//                 arrows = arrows.filter(x => x.from === nodeText);
+//                 arrows = arrows.filter(x => x.to === nodeText);
+//                 break;
+//             case "NODE_CHANGE_DIRECTION":
+//                 nd = nodez.find(x => x.text === step.object);
+//                 if (undefined !== nd) {
+//                     nd.direction = step.info;
+//                 }
+//                 break;
+//             case "ARROW_CREATE":
+//                 [from_, to_] = step.object.split('::')
+//                 index = step.index;
+//                 arrows.push({
+//                     'object': step.object,
+//                     'from': from_,
+//                     'to': to_,
+//                     'index': index,
+//                     'label': null
+//                 });
+//                 break;
+//             case "ARROW_DELETE":
+//                 arrows = arrows.filter(x => x.object !== step.object);
+//                 break;
+//             case "ARROW_CHANGE_LABEL":
+//                 [from_, to_] = step.object.split('::');
+//                 tmp = arrows.find(x => x.from === from_ && x.to === to_);
+//                 if (undefined !== tmp) {
+//                     let _label = step.info;
+//                     _label = _label.replace('Cause:', 'Cause:\n');
+//                     tmp.label = _label;
+//                 }
+//                 break;
+//             default:
+//                 console.error('unknown step action:', step.action);
+//                 break;
+//         }
+//     });
+//     // console.log(steps);
+//     // console.log(nodez);
+//     console.log(arrows);
+//     let sortedNodes = [];
+//     nodeOrder.forEach((txt) => {
+//         let _cn = nodez.find(x => x.text === txt);
+//         sortedNodes.push(_cn);
+//     });
+//     let labels = sortedNodes.map(x => x.text);
+//     let directions = sortedNodes.map(x => x.direction);
+//     let tmp = createEvenlySpacedBubbles2(
+//         300, CANVAS_WIDTH - 300, 400, labels, directions
+//     );
+//     tmp.forEach((bubble) => {
+//         bubbles.push(bubble);
+//     });
+//     let bubblesInfo = getBubblesInfo(bubbles);
+//     console.log(bubblesInfo);
+//     arrows.forEach((arrow) => {
+//         let _from = arrow.from;
+//         let _to = arrow.to;
+//         let label = arrow.label;
+//         let _start = bubblesInfo[_from].out;
+//         let _end = bubblesInfo[_to].in;
+//         let arr = createArrow(_start.x, _start.y, _end.x, _end.y, label);
+//         stage.addChild(arr);
+//     });
+//     stage.update();
+// }
 
-function getBubblesInfo(bubbles) {
-    console.log('length:', bubbles.length, ' bubbles:', bubbles);
-    let info = {};
-    bubbles.forEach((bubble) => {
-        let tmp = {
-            x: bubble.x,
-            y: bubble.y,
-            text: bubble.text
-        }
-        let haveIn = Boolean(bubble.inConnector);
-        let haveOut = Boolean(bubble.outConnector);
-        let sideConnectors = (haveIn && haveOut);
-        let topConnectors = (!sideConnectors && (haveIn || haveOut));
-        // inConnector and outConnector may not exist in iv and dv bubbles
-        // also their x, y cooridates are relative to the bubbles x,y
-        // so I'm adding the x,y to them
-        if (haveIn) {
-            if (sideConnectors) {
-                // left connector
-                tmp.in = {
-                    x: tmp.x - (BUBBLE_WIDTH / 2),
-                    y: tmp.y
-                };
-            } else if (topConnectors) {
-                //top connector
-                tmp.in = {
-                    x: tmp.x,
-                    y: tmp.y - (BUBBLE_HEIGHT / 2)
-                };
-            }
-        }
-        if (haveOut) {
-            if (sideConnectors) {
-                // right connector
-                tmp.out = {
-                    x: tmp.x + (BUBBLE_WIDTH / 2),
-                    y: tmp.y
-                };
-            } else if (topConnectors) {
-                // top connector
-                tmp.out = {
-                    x: tmp.x,
-                    y: tmp.y - (BUBBLE_HEIGHT / 2)
-                };
-            }
-        }
-        info[tmp.text] = tmp;
+// function getBubblesInfo(bubbles) {
+//     console.log('length:', bubbles.length, ' bubbles:', bubbles);
+//     let info = {};
+//     bubbles.forEach((bubble) => {
+//         let tmp = {
+//             x: bubble.x,
+//             y: bubble.y,
+//             text: bubble.text
+//         }
+//         let haveIn = Boolean(bubble.inConnector);
+//         let haveOut = Boolean(bubble.outConnector);
+//         let sideConnectors = (haveIn && haveOut);
+//         let topConnectors = (!sideConnectors && (haveIn || haveOut));
+//         // inConnector and outConnector may not exist in iv and dv bubbles
+//         // also their x, y cooridates are relative to the bubbles x,y
+//         // so I'm adding the x,y to them
+//         if (haveIn) {
+//             if (sideConnectors) {
+//                 // left connector
+//                 tmp.in = {
+//                     x: tmp.x - (BUBBLE_WIDTH / 2),
+//                     y: tmp.y
+//                 };
+//             } else if (topConnectors) {
+//                 //top connector
+//                 tmp.in = {
+//                     x: tmp.x,
+//                     y: tmp.y - (BUBBLE_HEIGHT / 2)
+//                 };
+//             }
+//         }
+//         if (haveOut) {
+//             if (sideConnectors) {
+//                 // right connector
+//                 tmp.out = {
+//                     x: tmp.x + (BUBBLE_WIDTH / 2),
+//                     y: tmp.y
+//                 };
+//             } else if (topConnectors) {
+//                 // top connector
+//                 tmp.out = {
+//                     x: tmp.x,
+//                     y: tmp.y - (BUBBLE_HEIGHT / 2)
+//                 };
+//             }
+//         }
+//         info[tmp.text] = tmp;
 
-    });
-    return info;
-}
+//     });
+//     return info;
+// }
 
 // random utility function to capitalize first letter and make rest lower case
 function capitalizeFirstLetter(string) {
@@ -2763,12 +2992,19 @@ function handleCauseClick(x, y, target) {
 
 function verifyConceptMap(ivBubble) {
     let isGood = true;
+    // checking at least one intermediate bubble
+    if (currentBubbles.length < 3) {
+        showSnackbar("Please add at least one intermediate bubble.")
+        return false;
+    }
     // checking everything is labeled
     for (let i = 0; i < stage.numChildren; i++) {
         let child = stage.getChildAt(i);
+        // console.log(`child(${i})`, child);
         // checking that a bubble has a direction if it is connected
         if (child.name === "bubble") {
             let dirButton = child.getChildByName("dirButton");
+            // console.log("dirButton:", dirButton);
             let connected = false;
             for (let bubbleChild of child.children) {
                 if ((bubbleChild.name === "inConnector" || 
@@ -2796,41 +3032,44 @@ function verifyConceptMap(ivBubble) {
             }
         }
     }
+
     if (!isGood) {
-        updateErrorField("Please make sure that everything is labeled properly.",
-                         "16px Arial",
-                         "red");
+        showSnackbar("Please make sure that everything is labeled properly.");
+        // updateErrorField("Please make sure that everything is labeled properly.",
+        //                  "16px Arial",
+        //                  "red");
         return isGood;
     }
     // checking connectivity
     let connector = ivBubble.outConnector;
     while (connector != null) {
         if (connector.arrow == null) {
-            updateErrorField(
-                "Please make sure that all of the bubbles are connected.",
-                "16px Arial",
-                "red"
-            );
+            showSnackbar("Please make sure that all of the bubbles are connected.");
+            // updateErrorField(
+            //     "Please make sure that all of the bubbles are connected.",
+            //     "16px Arial",
+            //     "red"
+            // );
             isGood = false;
             return isGood;
         }
         let nextBubble = connector.arrow.connectorOver.parent;
         connector = nextBubble.outConnector;
     }
-    // checking at least one intermediate bubble
-    if (ivBubble.outConnector.arrow.connectorOver.parent.outConnector == null) {
-        updateErrorField("Please add at least one intermediate bubble.",
-                         "16px Arial",
-                         "red");
+    if (ivBubble.outConnector.arrow.connectorOver.parent.outConnector === null) {
+        showSnackbar("Please add at least one intermediate bubble.");
+        // updateErrorField("Please add at least one intermediate bubble.",
+        //                  "16px Arial",
+        //                  "red");
         isGood = false;
         return isGood;
     }
-    updateErrorField(
-        "Everything is now labeled and connected properly. This does " +
-        "not mean that your work is conceptually correct.",
-        "16px Arial",
-        "#000"
-    );
+    // updateErrorField(
+    //     "Everything is now labeled and connected properly. This does " +
+    //     "not mean that your work is conceptually correct.",
+    //     "16px Arial",
+    //     "#000"
+    // );
     return isGood;
 }
 
@@ -2909,11 +3148,14 @@ function createInConnector(x, y) {
     connector.on("mouseover", handleConnectorOver);
     connector.on("mouseout", handleConnectorOver);
     connector.on("mousedown", e => {
-        updateErrorField(
-            "Make sure that you are dragging from a black circle to a white circle.",
-            "16px Arial",
-            "gray"
+        showSnackbar(
+            "Make sure that you are dragging from a black circle to a white circle."
         );
+        // updateErrorField(
+        //     "Make sure that you are dragging from a black circle to a white circle.",
+        //     "16px Arial",
+        //     "gray"
+        // );
     });
 
     return connector;
@@ -2976,6 +3218,7 @@ function createOutConnector(x, y) {
                     info: "N/A",
                     timestamp: (new Date()).toLocaleString()
                 });
+                arrowz.push(currentArrow);
             }
             currentArrow = null;
         });
@@ -3887,6 +4130,7 @@ function drawArrow(arrow, startX, startY, endX, endY, arrowLabel) {
 // remove an arrow with its label
 function removeArrowAndLabel(arrow) {
     if (arrow != null && arrow != undefined) {
+        arrowz = arrowz.filter((item) => item !== arrow);
         stage.removeChild(arrow);
         //stage.removeChild(arrow.label);
     }
