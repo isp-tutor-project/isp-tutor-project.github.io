@@ -2304,11 +2304,11 @@ function redrawHypo() {
     }
 }
 function capitalize(sentence) {
-    const dontCapitalize = ["from", "in", "of", "on", "the"];
+    const dontCapitalize = ["and", "from", "in", "of", "on", "the"];
     let words = sentence.split(' ');
     let newWords = words.map((word) => {
-        if (dontCapitalize.includes(word)) {
-            return word;
+        if (dontCapitalize.includes(word.toLowerCase())) {
+            return word.toLowerCase();
         } else {
             let newWord = word[0].toUpperCase() + word.slice(1);
             return newWord;
@@ -2328,11 +2328,13 @@ function notePadPage() {
     });
 
     let remindersTxt = new createjs.Text(
-        "Write your hypothesis in the notepad to the right.  Try to incorporate " +
-        "some of the terminology listed on the left, specifically concepts which " +
-        "support your hypothesis and the relationships between them.\n\n" +
-        "NOTE: You may only need to add one or two concepts to explain the " +
-        "relationship between the independent and dependent variables.",
+        "Direction: Please take a few minutes to write your hypothesis for your " +
+        "research question.Your hypothesis should be a detailed explanation of " +
+        "how water temperature affects the weight of the crystal growth after " +
+        "two weeks.  You may want to use some of the concepts listed below in " +
+        "your hypothesis.\n\n" +
+        "The important thing is that your hypothesis makes sense to you.You can " +
+        "come back to this page later to make improvements to your hypothesis.",
         "bold 22px Arial",
         "#000"
     ).set({
@@ -2340,42 +2342,42 @@ function notePadPage() {
     });
 
     let rqLabel = new createjs.Text("Your Research Question:", "bold 20px Arial", "#000").set({
-        x: 50, y: 180
+        x: 50, y: 200
     });
     let rqText = new createjs.Text(getRQ(), "16px Arial", "#000").set({
-        x: 50, y: 210, lineHeight: 20, lineWidth: 700
+        x: 50, y: 230, lineHeight: 20, lineWidth: 700
     });
 
     let predLabel = new createjs.Text("Your Prediction:", "bold 20px Arial", "#000").set({
-        x: 50, y: 265
+        x: 50, y: 285
     });
     let predictionText = 
         `As ${iv.toLowerCase()} (independent variable) increases, the ${dv.toLowerCase()} (dependent variable) will ${secondPrediction}.`;
     let predText = new createjs.Text(predictionText, "16px Arial", "#000").set({
-        x:50, y: 295, lineHeight: 20, lineWidth: 700
+        x:50, y: 315, lineHeight: 20, lineWidth: 700
     });
 
     let cptsLabel = new createjs.Text("Concepts:", "bold 20px Arial", "#000").set({
-        x: 50, y: 350
+        x: 50, y: 370
     });    
     let cptsText = new createjs.Text(joinAndCapitalize(nodes), "16px Arial", "#000").set({
-        x: 50, y: 380, lineHeight: 12
+        x: 50, y: 400, lineHeight: 12
     });
 
-    let relsLabel = new createjs.Text("Relationships:", "bold 20px Arial", "#000").set({
-        x: 480, y: 350
-    });
-    let rels = ["Definition", "Cause", "Correlation"].join("\n\n");
-    let relsText = new createjs.Text(rels, "16px Arial", "#000").set({
-        x: 480, y: 380, lineHeight: 12
-    });
+    // let relsLabel = new createjs.Text("Relationships:", "bold 20px Arial", "#000").set({
+    //     x: 480, y: 350
+    // });
+    // let rels = ["Definition", "Cause", "Correlation"].join("\n\n");
+    // let relsText = new createjs.Text(rels, "16px Arial", "#000").set({
+    //     x: 480, y: 380, lineHeight: 12
+    // });
 
-    let causesLabel = new createjs.Text("Types of Causes:", "bold 20px Arial", "#000").set({
-        x: 480, y: 470
-    });
-    let causesText = new createjs.Text(joinAndCapitalize(causes), "16px Arial", "#000").set({
-        x: 480, y: 505, lineHeight: 12
-    });
+    // let causesLabel = new createjs.Text("Types of Causes:", "bold 20px Arial", "#000").set({
+    //     x: 480, y: 470
+    // });
+    // let causesText = new createjs.Text(joinAndCapitalize(causes), "16px Arial", "#000").set({
+    //     x: 480, y: 505, lineHeight: 12
+    // });
 
     let notepad = new createjs.DOMElement("concept_map_notepad_overlay").set({
         x: 192 * (2 / PIXEL_RATIO),
@@ -2404,8 +2406,8 @@ function notePadPage() {
         rqLabel, rqText, 
         predLabel, predText,
         cptsLabel, cptsText, 
-        relsLabel, relsText, 
-        causesLabel, causesText,
+        // relsLabel, relsText, 
+        // causesLabel, causesText,
         notepad,
         backButton, nextButton
     );
