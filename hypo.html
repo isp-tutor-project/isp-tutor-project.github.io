@@ -132,7 +132,7 @@
         </p>
       </div>
 
-      <div id="concept_map_notepad_overlay" class="overlay notepad">
+      <!-- <div id="concept_map_notepad_overlay" class="overlay notepad">
         <div class="notepad-heading">
           <b>Note Pad</b>
           <br />
@@ -140,6 +140,59 @@
           <hr />
         </div>
         <div id="notepad_notes" class="notepad-body" contenteditable="true"></div>
+      </div> -->
+
+      <div id="concept_map_notepad_overlay" class="overlay notepad">
+        <div class="notepad-heading">
+          <b>Note Pad</b>
+          <hr />
+        </div>
+        <div id="notepad_notes" class="notepad-body" contenteditable="true"></div>
+      </div>
+
+      <div id="concept_map_help_popup1" class="overlay cpt-map-help">
+          <div class="help-heading">
+            You can add concepts to your concept map by clicking on the <br />
+            "Select Concept to Add" button.
+          </div>
+          <div class="inline-btn-container">
+            <button type="button" class="inline-btn" id="dismiss_cpt_map_help1">OK</button>
+          </div>
+      </div>
+
+      <div id="concept_map_help_popup2" class="overlay cpt-map-help">
+        <div class="help-heading">
+          If you decide to delete a concept you had added, just click on the <br/>
+          little "x" in the top right corner of the box. You can always add it <br/>
+          again if you change your mind (again).​
+          <div class="img-container">
+            <figure class="scale-img">
+              <img class="overlay-img" src="HypoGraphics/bubbleNoDir.png" />
+            </figure>
+          </div>
+        </div>
+        <div class="inline-btn-container">
+          <button type="button" class="inline-btn" id="dismiss_cpt_map_help2">OK</button>
+        </div>
+      </div>
+
+      <div id="concept_map_help_popup3" class="overlay cpt-map-help">
+        <div class="help-heading">
+          You will also need to set a direction for the relationship between concepts. <br/>
+          You can do this by clicking on the yellow“set direction” text and <br />
+          choosing the upward or downward arrow.
+          <div class="img-container">
+            <figure class="scale-img">
+              <img class="overlay-img" src="HypoGraphics/bubbleNoDir.png" />
+            </figure>
+            <figure class="scale-img">
+              <img class="overlay-img" src="HypoGraphics/bubbleWithDir.png" />
+            </figure>
+          </div>
+        </div>
+        <div class="inline-btn-container">
+          <button type="button" class="inline-btn" id="dismiss_cpt_map_help3">OK</button>
+        </div>
       </div>
 
       <div id="save_concept_map_overlay" class="overlay save-cpt-map">
