@@ -450,3 +450,7 @@ button:hover {
 .dev {
   border: 1px solid hotpink;
 }
+
+#concepts_menu {
+  font-size: 28px;
+}
