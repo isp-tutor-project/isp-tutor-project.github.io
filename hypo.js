@@ -2776,7 +2776,7 @@ function conceptMapPage(whichHypo, prediction)
         } else {
             nextButton.disable();
             if (showHelp) {
-                // displayHelp();
+                displayHelp();
             }
         }
     })
