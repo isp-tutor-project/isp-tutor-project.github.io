@@ -393,7 +393,9 @@ function initRQPage() {
 document.getElementById("completion-home-btn").addEventListener("click", e => {
     // cleanModulePage();
     document.getElementById("completion-overlay").style.display = "none";
-    window.location.href = "https://www.isptutor.org/science-inquiry-lesson";
+    // window.location.href = "https://www.isptutor.org/science-inquiry-lesson";
+    window.location.href = "/";
+
     // openPage("home-page");
     // initHomePage();
 });
@@ -401,10 +403,12 @@ document.getElementById("home-icon").addEventListener("click", e => {
     document.getElementById("home-overlay").style.display = "block";
 });
 document.getElementById("yes-btn").addEventListener("click", e => {
-    cleanModulePage();
-    document.getElementById("home-overlay").style.display = "none";
-    openPage("home-page");
-    initHomePage();
+    // cleanModulePage();
+    // document.getElementById("home-overlay").style.display = "none";
+    // openPage("home-page");
+    // initHomePage();
+    // window.location.href = "https://www.isptutor.org/science-inquiry-lesson";
+    window.location.href = "/";
 });
 document.getElementById("cancel-btn").addEventListener("click", e => {
     document.getElementById("home-overlay").style.display = "none";
