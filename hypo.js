@@ -2567,8 +2567,7 @@ function conceptMapPage(whichHypo, prediction)
         hideDOMElement(saveWarning);
     }
 
-    // event handler registrations
-    cptsButton.on("click", e => {
+    function cptsButtonHandler(e) {
         panel = createConceptsPanel(cptsButton.x,
             cptsButton.y,
             nodes,
@@ -2576,19 +2575,25 @@ function conceptMapPage(whichHypo, prediction)
             selectConceptHandler);
         stage.addChild(panel);
         stage.update();
-    });
+    }
 
+    function backButtonHandler(e) {
+        dealWithDOMElements();
+        prevHypoTask();
+    }
+
+    function verifyButtonHandler(e) {
+
+    }
+    // event handler registrations
+    cptsButton.on("click", cptsButtonHandler);
     dismissHelp1.addEventListener("click", help1ToHelp2);
     dismissHelp2.addEventListener("click", help2ToHelp3);
     dismissHelp3.addEventListener("click", hideHelp3);
     cancelSaveBtn.addEventListener('click', cancelSaveHandler);
     saveBtn.addEventListener("click", saveHandler);
     showHelpButton.addEventListener("click", displayHelp);
-    
-    backButton.on("click", e => {
-        dealWithDOMElements();
-        prevHypoTask();
-    });
+    backButton.on("click", backButtonHandler);
 
     verifyButton.on("click", e => {
         if (verifyConceptMap(ivBubble)) {
@@ -2609,7 +2614,6 @@ function conceptMapPage(whichHypo, prediction)
             nextHypoTask();
         }
     });
-
 
     if (currentBubbles.length === 0) {
         ivBubble = createFixedBubble(
@@ -2651,7 +2655,6 @@ function conceptMapPage(whichHypo, prediction)
         showHelp = false;
     } 
  
-
     stage.addChild(
         lightBulb,
         remindersTxt,
@@ -2660,10 +2663,6 @@ function conceptMapPage(whichHypo, prediction)
         backButton, verifyButton, nextButton,
         saveWarning, help1, help2, help3
     );
-
-    // leavePageWarning
-    // notepad,
-
     stage.on("stagemouseup", removePanel);
     stage.update();
 
@@ -2671,8 +2670,6 @@ function conceptMapPage(whichHypo, prediction)
     .then((hypoData) => {
         if (null !== hypoData) {
             hypoSaved = true;
-            // nextButton.enable();
-            stage.update();
             showSnackbar("Your hypothesis has already been saved. You can not make any changes.");
         } else {
             nextButton.disable();
@@ -3392,6 +3389,7 @@ function createDirButton(x, y, direction, color, isFixed) {
     drawDirButton(dirButton, x, y, direction, color);
     dirButton.x = x;
     dirButton.y = y;
+    dirButton.color = color;
     dirButton.name = "dirButton";
     dirButton.mouseChildren = false;
     dirButton.direction = direction;
