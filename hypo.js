@@ -2632,22 +2632,16 @@ function conceptMapPage(whichHypo, prediction)
         // console.log("dv", dvDirection);
         // console.log("prediction", prediction);
         if (dvDirection !== prediction) {
+            // need to fix this. I had it working before. now it gets rid of the
+            // arrow
             drawDirButton(
                 dvDirButton, dvDirButton.x, dvDirButton.y, prediction, dvDirButton.color
             );
             dvDirButton.mouseEnabled = false;
         }
-
         showHelp = false;
     } 
  
-
-    nextButton.disable();
-
-
-    if (showHelp) {
-        displayHelp();
-    }
 
     stage.addChild(
         lightBulb,
@@ -2668,8 +2662,14 @@ function conceptMapPage(whichHypo, prediction)
     .then((hypoData) => {
         if (null !== hypoData) {
             hypoSaved = true;
+            // nextButton.enable();
             stage.update();
             showSnackbar("Your hypothesis has already been saved. You can not make any changes.");
+        } else {
+            nextButton.disable();
+            if (showHelp) {
+                displayHelp();
+            }
         }
     })
     .catch(function (error) {
