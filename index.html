@@ -13,18 +13,22 @@
                 margin-right: 80px;
             }
             #teacher {
-                margin-left: 20px;
+                /* margin-left: 20px; */
                 max-width: 350px;
                 height: auto;
             }
-
+            #main_container {
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+            }
             .left {
-                width: 29%;
+                width: calc(min(29%, fit-content));
                 display: inline-block;
             }
 
             .right {
-                width: 69%;
+                width: calc(min(69%, fit-content));
                 display: inline-block;
                 text-align: center;
             }
@@ -61,7 +65,7 @@
                 before you start and fill it out during or after you
                 complete each step.
             </h3>
-            <div>
+            <div id="main_container">
                 <div class="left">
                     <img id="teacher" src="./teacherPointing.jpg" />
                 </div>
@@ -113,6 +117,7 @@
                     <p>
                         <!-- <div style="position:relative; right:10px;"> -->
                             <b>STEP 5: Make sure your worksheet is complete and your changes are saved.</b>
+                            <br/>
                         <!-- </div> -->
 
                         <!-- <div style="position:relative; left:145px;"> -->
@@ -163,7 +168,7 @@
                 });
                 document.getElementById("brm_button").addEventListener("click", (e) => {
                     e.preventDefault();
-                    alert("brm button clicked");
+                    window.open("https://go.isptutor.org/brm/", "_blank");
                 });
                 document.getElementById("hypo_button").addEventListener("click", (e) => {
                     e.preventDefault();
