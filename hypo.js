@@ -24,25 +24,6 @@
 //     "#4286f4",
 //     "#FFFFE0"
 // ];
-// to launch the first page after done loading. Other pages can 
-// be launched for convenient development.
-function handleFileComplete(event) {
-    // determines the student's next page and launches it
-    // calls initHypoTasks
-    loadData();
-    // initHypoTasks();
-    /*
-    * alternatively, when in development, you can comment that out
-    * and jump directly to a particular page,
-    * such as:
-    */
-    // conceptMapPage3();
-    // startPage();
-    //definitionPage1();
-    //instructionPage();
-    //brmPage();
-    //brmInstructionPage();
-}
 
 // ============================================================================
 // ======================== Constants and Variables ===========================
@@ -309,21 +290,22 @@ function loadData() {
 // may have saved the values as bools instead of the more descriptive string
 // values, I've added backward compatability, where if it's already of that
 // type, simply return the current value
-function boolPredictionToString(prediction) {
-    if (typeof(prediction) === "string") {
-        // for backward compat
-        return prediction;
-    }
-    return (prediction) ? "increase" : "decrease";
-}
+// function boolPredictionToString(prediction) {
+//     if (typeof(prediction) === "string") {
+//         // for backward compat
+//         return prediction;
+//     }
+//     return (prediction) ? "increase" : "decrease";
+// }
 
-function strPredictionToBool(prediction) {
-    if (typeof(prediction) === "boolean") {
-        // for backward compat
-        return prediction;
-    }
-    return ("increase" === prediction) ? true : false;
-}
+// function strPredictionToBool(prediction) {
+//     if (typeof(prediction) === "boolean") {
+//         // for backward compat
+//         return prediction;
+//     }
+//     return ("increase" === prediction) ? true : false;
+// }
+
 
 /*
  * saves the first/secondPrediction to firebase
@@ -342,27 +324,27 @@ function logPrediction(fldName, fldValue) {
     });
 }
 
-function getBubbleInfo(bub) {
-    return {
-        name: bub.name,
-        label: bub.text,
-        direction: bub.getChildByName("dirButton").direction,
-        x: bub.x,
-        y: bub.y
-    };
-}
+// function getBubbleInfo(bub) {
+//     return {
+//         name: bub.name,
+//         label: bub.text,
+//         direction: bub.getChildByName("dirButton").direction,
+//         x: bub.x,
+//         y: bub.y
+//     };
+// }
 
-function getArrowInfo(arr, fromBubble, toBubble) {
-    return {
-        startX: arr.x,
-        startY: arr.y,
-        endX: arr.endX,
-        endY: arr.endY,
-        from: fromBubble.text,
-        to: toBubble.text,
-        labelText: arr.label.text
-    };
-}
+// function getArrowInfo(arr, fromBubble, toBubble) {
+//     return {
+//         startX: arr.x,
+//         startY: arr.y,
+//         endX: arr.endX,
+//         endY: arr.endY,
+//         from: fromBubble.text,
+//         to: toBubble.text,
+//         labelText: arr.label.text
+//     };
+// }
 
 /*
  * saves a hypothesis (concept map) to firebase.  based on ones condition, there
@@ -374,17 +356,17 @@ function logData2(ivBubble, whichHypo) {
     let currentPredictionValue;
     if ("initial" === whichHypo) {
         currentPrediction = "first";
-        currentPredictionValue = boolPredictionToString(firstPrediction);
+        currentPredictionValue = firstPrediction;
     } else if ("opposite" === whichHypo) {
         currentPrediction = "opposite(first)";
-        currentPredictionValue = boolPredictionToString(!firstPrediction);
+        currentPredictionValue = (firstPrediction === "increase") ? "decrease" : "increase";
     } else {
         currentPrediction = "second";
-        currentPredictionValue = boolPredictionToString(secondPrediction);
+        currentPredictionValue = secondPrediction;
     }
     log.currentPrediction = currentPrediction;
     log.currentPredictionValue = currentPredictionValue;
-    let notes = getEleById("notepad_notes");
+    let notes = document.getElementById("notepad_notes");
     // let bubbles = [];
     // let arrows = [];
     let nodes = [];
@@ -463,24 +445,76 @@ const pageNamesToFunctions = {
     "notePadPage": notePadPage,
 };
 
+
+
+function loadAssets() {
+    // to display loading
+    // loadingPage();
+    document.getElementById("loading_gif").classList.remove("hidden");
+    // this is for preloader
+    queue = new createjs.LoadQueue();
+    // queue.on("progress", handleFileProgress);
+    queue.on("complete", assetsLoadingComplete);
+    queue.loadManifest([
+        { id: "TeacherPointing", src: "HypoGraphics/slide_intro/TeacherPointing.jpg" },
+        { id: "TeacherPointing2", src: "HypoGraphics/slide_intro/TeacherPointing2.jpg" },
+        { id: "defGraph", src: "HypoGraphics/slide1/defGraph.png" },
+        { id: "causeGraph", src: "HypoGraphics/slide1/causeGraph.png" },
+        { id: "corrGraph", src: "HypoGraphics/slide1/corrGraph.png" },
+        { id: "densitygraphic", src: "HypoGraphics/slide2/densitygraphic.jpg" },
+        { id: "coffeegraphic", src: "HypoGraphics/slide3/coffeegraphic.jpg" },
+        { id: "comic", src: "HypoGraphics/slide3/comic.jpg" },
+        { id: "correlation", src: "HypoGraphics/slide4/correlation.png" },
+        { id: "IceCreamSwimming", src: "HypoGraphics/slide4/IceCreamSwimming.png" },
+        { id: "graph1", src: "HypoGraphics/slide4/graph1.png" },
+        { id: "graph2", src: "HypoGraphics/slide4/graph2.png" },
+        { id: "causation_correlation", src: "HypoGraphics/slide5/PizzaGradesStudy.png" },
+        { id: "Picture_SunTempIcecream", src: "HypoGraphics/slide5/SunTempIcecream.png" },
+        { id: "Crys_increases", src: "HypoGraphics/graphSlides/Crys_increases.png" },
+        { id: "Crys_decreases", src: "HypoGraphics/graphSlides/Crys_decreases.png" },
+        { id: "cptMapPlaceholder", src: "HypoGraphics/cptMapPlaceholder/cptMapPlaceholder.jpg" },
+        { id: "defPagesCptMap", src: "HypoGraphics/defPagesCptMap.jpg" },
+        { id: "ivToDvWithArrow", src: "HypoGraphics/iv2dvWithArrow.png" },
+        { id: "yellowBtn", src: "HypoGraphics/buttonyellow.png" },
+        { id: "orangeBtn", src: "HypoGraphics/buttonorange.png" },
+        { id: "lightbulb", src: "HypoGraphics/lightbulb.png" },
+    ]);
+
+}
+
+// to launch the first page after done loading. Other pages can 
+// be launched for convenient development.
+function assetsLoadingComplete(event) {
+    // determines the student's next page and launches it
+    // calls initHypoTasks
+    document.getElementById("loading_gif").classList.add("hidden");
+    initStage();
+    loadData();
+}
+
 // init is the first function to be called
 function initHypoPage() {
     // load IV and DV from firebase, if available
     // loadData();
     // used to create a higher resolution canvas
-    let createHiPPICanvas = function (w, h, ratio) {
-        let can = document.getElementById("hypo-canvas");
-        can.width = w * ratio;
-        can.height = h * ratio;
-        can.style.width = w + "px";
-        can.style.height = h + "px";
-        return can;
-    }
+    // let createHiPPICanvas = function (w, h, ratio) {
+    //     let can = document.getElementById("hypo-canvas");
+    //     can.width = w * ratio;
+    //     can.height = h * ratio;
+    //     can.style.width = w + "px";
+    //     can.style.height = h + "px";
+    //     return can;
+    // }
+    loadAssets();
+}
 
-    stage = new createjs.Stage("hypo-canvas");
+function initStage() {
+    let can = document.getElementById("hypo-canvas");
+
+    // stage = new createjs.Stage("hypo-canvas");
+    stage = new createjs.Stage(can);
 
     function makeResponsive(isResp, respDim, isScale, scaleType) {
-        let can = document.getElementById("hypo-canvas");
         var lastW, lastH, lastS = 1;
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
@@ -527,60 +561,28 @@ function initHypoPage() {
     // create canvas with the device resolution.
     // let myCanvas = createHiPPICanvas(CANVAS_WIDTH, CANVAS_HEIGHT, PIXEL_RATIO);
     makeResponsive(true, 'both', true, 1);
-
-    // to display loading
-    loadingPage();
-
-    // this is for preloader
-    queue = new createjs.LoadQueue();
-    queue.on("progress", handleFileProgress);
-    queue.on("complete", handleFileComplete);
-    queue.loadManifest([
-        { id: "TeacherPointing", src: "HypoGraphics/slide_intro/TeacherPointing.jpg" },
-        { id: "TeacherPointing2", src: "HypoGraphics/slide_intro/TeacherPointing2.jpg" },
-        { id: "defGraph", src: "HypoGraphics/slide1/defGraph.png" },
-        { id: "causeGraph", src: "HypoGraphics/slide1/causeGraph.png" },
-        { id: "corrGraph", src: "HypoGraphics/slide1/corrGraph.png" },
-        { id: "densitygraphic", src: "HypoGraphics/slide2/densitygraphic.jpg" },
-        { id: "coffeegraphic", src: "HypoGraphics/slide3/coffeegraphic.jpg" },
-        { id: "comic", src: "HypoGraphics/slide3/comic.jpg" },
-        { id: "correlation", src: "HypoGraphics/slide4/correlation.png" },
-        { id: "IceCreamSwimming", src: "HypoGraphics/slide4/IceCreamSwimming.png" },
-        { id: "graph1", src: "HypoGraphics/slide4/graph1.png" },
-        { id: "graph2", src: "HypoGraphics/slide4/graph2.png" },
-        { id: "causation_correlation", src: "HypoGraphics/slide5/PizzaGradesStudy.png" },
-        { id: "Picture_SunTempIcecream", src: "HypoGraphics/slide5/SunTempIcecream.png" },
-        { id: "Crys_increases", src: "HypoGraphics/graphSlides/Crys_increases.png" },
-        { id: "Crys_decreases", src: "HypoGraphics/graphSlides/Crys_decreases.png" },
-        { id: "cptMapPlaceholder", src: "HypoGraphics/cptMapPlaceholder/cptMapPlaceholder.jpg" },
-        { id: "defPagesCptMap", src: "HypoGraphics/defPagesCptMap.jpg" },
-        { id: "ivToDvWithArrow", src: "HypoGraphics/iv2dvWithArrow.png" },
-        { id: "yellowBtn", src: "HypoGraphics/buttonyellow.png" },
-        { id: "orangeBtn", src: "HypoGraphics/buttonorange.png" },
-        { id: "lightbulb", src: "HypoGraphics/lightbulb.jpg" },
-    ]);
-
+    
     // required to enable mouse hover events
-    stage.enableMouseOver(10);
+    stage.enableMouseOver(100);
     // Ticker is primarily for mouse hover event
     createjs.Ticker.addEventListener("tick", stage);
 }
 
-// handles loading text
-function handleFileProgress(event) {
-    let text = "Loading: " + Math.round(queue.progress * 100) + "%";
-    loadingText.text = text;
-}
+// // handles loading text
+// function handleFileProgress(event) {
+//     let text = "Loading: " + Math.round(queue.progress * 100) + "%";
+//     loadingText.text = text;
+// }
 
-function loadingPage() {
-    stage.removeAllChildren();
-    loadingText = new createjs.Text("Loading: 0%", "32px Arial", "#000");
-    loadingText.x = CANVAS_WIDTH / 2;
-    loadingText.y = CANVAS_HEIGHT / 2 - 100;
-    loadingText.textAlign = "center";
-    stage.addChild(loadingText);
-    stage.update();
-}
+// function loadingPage() {
+//     stage.removeAllChildren();
+//     loadingText = new createjs.Text("Loading: 0%", "32px Arial", "#000");
+//     loadingText.x = CANVAS_WIDTH / 2;
+//     loadingText.y = CANVAS_HEIGHT / 2 - 100;
+//     loadingText.textAlign = "center";
+//     stage.addChild(loadingText);
+//     stage.update();
+// }
 
 /*
  * simple convenience function, as I'm needed to generate the student's
@@ -1831,17 +1833,18 @@ function initializeConceptMap(whichHypo) {
 
 function initialConceptMap() {
     initializeConceptMap("initial");
-    conceptMapPage3("initial");
+    conceptMapPage("initial", firstPrediction);
 }
 
 function oppositeDirectionConceptMap() {
     initializeConceptMap("opposite");
-    conceptMapPage3("opposite");
+    conceptMapPage("opposite",
+                   (firstPrediction === "increase") ? "decrease" : increase);
 }
 
 function finalConceptMap() {
     initializeConceptMap("final")
-    conceptMapPage3("final");
+    conceptMapPage("final", secondPrediction);
 }
 
 function completePage() {
@@ -2292,17 +2295,6 @@ function initialConceptMapPlaceholder() {
 //     // console.log(arrows);
 // }
 
-function redrawHypo() {
-    for (let bubble of currentBubbles) {
-        // console.log(bubble);
-        stage.addChild(bubble);
-    }
-    let arrowSteps = steps.filter((step) => step.action.startsWith("ARROW"));
-    // console.log(arrowSteps);
-    for (let arrow of arrowz) {
-        stage.addChild(arrow);
-    }
-}
 function capitalize(sentence) {
     const dontCapitalize = ["and", "from", "in", "of", "on", "the"];
     let words = sentence.split(' ');
@@ -2323,62 +2315,46 @@ function joinAndCapitalize(sentences) {
 
 function notePadPage() {
     stage.removeAllChildren();
-    let lightBulb = new createjs.Bitmap(queue.getResult("lightbulb")).set({
-        x: 10, y: 10, scaleX: 0.5, scaleY: 0.5
+    let dirLabel = new createjs.Text("Direction:", "bold 22px Arial", "#000").set({
+        x: 25, y: 10
     });
-
     let remindersTxt = new createjs.Text(
-        "Direction: Please take a few minutes to write your hypothesis for your " +
-        "research question.Your hypothesis should be a detailed explanation of " +
+        "Please take a few minutes to write your hypothesis for your " +
+        "research question. Your hypothesis should be a detailed explanation of " +
         "how water temperature affects the weight of the crystal growth after " +
-        "two weeks.  You may want to use some of the concepts listed below in " +
+        "two weeks. You may want to use some of the concepts listed below in " +
         "your hypothesis.\n\n" +
-        "The important thing is that your hypothesis makes sense to you.You can " +
+        "The important thing is that your hypothesis makes sense to you. You can " +
         "come back to this page later to make improvements to your hypothesis.",
-        "bold 22px Arial",
+        "22px Arial",
         "#000"
     ).set({
-        x: 80, y: 10, textAlign: "left", lineHeight: 24, lineWidth: CANVAS_WIDTH - 160
+        x: 140, y: 10, textAlign: "left", lineHeight: 24, lineWidth: CANVAS_WIDTH - 170
     });
-
-    let rqLabel = new createjs.Text("Your Research Question:", "bold 20px Arial", "#000").set({
-        x: 50, y: 200
+    
+    let rqLabel = new createjs.Text("Your Research Question:", "bold 22px Arial", "#000").set({
+        x: 25, y: 185
     });
-    let rqText = new createjs.Text(getRQ(), "16px Arial", "#000").set({
-        x: 50, y: 230, lineHeight: 20, lineWidth: 700
+    let rqText = new createjs.Text(getRQ(), "20px Arial", "#000").set({
+        x: 25, y: 215, lineHeight: 20, lineWidth: 700
     });
-
-    let predLabel = new createjs.Text("Your Prediction:", "bold 20px Arial", "#000").set({
-        x: 50, y: 285
+    
+    let predLabel = new createjs.Text("Your Prediction:", "bold 22px Arial", "#000").set({
+        x: 25, y: 270
     });
     let predictionText = 
         `As ${iv.toLowerCase()} (independent variable) increases, the ${dv.toLowerCase()} (dependent variable) will ${secondPrediction}.`;
-    let predText = new createjs.Text(predictionText, "16px Arial", "#000").set({
-        x:50, y: 315, lineHeight: 20, lineWidth: 700
+    let predText = new createjs.Text(predictionText, "20px Arial", "#000").set({
+        x: 25, y: 300, lineHeight: 20, lineWidth: 700
     });
-
-    let cptsLabel = new createjs.Text("Concepts:", "bold 20px Arial", "#000").set({
-        x: 50, y: 370
-    });    
-    let cptsText = new createjs.Text(joinAndCapitalize(nodes), "16px Arial", "#000").set({
-        x: 50, y: 400, lineHeight: 12
+    
+    let cptsLabel = new createjs.Text("Concepts:", "bold 22px Arial", "#000").set({
+        x: 25, y: 375
     });
-
-    // let relsLabel = new createjs.Text("Relationships:", "bold 20px Arial", "#000").set({
-    //     x: 480, y: 350
-    // });
-    // let rels = ["Definition", "Cause", "Correlation"].join("\n\n");
-    // let relsText = new createjs.Text(rels, "16px Arial", "#000").set({
-    //     x: 480, y: 380, lineHeight: 12
-    // });
-
-    // let causesLabel = new createjs.Text("Types of Causes:", "bold 20px Arial", "#000").set({
-    //     x: 480, y: 470
-    // });
-    // let causesText = new createjs.Text(joinAndCapitalize(causes), "16px Arial", "#000").set({
-    //     x: 480, y: 505, lineHeight: 12
-    // });
-
+    let cptsText = new createjs.Text(joinAndCapitalize(nodes), "20px Arial", "#000").set({
+        x: 25, y: 405, lineHeight: 16
+    });
+    
     let notepad = new createjs.DOMElement("concept_map_notepad_overlay").set({
         x: 192 * (2 / PIXEL_RATIO),
         y: 43 * (2 / PIXEL_RATIO),
@@ -2401,48 +2377,43 @@ function notePadPage() {
     });
     
     stage.addChild(
-        lightBulb,
+        dirLabel,
         remindersTxt, 
         rqLabel, rqText, 
         predLabel, predText,
         cptsLabel, cptsText, 
-        // relsLabel, relsText, 
-        // causesLabel, causesText,
         notepad,
         backButton, nextButton
     );
 }
 
-function conceptMapPage3(whichHypo)
+
+function redrawHypo() {
+    for (let bubble of currentBubbles) {
+        // console.log(bubble);
+        stage.addChild(bubble);
+    }
+    // let arrowSteps = steps.filter((step) => step.action.startsWith("ARROW"));
+    // console.log(arrowSteps);
+    for (let arrow of arrowz) {
+        stage.addChild(arrow);
+    }
+}
+
+
+function hideDOMElement(ele) {
+    ele.htmlElement.style.display = "none";
+}
+
+function showDOMElement(ele) {
+    ele.htmlElement.style.display = "block";
+}
+
+function conceptMapPage(whichHypo, prediction)
 {
     stage.removeAllChildren();
-    // errorField = createErrorField();
-    // errorField.y = 10;
-
-    // reset steps to empty list so:
-    // 1) steps are kept in sync with nodes/arrows if the student returns
-    //    from prev page
-    // 2) steps for subsequent concept maps aren't merely appended
-    // steps = [];
-    // let currentBubbles = [];
     let hypoSaved = false;
-    let prediction;
-    let ivBubble;
-    let dvBubble;
-    let arrow;
-    let showHelp;
-
-    if ("initial" === whichHypo) {
-        prediction = firstPrediction;
-    } else if ("opposite" === whichHypo) {
-        prediction = !firstPrediction;
-    } else if ("final" === whichHypo) {
-        prediction = secondPrediction;
-    } else {
-        console.error("invalid concept map version: ", whichHypo);
-        return;
-    }
-    // let predictionStr = boolPredictionToString(prediction);
+    let ivBubble, dvBubble, arrow, showHelp;
 
     let lightBulb = new createjs.Bitmap(queue.getResult("lightbulb")).set({
         x: 10, y: 10, scaleX: 0.5, scaleY: 0.5
@@ -2458,85 +2429,70 @@ function conceptMapPage3(whichHypo)
     ).set({
         x: 80, y: 10, textAlign: "left", lineHeight: 25
     });
-    let cptsButton = createTextWidthButton(CANVAS_WIDTH / 2,
-        80,
-        " Select a Concept to Add ",
-        "#2858a9");
+
+    let showHelpButton = createTextWidthButton(
+        CANVAS_WIDTH - 140, 35, " Show Help ", "#2858a9"
+    );
+
+    let cptsButton = createTextWidthButton(
+        CANVAS_WIDTH / 2, 80, " Select a Concept to Add ", "#2858a9"
+    );
     
     let help1 = new createjs.DOMElement("concept_map_help_popup1").set({
-        x: 110 * 2 / PIXEL_RATIO,
-        y: 70 * 2 / PIXEL_RATIO,
-        scaleX: 0.2 * 2 / PIXEL_RATIO,
-        scaleY: 0.2 * 2 / PIXEL_RATIO
+        x: 90 * 2 / PIXEL_RATIO, y: 60 * 2 / PIXEL_RATIO,
+        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     });
 
     let help2 = new createjs.DOMElement("concept_map_help_popup2").set({
-        x: 110 * 2 / PIXEL_RATIO,
-        y: 70 * 2 / PIXEL_RATIO,
-        scaleX: 0.2 * 2 / PIXEL_RATIO,
-        scaleY: 0.2 * 2 / PIXEL_RATIO
+        x: 90 * 2 / PIXEL_RATIO, y: 60 * 2 / PIXEL_RATIO,
+        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     });
 
     let help3 = new createjs.DOMElement("concept_map_help_popup3").set({
-        x: 110 * 2 / PIXEL_RATIO,
-        y: 70 * 2 / PIXEL_RATIO,
-        scaleX: 0.2 * 2 / PIXEL_RATIO,
-        scaleY: 0.2 * 2 / PIXEL_RATIO
+        x: 90 * 2 / PIXEL_RATIO, y: 60 * 2 / PIXEL_RATIO,
+        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     });
 
-    // save Warning popup
     let saveWarning = new createjs.DOMElement("save_concept_map_overlay").set({
-        x: 110 * 2 / PIXEL_RATIO,
-        y: 70 * 2 / PIXEL_RATIO,
-        scaleX: 0.2 * 2 / PIXEL_RATIO,
-        scaleY: 0.2 * 2 / PIXEL_RATIO
+        x: 110 * 2 / PIXEL_RATIO, y: 70 * 2 / PIXEL_RATIO,
+        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     });
 
-    let dismissHelp1  = getEleById("dismiss_cpt_map_help1");
-    let dismissHelp2  = getEleById("dismiss_cpt_map_help2");
-    let dismissHelp3  = getEleById("dismiss_cpt_map_help3");
-    let cancelSaveBtn = getEleById("cpt_map_cancel_save");
-    let saveBtn       = getEleById("cpt_map_save");
+    let verifyButton  = createTextWidthButton(
+        CANVAS_WIDTH / 2, CANVAS_HEIGHT * 0.95, " I'm Finished ", "#2858a9"
+    );
+
+    let dismissHelp1  = document.getElementById("dismiss_cpt_map_help1");
+    let dismissHelp2  = document.getElementById("dismiss_cpt_map_help2");
+    let dismissHelp3  = document.getElementById("dismiss_cpt_map_help3");
+    let cancelSaveBtn = document.getElementById("cpt_map_cancel_save");
+    let saveBtn       = document.getElementById("cpt_map_save");
     let backButton    = createBackButton();
     let nextButton    = createNextButton();
-    nextButton.disable();
-    
-    let verifyButton  = createTextWidthButton(
-        CANVAS_WIDTH / 2,
-        CANVAS_HEIGHT * 0.95,
-        " I'm Finished ",
-        "#2858a9"
-    );
-    
-    if (currentBubbles.length !== 0) {
-        redrawHypo();
-        ivBubble = currentBubbles.filter((bub) => bub.text.toLowerCase() === iv.toLowerCase())[0];
-        dvBubble = currentBubbles.filter((bub) => bub.text.toLowerCase() === dvabb.toLowerCase())[0];
-        showHelp = false;
-    } else {
-        ivBubble = createFixedBubble(
-            IV_X, IV_Y, capitalizeFirstLetter(iv), "#99bbff", "increase", false
-        );
-        dvBubble = createFixedBubble(
-            DV_X, DV_Y, capitalizeFirstLetter(dvabb), "#99bbff", prediction, true
-        );
-        arrow = createUnlabeledArrow(ivBubble.x + BUBBLE_WIDTH / 2,
-            ivBubble.y,
-            dvBubble.x - BUBBLE_WIDTH / 2,
-            dvBubble.y);
-        currentBubbles.push(ivBubble);
-        currentBubbles.push(dvBubble);
-        arrowz.push(arrow);
-        stage.addChild(ivBubble, dvBubble, arrow);
-        showHelp = true;
+
+    // event handlera and other functions
+    function displayHelp() {
+        showHelpButton.mouseEnabled = false;
+        showDOMElement(help1);
     }
- 
+
+    function help1ToHelp2() {
+        hideDOMElement(help1);
+        showDOMElement(help2);
+    }
+    function help2ToHelp3() {
+        hideDOMElement(help2);
+        showDOMElement(help3);
+    }
+    function hideHelp3() {
+        hideDOMElement(help3);
+        showHelpButton.mouseEnabled = true;
+    }
+
     function selectConceptHandler(value) {
-        let bubble = createDeletableBubble(CANVAS_WIDTH / 2,
-                                           CANVAS_HEIGHT / 2,
-                                           value,
-                                           "#4286f4",
-                                           "none");
+        let bubble = createDeletableBubble(
+            CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2,
+            value, "#4286f4", "none");
         bubble.idx = nodes.indexOf(value);
         steps.push({
             action: "NODE_CREATE",
@@ -2545,12 +2501,10 @@ function conceptMapPage3(whichHypo)
             info: "N/A",
             timestamp: (new Date()).toLocaleDateString()
         });
-        // stage.removeChild(nextButton);
-        // stage.addChild(verifyButton);
         bubble.closeButton.on("click", e => {
             for (let child of bubble.children) {
-                if ((child.name == "inConnector") || 
-                    (child.name == "outConnector")) {
+                if ((child.name === "inConnector") ||
+                    (child.name === "outConnector")) {
                     removeArrowAndLabel(child.arrow);
                 }
             }
@@ -2566,50 +2520,17 @@ function conceptMapPage3(whichHypo)
             if (tmp) {
                 currentBubbles = currentBubbles.filter((ele) => ele !== tmp);
             }
-            // dumpState(stage, steps, nodes, currentBubbles);
         });
         currentBubbles.push(bubble);
         stage.addChild(bubble);
-        // dumpState(stage, steps, nodes, currentBubbles);
     }
-    
-    cptsButton.on("click", e => {
-        panel = createConceptsPanel(cptsButton.x,
-                                    cptsButton.y,
-                                    nodes,
-                                    currentBubbles,
-                                    selectConceptHandler);
-        stage.addChild(panel);
-        stage.update();
-        // stage.setChildIndex(panel, stage.numChildren -1);
-    });
 
-    // let rewatchVideoButton = createTextWidthButton(
-    //     CANVAS_WIDTH - 200, 50, "Re-watch how-to video", "#2858a9"
-    // );
-    // rewatchVideoButton.on("click", e => {
-    //     open(window.location.origin + "/cptMapInstructionalVideo.html", "_blank");
-    // });
-
-    // add notebook (scrolling textarea)
-    // let notepad = new createjs.DOMElement("concept_map_notepad_overlay").set({
-    //     x: 230 * (2 / PIXEL_RATIO),
-    //     y: 20 * (2 / PIXEL_RATIO),
-    //     scaleX: .2 * (2 / PIXEL_RATIO),
-    //     scaleY: .2 * (2 / PIXEL_RATIO),
-    //     name: "notepad"
-    // });
-    // notepad.htmlElement.style.display = "block";
-    // // clear any notes any previous arrivals on this page
-    // getEleById("notepad_notes").innerHTML = "";
-
- 
     function cancelSaveHandler() {
-        saveWarning.htmlElement.style.display = "none";
+        hideDOMElement(saveWarning);
     }
 
     function saveHandler() {
-        saveWarning.htmlElement.style.display = "none";
+        hideDOMElement(saveWarning);
         logData2(ivBubble, whichHypo);
         hypoSaved = true;
         if ("initial" === whichHypo) {
@@ -2619,76 +2540,45 @@ function conceptMapPage3(whichHypo)
             secondPredictionLocked = true;
             secondPredictionLockedReason = "You have already saved your hypothesis."
         }
-        // stage.removeChild(verifyButton);
-        // stage.addChild(nextButton);
         // showSnackbar("Please draw your concept map in your notebook before continuing");
-        // updateErrorField(
-        //     "Please draw your concept map in your notebook before continuing",
-        //     "bold 22px Arial",
-        //     "#FFA500"
-        // );
         stage.update();
-        clearDOMEventListeners();
+        dealWithDOMElements();
         nextHypoTask();
     }
 
-    // back button leave page warning popup
-    // let leavePageWarning = new createjs.DOMElement("leave_concept_map_overlay").set({
-    //     x: 110 * 2 / PIXEL_RATIO,
-    //     y: 70 * 2 / PIXEL_RATIO,
-    //     scaleX: 0.2 * 2 / PIXEL_RATIO,
-    //     scaleY: 0.2 * 2 / PIXEL_RATIO
-    // });
-
-    // let cancelLeavePageBtn = getEleById("cpt_map_cancel_leave_page");
-    // let leavePageBtn = getEleById("cpt_map_leave_page");
-
-    // function cancelLeavePageHandler() {
-    //     leavePageWarning.htmlElement.style.display = "none";
-    // }
-
-    function clearDOMEventListeners() {
+    function dealWithDOMElements() {
         saveBtn.removeEventListener("click", saveHandler);
         cancelSaveBtn.removeEventListener("click", cancelSaveHandler);
-        // leavePageBtn.removeEventListener("click", leavePageHandler);
-        // cancelLeavePageBtn.removeEventListener("click", cancelLeavePageHandler);
+        dismissHelp1.removeEventListener("click", help1ToHelp2);
+        dismissHelp2.removeEventListener("click", help2ToHelp3);
+        dismissHelp3.removeEventListener("click", hideHelp3);
+        hideDOMElement(help1);
+        hideDOMElement(help2);
+        hideDOMElement(help3);
+        hideDOMElement(saveWarning);
     }
 
-    // function leavePageHandler() {
-    //     // leavePageWarning.htmlElement.style.display = "none";
-    //     clearDOMEventListeners();
-    //     prevHypoTask();
-    // }
-    function hideHelp1() {
-        help1.htmlElement.style.display = "none";
-        help2.htmlElement.style.display = "block";
-    }
-    function hideHelp2() {
-        help2.htmlElement.style.display = "none";
-        help3.htmlElement.style.display = "block";
-    }
-    function hideHelp3() {
-        help3.htmlElement.style.display = "none";
-    }
+    // event handler registrations
+    cptsButton.on("click", e => {
+        panel = createConceptsPanel(cptsButton.x,
+            cptsButton.y,
+            nodes,
+            currentBubbles,
+            selectConceptHandler);
+        stage.addChild(panel);
+        stage.update();
+    });
 
-    dismissHelp1.addEventListener("click", hideHelp1);
-    dismissHelp2.addEventListener("click", hideHelp2);
+    dismissHelp1.addEventListener("click", help1ToHelp2);
+    dismissHelp2.addEventListener("click", help2ToHelp3);
     dismissHelp3.addEventListener("click", hideHelp3);
-
     cancelSaveBtn.addEventListener('click', cancelSaveHandler);
     saveBtn.addEventListener("click", saveHandler);
-    // cancelLeavePageBtn.addEventListener('click', cancelLeavePageHandler);
-    // leavePageBtn.addEventListener('click', leavePageHandler);
-
-
+    showHelpButton.addEventListener("click", displayHelp);
+    
     backButton.on("click", e => {
-        // notepad.htmlElement.style.display = "none";
-        // if (hypoSaved) {
-        clearDOMEventListeners();
+        dealWithDOMElements();
         prevHypoTask();
-        // } else {
-            //     leavePageWarning.htmlElement.style.display = "block";
-        // }
     });
 
     verifyButton.on("click", e => {
@@ -2697,30 +2587,72 @@ function conceptMapPage3(whichHypo)
                 "not mean that your work is conceptually correct.",
             );
             nextButton.enable();
-            // if everything is ok, show the save warning popup
-            // saveWarning.htmlElement.style.display = "block";
-            // console.log("verified");
-            // stage.removeChild(verifyButton);
-            // stage.addChild(nextButton);
         } else {
             console.log("verification failed");
         }
     });
 
     nextButton.on("click", e => {
-        // notepad.htmlElement.style.display = "none";
-        saveWarning.htmlElement.style.display = "block";
-        // clearDOMEventListeners();
-        // nextHypoTask();
+        if (!hypoSaved) {
+            showDOMElement(saveWarning)
+        } else {
+            dealWithDOMElements();
+            nextHypoTask();
+        }
     });
 
+
+    if (currentBubbles.length === 0) {
+        ivBubble = createFixedBubble(
+            IV_X, IV_Y, capitalizeFirstLetter(iv), "#99bbff", "increase", false
+        );
+        dvBubble = createFixedBubble(
+            DV_X, DV_Y, capitalizeFirstLetter(dvabb), "#99bbff", prediction, true
+        );
+        arrow = createUnlabeledArrow(ivBubble.x + BUBBLE_WIDTH / 2,
+            ivBubble.y,
+            dvBubble.x - BUBBLE_WIDTH / 2,
+            dvBubble.y);
+        currentBubbles.push(ivBubble);
+        currentBubbles.push(dvBubble);
+        arrowz.push(arrow);
+        stage.addChild(ivBubble, dvBubble, arrow);
+        showHelp = true;
+    } else {
+        redrawHypo();
+        ivBubble = currentBubbles.filter(
+            (bub) => bub.text.toLowerCase() === iv.toLowerCase()
+        )[0];
+        dvBubble = currentBubbles.filter(
+            (bub) => bub.text.toLowerCase() === dvabb.toLowerCase()
+        )[0];
+        // in case user has gone back to the prediction page and changed it
+        let dvDirButton = dvBubble.dirButton;
+        let dvDirection = dvDirButton.direction;
+        // console.log("dv", dvDirection);
+        // console.log("prediction", prediction);
+        if (dvDirection !== prediction) {
+            drawDirButton(
+                dvDirButton, dvDirButton.x, dvDirButton.y, prediction, dvDirButton.color
+            );
+            dvDirButton.mouseEnabled = false;
+        }
+
+        showHelp = false;
+    } 
+ 
+
+    nextButton.disable();
+
+
     if (showHelp) {
-        help1.htmlElement.style.display = "block";
+        displayHelp();
     }
 
     stage.addChild(
         lightBulb,
         remindersTxt,
+        showHelpButton,
         cptsButton, 
         backButton, verifyButton, nextButton,
         saveWarning, help1, help2, help3
@@ -2728,28 +2660,16 @@ function conceptMapPage3(whichHypo)
 
     // leavePageWarning
     // notepad,
-    // errorField,
-    // rewatchVideoButton,
-    // ivBubble, dvBubble, arrow,
 
     stage.on("stagemouseup", removePanel);
-    // stage.on("stagemouseup", removeErrorField);
     stage.update();
 
     fetchPrevSavedHypo(whichHypo)
     .then((hypoData) => {
         if (null !== hypoData) {
             hypoSaved = true;
-            stage.removeChild(verifyButton);
-            stage.addChild(nextButton);
             stage.update();
             showSnackbar("Your hypothesis has already been saved. You can not make any changes.");
-            // updateErrorField(
-            //     "Your hypothesis has already been saved. You can not make any changes.",
-            //     "22px Arial",
-            //     "#000"
-            // );
-            // rehydrateHypothesis(hypoData, ivBubble, dvBubble);
         }
     })
     .catch(function (error) {
@@ -3444,6 +3364,7 @@ function createFixedBubble(x, y, text, color, direction, isDV) {
     bubble.x = x;
     bubble.y = y;
     bubble.name = "bubble"
+    bubble.dirButton = dirButton;
     // bubble.name = "fixed bubble";
     bubble.text = text;
     // this sets the registration point
