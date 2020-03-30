@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="main.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <!-- Google Material Icons (Home Icon) -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
     <!-- Adobe Animate (RQ and TED) -->
     <script src="https://code.createjs.com/createjs-2015.11.26.combined.js"></script>
 
@@ -34,9 +35,21 @@
       <div class="border-container">
         <div class="container">
           <!--
-          <button type="button" id="rq-button" class="module-button disabled" disabled>Research Question</button>
-          <button type="button" id="hypo-button" class="module-button disabled" disabled>Hypothesis</button>
-          <button type="button" id="ted-button" class="module-button disabled" disabled hidden>TED Tutor</button>
+          <button type="button" 
+                  id="rq-button" 
+                  class="module-button disabled" disabled>
+            Research Question
+          </button>
+          <button type="button" 
+                  id="hypo-button"
+                  class="module-button disabled" disabled>
+            Hypothesis
+          </button>
+          <button type="button" 
+                  id="ted-button"
+                  class="module-button disabled" disabled hidden>
+                  TED Tutor
+          </button>
           -->
           <span> What should we do from here?</span>
           <ol>
@@ -53,14 +66,23 @@
       <canvas id="hypo-canvas" width="1200" height="750">
         Error: HTML5 canvas is not working. Please make sure JavaScript is enabled.
       </canvas>
-      <!-- Note!!! In the Youtube URL below, the enablejsapi parameter must be set to 1 and the rel parameter set to 0!!! This is so the hypo.js code can pause the video when necessary, and block related videos from appearing -->
+      <!-- Note!!! In the Youtube URL below, the enablejsapi parameter must be 
+        set to 1 and the rel parameter set to 0!!! This is so the hypo.js code 
+        can pause the video when necessary, and block related videos from appearing -->
       <!--      
-      <iframe id="instruction_video_overlay" width="800" height="450" enablejsapi="1"
-        src="https://www.youtube.com/embed/ATlmZHaw8ys?rel=0" frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+      <iframe id="instruction_video_overlay"
+              width="800" 
+              height="450" 
+              enablejsapi="1"
+              src="https://www.youtube.com/embed/ATlmZHaw8ys?rel=0"
+              frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
       </iframe>
      -->
-      <img id="temperature_gif_overlay" class="overlay" src="HypoGraphics/slide2/temperaturegif.gif">
+      <img id="temperature_gif_overlay"
+           class="overlay"
+           src="HypoGraphics/slide2/temperaturegif.gif">
     
       <div id="quiz_overlay" class="overlay">
         <ul>
@@ -135,6 +157,10 @@
         </p>
       </div>
 
+      <form id="concepts_menu_overlay" class="overlay">
+        <select id="concepts_menu"></select>
+      </form>
+      
       <div id="concept_map_notepad_overlay" class="overlay notepad">
         <div class="notepad-heading">
           <b>Note Pad</b>
@@ -195,23 +221,15 @@
         </div>
       </div>
 
-      <div id="leave_concept_map_overlay" class="overlay leave-cpt-map">
-        <div class="leave-cpt-map-heading">You will lose your work if you leave this page.</div>
-        <div class="inline-btn-container">
-          <button type="button" class="inline-btn" id="cpt_map_cancel_leave_page">Cancel</button>
-          <button type="button" class="inline-btn" id="cpt_map_leave_page">Proceed</button>
-        </div>
-      </div>
-<!-- 
-      <iframe id="brm_instruction_overlay" class="overlay" width="1080px" height="680px" frameborder="no" scrolling="auto"
-        src="https://storage.googleapis.com/cmuintgames/INHelperBRM2/index.html"></iframe>
-     -->
-      </div>
+    </div>
 
     <!-- Home Icon Overlay -->
     <div id="home-overlay" class="border-container overlay">
       <div class="container">
-        <h3>If you go back to the home page, you will lose all your progress. Are you sure you wish to proceed?</h3>
+        <h3>
+          If you go back to the home page, you will lose all your progress. 
+          Are you sure you wish to proceed?
+        </h3>
         <br>
         <div class="inline-btn-container">
           <button id="yes-btn" type="button" class="inline-btn">Yes</button>
@@ -223,10 +241,15 @@
     <!-- Tutor Completion Overlay-->
     <div id="completion-overlay" class="border-container overlay">
       <div class="container">
-        <h3>You are now done with this section. Click Home to move on to the next section.</h3>
+        <h3>
+          You are now done with this section. Click Home to move on to the next
+          section.
+        </h3>
         <br>
         <div class="inline-btn-container">
-          <button id="completion-home-btn" type="button" class="inline-btn">Home</button>
+          <button id="completion-home-btn" type="button" class="inline-btn">
+            Home
+          </button>
         </div>
       </div>
     </div>
