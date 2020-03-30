@@ -47,16 +47,19 @@
       </div>
     </div>
 
+    <img id="loading_gif" src="images/_preloader.gif" class="hidden" />
     <!-- Hypo Page -->
     <div class="page" id="hypo-page">
       <canvas id="hypo-canvas" width="1200" height="750">
         Error: HTML5 canvas is not working. Please make sure JavaScript is enabled.
       </canvas>
       <!-- Note!!! In the Youtube URL below, the enablejsapi parameter must be set to 1 and the rel parameter set to 0!!! This is so the hypo.js code can pause the video when necessary, and block related videos from appearing -->
+      <!--      
       <iframe id="instruction_video_overlay" width="800" height="450" enablejsapi="1"
         src="https://www.youtube.com/embed/ATlmZHaw8ys?rel=0" frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+      </iframe>
+     -->
       <img id="temperature_gif_overlay" class="overlay" src="HypoGraphics/slide2/temperaturegif.gif">
     
       <div id="quiz_overlay" class="overlay">
@@ -132,16 +135,6 @@
         </p>
       </div>
 
-      <!-- <div id="concept_map_notepad_overlay" class="overlay notepad">
-        <div class="notepad-heading">
-          <b>Note Pad</b>
-          <br />
-          (You can use this space to write out your hypothesis.)
-          <hr />
-        </div>
-        <div id="notepad_notes" class="notepad-body" contenteditable="true"></div>
-      </div> -->
-
       <div id="concept_map_notepad_overlay" class="overlay notepad">
         <div class="notepad-heading">
           <b>Note Pad</b>
@@ -162,13 +155,12 @@
 
       <div id="concept_map_help_popup2" class="overlay cpt-map-help">
         <div class="help-heading">
-          If you decide to delete a concept you had added, just click on the <br/>
-          little "x" in the top right corner of the box. You can always add it <br/>
-          again if you change your mind (again).​
+          If you decide to delete a concept you had added,<br/>
+          just click on the little "x" in the top <br/>
+          right corner of the box. You can always add <br/>
+          it again if you change your mind (again).​
           <div class="img-container">
-            <figure class="scale-img">
-              <img class="overlay-img" src="HypoGraphics/bubbleNoDir.png" />
-            </figure>
+              <img src="HypoGraphics/bubbleNoDir.png" />
           </div>
         </div>
         <div class="inline-btn-container">
@@ -178,16 +170,13 @@
 
       <div id="concept_map_help_popup3" class="overlay cpt-map-help">
         <div class="help-heading">
-          You will also need to set a direction for the relationship between concepts. <br/>
-          You can do this by clicking on the yellow“set direction” text and <br />
-          choosing the upward or downward arrow.
+          You will also need to set a direction for the relationship <br/>
+          between concepts. You can do this by clicking on the yellow <br/>
+          "Set Direction" text and choosing "increases" for an upward <br/>
+          arrow, or "decreases" for a downward arrow.
           <div class="img-container">
-            <figure class="scale-img">
-              <img class="overlay-img" src="HypoGraphics/bubbleNoDir.png" />
-            </figure>
-            <figure class="scale-img">
-              <img class="overlay-img" src="HypoGraphics/bubbleWithDir.png" />
-            </figure>
+              <img src="HypoGraphics/bubbleNoDir.png" />
+              <img src="HypoGraphics/bubbleWithDir.png" />
           </div>
         </div>
         <div class="inline-btn-container">
@@ -213,10 +202,11 @@
           <button type="button" class="inline-btn" id="cpt_map_leave_page">Proceed</button>
         </div>
       </div>
-
+<!-- 
       <iframe id="brm_instruction_overlay" class="overlay" width="1080px" height="680px" frameborder="no" scrolling="auto"
         src="https://storage.googleapis.com/cmuintgames/INHelperBRM2/index.html"></iframe>
-    </div>
+     -->
+      </div>
 
     <!-- Home Icon Overlay -->
     <div id="home-overlay" class="border-container overlay">
