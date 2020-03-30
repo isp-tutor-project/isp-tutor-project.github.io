@@ -473,7 +473,7 @@ function loadAssets() {
         { id: "Crys_increases", src: "HypoGraphics/graphSlides/Crys_increases.png" },
         { id: "Crys_decreases", src: "HypoGraphics/graphSlides/Crys_decreases.png" },
         { id: "cptMapPlaceholder", src: "HypoGraphics/cptMapPlaceholder/cptMapPlaceholder.jpg" },
-        { id: "defPagesCptMap", src: "HypoGraphics/defPagesCptMap.jpg" },
+        { id: "defPagesCptMap", src: "HypoGraphics/defPagesCptMap.png" },
         { id: "ivToDvWithArrow", src: "HypoGraphics/iv2dvWithArrow.png" },
         { id: "yellowBtn", src: "HypoGraphics/buttonyellow.png" },
         { id: "orangeBtn", src: "HypoGraphics/buttonorange.png" },
@@ -769,6 +769,15 @@ function definitionPage4() {
         x: 60, y: 60, lineHeight: 35, lineWidth: CANVAS_WIDTH - 120
     });
     
+    let text2 = new createjs.Text(
+        "The relationships between concepts(as shown below) could be " +
+        "correlations, causes, or definitions.",
+        "24px Arial",
+        "#000"
+    ).set({
+        x: 120, y: 150, lineHeight: 35, lineWidth: CANVAS_WIDTH - 200
+    });
+
     let image = new createjs.Bitmap(queue.getResult("defPagesCptMap")).set({
         x: 200, y: 350
     });
@@ -779,7 +788,7 @@ function definitionPage4() {
     let nextButton = createNextButton();
     nextButton.on("click", e => nextHypoTask());
     
-    stage.addChild(text, image, backButton, nextButton);
+    stage.addChild(text, text2, image, backButton, nextButton);
     stage.update();
 }
 
