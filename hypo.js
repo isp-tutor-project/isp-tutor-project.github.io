@@ -2531,6 +2531,16 @@ function conceptMapPage(whichHypo, prediction)
         scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     });
 
+    let help4 = new createjs.DOMElement("concept_map_help_popup4").set({
+        x: 90 * 2 / PIXEL_RATIO, y: 60 * 2 / PIXEL_RATIO,
+        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
+    });
+
+    let help5 = new createjs.DOMElement("concept_map_help_popup5").set({
+        x: 90 * 2 / PIXEL_RATIO, y: 60 * 2 / PIXEL_RATIO,
+        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
+    });
+
     let saveWarning = new createjs.DOMElement("save_concept_map_overlay").set({
         x: 110 * 2 / PIXEL_RATIO, y: 70 * 2 / PIXEL_RATIO,
         scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
@@ -2543,6 +2553,9 @@ function conceptMapPage(whichHypo, prediction)
     let dismissHelp1  = document.getElementById("dismiss_cpt_map_help1");
     let dismissHelp2  = document.getElementById("dismiss_cpt_map_help2");
     let dismissHelp3  = document.getElementById("dismiss_cpt_map_help3");
+    let dismissHelp4  = document.getElementById("dismiss_cpt_map_help4");
+    let dismissHelp5  = document.getElementById("dismiss_cpt_map_help5");
+
     let cancelSaveBtn = document.getElementById("cpt_map_cancel_save");
     let saveBtn       = document.getElementById("cpt_map_save");
     let backButton    = createBackButton();
@@ -2562,8 +2575,16 @@ function conceptMapPage(whichHypo, prediction)
         hideDOMElement(help2);
         showDOMElement(help3);
     }
-    function hideHelp3() {
+    function help3ToHelp4() {
         hideDOMElement(help3);
+        showDOMElement(help4);
+    }
+    function help4ToHelp5() {
+        hideDOMElement(help4);
+        showDOMElement(help5);
+    }
+    function hideHelp5() {
+        hideDOMElement(help5);
         showHelpButton.mouseEnabled = true;
     }
 
@@ -2629,14 +2650,20 @@ function conceptMapPage(whichHypo, prediction)
     }
 
     function dealWithDOMElements() {
+        conceptsMenu.removeEventListener("change", selectConceptHandler);
         saveBtn.removeEventListener("click", saveHandler);
         cancelSaveBtn.removeEventListener("click", cancelSaveHandler);
         dismissHelp1.removeEventListener("click", help1ToHelp2);
         dismissHelp2.removeEventListener("click", help2ToHelp3);
-        dismissHelp3.removeEventListener("click", hideHelp3);
+        dismissHelp3.removeEventListener("click", help3ToHelp4);
+        displayHelp4.removeEventListener("click", help4ToHelp5);
+        displayHelp5.removeEventListener("click", hideHelp5);
         hideDOMElement(help1);
         hideDOMElement(help2);
         hideDOMElement(help3);
+        hideDOMElement(help4);
+        hideDOMElement(help5);
+        hideDOMElement(conceptsDropDown);
         hideDOMElement(saveWarning);
     }
 
@@ -2678,7 +2705,9 @@ function conceptMapPage(whichHypo, prediction)
     // cptsButton.on("click", cptsButtonHandler);
     dismissHelp1.addEventListener("click", help1ToHelp2);
     dismissHelp2.addEventListener("click", help2ToHelp3);
-    dismissHelp3.addEventListener("click", hideHelp3);
+    dismissHelp3.addEventListener("click", help3ToHelp4);
+    dismissHelp4.addEventListener("click", help4ToHelp5);
+    dismissHelp5.addEventListener("click", hideHelp5);
     cancelSaveBtn.addEventListener('click', cancelSaveHandler);
     saveBtn.addEventListener("click", saveHandler);
     showHelpButton.addEventListener("click", displayHelp);
@@ -2715,11 +2744,7 @@ function conceptMapPage(whichHypo, prediction)
         // in case user has gone back to the prediction page and changed it
         let dvDirButton = dvBubble.dirButton;
         let dvDirection = dvDirButton.direction;
-        // console.log("dv", dvDirection);
-        // console.log("prediction", prediction);
         if (dvDirection !== prediction) {
-            // need to fix this. I had it working before. now it gets rid of the
-            // arrow
             drawDirButton(
                 dvDirButton, dvDirButton.x, dvDirButton.y, prediction, dvDirButton.color
             );
@@ -2734,11 +2759,12 @@ function conceptMapPage(whichHypo, prediction)
         lightBulb,
         remindersTxt,
         showHelpButton,
-        // cptsButton,
         conceptsDropDown,
         backButton, verifyButton, nextButton,
-        saveWarning, help1, help2, help3
+        saveWarning, help1, help2, help3, help4, help5
     );
+    // cptsButton,
+
     stage.on("stagemouseup", removePanel);
     stage.update();
 
@@ -2750,7 +2776,7 @@ function conceptMapPage(whichHypo, prediction)
         } else {
             nextButton.disable();
             if (showHelp) {
-                displayHelp();
+                // displayHelp();
             }
         }
     })
@@ -3250,7 +3276,7 @@ function createDeletableBubble(x, y, text, color, direction) {
         x: BUBBLE_WIDTH / 2, lineWidth: BUBBLE_WIDTH - 10,
         textAlign: "center", textBaseline: "top",
     });
-    label.y = BUBBLE_HEIGHT / 2 - label.getMeasuredHeight() / 2;
+    label.y = (BUBBLE_HEIGHT / 2 - label.getMeasuredHeight() / 2) -7;
 
     let closeBtnSize = 25;
     let closeButton = createCloseButton(BUBBLE_WIDTH -5, 0, closeBtnSize);
