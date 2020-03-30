@@ -2418,6 +2418,65 @@ function showDOMElement(ele) {
     ele.htmlElement.style.display = "block";
 }
 
+
+function getMenuOptionByValue(menuID, value) {
+    let sel = document.getElementById(menuID);
+    return sel.querySelector(`option[value="${value}"]`);
+}
+
+function showMenuOptionWithValue(menuID, value) {
+    let opt = getMenuOptionByValue(menuID, value);
+    if (opt) {
+        opt.classList.remove("hidden");
+    }
+}
+
+function hideMenuOptionWithValue(menuID, value) {
+    let opt = getMenuOptionByValue(menuID, value);
+    if (opt) {
+        opt.classList.add("hidden");
+    }
+}
+
+function resetSelectDefaultOption(menuID) {
+    let opt = getMenuOptionByValue(menuID, "");
+    if (opt) {
+        opt.setAttribute("selected", true);
+    }
+}
+
+function initializeConceptsMenu(menu) {
+    menu.innerHTML = ""
+    let defaultOpt = document.createElement("option");
+    defaultOpt.value = "";
+    defaultOpt.innerText = " Select a Concept to Add ";
+    defaultOpt.setAttribute("selected", true);
+    defaultOpt.setAttribute("disabled", true);
+    defaultOpt.setAttribute("hidden", true);
+    menu.appendChild(defaultOpt);
+    for (let node of [...nodes].sort()) {
+        let opt = document.createElement("option");
+        opt.value = node;
+        opt.innerText = node;
+        menu.appendChild(opt);
+    }
+    // updateConceptsMenu
+}
+
+function updateConceptsMenu(menu) {
+    let currCpts = currentBubbles.map((bub) => bub.text);
+    for (let option of menu.querySelectorAll("option")) {
+        if ("" === option.value) {
+            continue;
+        }
+        if (currCpts.includes(option.value)) {
+            option.classList.add("hidden");
+        } else {
+            option.classList.remove("hidden");
+        }
+    }
+}
+
 function conceptMapPage(whichHypo, prediction)
 {
     stage.removeAllChildren();
@@ -2443,10 +2502,20 @@ function conceptMapPage(whichHypo, prediction)
         CANVAS_WIDTH - 140, 35, " Show Help ", "#2858a9"
     );
 
-    let cptsButton = createTextWidthButton(
-        CANVAS_WIDTH / 2, 80, " Select a Concept to Add ", "#2858a9"
-    );
-    
+    // let cptsButton = createTextWidthButton(
+    //     CANVAS_WIDTH / 2, 80, " Select a Concept to Add ", "#2858a9"
+    // );
+
+    const conceptsMenuId = "concepts_menu";
+    let conceptsMenu = document.getElementById(conceptsMenuId);
+
+    let conceptsDropDown = new createjs.DOMElement("concepts_menu_overlay").set({
+        x: 100 * 2 / PIXEL_RATIO,
+        y: 20 * 2 / PIXEL_RATIO,
+        scaleX: 0.2 * 2 / PIXEL_RATIO,
+        scaleY: 0.2 * 2 / PIXEL_RATIO
+    });
+
     let help1 = new createjs.DOMElement("concept_map_help_popup1").set({
         x: 90 * 2 / PIXEL_RATIO, y: 60 * 2 / PIXEL_RATIO,
         scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
@@ -2498,7 +2567,8 @@ function conceptMapPage(whichHypo, prediction)
         showHelpButton.mouseEnabled = true;
     }
 
-    function selectConceptHandler(value) {
+    function selectConceptHandler(e) {
+        let value = e.target.value;
         let bubble = createDeletableBubble(
             CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2,
             value, "#4286f4", "none");
@@ -2528,9 +2598,12 @@ function conceptMapPage(whichHypo, prediction)
             let tmp = currentBubbles.find((ele) => ele === bubble);
             if (tmp) {
                 currentBubbles = currentBubbles.filter((ele) => ele !== tmp);
+                updateConceptsMenu(conceptsMenu)
             }
         });
         currentBubbles.push(bubble);
+        updateConceptsMenu(conceptsMenu);
+        conceptsMenu.value = "";
         stage.addChild(bubble);
     }
 
@@ -2567,15 +2640,15 @@ function conceptMapPage(whichHypo, prediction)
         hideDOMElement(saveWarning);
     }
 
-    function cptsButtonHandler(e) {
-        panel = createConceptsPanel(cptsButton.x,
-            cptsButton.y,
-            nodes,
-            currentBubbles,
-            selectConceptHandler);
-        stage.addChild(panel);
-        stage.update();
-    }
+    // function cptsButtonHandler(e) {
+    //     panel = createConceptsPanel(cptsButton.x,
+    //         cptsButton.y,
+    //         nodes,
+    //         currentBubbles,
+    //         selectConceptHandler);
+    //     stage.addChild(panel);
+    //     stage.update();
+    // }
 
     function backButtonHandler(e) {
         dealWithDOMElements();
@@ -2583,19 +2656,6 @@ function conceptMapPage(whichHypo, prediction)
     }
 
     function verifyButtonHandler(e) {
-
-    }
-    // event handler registrations
-    cptsButton.on("click", cptsButtonHandler);
-    dismissHelp1.addEventListener("click", help1ToHelp2);
-    dismissHelp2.addEventListener("click", help2ToHelp3);
-    dismissHelp3.addEventListener("click", hideHelp3);
-    cancelSaveBtn.addEventListener('click', cancelSaveHandler);
-    saveBtn.addEventListener("click", saveHandler);
-    showHelpButton.addEventListener("click", displayHelp);
-    backButton.on("click", backButtonHandler);
-
-    verifyButton.on("click", e => {
         if (verifyConceptMap(ivBubble)) {
             showSnackbar("Everything is now labeled and connected properly. This does " +
                 "not mean that your work is conceptually correct.",
@@ -2604,17 +2664,30 @@ function conceptMapPage(whichHypo, prediction)
         } else {
             console.log("verification failed");
         }
-    });
+    }
 
-    nextButton.on("click", e => {
+    function nextButtonHandler(e) {
         if (!hypoSaved) {
             showDOMElement(saveWarning)
         } else {
             dealWithDOMElements();
             nextHypoTask();
         }
-    });
+    }
+    // event handler registrations
+    // cptsButton.on("click", cptsButtonHandler);
+    dismissHelp1.addEventListener("click", help1ToHelp2);
+    dismissHelp2.addEventListener("click", help2ToHelp3);
+    dismissHelp3.addEventListener("click", hideHelp3);
+    cancelSaveBtn.addEventListener('click', cancelSaveHandler);
+    saveBtn.addEventListener("click", saveHandler);
+    showHelpButton.addEventListener("click", displayHelp);
+    backButton.on("click", backButtonHandler);
+    verifyButton.on("click", verifyButtonHandler);
+    nextButton.on("click", nextButtonHandler);
+    conceptsMenu.addEventListener("change", selectConceptHandler);
 
+    initializeConceptsMenu(conceptsMenu);
     if (currentBubbles.length === 0) {
         ivBubble = createFixedBubble(
             IV_X, IV_Y, capitalizeFirstLetter(iv), "#99bbff", "increase", false
@@ -2652,14 +2725,17 @@ function conceptMapPage(whichHypo, prediction)
             );
             dvDirButton.mouseEnabled = false;
         }
+        updateConceptsMenu(conceptsMenu);
         showHelp = false;
     } 
  
+    showDOMElement(conceptsDropDown);
     stage.addChild(
         lightBulb,
         remindersTxt,
         showHelpButton,
-        cptsButton, 
+        // cptsButton,
+        conceptsDropDown,
         backButton, verifyButton, nextButton,
         saveWarning, help1, help2, help3
     );
