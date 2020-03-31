@@ -422,6 +422,8 @@ button:hover {
 
 .cpt-map-help {
   border: 1px solid black;
+  z-index: 3;
+  background-color: white;
 }
 
 .help-heading {
@@ -532,4 +534,11 @@ button:hover {
   letter-spacing: 1px;
   word-spacing: 2px;
   outline: none;
+}
+
+#semi_transparent_bg {
+  background-color: rgba(0,0,0,.1);
+  width: 1522px;
+  height: 950px;
+  z-index: 2;
 }

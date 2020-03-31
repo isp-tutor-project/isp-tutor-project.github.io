@@ -2507,6 +2507,15 @@ function initializeConceptsMenu(menu) {
     // updateConceptsMenu
 }
 
+function hideAllMenuOptions(menu) {
+    for (let option of menu.querySelectorAll("option")) {
+        if ("" === option.value) {
+            continue;
+        }
+        option.classList.add("hidden");
+    }
+}
+
 function updateConceptsMenu(menu) {
     let currCpts = currentBubbles.map((bub) => bub.text);
     for (let option of menu.querySelectorAll("option")) {
@@ -2594,6 +2603,11 @@ function conceptMapPage(whichHypo, prediction)
         CANVAS_WIDTH / 2, CANVAS_HEIGHT * 0.95, " I'm Finished ", "#2858a9"
     );
 
+    let modalBg = new createjs.DOMElement("modal_bg_overlay").set({
+        x: 0, y: 0, 
+        scaleX: 1 / scalingRatio, 
+        scaleY: 1 / scalingRatio
+    });
     let dismissHelp1  = document.getElementById("dismiss_cpt_map_help1");
     let dismissHelp2  = document.getElementById("dismiss_cpt_map_help2");
     let dismissHelp3  = document.getElementById("dismiss_cpt_map_help3");
@@ -2607,7 +2621,8 @@ function conceptMapPage(whichHypo, prediction)
 
     // event handlera and other functions
     function displayHelp() {
-        showHelpButton.mouseEnabled = false;
+        hideAllMenuOptions(conceptsMenu);
+        showDOMElement(modalBg);
         showDOMElement(help1);
     }
 
@@ -2629,7 +2644,8 @@ function conceptMapPage(whichHypo, prediction)
     }
     function hideHelp5() {
         hideDOMElement(help5);
-        showHelpButton.mouseEnabled = true;
+        hideDOMElement(modalBg);
+        updateConceptsMenu(conceptsMenu);
     }
 
     function selectConceptHandler(e) {
@@ -2805,6 +2821,7 @@ function conceptMapPage(whichHypo, prediction)
         showHelpButton,
         conceptsDropDown,
         backButton, verifyButton, nextButton,
+        modalBg,
         saveWarning, help1, help2, help3, help4, help5
     );
     // cptsButton,
