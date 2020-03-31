@@ -2322,78 +2322,122 @@ function joinAndCapitalize(sentences) {
     return newSentences.join("\n\n");
 }
 
+function initConceptsList(list) {
+    list.innerHTML = "";
+    let newNodes = [...nodes].sort();
+    let captitalized = newNodes.map((node) => capitalize(node));
+    for (let capCpt of captitalized) {
+        let li = document.createElement("li");
+        li.innerHTML = capCpt;
+        list.appendChild(li);
+    }
+}
+
 function notePadPage() {
     stage.removeAllChildren();
-    let dirLabel = new createjs.Text("Direction:", "bold 22px Arial", "#000").set({
+    let directionsContainer = new createjs.Container().set({
+        x: 0, y: 0
+    });
+    let dirLabel = new createjs.Text("Direction:", "bold 22px Arial", "#FFF").set({
         x: 25, y: 10
     });
-    let remindersTxt = new createjs.Text(
+    let dirText = new createjs.Text(
         "Please take a few minutes to write your hypothesis for your " +
-        "research question. Your hypothesis should be a detailed explanation of " +
-        "how water temperature affects the weight of the crystal growth after " +
-        "two weeks. You may want to use some of the concepts listed below in " +
-        "your hypothesis.\n\n" +
+        "research question in the notepad below. Your hypothesis should be a " +
+        "detailed explanation of how water temperature affects the weight of " +
+        "the crystal growth after two weeks. You may want to use some of the " +
+        "concepts listed below in your hypothesis.",
+        "22px Arial",
+        "#FFF"
+    ).set({
+        x: 140, y: 10, textAlign: "left", lineHeight: 24, lineWidth: CANVAS_WIDTH - 170
+    });
+    let dirWidth = CANVAS_WIDTH -20; 
+    let dirHeight = dirText.getMeasuredHeight() + 20;
+    let dirBg = new createjs.Shape();
+    dirBg.graphics
+         .setStrokeStyle(1)
+         .beginStroke("#2858a9")
+         .beginFill("#2858a9")
+         .drawRect(0, 0, dirWidth, dirHeight);
+    directionsContainer.addChild(dirBg, dirLabel, dirText);
+
+    let text1 = new createjs.Text(
         "The important thing is that your hypothesis makes sense to you. You can " +
         "come back to this page later to make improvements to your hypothesis.",
         "22px Arial",
         "#000"
     ).set({
-        x: 140, y: 10, textAlign: "left", lineHeight: 24, lineWidth: CANVAS_WIDTH - 170
+        x: 140, y: 100, textAlign: "left", lineHeight: 24, lineWidth: CANVAS_WIDTH - 170
     });
-    
+
     let rqLabel = new createjs.Text("Your Research Question:", "bold 22px Arial", "#000").set({
-        x: 25, y: 185
+        x: 25, y: 175
     });
     let rqText = new createjs.Text(getRQ(), "20px Arial", "#000").set({
-        x: 25, y: 215, lineHeight: 20, lineWidth: 700
+        x: 25, y: 210, lineHeight: 20, lineWidth: 400
     });
     
     let predLabel = new createjs.Text("Your Prediction:", "bold 22px Arial", "#000").set({
-        x: 25, y: 270
+        x: 25, y: 295
     });
     let predictionText = 
         `As ${iv.toLowerCase()} (independent variable) increases, the ${dv.toLowerCase()} (dependent variable) will ${secondPrediction}.`;
     let predText = new createjs.Text(predictionText, "20px Arial", "#000").set({
-        x: 25, y: 300, lineHeight: 20, lineWidth: 700
+        x: 25, y: 325, lineHeight: 20, lineWidth: 400
     });
     
-    let cptsLabel = new createjs.Text("Concepts:", "bold 22px Arial", "#000").set({
-        x: 25, y: 375
+    let cptsList = document.getElementById("concepts_list");
+    initConceptsList(cptsList);
+    let cptsBulletList = new createjs.DOMElement("concepts_list_overlay").set({
+        x: 7 * 2 / PIXEL_RATIO, y: 110 * 2 / PIXEL_RATIO,
+        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     });
-    let cptsText = new createjs.Text(joinAndCapitalize(nodes), "20px Arial", "#000").set({
-        x: 25, y: 405, lineHeight: 16
-    });
+
+    // let cptsLabel = new createjs.Text("Concepts:", "bold 22px Arial", "#000").set({
+    //     x: 25, y: 400
+    // });
+    // let cptsText = new createjs.Text(joinAndCapitalize(nodes), "20px Arial", "#000").set({
+    //     x: 25, y: 425, lineHeight: 12
+    // });
     
     let notepad = new createjs.DOMElement("concept_map_notepad_overlay").set({
-        x: 192 * (2 / PIXEL_RATIO),
+        x: 110 * (2 / PIXEL_RATIO),
         y: 43 * (2 / PIXEL_RATIO),
         scaleX: .20 * (2 / PIXEL_RATIO),
         scaleY: .20 * (2 / PIXEL_RATIO),
         name: "notepad"
     });
-    notepad.htmlElement.style.display = "block";
 
     let backButton = createBackButton();
     let nextButton = createNextButton();
     backButton.on("click", function() {
-        notepad.htmlElement.style.display = "none";
+        hideDOMElement(notepad);
+        hideDOMElement(cptsBulletList);
         prevHypoTask();
     });
 
     nextButton.on("click", function() {
-        notepad.htmlElement.style.display = "none";
+        hideDOMElement(notepad);
+        hideDOMElement(cptsBulletList);
         nextHypoTask();
     });
     
     stage.addChild(
-        dirLabel,
-        remindersTxt, 
+        directionsContainer,
+        text1,
         rqLabel, rqText, 
         predLabel, predText,
-        cptsLabel, cptsText, 
+        // cptsLabel, cptsText, 
+        cptsBulletList,
         notepad,
         backButton, nextButton
     );
+    showDOMElement(notepad);
+    showDOMElement(cptsBulletList);
+    // dirLabel,
+    // remindersTxt,
+    stage.update();
 }
 
 
