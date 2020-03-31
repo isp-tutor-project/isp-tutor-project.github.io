@@ -172,7 +172,7 @@ function updateCurrTaskIndex(idx) {
     return db.saveValue("currHypoTaskIdx", idx)
 }
 
-function prevHypoTask() {
+function prevHypoTask(e) {
     let prevTaskIdx = currHypoTaskIdx - 1;
     if (prevTaskIdx < 0) {
         console.error('invalid taskIdx: ', prevTaskIdx);
@@ -188,7 +188,7 @@ function prevHypoTask() {
     }
 }
 
-function nextHypoTask() {
+function nextHypoTask(e) {
     let nextTaskIdx = currHypoTaskIdx + 1;
     if (nextTaskIdx >= studentHypoTasks.length) {
         console.error('invalid taskIdx: ', nextTaskIdx);
