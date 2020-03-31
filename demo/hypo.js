@@ -995,7 +995,7 @@ function definitionPage9() {
     let text1 = new createjs.Text(
         "Just because two things are correlated does not mean that one caused " +
         "the other. There may be other reasons for two variables to change " +
-        "together. For example, both variables may be caused by a third variable.",
+        "together. For example, both variables might be caused by a third variable.",
         "24px Arial",
         "#000"
     ).set({
