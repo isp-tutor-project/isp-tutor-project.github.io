@@ -105,7 +105,7 @@ let connectorOver = null;
 let somethingHighlighted = false;
 
 // for error field purposes
-let errorField;
+// let errorField;
 // for option width purposes
 let optionWidth;
 
@@ -200,7 +200,7 @@ let currentBubbles;
 let arrowz;
 
 // ============================================================================
-// ================================= Firebase =================================
+// ================================= database =================================
 // ============================================================================
 
 // this is old function to load rq data, uses hypoOntology.js, might not work
@@ -233,7 +233,9 @@ let arrowz;
 // }
 
 function loadData() {
-    db.getUserData()
+    // gets the users data from the db and then sets some
+    // module-specific variables based on what it recieves
+    return db.getUserData()
     .then((userData) => {
         // console.log("loadData", userData);
         firstPrediction = userData.firstPrediction;
@@ -266,46 +268,23 @@ function loadData() {
         nodes[-2] = iv;
         nodes[-1] = dvabb;
 
-        console.log(`
-        firstPrediction: ${firstPrediction}
-        initialHypoLocked: ${initialHypoLocked}
-        secondPrediction: ${secondPrediction}
-        finalHypoLocked: ${finalHypoLocked}
-        iv: ${iv}
-        dv: ${dv}
-        dvabb: ${dvabb}
-        nodes: ${nodes}
-        causes: ${causes}
-        `);
+        // console.log(`
+        // firstPrediction: ${firstPrediction}
+        // initialHypoLocked: ${initialHypoLocked}
+        // secondPrediction: ${secondPrediction}
+        // finalHypoLocked: ${finalHypoLocked}
+        // iv: ${iv}
+        // dv: ${dv}
+        // dvabb: ${dvabb}
+        // nodes: ${nodes}
+        // causes: ${causes}
+        // `);
         // console.log(area + "," + topic + "," + variable);
         // console.log(hypoOntologyTopic)
-        
-        return initHypoTasks(userData);
-    })
+       
+        return userData;
+    });
 }
-
-// because firstPrediction and secondPrediction are bools where
-// true == "increase" and false == "decrease", I need the following 2 functions
-// to convert between bool <=> str.  Also, because some old firebase records
-// may have saved the values as bools instead of the more descriptive string
-// values, I've added backward compatability, where if it's already of that
-// type, simply return the current value
-// function boolPredictionToString(prediction) {
-//     if (typeof(prediction) === "string") {
-//         // for backward compat
-//         return prediction;
-//     }
-//     return (prediction) ? "increase" : "decrease";
-// }
-
-// function strPredictionToBool(prediction) {
-//     if (typeof(prediction) === "boolean") {
-//         // for backward compat
-//         return prediction;
-//     }
-//     return ("increase" === prediction) ? true : false;
-// }
-
 
 /*
  * saves the first/secondPrediction to firebase
@@ -324,27 +303,6 @@ function logPrediction(fldName, fldValue) {
     });
 }
 
-// function getBubbleInfo(bub) {
-//     return {
-//         name: bub.name,
-//         label: bub.text,
-//         direction: bub.getChildByName("dirButton").direction,
-//         x: bub.x,
-//         y: bub.y
-//     };
-// }
-
-// function getArrowInfo(arr, fromBubble, toBubble) {
-//     return {
-//         startX: arr.x,
-//         startY: arr.y,
-//         endX: arr.endX,
-//         endY: arr.endY,
-//         from: fromBubble.text,
-//         to: toBubble.text,
-//         labelText: arr.label.text
-//     };
-// }
 
 /*
  * saves a hypothesis (concept map) to firebase.  based on ones condition, there
@@ -367,19 +325,14 @@ function logData2(ivBubble, whichHypo) {
     log.currentPrediction = currentPrediction;
     log.currentPredictionValue = currentPredictionValue;
     let notes = document.getElementById("notepad_notes");
-    // let bubbles = [];
-    // let arrows = [];
     let nodes = [];
     let arrowLabels = [];
     let directions = [];
-    // bubbles.push(getBubbleInfo(ivBubble));
     let connector = ivBubble.outConnector;
     while (connector != null) {
         let arrow = connector.arrow;
         arrowLabels.push(arrow.label.text.replace("\n", " "));
         let nextBubble = arrow.connectorOver.parent;
-        // bubbles.push(getBubbleInfo(nextBubble));
-        // arrows.push(getArrowInfo(arrow, connector.parent, nextBubble));
         nodes.push(nextBubble.text);
         directions.push(nextBubble.getChildByName("dirButton").direction);
         connector = nextBubble.outConnector;
@@ -389,10 +342,6 @@ function logData2(ivBubble, whichHypo) {
     log.directions = directions;
     log.steps = steps;
     log.notes = notes.innerText;
-    // console.log('bubbles:');
-    // console.log(bubbles);
-    // console.log('arrows:')
-    // console.log(arrows);
     // db.collection(collectionID).doc(userID).update({
     //     [`${whichHypo}Hypo`]: JSON.stringify(log)
     // })
@@ -409,51 +358,34 @@ function logData2(ivBubble, whichHypo) {
 }
 
 
-// ===========================================================================
-// =========================== Pages =========================================
-// ===========================================================================
+// ============================================================================
+// ====================== App Initializization ================================
+// ============================================================================
 
-/* simple map of page names to functions which implement them */
-const pageNamesToFunctions = {
-    "raiseYourHand": raiseYourHand,
-    "startPage": startPage,
-    "definitionPage1": definitionPage1,
-    "definitionPage2": definitionPage2,
-    "definitionPage3": definitionPage3,
-    "definitionPage4": definitionPage4,
-    "definitionPage5": definitionPage5,
-    "definitionPage6": definitionPage6,
-    "definitionPage7": definitionPage7,
-    "definitionPage8": definitionPage8,
-    "definitionPage9": definitionPage9,
-    "definitionPage10": definitionPage10,
-    "instructionPage": instructionPage,
-    "backToYourRQ": backToYourRQ,
-    "predictionPage1": predictionPage1,
-    "graphPage1": graphPage1,
-    "graphPage2": graphPage2,
-    "initialConceptMap": initialConceptMap,
-    "initialConceptMapPlaceholder": initialConceptMapPlaceholder,
-    "biDirInstructionPage1": biDirInstructionPage1,
-    "biDirInstructionPage2": biDirInstructionPage2,
-    "biDirInstructionPage3": biDirInstructionPage3,
-    "oppositeDirectionConceptMap": oppositeDirectionConceptMap,
-    "brmPage": brmPage,
-    "predictionPage2": predictionPage2,
-    "finalConceptMap": finalConceptMap,
-    "completePage": completePage,
-    "notePadPage": notePadPage,
-};
+// init is the first function to be called
+function initHypoPage() {
+    // this starts the preloader queue loading
+    // when complete the assetsLoadingComplete callback is triggered
+    loadAssets();
+}
 
-
+function assetsLoadingComplete(event) {
+    document.getElementById("loading_gif").classList.add("hidden");
+    initStage();
+    loadData()
+    .then((userData) => {
+        // goes to the approrpriate hypo module page based on
+        // the users condition as well as returning to whatever
+        // page they may have been on if returning
+        initHypoTasks(userData);
+    });
+}
 
 function loadAssets() {
-    // to display loading
-    // loadingPage();
+    // display loading image
     document.getElementById("loading_gif").classList.remove("hidden");
-    // this is for preloader
+    // preload assets
     queue = new createjs.LoadQueue();
-    // queue.on("progress", handleFileProgress);
     queue.on("complete", assetsLoadingComplete);
     queue.loadManifest([
         { id: "TeacherPointing", src: "HypoGraphics/slide_intro/TeacherPointing.jpg" },
@@ -479,33 +411,6 @@ function loadAssets() {
         { id: "orangeBtn", src: "HypoGraphics/buttonorange.png" },
         { id: "lightbulb", src: "HypoGraphics/lightbulb.png" },
     ]);
-
-}
-
-// to launch the first page after done loading. Other pages can 
-// be launched for convenient development.
-function assetsLoadingComplete(event) {
-    // determines the student's next page and launches it
-    // calls initHypoTasks
-    document.getElementById("loading_gif").classList.add("hidden");
-    initStage();
-    loadData();
-}
-
-// init is the first function to be called
-function initHypoPage() {
-    // load IV and DV from firebase, if available
-    // loadData();
-    // used to create a higher resolution canvas
-    // let createHiPPICanvas = function (w, h, ratio) {
-    //     let can = document.getElementById("hypo-canvas");
-    //     can.width = w * ratio;
-    //     can.height = h * ratio;
-    //     can.style.width = w + "px";
-    //     can.style.height = h + "px";
-    //     return can;
-    // }
-    loadAssets();
 }
 
 function initStage() {
@@ -561,38 +466,60 @@ function initStage() {
     // create canvas with the device resolution.
     // let myCanvas = createHiPPICanvas(CANVAS_WIDTH, CANVAS_HEIGHT, PIXEL_RATIO);
     makeResponsive(true, 'both', true, 1);
-    
+
     // required to enable mouse hover events
-    stage.enableMouseOver(100);
+    stage.enableMouseOver(10);
     // Ticker is primarily for mouse hover event
     createjs.Ticker.addEventListener("tick", stage);
 }
 
-// // handles loading text
-// function handleFileProgress(event) {
-//     let text = "Loading: " + Math.round(queue.progress * 100) + "%";
-//     loadingText.text = text;
-// }
 
-// function loadingPage() {
-//     stage.removeAllChildren();
-//     loadingText = new createjs.Text("Loading: 0%", "32px Arial", "#000");
-//     loadingText.x = CANVAS_WIDTH / 2;
-//     loadingText.y = CANVAS_HEIGHT / 2 - 100;
-//     loadingText.textAlign = "center";
-//     stage.addChild(loadingText);
-//     stage.update();
-// }
+// ===========================================================================
+// =========================== Pages =========================================
+// ===========================================================================
+
+/* simple map of page names to functions which implement them */
+const pageNamesToFunctions = {
+    "raiseYourHand": raiseYourHand,
+    "startPage": startPage,
+    "definitionPage1": definitionPage1,
+    "definitionPage2": definitionPage2,
+    "definitionPage3": definitionPage3,
+    "definitionPage4": definitionPage4,
+    "definitionPage5": definitionPage5,
+    "definitionPage6": definitionPage6,
+    "definitionPage7": definitionPage7,
+    "definitionPage8": definitionPage8,
+    "definitionPage9": definitionPage9,
+    "definitionPage10": definitionPage10,
+    "instructionPage": instructionPage,
+    "backToYourRQ": backToYourRQ,
+    "predictionPage1": predictionPage1,
+    "graphPage1": graphPage1,
+    "graphPage2": graphPage2,
+    "initialConceptMap": initialConceptMap,
+    "initialConceptMapPlaceholder": initialConceptMapPlaceholder,
+    "biDirInstructionPage1": biDirInstructionPage1,
+    "biDirInstructionPage2": biDirInstructionPage2,
+    "biDirInstructionPage3": biDirInstructionPage3,
+    "oppositeDirectionConceptMap": oppositeDirectionConceptMap,
+    "brmPage": brmPage,
+    "predictionPage2": predictionPage2,
+    "finalConceptMap": finalConceptMap,
+    "completePage": completePage,
+    "notePadPage": notePadPage,
+};
+
 
 /*
  * simple convenience function, as I'm needed to generate the student's
  * Research Question in multiple places
  */
 function getRQ() {
-    // "Does the initial water temperature affect the weight of the crystal growth on a string";
     return "Does " + iv.toLowerCase() + " affect the " + dv.toLowerCase() + "?"
 }
 
+// this page is only used in classroom environments
 function raiseYourHand() {
     stage.removeAllChildren();
 
@@ -649,13 +576,12 @@ function startPage() {
     //     "Before you start working on your hypothesis for your research " +
     //     "question, we will first define some important terms.",
 
-
     let image1 = new createjs.Bitmap(queue.getResult("TeacherPointing")).set({
         x: 40, y: 80
     });
 
     let nextButton = createLargeButton(CANVAS_WIDTH / 2, 350, "Next", "#3769C2");
-    nextButton.on("click", e => nextHypoTask());
+    nextButton.on("click", nextHypoTask);
     
     stage.addChild(text, image1, nextButton);
     stage.update();
@@ -667,17 +593,17 @@ function definitionPage1() {
         x: 20 * 2 / PIXEL_RATIO, y: 10 * 2 / PIXEL_RATIO,
         scaleX: 0.6 * 2 / PIXEL_RATIO, scaleY: 0.6 * 2 / PIXEL_RATIO
     });
-    text.htmlElement.style.display = "block";
+    showDOMElement(text);
 
     let backButton = createBackButton();
     backButton.on("click", e => {
-        text.htmlElement.style.display = "none";
+        hideDOMElement(text);
         prevHypoTask();
     });
 
     let nextButton = createNextButton();
     nextButton.on("click", e => {
-        text.htmlElement.style.display = "none";
+        hideDOMElement(text);
         nextHypoTask();
     });
 
@@ -708,10 +634,10 @@ function definitionPage2() {
     });
 
     let backButton = createBackButton();
-    backButton.on("click", e => prevHypoTask());
+    backButton.on("click", prevHypoTask);
     
     let nextButton = createNextButton();
-    nextButton.on("click", e => nextHypoTask());
+    nextButton.on("click", nextHypoTask);
     
     stage.addChild(text, image, text2, backButton, nextButton);
     stage.update();
@@ -748,10 +674,10 @@ function definitionPage3() {
     });
     
     let backButton = createBackButton();
-    backButton.on("click", e => prevHypoTask());
+    backButton.on("click", prevHypoTask);
     
     let nextButton = createNextButton();
-    nextButton.on("click", e => nextHypoTask());
+    nextButton.on("click", nextHypoTask);
     
     stage.addChild(text1, text2, image, backButton, nextButton);
     stage.update();
@@ -770,7 +696,7 @@ function definitionPage4() {
     });
     
     let text2 = new createjs.Text(
-        "The relationships between concepts(as shown below) could be " +
+        "The relationships between concepts (as shown below) could be " +
         "correlations, causes, or definitions.",
         "24px Arial",
         "#000"
@@ -783,10 +709,10 @@ function definitionPage4() {
     });
     
     let backButton = createBackButton();
-    backButton.on("click", e => prevHypoTask());
+    backButton.on("click", prevHypoTask);
     
     let nextButton = createNextButton();
-    nextButton.on("click", e => nextHypoTask());
+    nextButton.on("click", nextHypoTask);
     
     stage.addChild(text, text2, image, backButton, nextButton);
     stage.update();
@@ -836,7 +762,7 @@ function definitionPage5() {
     });
     
     let backButton = createBackButton();
-    backButton.on("click", e => prevHypoTask());
+    backButton.on("click", prevHypoTask);
     
     let nextButton = createNextButton();
     let images = [image1, image2, image3];
@@ -845,7 +771,7 @@ function definitionPage5() {
         if (iteration == 3) {
             nextHypoTask();
         } else {
-            console.log(images[iteration]);
+            // console.log(images[iteration]);
             stage.addChild(images[iteration]);
             stage.update();
             iteration++;
@@ -906,7 +832,7 @@ function definitionPage6() {
 
     let backButton = createBackButton();
     backButton.on("click", e => {
-        image1.htmlElement.style.display = "none";
+        hideDOMElement(image1);
         prevHypoTask();
     });
     
@@ -915,13 +841,13 @@ function definitionPage6() {
     nextButton.on("click", e => {
         if (iteration == 0) {
             stage.addChild(text2, image1);
-            image1.htmlElement.style.display = "block";
+            showDOMElement(image1);
             stage.update();
         } else if (iteration == 1) {
             stage.addChild(text3, image2);
             stage.update();
         } else if (iteration == 2) {
-            image1.htmlElement.style.display = "none";
+            hideDOMElement(image1);
             nextHypoTask();
         }
         iteration++;
@@ -970,7 +896,7 @@ function definitionPage7() {
     });
 
     let backButton = createBackButton();
-    backButton.on("click", e => prevHypoTask());
+    backButton.on("click", prevHypoTask);
     
     let nextButton = createNextButton();
     let iteration = 0;
@@ -995,7 +921,7 @@ function definitionPage8() {
     stage.removeAllChildren();
     let text1 = new createjs.Text(
         "(3) Correlation: A relationship between two variables where both " +
-        "variables increase together, decrease together, or one increases " +
+        "variables increase (or decrease) together, or one increases " +
         "as the other decreases. However, these variables may not directly " +
         "affect each other.",
         "24px Arial",
@@ -1043,7 +969,7 @@ function definitionPage8() {
     });
 
     let backButton = createBackButton();
-    backButton.on("click", e => prevHypoTask());
+    backButton.on("click", prevHypoTask);
     
     let nextButton = createNextButton();
     let iteration = 0;
@@ -1106,7 +1032,7 @@ function definitionPage9() {
     });
 
     let backButton = createBackButton();
-    backButton.on("click", e => prevHypoTask());
+    backButton.on("click", prevHypoTask);
     
     let nextButton = createNextButton();
     let iteration = 0;
@@ -1129,9 +1055,6 @@ function definitionPage9() {
 
 function definitionPage10() {
     stage.removeAllChildren();
-    // add error field
-    errorField = new createjs.Container();
-    errorField.y = 10;
 
     let text1 = new createjs.Text(
         "For each phrase below, as one concept (underlined) increases, the " +
@@ -1165,25 +1088,27 @@ function definitionPage10() {
         x: 50 * 2 / PIXEL_RATIO, y: 50 * 2 / PIXEL_RATIO,
         scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO,
     });
-    quiz.htmlElement.style.display = "block";
-
+    
     let quizQuestions = new createjs.DOMElement("quiz_questions_overlay").set({
         x: 225 * 2 / PIXEL_RATIO, y: 53 * 2 / PIXEL_RATIO,
         scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     });
-    quizQuestions.htmlElement.style.display = "block";
     
     function hideDOMOverlays() {
-        quiz.htmlElement.style.display = "none";
-        quizQuestions.htmlElement.style.display = "none";
+        hideDOMElement(quiz);
+        hideDOMElement(quizQuestions);
     }
+
     let backButton = createBackButton();
     backButton.on("click", e => {
         hideDOMOverlays();
         prevHypoTask();
     });
 
-    let verifyButton = createRightButton("Check");
+    let verifyButton = createTextWidthButton(
+        CANVAS_WIDTH / 2, CANVAS_HEIGHT * 0.95, " Check Answers ", "#2858a9"
+    );
+
     verifyButton.on("click", e => {
         // checking validity info for quiz questions
         let quizSelectors = document.getElementsByClassName("quiz_questions");
@@ -1203,11 +1128,8 @@ function definitionPage10() {
         // testing if all answers are correct
         if (quizQuestions.htmlElement.reportValidity()) {
             showSnackbar("Your answers are all correct. Click Next to move on.");
-            // updateErrorField ("Your answers are all correct. Click Next to move on.",
-            //     "16px Arial",
-            //     "green");
             stage.removeChild(verifyButton);
-            stage.addChild(nextButton);
+            nextButton.enable();
         }
     });
 
@@ -1216,14 +1138,17 @@ function definitionPage10() {
         hideDOMOverlays();
         nextHypoTask();
     });
-    
+    nextButton.disable();
+
     stage.addChild(
-        errorField,
         text1, text3, text4,
         quiz, quizQuestions,
-        backButton, verifyButton
+        backButton, verifyButton, nextButton
     );
     stage.update();
+    showDOMElement(quiz);
+    showDOMElement(quizQuestions);
+
 }
 
 function instructionPage() {
@@ -2555,10 +2480,6 @@ function conceptMapPage(whichHypo, prediction)
         CANVAS_WIDTH - 140, 35, " Show Help ", "#2858a9"
     );
 
-    // let cptsButton = createTextWidthButton(
-    //     CANVAS_WIDTH / 2, 80, " Select a Concept to Add ", "#2858a9"
-    // );
-
     const conceptsMenuId = "concepts_menu";
     let conceptsMenu = document.getElementById(conceptsMenuId);
 
@@ -2690,6 +2611,7 @@ function conceptMapPage(whichHypo, prediction)
 
     function cancelSaveHandler() {
         hideDOMElement(saveWarning);
+        hideDOMElement(modalBg);
     }
 
     function saveHandler() {
@@ -2716,8 +2638,8 @@ function conceptMapPage(whichHypo, prediction)
         dismissHelp1.removeEventListener("click", help1ToHelp2);
         dismissHelp2.removeEventListener("click", help2ToHelp3);
         dismissHelp3.removeEventListener("click", help3ToHelp4);
-        displayHelp4.removeEventListener("click", help4ToHelp5);
-        displayHelp5.removeEventListener("click", hideHelp5);
+        dismissHelp4.removeEventListener("click", help4ToHelp5);
+        dismissHelp5.removeEventListener("click", hideHelp5);
         hideDOMElement(help1);
         hideDOMElement(help2);
         hideDOMElement(help3);
@@ -2755,9 +2677,11 @@ function conceptMapPage(whichHypo, prediction)
 
     function nextButtonHandler(e) {
         if (!hypoSaved) {
-            showDOMElement(saveWarning)
+            showDOMElement(modalBg);
+            showDOMElement(saveWarning);
         } else {
             dealWithDOMElements();
+            showDOMElement(modalBg);
             nextHypoTask();
         }
     }
