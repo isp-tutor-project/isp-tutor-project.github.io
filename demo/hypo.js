@@ -2333,7 +2333,7 @@ function notePadPage() {
         scaleY: .20 * (2 / PIXEL_RATIO),
         name: "notepad"
     });
-
+    let notes = document.getElementById("notepad_notes");
     let backButton = createBackButton();
     let nextButton = createNextButton();
     backButton.on("click", function() {
@@ -2363,6 +2363,9 @@ function notePadPage() {
     // dirLabel,
     // remindersTxt,
     stage.update();
+    setTimeout(function() {
+        notes.focus();
+    }, 0);
 }
 
 
@@ -2482,7 +2485,6 @@ function conceptMapPage(whichHypo, prediction)
 
     const conceptsMenuId = "concepts_menu";
     let conceptsMenu = document.getElementById(conceptsMenuId);
-
     let conceptsDropDown = new createjs.DOMElement("concepts_menu_overlay").set({
         x: 100 * 2 / PIXEL_RATIO,
         y: 20 * 2 / PIXEL_RATIO,
@@ -2490,44 +2492,24 @@ function conceptMapPage(whichHypo, prediction)
         scaleY: 0.2 * 2 / PIXEL_RATIO
     });
 
-    let help1 = new createjs.DOMElement("concept_map_help_popup1").set({
+    let modalProps = {
         x: 90 * 2 / PIXEL_RATIO, y: 60 * 2 / PIXEL_RATIO,
         scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
-    });
+    };
 
-    let help2 = new createjs.DOMElement("concept_map_help_popup2").set({
-        x: 90 * 2 / PIXEL_RATIO, y: 60 * 2 / PIXEL_RATIO,
-        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
-    });
+    let help1 = new createjs.DOMElement("concept_map_help_popup1").set(modalProps);
+    let help2 = new createjs.DOMElement("concept_map_help_popup2").set(modalProps);
+    let help3 = new createjs.DOMElement("concept_map_help_popup3").set(modalProps);
+    let help4 = new createjs.DOMElement("concept_map_help_popup4").set(modalProps);
+    let help5 = new createjs.DOMElement("concept_map_help_popup5").set(modalProps);
+    let saveWarning = new createjs.DOMElement("save_concept_map_overlay").set(modalProps);
 
-    let help3 = new createjs.DOMElement("concept_map_help_popup3").set({
-        x: 90 * 2 / PIXEL_RATIO, y: 60 * 2 / PIXEL_RATIO,
-        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
-    });
-
-    let help4 = new createjs.DOMElement("concept_map_help_popup4").set({
-        x: 90 * 2 / PIXEL_RATIO, y: 60 * 2 / PIXEL_RATIO,
-        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
-    });
-
-    let help5 = new createjs.DOMElement("concept_map_help_popup5").set({
-        x: 90 * 2 / PIXEL_RATIO, y: 60 * 2 / PIXEL_RATIO,
-        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
-    });
-
-    let saveWarning = new createjs.DOMElement("save_concept_map_overlay").set({
-        x: 110 * 2 / PIXEL_RATIO, y: 70 * 2 / PIXEL_RATIO,
-        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
-    });
-
-    let verifyButton  = createTextWidthButton(
+    let verifyButton = createTextWidthButton(
         CANVAS_WIDTH / 2, CANVAS_HEIGHT * 0.95, " I'm Finished ", "#2858a9"
     );
 
     let modalBg = new createjs.DOMElement("modal_bg_overlay").set({
-        x: 0, y: 0, 
-        scaleX: 1 / scalingRatio, 
-        scaleY: 1 / scalingRatio
+        x: 0, y: 0, scaleX: 1 / scalingRatio, scaleY: 1 / scalingRatio
     });
     let dismissHelp1  = document.getElementById("dismiss_cpt_map_help1");
     let dismissHelp2  = document.getElementById("dismiss_cpt_map_help2");
@@ -2572,7 +2554,8 @@ function conceptMapPage(whichHypo, prediction)
     function selectConceptHandler(e) {
         let value = e.target.value;
         let bubble = createDeletableBubble(
-            CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2,
+            CANVAS_WIDTH / 2 + ((currentBubbles.length - 2) * 15), 
+            CANVAS_HEIGHT / 2 + ((currentBubbles.length - 2) * 15),
             value, "#4286f4", "none");
         bubble.idx = nodes.indexOf(value);
         steps.push({
