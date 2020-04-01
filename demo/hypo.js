@@ -2318,13 +2318,6 @@ function notePadPage() {
         x: 7 * 2 / PIXEL_RATIO, y: 110 * 2 / PIXEL_RATIO,
         scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     });
-
-    // let cptsLabel = new createjs.Text("Concepts:", "bold 22px Arial", "#000").set({
-    //     x: 25, y: 400
-    // });
-    // let cptsText = new createjs.Text(joinAndCapitalize(nodes), "20px Arial", "#000").set({
-    //     x: 25, y: 425, lineHeight: 12
-    // });
     
     let notepad = new createjs.DOMElement("concept_map_notepad_overlay").set({
         x: 110 * (2 / PIXEL_RATIO),
@@ -2353,15 +2346,12 @@ function notePadPage() {
         text1,
         rqLabel, rqText, 
         predLabel, predText,
-        // cptsLabel, cptsText, 
         cptsBulletList,
         notepad,
         backButton, nextButton
     );
     showDOMElement(notepad);
     showDOMElement(cptsBulletList);
-    // dirLabel,
-    // remindersTxt,
     stage.update();
     setTimeout(function() {
         notes.focus();
@@ -2371,11 +2361,8 @@ function notePadPage() {
 
 function redrawHypo() {
     for (let bubble of currentBubbles) {
-        // console.log(bubble);
         stage.addChild(bubble);
     }
-    // let arrowSteps = steps.filter((step) => step.action.startsWith("ARROW"));
-    // console.log(arrowSteps);
     for (let arrow of arrowz) {
         stage.addChild(arrow);
     }
