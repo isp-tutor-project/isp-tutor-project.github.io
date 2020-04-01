@@ -1,5 +1,6 @@
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
@@ -13,7 +14,8 @@ body {
 h2 {
   text-align: center;
   margin: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 h3 {
@@ -23,6 +25,22 @@ h3 {
 /* turned all input into uppercase */
 input {
   text-transform: uppercase;
+}
+
+input::-webkit-input-placeholder {
+  text-transform: none;
+}
+
+input::-moz-placeholder {
+  text-transform: none;
+}
+
+input:-ms-input-placeholder {
+  text-transform: none;
+}
+
+input::-ms-input-placeholder {
+  text-transform: none;
 }
 
 input::placeholder {
@@ -45,7 +63,8 @@ input {
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-size: 20px;
 }
 
@@ -196,10 +215,12 @@ button:hover {
   padding: .6em 2em .5em .8em;
   width: auto;
   max-width: 100%; /* useful when width is set to anything other than 100% */
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 10px 5px 0px 0px;
   border: 1px solid #aaa;
-  box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+  -webkit-box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+          box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
   border-radius: .5em;
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -209,6 +230,10 @@ button:hover {
     for the icon, if you want to change the color, be sure to use `%23` instead of `#`, since it's a url. You can also swap in a different svg icon or an external image reference
     
   */
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+    -webkit-gradient(linear, left top, left bottom, from(#ffffff),to(#e5e5e5));
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+    -o-linear-gradient(top, #ffffff 0%,#e5e5e5 100%);
   background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
     linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
   background-repeat: no-repeat, repeat;
@@ -229,7 +254,8 @@ button:hover {
 .select-css:focus {
   border-color: #aaa;
   /* It'd be nice to use -webkit-focus-ring-color here but it doesn't work on box-shadow */
-  box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+  -webkit-box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+          box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
   box-shadow: 0 0 0 3px -moz-mac-focusring;
   color: #222; 
   outline: none;
@@ -431,6 +457,8 @@ button:hover {
   padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
   width: 600px;
 }
@@ -438,7 +466,11 @@ button:hover {
   padding-top: 10px;
   margin-left: auto;
   margin-right: auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
 }
 
@@ -474,13 +506,18 @@ button:hover {
   margin-top: 12px;
   margin-bottom: 12px;
   font-size: 24px;
-  padding-inline-start: 25px;
+  -webkit-padding-start: 25px;
+          padding-inline-start: 25px;
 }
 
 /* styling paper */
 #paper {
-  column-count: 2;
-  column-gap: 10px;
+  -webkit-column-count: 2;
+     -moz-column-count: 2;
+          column-count: 2;
+  -webkit-column-gap: 10px;
+     -moz-column-gap: 10px;
+          column-gap: 10px;
   /* width: 800px; */
   width: 100%;
   /* height: 600px; */
@@ -490,7 +527,10 @@ button:hover {
   padding-top: 40px;
   padding-bottom: 20px;
   background-color: white;
-  box-shadow: 0px 0px 5px 0px #888;
+  -webkit-box-shadow: 0px 0px 5px 0px #888;
+          box-shadow: 0px 0px 5px 0px #888;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#f7f7f7));
+  background-image: -o-linear-gradient(#f7f7f7, #f7f7f7);
   background-image: linear-gradient(#f7f7f7, #f7f7f7);
   background-size: 4px 100%;
   background-repeat: no-repeat;
@@ -520,6 +560,7 @@ button:hover {
 /* styling blue horizontal lines */
 #pattern {
   height: 192%;
+  background-image: -o-repeating-linear-gradient(white 0px, white 24px, teal 25px);
   background-image: repeating-linear-gradient(white 0px, white 24px, teal 25px);
 }
 
