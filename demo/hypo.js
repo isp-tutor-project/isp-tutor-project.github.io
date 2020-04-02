@@ -580,7 +580,7 @@ function startPage() {
         x: 40, y: 80
     });
 
-    let nextButton = createLargeButton(CANVAS_WIDTH / 2, 350, "Next", "#3769C2");
+    let nextButton = createLargeButton(CANVAS_WIDTH / 2, 350, "Next", BUTTON_COLOR);
     nextButton.on("click", nextHypoTask);
     
     stage.addChild(text, image1, nextButton);
@@ -1106,7 +1106,7 @@ function definitionPage10() {
     });
 
     let verifyButton = createTextWidthButton(
-        CANVAS_WIDTH / 2, CANVAS_HEIGHT * 0.95, " Check Answers ", "#2858a9"
+        CANVAS_WIDTH / 2, CANVAS_HEIGHT * 0.95, " Check Answers ", BUTTON_COLOR
     );
 
     verifyButton.on("click", e => {
@@ -2056,7 +2056,7 @@ function conceptMapPage(whichHypo, prediction)
     });
 
     let showHelpButton = createTextWidthButton(
-        CANVAS_WIDTH - 140, 35, " Show Help ", "#2858a9"
+        CANVAS_WIDTH - 140, 35, " Show Help ", BUTTON_COLOR
     );
 
     const conceptsMenuId = "concepts_menu";
@@ -2088,7 +2088,7 @@ function conceptMapPage(whichHypo, prediction)
     // let saveWarning = new createjs.DOMElement("save_concept_map_overlay").set(modalProps);
 
     let verifyButton = createTextWidthButton(
-        CANVAS_WIDTH / 2, CANVAS_HEIGHT * 0.95, " I'm Finished ", "#2858a9"
+        CANVAS_WIDTH / 2, CANVAS_HEIGHT * 0.95, " I'm Finished ", BUTTON_COLOR
     );
 
     // let modalBg = new createjs.DOMElement("modal_bg_overlay").set({
@@ -3086,7 +3086,7 @@ function createButton(x, y, text, color) {
     return button;
 }
 
-function createTextWidthButton(x, y, text, color) {
+function createTextWidthButton(x, y, text, color=BUTTON_COLOR) {
     let label = new createjs.Text(text, "bold 16px Arial", "#FFFFFF").set({
         y: BUTTON_HEIGHT / 2, textAlign: "center", textBaseline: "middle"
     });
@@ -3108,11 +3108,11 @@ function createTextWidthButton(x, y, text, color) {
     return button;
 }
 
-function createLeftButton(text) {
+function createLeftButton(text, color=BUTTON_COLOR) {
     return createButton(CANVAS_WIDTH * 0.1,
         CANVAS_HEIGHT - BUTTON_HEIGHT - 10,
         text,
-        BUTTON_COLOR);
+        color);
 }
 
 function createRightButton(text, color=BUTTON_COLOR) {
