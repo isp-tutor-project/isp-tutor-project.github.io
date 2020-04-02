@@ -583,3 +583,28 @@ button:hover {
   height: 950px;
   z-index: 2;
 }
+
+dt {
+  font-weight: bold;
+}
+dd {
+  padding-bottom: 20px;
+}
+.combined-help {
+  background-color: white;
+}
+.concept-map-help-heading {
+  text-align: center;
+  background-color: blue;
+  color: white;
+  font-size: 28px;
+}
+.combined-help-contents {
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-bottom: 20px;
+  height: 500px;
+  width: 800px;
+  overflow-wrap: normal;
+  overflow-y: auto;
+}
