@@ -1861,7 +1861,7 @@ function notePadPage() {
          .beginFill("#2858a9")
          .drawRect(0, 0, dirWidth, dirHeight);
     directionsContainer.addChild(dirBg, dirLabel, dirText);
-
+    
     let text1 = new createjs.Text(
         "The important thing is that your hypothesis makes sense to you. You can " +
         "come back to this page later to make improvements to your hypothesis.",
@@ -2091,11 +2091,25 @@ function conceptMapPage(whichHypo, prediction)
         CANVAS_WIDTH / 2, CANVAS_HEIGHT * 0.95, " I'm Finished ", "#2858a9"
     );
 
-    let modalBg = new createjs.DOMElement("modal_bg_overlay").set({
-        x: 0, y: 0, scaleX: 1 / scalingRatio, scaleY: 1 / scalingRatio
-    });
+    // let modalBg = new createjs.DOMElement("modal_bg_overlay").set({
+    //     x: 0, y: 0, scaleX: 1 / scalingRatio, scaleY: 1 / scalingRatio
+    // });
 
-    
+    let modalBg = new createjs.Shape();
+    modalBg.graphics
+        .setStrokeStyle(1)
+        .beginStroke("#000")
+        .beginFill("#000")
+        .drawRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    modalBg.alpha = 0.1;
+    modalBg.mouseEnabled = true;
+    modalBg.on("click", noop);
+
+    function noop(e) {
+        // console.log(e);
+        return;
+    }
+
     // let dismissHelp1        = document.getElementById("dismiss_cpt_map_help1");
     // let dismissHelp2        = document.getElementById("dismiss_cpt_map_help2");
     // let dismissHelp3        = document.getElementById("dismiss_cpt_map_help3");
@@ -2113,13 +2127,16 @@ function conceptMapPage(whichHypo, prediction)
 
     // event handlera and other functions
     function showModal(modal) {
-        showDOMElement(modalBg);
+        // showDOMElement(modalBg);
+        stage.addChild(modalBg);
+        stage.update();
         showDOMElement(modal);
     }
 
     function hideModal(modal) {
         hideDOMElement(modal);
-        hideDOMElement(modalBg);
+        // hideDOMElement(modalBg);
+        stage.removeChild(modalBg);
     }
 
     function displayHelp() {
@@ -2161,14 +2178,24 @@ function conceptMapPage(whichHypo, prediction)
     function showPasteNotes() {
         let npn = document.getElementById("notepad_notes");
         let cht = document.getElementById("current_hypo_text");
-        cht.innerText = notepadHtmlAsText(npn.innerHTML);
+        let hypoText = notepadHtmlAsText(npn.innerHTML);
+        cht.innerText = wrapText(hypoText, 40);
+
         showModal(notepadPaste);
     }
 
     function hidePasteNotes() {
         hideModal(notepadPaste);
         // showDrawCptMap();
+        // let hiddenLink = document.getElementById("download_img");
+        // let cvs = document.getElementById("hypo-canvas");
+        // let img = cvs.toDataURL("image/png");
+        // let blob = new Blob([img], {type: "image/png"});
+        // let url = window.URL.createObjectURL(blob);
+        // hiddenLink.download = "concept_map.png";
+        // hiddenLink.href = url;
         showModal(drawCptMap);
+        // hiddenLink.click();
     }
 
     // function showDrawCptMap() {
@@ -2408,8 +2435,8 @@ function handleConnectorOver(event) {
     if (event.type === "mouseover") {
         event.target.alpha = .5;
         connectorOver = event.target;
-        console.log("connOver:");
-        console.log(connectorOver);
+        // console.info("connOver:");
+        // console.info(connectorOver);
     } else {
         event.target.alpha = 1;
         connectorOver = null;
@@ -2463,9 +2490,9 @@ function getNotepadWords(notePadHtml) {
     // text = text.replace(/<div>/g, "");
     // text = text.replace(/<\/div>/g, "\n");
     // text = text.replace(/<br>/g, "\n");
-    console.log(text);
+    // console.log(text);
     let words = text.split(/\s+/).filter((word) => word !== "");
-    console.log(words);
+    // console.log(words);
     return words;
 }
 
@@ -2476,6 +2503,14 @@ function notepadHtmlAsText(notePadHtml) {
     text = text.replace(/<\/div>/g, " ");
     text = text.replace(/<br>/g, "\n");
     return text;
+}
+
+function wrapText(text, maxWidth) {
+    return text.replace(
+        new RegExp(`(?![^\\n]{1,${maxWidth}}$)([^\\n]{1,${maxWidth}})\\s`, 
+                  'g'), 
+        '$1\n'
+    );
 }
 
 function verifyConceptMap(ivBubble) {
