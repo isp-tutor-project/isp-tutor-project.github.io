@@ -2037,6 +2037,13 @@ function updateConceptsMenu(menu) {
 function conceptMapPage(whichHypo, prediction)
 {
     stage.removeAllChildren();
+    let bg = new createjs.Shape();
+    bg.graphics
+      .setStrokeStyle(1)
+      .beginStroke("#FFF")
+      .beginFill("#FFF")
+      .drawRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    stage.addChild(bg);
     let hypoSaved = false;
     let ivBubble, dvBubble, arrow, showHelp;
 
@@ -2068,32 +2075,29 @@ function conceptMapPage(whichHypo, prediction)
         scaleY: 0.2 * 2 / PIXEL_RATIO
     });
 
+    let help = new createjs.DOMElement("combined_cpt_map_help").set({
+        x: 45 * 2 / PIXEL_RATIO, y: 30 * 2 / PIXEL_RATIO,
+        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
+    });
     let modalProps = {
         x: 90 * 2 / PIXEL_RATIO, y: 60 * 2 / PIXEL_RATIO,
         scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     };
-    let combinedHelp = new createjs.DOMElement("combined_cpt_map_help").set({
-        x: 70 * 2 / PIXEL_RATIO, y: 30 * 2 / PIXEL_RATIO,
-        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
-    });
-    // let help1 = new createjs.DOMElement("concept_map_help_popup1").set(modalProps);
-    // let help2 = new createjs.DOMElement("concept_map_help_popup2").set(modalProps);
-    // let help3 = new createjs.DOMElement("concept_map_help_popup3").set(modalProps);
-    // let help4 = new createjs.DOMElement("concept_map_help_popup4").set(modalProps);
-    // let help5 = new createjs.DOMElement("concept_map_help_popup5").set(modalProps);
     let saveWarning = new createjs.DOMElement("save_concept_map_warning").set(modalProps);
     let notepadPaste = new createjs.DOMElement("notepad_paste").set(modalProps);
     let drawCptMap = new createjs.DOMElement("draw_cpt_map").set(modalProps);
 
-    // let saveWarning = new createjs.DOMElement("save_concept_map_overlay").set(modalProps);
-
     let verifyButton = createTextWidthButton(
         CANVAS_WIDTH / 2, CANVAS_HEIGHT * 0.95, " I'm Finished ", BUTTON_COLOR
     );
-
-    // let modalBg = new createjs.DOMElement("modal_bg_overlay").set({
-    //     x: 0, y: 0, scaleX: 1 / scalingRatio, scaleY: 1 / scalingRatio
-    // });
+    let dismissHelp = document.getElementById("dismiss_cpt_map_help");
+    let helpContents = document.getElementById("cpt_map_help_contents")
+    let dismissNotepadPaste = document.getElementById("dismiss_notepad_paste");
+    let dismissDrawCptMap = document.getElementById("dismiss_draw_cpt_map");
+    let cancelSaveBtn = document.getElementById("cpt_map_cancel_save");
+    let saveBtn = document.getElementById("cpt_map_save");
+    let backButton = createBackButton();
+    let nextButton = createNextButton();
 
     let modalBg = new createjs.Shape();
     modalBg.graphics
@@ -2101,33 +2105,15 @@ function conceptMapPage(whichHypo, prediction)
         .beginStroke("#000")
         .beginFill("#000")
         .drawRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-    modalBg.alpha = 0.1;
+    modalBg.alpha = 0.2;
     modalBg.mouseEnabled = true;
-    modalBg.on("click", noop);
 
+    // event handlera and other functions
     function noop(e) {
-        // console.log(e);
         return;
     }
 
-    // let dismissHelp1        = document.getElementById("dismiss_cpt_map_help1");
-    // let dismissHelp2        = document.getElementById("dismiss_cpt_map_help2");
-    // let dismissHelp3        = document.getElementById("dismiss_cpt_map_help3");
-    // let dismissHelp4        = document.getElementById("dismiss_cpt_map_help4");
-    // let dismissHelp5        = document.getElementById("dismiss_cpt_map_help5");
-    let dismissHelp         = document.getElementById("dismiss_cpt_map_help");
-    let helpContents        = document.getElementById("cpt_map_help_contents")
-    let dismissNotepadPaste = document.getElementById("dismiss_notepad_paste");
-    let dismissDrawCptMap   = document.getElementById("dismiss_draw_cpt_map");
-    let cancelSaveBtn       = document.getElementById("cpt_map_cancel_save");
-    let saveBtn             = document.getElementById("cpt_map_save");
-    let backButton          = createBackButton();
-    let nextButton          = createNextButton();
-
-
-    // event handlera and other functions
     function showModal(modal) {
-        // showDOMElement(modalBg);
         stage.addChild(modalBg);
         stage.update();
         showDOMElement(modal);
@@ -2135,42 +2121,21 @@ function conceptMapPage(whichHypo, prediction)
 
     function hideModal(modal) {
         hideDOMElement(modal);
-        // hideDOMElement(modalBg);
         stage.removeChild(modalBg);
+        stage.update();
     }
 
     function displayHelp() {
         hideAllMenuOptions(conceptsMenu);
-        // showModal(help1);
-        showModal(combinedHelp);
+        showModal(help);
         helpContents.scrollTop = 0;
     }
 
     function hideHelp() {
-        hideModal(combinedHelp);
+        hideModal(help);
         updateConceptsMenu(conceptsMenu);
     }
-    // function help1ToHelp2() {
-    //     hideModal(help1);
-    //     showModal(help2);
-    // }
-    // function help2ToHelp3() {
-    //     hideModal(help2);
-    //     showModal(help3);
-    // }
-    // function help3ToHelp4() {
-    //     hideModal(help3);
-    //     showModal(help4);
-    // }
-    // function help4ToHelp5() {
-    //     hideModal(help4);
-    //     showModal(help5);
-    // }
-    // function hideHelp5() {
-    //     hideModal(help5);
-    //     updateConceptsMenu(conceptsMenu);
-    // }
-
+    
     function showSaveWarning() {
         showModal(saveWarning);
     }
@@ -2186,32 +2151,25 @@ function conceptMapPage(whichHypo, prediction)
 
     function hidePasteNotes() {
         hideModal(notepadPaste);
-        // showDrawCptMap();
-        // let hiddenLink = document.getElementById("download_img");
-        // let cvs = document.getElementById("hypo-canvas");
-        // let img = cvs.toDataURL("image/png");
-        // let blob = new Blob([img], {type: "image/png"});
-        // let url = window.URL.createObjectURL(blob);
-        // hiddenLink.download = "concept_map.png";
-        // hiddenLink.href = url;
         showModal(drawCptMap);
-        // hiddenLink.click();
     }
 
-    // function showDrawCptMap() {
-    //     showDOMElement(drawCptMap);
-    // }
 
     function hideDrawCptMap() {
         hideModal(drawCptMap);
+        let link = document.createElement("a");
+        link.style.display = "none";
+        link.download = "concept_map.png";
+        let cvs = stage.canvas;
+        cvs.toBlob(function (blob) {
+            link.href = URL.createObjectURL(blob);
+            link.click();
+        });
     }
 
     function hideSaveWarning() {
         hideModal(saveWarning);
-        // hideDOMElement(saveWarning);
-        // hideDOMElement(modalBg);
     }
-
 
     function selectConceptHandler(e) {
         let value = e.target.value;
@@ -2272,18 +2230,8 @@ function conceptMapPage(whichHypo, prediction)
         conceptsMenu.removeEventListener("change", selectConceptHandler);
         saveBtn.removeEventListener("click", saveHandler);
         cancelSaveBtn.removeEventListener("click", hideSaveWarning);
-        // dismissHelp1.removeEventListener("click", help1ToHelp2);
-        // dismissHelp2.removeEventListener("click", help2ToHelp3);
-        // dismissHelp3.removeEventListener("click", help3ToHelp4);
-        // dismissHelp4.removeEventListener("click", help4ToHelp5);
-        // dismissHelp5.removeEventListener("click", hideHelp5);
-        // hideDOMElement(help1);
-        // hideDOMElement(help2);
-        // hideDOMElement(help3);
-        // hideDOMElement(help4);
-        // hideDOMElement(help5);
         dismissHelp.removeEventListener("click", hideHelp);
-        hideDOMElement(combinedHelp);
+        hideDOMElement(help);
         hideDOMElement(conceptsDropDown);
         hideDOMElement(saveWarning);
     }
@@ -2309,16 +2257,13 @@ function conceptMapPage(whichHypo, prediction)
             showSaveWarning();
         } else {
             dealWithDOMElements();
-            showDOMElement(modalBg);
+            // add background for 'home' modal
+            stage.addChild(modalBg);
             nextHypoTask();
         }
     }
     // event handler registration
-    // dismissHelp1.addEventListener("click", help1ToHelp2);
-    // dismissHelp2.addEventListener("click", help2ToHelp3);
-    // dismissHelp3.addEventListener("click", help3ToHelp4);
-    // dismissHelp4.addEventListener("click", help4ToHelp5);
-    // dismissHelp5.addEventListener("click", hideHelp5);
+    modalBg.on("click", noop);
     dismissHelp.addEventListener("click", hideHelp);
     dismissNotepadPaste.addEventListener("click", hidePasteNotes);
     dismissDrawCptMap.addEventListener("click", hideDrawCptMap);
@@ -2375,9 +2320,7 @@ function conceptMapPage(whichHypo, prediction)
         showHelpButton,
         conceptsDropDown,
         backButton, verifyButton, nextButton,
-        modalBg,
-        combinedHelp,
-        saveWarning, notepadPaste, drawCptMap
+        help, saveWarning, notepadPaste, drawCptMap
     );
     // help1, help2, help3, help4, help5,
     // cptsButton,
@@ -2528,7 +2471,7 @@ function verifyConceptMap(ivBubble) {
     }
     // checking at least one intermediate bubble
     if (currentBubbles.length < 3) {
-        showSnackbar("Please add at least one intermediate bubble.")
+        showSnackbar("Please add at least one intermediate bubble.");
         return false;
     }
     // checking everything is labeled
