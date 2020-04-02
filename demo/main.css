@@ -462,8 +462,9 @@ button:hover {
   height: fit-content;
   width: 600px;
 }
+
 .img-container {
-  padding-top: 10px;
+  /* padding-top: 10px; */
   margin-left: auto;
   margin-right: auto;
   width: -webkit-fit-content;
@@ -494,14 +495,13 @@ button:hover {
 
 #concepts_list_overlay {
   background-color: #fff3d9;
-  /* width: calc(fit-content + 200px); */
   width: 500px;
 }
 
 #concepts_list_header {
   font-size: 28px;
-  
 }
+
 #concepts_list {
   margin-top: 12px;
   margin-bottom: 12px;
@@ -606,8 +606,19 @@ dd {
   padding-left: 40px;
   padding-right: 40px;
   margin-bottom: 20px;
-  height: 400px;
-  width: 800px;
+  height: 650px;
+  width: 1050px;
   overflow-wrap: normal;
   overflow-y: auto;
+}
+
+div.left {
+  vertical-align: top;
+  display: inline-block;
+  width: 55%;
+}
+div.right {
+  vertical-align: top;
+  display: inline-block;
+  width: 44%;
 }
