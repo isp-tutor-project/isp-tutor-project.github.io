@@ -2202,6 +2202,9 @@ function conceptMapPage(whichHypo, prediction)
         cvs.toBlob(function (blob) {
             link.href = URL.createObjectURL(blob);
             link.click();
+            setTimeout(function() {
+                leavePage();
+            }, 500);
         });
     }
 
@@ -2289,15 +2292,19 @@ function conceptMapPage(whichHypo, prediction)
             console.log("verification failed");
         }
     }
+    function leavePage() {
+        disableElements();
+        dealWithDOMElements();
+        // add background for 'home' modal
+        stage.addChild(modalBg);
+        nextHypoTask();
 
+    }
     function nextButtonHandler(e) {
         if (!hypoSaved) {
             showSaveWarning();
         } else {
-            dealWithDOMElements();
-            // add background for 'home' modal
-            stage.addChild(modalBg);
-            nextHypoTask();
+            leavePage();
         }
     }
     // event handler registration
