@@ -257,31 +257,32 @@ function loadData() {
         secondPrediction = userData.secondPrediction;
         finalHypoLocked = userData.finalHypo !== null;
         
-        let moduleData = userData.rqted.moduleState;
-        let area = moduleData['selectedArea']['index'];
-        let topic = moduleData['selectedTopic']['index'];
-        let variable = moduleData['selectedVariable']['index'];
-        // ontology stuff
-        let ontologyTopic = ontology['_ONTOLOGY']['S']['A' + area]['T' + topic];
-        iv = ontologyTopic['enumValue' + variable];
-        dv = ontologyTopic['DVs'];
-        dvabb = ontologyTopic['DVabb'];
-        // hypoOntology stuff
-        let hypoOntologyTopic = hypoOntology['A' + area]['T' + topic]['V' + variable];
-        if (hypoOntologyTopic['IV'] != "") {
-            iv = hypoOntologyTopic['IV'];
-        }
-        if (hypoOntologyTopic['DV'] != "") {
-            dv = hypoOntologyTopic['DV'];
-        }
-        if (hypoOntologyTopic['DVabb'] != "") {
-            dvabb = hypoOntologyTopic['DVabb'];
-        }
-        causes = hypoOntologyTopic['CAUSES'];
-        nodes = hypoOntologyTopic['NODES'];
-        nodes[-2] = iv;
-        nodes[-1] = dvabb;
-
+        if (userData.rqted && userData.rqted.moduleState) {
+            let moduleData = userData.rqted.moduleState;
+            let area = moduleData['selectedArea']['index'];
+            let topic = moduleData['selectedTopic']['index'];
+            let variable = moduleData['selectedVariable']['index'];
+            // ontology stuff
+            let ontologyTopic = ontology['_ONTOLOGY']['S']['A' + area]['T' + topic];
+            iv = ontologyTopic['enumValue' + variable];
+            dv = ontologyTopic['DVs'];
+            dvabb = ontologyTopic['DVabb'];
+            // hypoOntology stuff
+            let hypoOntologyTopic = hypoOntology['A' + area]['T' + topic]['V' + variable];
+            if (hypoOntologyTopic['IV'] != "") {
+                iv = hypoOntologyTopic['IV'];
+            }
+            if (hypoOntologyTopic['DV'] != "") {
+                dv = hypoOntologyTopic['DV'];
+            }
+            if (hypoOntologyTopic['DVabb'] != "") {
+                dvabb = hypoOntologyTopic['DVabb'];
+            }
+            causes = hypoOntologyTopic['CAUSES'];
+            nodes = hypoOntologyTopic['NODES'];
+            nodes[-2] = iv;
+            nodes[-1] = dvabb;
+        } 
         // console.log(`
         // firstPrediction: ${firstPrediction}
         // initialHypoLocked: ${initialHypoLocked}
