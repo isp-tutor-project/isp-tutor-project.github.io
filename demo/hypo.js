@@ -129,20 +129,34 @@ const QUIZ_ANSWERS = [
 // placeholder (Crystal) constants regarding values of nodes
 // FIXME: we need a better way to have default values without resorting to 
 // globals
-const IV = "Initial water temperature"
-const DV = "Amount crystal growth on string"
+// const IV = "Initial water temperature"
+// const DV = "Amount crystal growth on string"
+// // there can be 1 - 8 nodes (or else it will look strange)
+// const NODES = [
+//     "Kinetic energy of water molecules",
+//     "Evaporation rate of water",
+//     "Amount of water in jar",
+//     "Concentration of Na+ and Cl- in water",
+//     "Amount of water string absorbs"
+// ];
+// const CAUSES = [
+//     "Electric force",
+//     "Conservation of matter",
+//     "Energy to escape electric forces"
+// ];
+const IV = "Independent Variable"
+const DV = "Dependent Variable"
 // there can be 1 - 8 nodes (or else it will look strange)
 const NODES = [
-    "Kinetic energy of water molecules",
-    "Evaporation rate of water",
-    "Amount of water in jar",
-    "Concentration of Na+ and Cl- in water",
-    "Amount of water string absorbs"
+    "Concept 1",
+    "Concept 2",
+    "Concept 3"
 ];
 const CAUSES = [
-    "Electric force",
-    "Conservation of matter",
-    "Energy to escape electric forces"
+    "Cause 1",
+    "Cause 2",
+    "Cause 3",
+    "Cause 4"
 ];
 
 /*
