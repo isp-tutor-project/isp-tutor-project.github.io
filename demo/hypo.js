@@ -468,7 +468,7 @@ function initStage() {
     makeResponsive(true, 'both', true, 1);
 
     // required to enable mouse hover events
-    stage.enableMouseOver(10);
+    stage.enableMouseOver(5);
     // Ticker is primarily for mouse hover event
     createjs.Ticker.addEventListener("tick", stage);
 }
@@ -2037,15 +2037,32 @@ function updateConceptsMenu(menu) {
 function conceptMapPage(whichHypo, prediction)
 {
     stage.removeAllChildren();
+
+    let hypoSaved = false;
+    let ivBubble, dvBubble, arrow, showHelp;
+    // set a white background to the stage so it isn't transparent when
+    // we take an image of it
     let bg = new createjs.Shape();
     bg.graphics
       .setStrokeStyle(1)
       .beginStroke("#FFF")
       .beginFill("#FFF")
       .drawRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    // add this to the stage immediately, so it literally is in the background
     stage.addChild(bg);
-    let hypoSaved = false;
-    let ivBubble, dvBubble, arrow, showHelp;
+    
+    // gray background which we place on top of everything (other than
+    // DOM Elements) when displaying a modal.  I had to set mouseEnabled
+    // to true, and setup a noop click handler so that it actually prevents
+    // stage elements from still being interactive
+    let modalBg = new createjs.Shape();
+    modalBg.graphics
+        .setStrokeStyle(1)
+        .beginStroke("#000")
+        .beginFill("#000")
+        .drawRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    modalBg.alpha = 0.02;
+    modalBg.mouseEnabled = true;
 
     let lightBulb = new createjs.Bitmap(queue.getResult("lightbulb")).set({
         x: 10, y: 10, scaleX: 0.5, scaleY: 0.5
@@ -2076,7 +2093,7 @@ function conceptMapPage(whichHypo, prediction)
     });
 
     let help = new createjs.DOMElement("combined_cpt_map_help").set({
-        x: 45 * 2 / PIXEL_RATIO, y: 30 * 2 / PIXEL_RATIO,
+        x: 70 * 2 / PIXEL_RATIO, y: 30 * 2 / PIXEL_RATIO,
         scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     });
     let modalProps = {
@@ -2099,21 +2116,32 @@ function conceptMapPage(whichHypo, prediction)
     let backButton = createBackButton();
     let nextButton = createNextButton();
 
-    let modalBg = new createjs.Shape();
-    modalBg.graphics
-        .setStrokeStyle(1)
-        .beginStroke("#000")
-        .beginFill("#000")
-        .drawRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-    modalBg.alpha = 0.2;
-    modalBg.mouseEnabled = true;
-
-    // event handlera and other functions
+    
+    // event handlers and other functions
     function noop(e) {
         return;
     }
 
+    function disableElements() {
+        currentBubbles.forEach((bub) => bub.disable());
+        arrowz.forEach((arr) => arr.disable());
+        conceptsMenu.setAttribute("disabled", true);
+        verifyButton.disable();
+        showHelpButton.disable();
+        stage.update();
+    }
+
+    function enableElements() {
+        currentBubbles.forEach((bub) => bub.enable());
+        arrowz.forEach((arr) => arr.enable());
+        conceptsMenu.removeAttribute("disabled");
+        verifyButton.enable();
+        showHelpButton.enable();
+        stage.update();
+    }
+
     function showModal(modal) {
+        disableElements();
         stage.addChild(modalBg);
         stage.update();
         showDOMElement(modal);
@@ -2121,19 +2149,26 @@ function conceptMapPage(whichHypo, prediction)
 
     function hideModal(modal) {
         hideDOMElement(modal);
+        enableElements();
         stage.removeChild(modalBg);
         stage.update();
     }
 
-    function displayHelp() {
-        hideAllMenuOptions(conceptsMenu);
-        showModal(help);
-        helpContents.scrollTop = 0;
+    function displayHelp(e) {
+        // delays the disabling of ui elements by 1/2 second to
+        // avoid race condition where 'show help' button reverts
+        // back to alpha 1 (when the "hover" state ends) which
+        // occurs *after* we disable the button (which had already set it's
+        // alpha to 0.5)
+        setTimeout(function() {
+            showModal(help);
+            // slide scroll bar to top of scrolling div
+            helpContents.scrollTop = 0;
+        }, 500);
     }
 
     function hideHelp() {
         hideModal(help);
-        updateConceptsMenu(conceptsMenu);
     }
     
     function showSaveWarning() {
@@ -2141,11 +2176,12 @@ function conceptMapPage(whichHypo, prediction)
     }
 
     function showPasteNotes() {
+        // grabs the html from the notePadPage's notebook, munges it a bit
+        // so that it's text, and display it in a div in the notpadPaste modal
         let npn = document.getElementById("notepad_notes");
         let cht = document.getElementById("current_hypo_text");
         let hypoText = notepadHtmlAsText(npn.innerHTML);
         cht.innerText = wrapText(hypoText, 40);
-
         showModal(notepadPaste);
     }
 
@@ -2154,8 +2190,10 @@ function conceptMapPage(whichHypo, prediction)
         showModal(drawCptMap);
     }
 
-
     function hideDrawCptMap() {
+        // called when user clicks 'Download' button
+        // hides the modal and then creates an image (as a blob) of the
+        // canvas, and downloads it as a file "concept_map.png"
         hideModal(drawCptMap);
         let link = document.createElement("a");
         link.style.display = "none";
@@ -2263,7 +2301,7 @@ function conceptMapPage(whichHypo, prediction)
         }
     }
     // event handler registration
-    modalBg.on("click", noop);
+    // modalBg.on("click", noop);
     dismissHelp.addEventListener("click", hideHelp);
     dismissNotepadPaste.addEventListener("click", hidePasteNotes);
     dismissDrawCptMap.addEventListener("click", hideDrawCptMap);
@@ -2291,7 +2329,8 @@ function conceptMapPage(whichHypo, prediction)
         currentBubbles.push(dvBubble);
         arrowz.push(arrow);
         stage.addChild(ivBubble, dvBubble, arrow);
-        showHelp = true;
+        // showHelp = true;
+        showHelp = false;
     } else {
         redrawHypo();
         ivBubble = currentBubbles.filter(
@@ -2770,6 +2809,15 @@ function createDeletableBubble(x, y, text, color, direction) {
         // make sure to redraw the stage to show the change:
         stage.update();
     });
+    bubble.disable = () => {
+        bubble.alpha = 0.5;
+        bubble.mouseEnabled = false;
+    };
+    bubble.enable = () => {
+        bubble.alpha = 1.0;
+        bubble.mouseEnabled = true;
+    }
+
     return bubble;
 }
 
@@ -2906,6 +2954,14 @@ function createFixedBubble(x, y, text, color, direction, isDV) {
     bubble.regY = BUBBLE_HEIGHT / 2;
     bubble.topConnector = topConnector;
     bubble.addChild(background, label, dirButton, topConnector);
+    bubble.disable = () => {
+        bubble.alpha = 0.5;
+        bubble.mouseEnabled = false;
+    };
+    bubble.enable = () => {
+        bubble.alpha = 1.0;
+        bubble.mouseEnabled = true;
+    }
 
     return bubble;
 }
@@ -3048,6 +3104,14 @@ function createTextWidthButton(x, y, text, color=BUTTON_COLOR) {
     button.mouseChildren = false;
     button.on('mouseover', handleMouseOver);
     button.on('mouseout', handleMouseOver);
+    button.disable = () => {
+        button.alpha = 0.5;
+        button.mouseEnabled = false;
+    };
+    button.enable = () => {
+        button.alpha = 1.0;
+        button.mouseEnabled = true;
+    }
     return button;
 }
 
@@ -3453,6 +3517,14 @@ function createUnlabeledArrow(startX, startY, endX, endY) {
         .drawPolyStar(lineLength - triangleSize, 0, triangleSize, 3);
     // rotate
     arrow.rotation = Math.atan2(h, w) * 180 / Math.PI;
+    arrow.disable = () => {
+        arrow.alpha = 0.5;
+        arrow.mouseEnabled = false;
+    };
+    arrow.enable = () => {
+        arrow.alpha = 1.0;
+        arrow.mouseEnabled = true;
+    }
     return arrow;
 }
 
@@ -3521,6 +3593,15 @@ function createArrow(startX, startY, endX, endY, arrowLabel) {
     labelBox.name = "labelBox";
     labelBox.addChild(labelBg, label);
     arrow.addChild(labelBox);
+    arrow.disable = () => {
+        arrow.alpha = 0.5;
+        arrow.mouseEnabled = false;
+    };
+    arrow.enable = () => {
+        arrow.alpha = 1.0;
+        arrow.mouseEnabled = true;
+    }
+
     return arrow;
 }
 
