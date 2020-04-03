@@ -39,29 +39,28 @@ class Database {
     }
 
     getRQData() {
-        let retVal;
+        let retVal = null;
         
         return this.getJSONValue("rqted")
-            .then((rqted) => {
-                if (rqted) {
-                    retVal = rqted;
-                } else {
-                    retVal = {
-                        moduleState: {
-                            selectedArea: { index: 1 },
-                            selectedTopic: { index: 1 },
-                            selectedVariable: { index: 1 },
-                            selectedRQ: { index: 1 }
-                        }
-                    };
-                }
-                return retVal;
-            })
-            .catch((err) => {
-                console.error(err);
-                return retVal;
-            });
+        .then((rqted) => {
+            // console.log(rqted);
+            if (rqted) {
+                retVal = rqted;
+            }
+            // console.log(retVal); 
+            return retVal;
+        })
+        .catch((err) => {
+            console.error(err);
+            return retVal;
+        });
     }
+    // moduleState: {
+    //     selectedArea: { index: 1 },
+    //     selectedTopic: { index: 1 },
+    //     selectedVariable: { index: 1 },
+    //     selectedRQ: { index: 1 }
+    // }
 
     getIntialHypoData() {
         let data = {};
