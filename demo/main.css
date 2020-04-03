@@ -178,6 +178,17 @@ button:hover {
   margin: 40px 20px;
 }
 
+.modal-btn-container {
+  text-align: center;
+}
+
+.modal-btn {
+  display: inline-blick;
+  width: 25%;
+  padding: 10px 0px;
+  margin: 10px 20px;
+}
+
 .disabled {
   background-color: gray;
   cursor: default;
@@ -368,7 +379,7 @@ button:hover {
   padding: 10px;
   margin: 20px;
 }
-
+/* 
 #leave_concept_map_overlay {
   position: absolute;
   top: 0;
@@ -384,7 +395,7 @@ button:hover {
   font-size: 20px;
   padding: 10px;
   margin: 20px;
-}
+} */
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
 #snackbar {
@@ -576,13 +587,13 @@ button:hover {
   word-spacing: 2px;
   outline: none;
 }
-
+/* 
 #semi_transparent_bg {
   background-color: rgba(0,0,0,.1);
   width: 1522px;
   height: 950px;
   z-index: 2;
-}
+} */
 
 dt {
   font-weight: bold;
@@ -594,20 +605,40 @@ dd {
 
 .combined-help {
   background-color: white;
+  border: 1px solid black;
+  box-shadow: 10px 10px lightgray;
 }
 
 .concept-map-help-heading {
+  position: relative;
+  padding-top: 5px;
+  padding-bottom: 5px;
   text-align: center;
-  background-color: blue;
+  background-color: #136bfb;
   color: white;
   font-size: 28px;
 }
+
+.close-button {
+  position: absolute;
+  background-color: #136bfb;
+  color: white;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  width: 25px;
+  height: 25px;
+  top: 4px;
+  right: 2px;
+}
+
 .combined-help-contents {
   padding-left: 40px;
   padding-right: 40px;
   margin-bottom: 20px;
-  height: 650px;
-  width: 1050px;
+  height: 500px;
+  width: 800px;
   overflow-wrap: normal;
   overflow-y: auto;
 }
