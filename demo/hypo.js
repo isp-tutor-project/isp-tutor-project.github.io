@@ -2308,7 +2308,6 @@ function conceptMapPage(whichHypo, prediction)
         }
     }
     // event handler registration
-    // modalBg.on("click", noop);
     dismissHelp.addEventListener("click", hideHelp);
     dismissNotepadPaste.addEventListener("click", hidePasteNotes);
     dismissDrawCptMap.addEventListener("click", hideDrawCptMap);
@@ -2368,8 +2367,6 @@ function conceptMapPage(whichHypo, prediction)
         backButton, verifyButton, nextButton,
         help, saveWarning, notepadPaste, drawCptMap
     );
-    // help1, help2, help3, help4, help5,
-    // cptsButton,
 
     stage.on("stagemouseup", removePanel);
     stage.update();
@@ -2475,13 +2472,7 @@ function handleCauseClick(x, y, target) {
 
 function getNotepadWords(notePadHtml) {
     let text = notepadHtmlAsText(notePadHtml);
-    // let text = notePadHtml.toString();
-    // text = text.replace(/<div>/g, "");
-    // text = text.replace(/<\/div>/g, "\n");
-    // text = text.replace(/<br>/g, "\n");
-    // console.log(text);
     let words = text.split(/\s+/).filter((word) => word !== "");
-    // console.log(words);
     return words;
 }
 
@@ -2653,11 +2644,6 @@ function createInConnector(x, y) {
         showSnackbar(
             "Make sure that you are dragging from a black circle to a white circle."
         );
-        // updateErrorField(
-        //     "Make sure that you are dragging from a black circle to a white circle.",
-        //     "16px Arial",
-        //     "gray"
-        // );
     });
 
     return connector;
@@ -2851,8 +2837,6 @@ function createBubble(x, y, text, color, direction) {
 
     let leftConnector = createInConnector(0, BUBBLE_HEIGHT / 2);
     let rightConnector = createOutConnector(BUBBLE_WIDTH, BUBBLE_HEIGHT / 2);
-    //let downConnector = createInConnector(BUBBLE_WIDTH/2, BUBBLE_HEIGHT);
-    //let upConnector = createOutConnector(BUBBLE_WIDTH/2, 0);
 
     let bubble = new createjs.Container();
     bubble.x = x;
@@ -3122,19 +3106,19 @@ function createTextWidthButton(x, y, text, color=BUTTON_COLOR) {
     return button;
 }
 
-function createLeftButton(text, color=BUTTON_COLOR) {
-    return createButton(CANVAS_WIDTH * 0.1,
-        CANVAS_HEIGHT - BUTTON_HEIGHT - 10,
-        text,
-        color);
-}
+// function createLeftButton(text, color=BUTTON_COLOR) {
+//     return createButton(CANVAS_WIDTH * 0.1,
+//         CANVAS_HEIGHT - BUTTON_HEIGHT - 10,
+//         text,
+//         color);
+// }
 
-function createRightButton(text, color=BUTTON_COLOR) {
-    return createButton(CANVAS_WIDTH * 0.9 ,
-        CANVAS_HEIGHT - BUTTON_HEIGHT - 10,
-        text,
-        color);
-}
+// function createRightButton(text, color=BUTTON_COLOR) {
+//     return createButton(CANVAS_WIDTH * 0.9 ,
+//         CANVAS_HEIGHT - BUTTON_HEIGHT - 10,
+//         text,
+//         color);
+// }
 
 // perhaps a bad name. a button with an arrow image, not to be confused
 // with actual arrows
@@ -3183,7 +3167,6 @@ function createArrowButton(x, name, direction) {
 }
 
 function createBackButton() {
-    // return createArrowButton(CANVAS_WIDTH * (1 / 12), "back button", "left");
     return createArrowButton((CANVAS_WIDTH * 0.1) - BUTTON_WIDTH,
                              "back button",
                              "left");
@@ -3191,7 +3174,6 @@ function createBackButton() {
 
 
 function createNextButton() {
-    // return createArrowButton(CANVAS_WIDTH * (11 / 12), 'next button', "right");
     return createArrowButton((CANVAS_WIDTH * 0.9) + BUTTON_WIDTH,
                              'next button',
                              "right");
