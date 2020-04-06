@@ -10,21 +10,6 @@
 /*global initHypoTasks */
 /*global currHypoTask, prevHypoTask, nextHypoTask */
 
-// xxs, xs, sm, med, lg, xl, xxl
-// FONTS_arial = [ 12px, 14px_italic, 16px, 16px_bold, 18px, 20px, 22px, 22px_bold, 24px, 24px_bold, 28px, 32px,]
-// COLORS = [
-//     "#f4d041",
-//     "#000",
-//     "#FFFFFF",
-//     "#3769C2",
-//     "#5588EE",
-//     "#99bbff",
-//     "#2858a9",
-//     "#FFa500",
-//     "#4286f4",
-//     "#FFFFE0"
-// ];
-
 // ============================================================================
 // ======================== Constants and Variables ===========================
 // ============================================================================
@@ -83,14 +68,10 @@ const CONNECTOR_RADIUS = 5;
 // nodes/bubbles are centered upon the x and y positions selected
 const BUBBLE_X = CANVAS_WIDTH / 4;
 const BUBBLE_Y = CANVAS_HEIGHT * .75 - 1.5 * BUBBLE_HEIGHT;
-// const IV_X = CANVAS_WIDTH / 4;
 const IV_X = CANVAS_WIDTH * 0.1;
-// const IV_Y = CANVAS_HEIGHT * 0.75;
 const IV_Y = CANVAS_HEIGHT * 0.8;
 
-// const DV_X = CANVAS_WIDTH * .75;
 const DV_X = CANVAS_WIDTH * 0.9;
-// const DV_Y = CANVAS_HEIGHT * .75;
 const DV_Y = CANVAS_HEIGHT * 0.8;
 
 // these are for displaying information
@@ -104,8 +85,6 @@ let currentArrow = null;
 let connectorOver = null;
 let somethingHighlighted = false;
 
-// for error field purposes
-// let errorField;
 // for option width purposes
 let optionWidth;
 
@@ -1203,10 +1182,7 @@ function instructionPage() {
     stage.removeAllChildren();
     let delayStarted = false;
     let delayAchieved = false;
-    // add error field
-    errorField = new createjs.Container();
-    errorField.y = 10;
-
+    
     let text = new createjs.Text("Instructions", "bold 22px Arial", "#000").set({
         x: CANVAS_WIDTH / 2, y: (CANVAS_HEIGHT / 8) - 15, textAlign: "center"
     });
@@ -1229,9 +1205,6 @@ function instructionPage() {
     nextButton.on("click", e => {
         if (!delayStarted) {
             showSnackbar("Please watch the tutorial video.");
-            // updateErrorField(
-            //     "Please watch the tutorial video.", "24px Arial", "#000"
-            // );
             nextButton.disable();
             delayStarted = true;
             setTimeout(() => {
@@ -1259,7 +1232,7 @@ function instructionPage() {
         x: CANVAS_WIDTH / 2, y: CANVAS_HEIGHT * 0.8, textAlign: "center"
     });
 
-    stage.addChild(errorField, text, video, backButton, nextButton, advice);
+    stage.addChild(text, video, backButton, nextButton, advice);
     stage.update();
 }
 
@@ -1298,10 +1271,6 @@ function backToYourRQ() {
 function predictionPage1() {
     stage.removeAllChildren();
 
-    // add error field
-    errorField = new createjs.Container();
-    errorField.y = 10;
-
     let title = new createjs.Text(
         "Make your prediction:", "bold 22px Arial", "#000"
     ).set({
@@ -1333,18 +1302,12 @@ function predictionPage1() {
         // display message that they cannot change the value and
         // don't setup the click handlers
         showSnackbar(firstPredictionLockedReason + " You cannot change your prediction.");
-        // updateErrorField(
-        //     firstPredictionLockedReason + " You cannot change your prediction.",
-        //     "22px Arial",
-        //     '#000'
-        // );
     } else {
         generateHitAreaCenterAlignment(choice1);
         choice1.on("click", e => {
             choice1.color = "#5588EE";
             choice2.color = "#000";
             chosenDVDirection = true;
-            // console.log(choice1);
         });
         generateHitAreaCenterAlignment(choice2);
         choice2.on("click", e => {
@@ -1374,11 +1337,6 @@ function predictionPage1() {
     nextButton.on("click", e => {
         if (chosenDVDirection === undefined) {
             showSnackbar('Please select either "Increase" or "Decrease".');
-            // updateErrorField(
-            //     'Please select either "Increase" or "Decrease".',
-            //     "16px Arial",
-            //     "#000"
-            // );
         } else {
             firstPrediction = chosenDVDirection;
             logPrediction("firstPrediction", firstPrediction)
@@ -1393,7 +1351,7 @@ function predictionPage1() {
     });
 
     stage.addChild(
-        errorField, title, question, choice1, choice2, backButton, nextButton
+        title, question, choice1, choice2, backButton, nextButton
     );
     stage.update();
 }
@@ -1615,10 +1573,7 @@ function biDirInstructionPage3() {
 
 function brmPage() {
     stage.removeAllChildren();
-    // add error field
-    errorField = new createjs.Container();
-    errorField.y = 10;
-
+   
     let brmBtnClicked = false;
     let text = new createjs.Text(
         'Click the "Go to Background Research website" button to go to the ' +
@@ -1661,18 +1616,13 @@ function brmPage() {
     nextButton.on("click", e => {
         if (!brmBtnClicked) {
             showSnackbar("Please click on the 'Go to Background Research website' button");
-            // updateErrorField(
-            //     "Please click on the 'Go to Background Research website' button",
-            //     "bold 22px Arial",
-            //     "#000"
-            // );
             nextButton.disable();
         } else {
             nextHypoTask();
         }
     });
 
-    stage.addChild(errorField, text, brmButton, backButton, nextButton);
+    stage.addChild(text, brmButton, backButton, nextButton);
     stage.update();
 }
 
@@ -1685,10 +1635,6 @@ function predictionPage2() {
     // finalHypoLocked: ${finalHypoLocked}
     // `);
     
-    // add error field
-    errorField = new createjs.Container();
-    errorField.y = 10;
-
     let title = new createjs.Text(
         "What do you think now (that you've finished your research in the " +
         "Background Research website)?",
@@ -1730,11 +1676,6 @@ function predictionPage2() {
     if (finalHypoLocked) {
         // display message and don't add event listeners
         showSnackbar("You have already saved your hypothesis and cannot change your prediction.");
-        // updateErrorField(
-        //     "You have already saved your hypothesis and cannot change your prediction.",
-        //     "22px Arial",
-        //     "#000"
-        // );
     } else {
         generateHitAreaCenterAlignment(choice1);
         choice1.on("click", e => {
@@ -1764,11 +1705,6 @@ function predictionPage2() {
     nextButton.on("click", e => {
         if (chosenDVDirection === undefined) {
             showSnackbar('Please select either "Increase" or "Decrease".');
-            // updateErrorField(
-            //     'Please select either "Increase" or "Decrease".',
-            //     "16px Arial",
-            //     "#000"
-            // );
         } else {
             secondPrediction = chosenDVDirection;
             logPrediction("secondPrediction", secondPrediction)
@@ -1786,7 +1722,7 @@ function predictionPage2() {
     });
     
     stage.addChild(
-        errorField, title, question, choice1, choice2, backButton, nextButton
+        title, question, choice1, choice2, backButton, nextButton
     );
     stage.update();
 }
@@ -2614,29 +2550,9 @@ function verifyConceptMap(ivBubble) {
     return isGood;
 }
 
-function createErrorField() {
-    let errFld = new createjs.Container().set({
-        name: "error field"
-    });
-    return errFld;
-}
-
-function updateErrorField(text, font, color) {
-    errorField.removeAllChildren();
-    let words = new createjs.Text(text, font, color);
-    words.x = CANVAS_WIDTH / 2;
-    words.textAlign = "center";
-    errorField.addChild(words);
-}
-
 function removePanel(event) {
     //console.log(event.stageX);
     stage.removeChild(panel);
-    stage.update();
-}
-
-function removeErrorField(event) {
-    errorField.removeAllChildren();
     stage.update();
 }
 
@@ -3153,20 +3069,6 @@ function createTextWidthButton(x, y, text, color=BUTTON_COLOR) {
     }
     return button;
 }
-
-// function createLeftButton(text, color=BUTTON_COLOR) {
-//     return createButton(CANVAS_WIDTH * 0.1,
-//         CANVAS_HEIGHT - BUTTON_HEIGHT - 10,
-//         text,
-//         color);
-// }
-
-// function createRightButton(text, color=BUTTON_COLOR) {
-//     return createButton(CANVAS_WIDTH * 0.9 ,
-//         CANVAS_HEIGHT - BUTTON_HEIGHT - 10,
-//         text,
-//         color);
-// }
 
 // perhaps a bad name. a button with an arrow image, not to be confused
 // with actual arrows
