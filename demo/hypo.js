@@ -120,11 +120,6 @@ let queue;
 // for the loading text at start
 let loadingText;
 
-// answers for quiz questions on definitionPage6
-// FIXME: couldn't I define this in defPage6???
-const QUIZ_ANSWERS = [
-    "Causes", "Correlation", "Definition", "Causes", "Definition"
-];
 
 // placeholder (Crystal) constants regarding values of nodes
 // FIXME: we need a better way to have default values without resorting to 
@@ -1093,7 +1088,20 @@ function definitionPage9() {
 }
 
 function definitionPage10() {
+    // answers for quiz questions
+    // const QUIZ_ANSWERS = [
+    //     "Causes", "Correlation", "Definition", "Causes", "Definition"
+    // ];
+    const QUIZ_ANSWERS = [
+        "Correlation", "Definition", "Causes", "Definition"
+    ];
+
     stage.removeAllChildren();
+
+    let heading = new createjs.Text(
+        "Check your understanding!", "bold 24px Arial", "#000").set({
+            x: CANVAS_WIDTH / 2, y: 20, textAlign: "center"
+    });
 
     let text1 = new createjs.Text(
         "For each phrase below, as one concept (underlined) increases, the " +
@@ -1105,23 +1113,23 @@ function definitionPage10() {
         x: 150, y: 100, lineWidth: 900, lineHeight: 30
     });
 
-    let text3 = new createjs.Text(
-        "Reminder: Correlations and causes are different types of relationships.",
-        "18px Arial",
-        "#000"
-    ).set({
-        x: 150, y: 470, lineHeight: 25, lineWidth: 800
-    });
+    // let text3 = new createjs.Text(
+    //     "Reminder: Correlations and causes are different types of relationships.",
+    //     "18px Arial",
+    //     "#000"
+    // ).set({
+    //     x: 150, y: 470, lineHeight: 25, lineWidth: 800
+    // });
 
-    let text4 = new createjs.Text(
-        "Just because two things are strongly related does not mean that one " +
-        "caused the other. There may be other reasons for this correlation. " +
-        "Both things may be caused by something else.",
-        "18px Arial",
-        "#000"
-    ).set({
-        x: 230, y: 520, lineHeight: 25, lineWidth: 800
-    });
+    // let text4 = new createjs.Text(
+    //     "Just because two things are strongly related does not mean that one " +
+    //     "caused the other. There may be other reasons for this correlation. " +
+    //     "Both things may be caused by something else.",
+    //     "18px Arial",
+    //     "#000"
+    // ).set({
+    //     x: 230, y: 520, lineHeight: 25, lineWidth: 800
+    // });
 
     let quiz = new createjs.DOMElement("quiz_overlay").set({
         x: 50 * 2 / PIXEL_RATIO, y: 50 * 2 / PIXEL_RATIO,
@@ -1180,10 +1188,11 @@ function definitionPage10() {
     nextButton.disable();
 
     stage.addChild(
-        text1, text3, text4,
+        heading, text1, 
         quiz, quizQuestions,
         backButton, verifyButton, nextButton
     );
+    // text3, text4,
     stage.update();
     showDOMElement(quiz);
     showDOMElement(quizQuestions);
