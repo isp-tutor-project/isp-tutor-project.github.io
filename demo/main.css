@@ -511,7 +511,10 @@ font-size: 10px;
 }
 
 #concepts_menu {
-  font-size: 28px;
+  font-size: 30px;
+}
+#concepts_menu option {
+  font-size: 24px;
 }
 
 #concepts_list_overlay {

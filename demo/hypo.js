@@ -2101,7 +2101,7 @@ function initializeConceptsMenu(menu) {
     for (let node of [...nodes].sort()) {
         let opt = document.createElement("option");
         opt.value = node;
-        opt.innerText = node;
+        opt.innerText = ` ${node} `;
         menu.appendChild(opt);
     }
     // updateConceptsMenu
