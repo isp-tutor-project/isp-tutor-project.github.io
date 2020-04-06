@@ -663,3 +663,17 @@ div.right {
   display: inline-block;
   width: 44%;
 }
+
+ol {
+  counter-reset: ordered;
+  list-style-type: none;
+}
+
+ol li::before {
+  counter-increment: ordered;
+  content: "("  counter(ordered)  ") ";
+}
+
+ol li {
+  padding-bottom: 20px;
+}
