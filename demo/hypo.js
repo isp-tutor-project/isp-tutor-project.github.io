@@ -480,9 +480,9 @@ const pageNamesToFunctions = {
     "definitionPage6": definitionPage6,
     "causes1": causes1,
     "causes2": causes2, 
-    "definitionPage8": definitionPage8,
-    "definitionPage9": definitionPage9,
-    "definitionPage10": definitionPage10,
+    "corr1": corr1,
+    "corr2": corr2,
+    "quizPage": quizPage,
     "instructionPage": instructionPage,
     "backToYourRQ": backToYourRQ,
     "predictionPage1": predictionPage1,
@@ -1027,7 +1027,7 @@ function causes2() {
     stage.update();
 }
 
-function definitionPage8() {
+function corr1() {
     stage.removeAllChildren();
     let text1 = new createjs.Text(
         "(3) Correlation: A relationship between two variables where both " +
@@ -1100,7 +1100,7 @@ function definitionPage8() {
     stage.update();
 }
 
-function definitionPage9() {
+function corr2() {
     stage.removeAllChildren();
     let text1 = new createjs.Text(
         "Just because two things are correlated does not mean that one caused " +
@@ -1161,7 +1161,7 @@ function definitionPage9() {
     stage.update();
 }
 
-function definitionPage10() {
+function quizPage() {
     // answers for quiz questions
     // const QUIZ_ANSWERS = [
     //     "Causes", "Correlation", "Definition", "Causes", "Definition"
