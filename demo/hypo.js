@@ -606,7 +606,7 @@ function lessonOverview() {
     stage.removeAllChildren();
 
     let html = new createjs.DOMElement("lesson_overview_overlay").set({
-        x: 20 * 2 / PIXEL_RATIO, y: 20 * 2 / PIXEL_RATIO, 
+        x: 20 * 2 / PIXEL_RATIO, y: 10 * 2 / PIXEL_RATIO, 
         scaleX: 0.6 * 2 / PIXEL_RATIO, scaleY: 0.6 * 2  / PIXEL_RATIO
     });
 
@@ -735,15 +735,15 @@ function definitionPage4() {
 
 function definitionPage5() {
     stage.removeAllChildren();
-    let image1 = new createjs.Bitmap(queue.getResult("defGraph")).set({
-        x: 60, y: 300, scaleX: 0.5, scaleY: 0.5
-    });
-    let image2 = new createjs.Bitmap(queue.getResult("causeGraph")).set({
-        x: 450, y: 500, scaleX: 0.5, scaleY: 0.5
-    });
-    let image3 = new createjs.Bitmap(queue.getResult("corrGraph")).set({
-        x: 800, y: 300, scaleX: 0.5, scaleY: 0.5
-    });
+    // let image1 = new createjs.Bitmap(queue.getResult("defGraph")).set({
+    //     x: 60, y: 300, scaleX: 0.5, scaleY: 0.5
+    // });
+    // let image2 = new createjs.Bitmap(queue.getResult("causeGraph")).set({
+    //     x: 450, y: 500, scaleX: 0.5, scaleY: 0.5
+    // });
+    // let image3 = new createjs.Bitmap(queue.getResult("corrGraph")).set({
+    //     x: 800, y: 300, scaleX: 0.5, scaleY: 0.5
+    // });
 
     let title = new createjs.Text(
         "Types of Relationships",
@@ -769,31 +769,36 @@ function definitionPage5() {
         "24px Arial",
         "#000"
     ).set({
-        x: CANVAS_WIDTH / 2, y: 280, textAlign: "center", lineHeight: 30
+        y: 300, textAlign: "left", lineHeight: 30
     });
-
-    let text3 = new createjs.Text('', 'italic 14px Arial', "#000").set({
-        x: CANVAS_WIDTH / 2, y: 370, textAlign: "center"
-    });
+    // hack to try and get left aligned text to align with center-aligned
+    // text above.  not sure why the width is so large though
+    let w = text2.getMeasuredWidth();
+    text2.x = (CANVAS_WIDTH / 2) - (w / 6);
+    // let text3 = new createjs.Text('', 'italic 14px Arial', "#000").set({
+    //     x: CANVAS_WIDTH / 2, y: 370, textAlign: "center"
+    // });
     
     let backButton = createBackButton();
     backButton.on("click", prevHypoTask);
     
     let nextButton = createNextButton();
-    let images = [image1, image2, image3];
-    let iteration = 0;
-    nextButton.on("click", e => {
-        if (iteration == 3) {
-            nextHypoTask();
-        } else {
-            // console.log(images[iteration]);
-            stage.addChild(images[iteration]);
-            stage.update();
-            iteration++;
-        }
-    });
+    // let images = [image1, image2, image3];
+    // let iteration = 0;
+    nextButton.on("click", nextHypoTask);
+    // nextButton.on("click", e => {
+    //     if (iteration == 3) {
+    //         nextHypoTask();
+    //     } else {
+    //         // console.log(images[iteration]);
+    //         stage.addChild(images[iteration]);
+    //         stage.update();
+    //         iteration++;
+    //     }
+    // });
 
-    stage.addChild(title, text1, text2, text3, backButton, nextButton);
+    stage.addChild(title, text1, text2, backButton, nextButton);
+    // text3,
     stage.update();
 }
 
@@ -804,7 +809,7 @@ function definitionPage6() {
         "bold 24px Arial",
         "#000"
     ).set({
-        x: CANVAS_WIDTH / 2, y: 80, textAlign: "center"
+        x: CANVAS_WIDTH / 2, y: 60, textAlign: "center"
     });
 
     let text1 = new createjs.Text(
