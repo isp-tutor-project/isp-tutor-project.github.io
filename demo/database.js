@@ -19,13 +19,17 @@ class Database {
             this.getTextValue("userID"),
             this.getTextValue("condition"),
             this.getRQData(),
+            this.getCurrHypoTask(),
             this.getIntialHypoData(),
             this.getFinalHypoData()
-        ]).then(([ccRes, uidRes, condRes, rqRes, ihRes, fhRes]) => {
+        ]).then(([ccRes, uidRes, condRes, rqRes, chtRes, ihRes, fhRes]) => {
             data.classCode = ccRes;
             data.userID = uidRes;
             data.condition = condRes;
             data.rqted = rqRes;
+            if (chtRes) {
+                data.currHypoTaskIdx = chtRes
+            }
             if (ihRes) {
                 data.firstPrediction = ihRes.firstPrediction;
                 data.initialHypo = ihRes.initialHypo;
@@ -61,7 +65,10 @@ class Database {
     //     selectedVariable: { index: 1 },
     //     selectedRQ: { index: 1 }
     // }
-
+    getCurrHypoTask() {
+        return this.getIntValue("currHypoTaskIdx")
+    }
+    
     getIntialHypoData() {
         let data = {};
         return this.getTextValue("firstPrediction")
