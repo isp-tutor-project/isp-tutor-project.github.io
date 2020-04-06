@@ -64,6 +64,7 @@ const conditionHypoTasks = {
     "demo": [
         "startPage",
         "definitionPage1",
+        "lessonOverview",
         "definitionPage2",
         "definitionPage3",
         "definitionPage4",

@@ -498,6 +498,7 @@ const pageNamesToFunctions = {
     "raiseYourHand": raiseYourHand,
     "startPage": startPage,
     "definitionPage1": definitionPage1,
+    "lessonOverview": lessonOverview,
     "definitionPage2": definitionPage2,
     "definitionPage3": definitionPage3,
     "definitionPage4": definitionPage4,
@@ -624,6 +625,29 @@ function definitionPage1() {
 
     stage.addChild(text, backButton, nextButton);
     stage.update();
+}
+
+function lessonOverview() {
+    stage.removeAllChildren();
+
+    let html = new createjs.DOMElement("lesson_overview_overlay").set({
+        x: 20 * 2 / PIXEL_RATIO, y: 20 * 2 / PIXEL_RATIO, 
+        scaleX: 0.6 * 2 / PIXEL_RATIO, scaleY: 0.6 * 2  / PIXEL_RATIO
+    });
+
+    let prevButton = createBackButton();
+    prevButton.on("click", function() {
+        hideDOMElement(html);
+        prevHypoTask();
+    });
+    let nextButton = createNextButton();
+    nextButton.on("click", function() {
+        hideDOMElement(html);
+        nextHypoTask();
+    });
+    stage.addChild(html, prevButton, nextButton);
+    stage.update();
+    showDOMElement(html);
 }
 
 function definitionPage2() {

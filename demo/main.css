@@ -328,6 +328,16 @@ button:hover {
   height: 250px;
 }
 
+#lesson_overview_overlay {
+font-size: 10px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 475px;
+  height: 250px;
+}
 .notepad {
   position: absolute;
   top: 0;
