@@ -809,7 +809,7 @@ function definitionPage6() {
         "bold 24px Arial",
         "#000"
     ).set({
-        x: CANVAS_WIDTH / 2, y: 60, textAlign: "center"
+        x: CANVAS_WIDTH / 2, y: 40, textAlign: "center"
     });
 
     let text1 = new createjs.Text(
@@ -817,7 +817,7 @@ function definitionPage6() {
         "24px Arial",
         "#000"
     ).set({
-        x: CANVAS_WIDTH / 2, y: 130, textAlign: "center"
+        x: CANVAS_WIDTH / 2, y: 100, textAlign: "center"
     });
 
     let text2 = new createjs.Text(
@@ -884,7 +884,7 @@ function causes1() {
         "bold 24px Arial",
         "#000"
     ).set({
-        x: CANVAS_WIDTH / 2, y: 50, textAlign: "center"
+        x: CANVAS_WIDTH / 2, y: 40, textAlign: "center"
     });
 
     let text1 = new createjs.Text(
@@ -893,7 +893,7 @@ function causes1() {
         "24px Arial",
         "#000"
     ).set({
-        x: CANVAS_WIDTH / 2, y: 80, textAlign: "center", lineWidth: 1000
+        x: CANVAS_WIDTH / 2, y: 90, textAlign: "center", lineWidth: 1000
     });
     
     let text2 = new createjs.Text(
@@ -951,7 +951,7 @@ function causes2() {
         "bold 24px Arial",
         "#000"
     ).set({
-        x: CANVAS_WIDTH / 2, y: 50, textAlign: "center"
+        x: CANVAS_WIDTH / 2, y: 40, textAlign: "center"
     });
 
     let text1 = new createjs.Text(
@@ -961,7 +961,7 @@ function causes2() {
         "24px Arial",
         "#000"
     ).set({
-        x: CANVAS_WIDTH / 2, y: 80, textAlign: "center", lineWidth: 1000
+        x: CANVAS_WIDTH / 2, y: 90, textAlign: "center", lineWidth: 1000, lineHeight: 20
     });
 
     let text2 = new createjs.Text(
@@ -1029,6 +1029,14 @@ function causes2() {
 
 function corr1() {
     stage.removeAllChildren();
+    let title = new createjs.Text(
+        "Types of Relationships for Hypotheses",
+        "bold 24px Arial",
+        "#000"
+    ).set({
+        x: CANVAS_WIDTH / 2, y: 40, textAlign: "center"
+    });
+
     let text1 = new createjs.Text(
         "(3) Correlation: A relationship between two variables where both " +
         "variables increase (or decrease) together, or one increases " +
@@ -1037,7 +1045,7 @@ function corr1() {
         "24px Arial",
         "#000"
     ).set({
-        x: CANVAS_WIDTH / 2, y: 80,
+        x: CANVAS_WIDTH / 2, y: 90,
         textAlign: "center", lineWidth: 1000, lineHeight: 30
     });
 
@@ -1053,9 +1061,10 @@ function corr1() {
     });
 
     let text3 = new createjs.Text(
-        "There is a correlation between the amount of ice cream people buy " +
-        "and how often people go swimming. But there’s no logical reason to " +
-        "think one caused the other!",
+        "Or, you might find a relationship between the amount of ice cream people " + 
+        "buy and how often people go swimming.  If you don't know why/how ice " + 
+        "cream sales directly affects how often people go swimming, then you'd " +
+        "call this relationship a correlation.",
         "18px Arial",
         "#000"
     ).set({
@@ -1096,20 +1105,30 @@ function corr1() {
         iteration++;
     });
     
-    stage.addChild(text1, backButton, nextButton);
+    stage.addChild(title, text1, backButton, nextButton);
     stage.update();
 }
 
 function corr2() {
     stage.removeAllChildren();
+
+    let title = new createjs.Text(
+        "Types of Relationships for Hypotheses",
+        "bold 24px Arial",
+        "#000"
+    ).set({
+        x: CANVAS_WIDTH / 2, y: 40, textAlign: "center"
+    });
+
     let text1 = new createjs.Text(
-        "Just because two things are correlated does not mean that one caused " +
-        "the other. There may be other reasons for two variables to change " +
-        "together. For example, both variables might be caused by a third variable.",
+        "(3) Correlation: Just because two things are correlated does not mean " +
+        "that one caused the other. There may be other reasons for two variables " + 
+        "to change together. For example, both variables might be caused by a " +
+        "third variable.",
         "24px Arial",
         "#000"
     ).set({
-        x: CANVAS_WIDTH / 2, y: 80,
+        x: CANVAS_WIDTH / 2, y: 90,
         textAlign: "center", lineWidth: 1000, lineHeight: 30
     });
 
@@ -1119,7 +1138,7 @@ function corr2() {
         "18px Arial",
         "#000"
     ).set({
-        x: 110, y: 230, lineHeight: 25, lineWidth: 460,
+        x: 110, y: 260, lineHeight: 25, lineWidth: 460,
     });
 
     let text3 = new createjs.Text(
@@ -1128,7 +1147,7 @@ function corr2() {
         "18px Arial",
         "#000"
     ).set({
-        x: 650, y: 230, lineHeight: 25, lineWidth: 460
+        x: 650, y: 260, lineHeight: 25, lineWidth: 460
     });
 
     let image1 = new createjs.Bitmap(queue.getResult("causation_correlation")).set({
@@ -1157,7 +1176,7 @@ function corr2() {
         iteration++;
     });
     
-    stage.addChild(text1, backButton, nextButton);
+    stage.addChild(title, text1, backButton, nextButton);
     stage.update();
 }
 
@@ -2181,9 +2200,9 @@ function conceptMapPage(whichHypo, prediction)
     let notepadPaste = new createjs.DOMElement("notepad_paste").set(modalProps);
     let drawCptMap = new createjs.DOMElement("draw_cpt_map").set(modalProps);
 
-    let verifyButton = createTextWidthButton(
-        CANVAS_WIDTH / 2, CANVAS_HEIGHT * 0.95, " I'm Finished ", BUTTON_COLOR
-    );
+    // let verifyButton = createTextWidthButton(
+    //     CANVAS_WIDTH / 2, CANVAS_HEIGHT * 0.95, " I'm Finished ", BUTTON_COLOR
+    // );
     let dismissHelp = document.getElementById("dismiss_cpt_map_help");
     let helpContents = document.getElementById("cpt_map_help_contents")
     let dismissNotepadPaste = document.getElementById("dismiss_notepad_paste");
@@ -2203,7 +2222,9 @@ function conceptMapPage(whichHypo, prediction)
         currentBubbles.forEach((bub) => bub.disable());
         arrowz.forEach((arr) => arr.disable());
         conceptsMenu.setAttribute("disabled", true);
-        verifyButton.disable();
+        // verifyButton.disable();
+        nextButton.disable();
+        backButton.disable();
         showHelpButton.disable();
         stage.update();
     }
@@ -2212,7 +2233,9 @@ function conceptMapPage(whichHypo, prediction)
         currentBubbles.forEach((bub) => bub.enable());
         arrowz.forEach((arr) => arr.enable());
         conceptsMenu.removeAttribute("disabled");
-        verifyButton.enable();
+        // verifyButton.enable();
+        nextButton.enable();
+        backButton.enable();
         showHelpButton.enable();
         stage.update();
     }
@@ -2359,16 +2382,13 @@ function conceptMapPage(whichHypo, prediction)
         prevHypoTask();
     }
 
-    function verifyButtonHandler(e) {
-        if (verifyConceptMap(ivBubble)) {
-            showSnackbar("Everything is now labeled and connected properly. This does " +
-                "not mean that your work is conceptually correct.",
-            );
-            nextButton.enable();
-        } else {
-            console.log("verification failed");
-        }
-    }
+    // function verifyButtonHandler(e) {
+    //     if (verifyConceptMap(ivBubble)) {
+    //         showSaveWarning();
+    //     } else {
+    //         console.log("verification failed");
+    //     }
+    // }
     function leavePage() {
         disableElements();
         dealWithDOMElements();
@@ -2379,7 +2399,9 @@ function conceptMapPage(whichHypo, prediction)
     }
     function nextButtonHandler(e) {
         if (!hypoSaved) {
-            showSaveWarning();
+            if (verifyConceptMap(ivBubble)) {
+                showSaveWarning();
+            }
         } else {
             leavePage();
         }
@@ -2392,7 +2414,7 @@ function conceptMapPage(whichHypo, prediction)
     saveBtn.addEventListener("click", saveHandler);
     showHelpButton.addEventListener("click", displayHelp);
     backButton.on("click", backButtonHandler);
-    verifyButton.on("click", verifyButtonHandler);
+    // verifyButton.on("click", verifyButtonHandler);
     nextButton.on("click", nextButtonHandler);
     conceptsMenu.addEventListener("change", selectConceptHandler);
 
@@ -2413,7 +2435,7 @@ function conceptMapPage(whichHypo, prediction)
         arrowz.push(arrow);
         stage.addChild(ivBubble, dvBubble, arrow);
         // showHelp = true;
-        showHelp = false;
+        // showHelp = false;
     } else {
         redrawHypo();
         ivBubble = currentBubbles.filter(
@@ -2432,7 +2454,6 @@ function conceptMapPage(whichHypo, prediction)
             dvDirButton.mouseEnabled = false;
         }
         updateConceptsMenu(conceptsMenu);
-        showHelp = false;
     } 
  
     showDOMElement(conceptsDropDown);
@@ -2441,9 +2462,10 @@ function conceptMapPage(whichHypo, prediction)
         remindersTxt,
         showHelpButton,
         conceptsDropDown,
-        backButton, verifyButton, nextButton,
+        backButton, nextButton,
         help, saveWarning, notepadPaste, drawCptMap
     );
+    // verifyButton,
 
     stage.on("stagemouseup", removePanel);
     stage.update();
@@ -2453,12 +2475,10 @@ function conceptMapPage(whichHypo, prediction)
         if (null !== hypoData) {
             hypoSaved = true;
             showSnackbar("Your hypothesis has already been saved. You can not make any changes.");
-        } else {
-            nextButton.disable();
-            if (showHelp) {
-                displayHelp();
-            }
         }
+        //  else {
+        //     nextButton.disable();
+        // }
     })
     .catch(function (error) {
         console.error(error);
