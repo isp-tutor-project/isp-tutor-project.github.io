@@ -478,7 +478,8 @@ const pageNamesToFunctions = {
     "definitionPage4": definitionPage4,
     "definitionPage5": definitionPage5,
     "definitionPage6": definitionPage6,
-    "definitionPage7": definitionPage7,
+    "causes1": causes1,
+    "causes2": causes2, 
     "definitionPage8": definitionPage8,
     "definitionPage9": definitionPage9,
     "definitionPage10": definitionPage10,
@@ -871,8 +872,16 @@ function definitionPage6() {
     stage.update();
 }
 
-function definitionPage7() {
+function causes1() {
     stage.removeAllChildren();
+    let title = new createjs.Text(
+        "Types of Relationships for Hypotheses",
+        "bold 24px Arial",
+        "#000"
+    ).set({
+        x: CANVAS_WIDTH / 2, y: 50, textAlign: "center"
+    });
+
     let text1 = new createjs.Text(
         "(2) Causes: This is when a change in one variable makes another variable " +
         "change (or directly affects another variable).",
@@ -926,7 +935,90 @@ function definitionPage7() {
         iteration++;
     });
     
-    stage.addChild(text1, backButton, nextButton);
+    stage.addChild(title, text1, backButton, nextButton);
+    stage.update();
+}
+
+function causes2() {
+    stage.removeAllChildren();
+    let title = new createjs.Text(
+        "Types of Relationships for Hypotheses",
+        "bold 24px Arial",
+        "#000"
+    ).set({
+        x: CANVAS_WIDTH / 2, y: 50, textAlign: "center"
+    });
+
+    let text1 = new createjs.Text(
+        "(2) Causes: This is when a change in one variable makes another variable " +
+        "change.\n\nOften we can explain a cause-effect relationship in more " +
+        "detail...",
+        "24px Arial",
+        "#000"
+    ).set({
+        x: CANVAS_WIDTH / 2, y: 80, textAlign: "center", lineWidth: 1000
+    });
+
+    let text2 = new createjs.Text(
+        "For example, a change in how distracted people are while driving affects " +
+        "how well people drive, because people's attention is shifted away from " +
+        "the road.",
+        "18px Arial",
+        "#000"
+    ).set({
+        x: 150, y: 180, lineHeight: 25, lineWidth: 450
+    });
+
+    let text3 = new createjs.Text(
+        "Or, changing the amount of caffeine we drink causes a change in how " +
+        "how alert we are, because caffeine is a chemical that increases brain " +
+        "activity.",
+        "18px Arial",
+        "#000"
+    ).set({
+        x: 650, y: 180, lineHeight: 25, lineWidth: 450
+    });
+
+    let image1 = new createjs.Bitmap(queue.getResult("comic")).set({
+        x: 150, y: 300, scaleX: 0.8, scaleY: 0.7,
+    });
+
+    let image2 = new createjs.Bitmap(queue.getResult("coffeegraphic")).set({
+        x: 650, y: 300, scaleX: 0.7, scaleY: 0.7
+    });
+
+    let text4 = new createjs.Text(
+        "In the concept map, if you select “cause” for the type of relationship, " +
+        "you will be asked to pick another concept that explains the relationship.",
+        "bold 18px Arial",
+        "#000"
+    ).set({
+        x: 150, y: 600, lineHeight: 25, lineWidth: CANVAS_WIDTH - 200
+    });
+
+    let backButton = createBackButton();
+    backButton.on("click", prevHypoTask);
+
+    let nextButton = createNextButton();
+    let iteration = 0;
+    nextButton.on("click", e => {
+        if (iteration === 0) {
+            stage.addChild(text2, image1);
+            stage.update();
+        } else if (iteration === 1) {
+            stage.addChild(text3, image2);
+            stage.update();
+        } else if (iteration === 2) {
+            stage.addChild(text4);
+            stage.update();
+        } else if (iteration === 3) {
+            nextHypoTask();
+        }
+        
+        iteration++;
+    });
+
+    stage.addChild(title, text1, backButton, nextButton);
     stage.update();
 }
 
