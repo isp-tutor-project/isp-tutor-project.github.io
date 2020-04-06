@@ -948,7 +948,7 @@ function definitionPage8() {
         "For example, let’s say you found that there is a relationship between " + 
         "how often students eat pizza and their grades in school. If you don’t " +
         "know why/how eating pizza could directly affect grades, then you would " +
-        "calls this relationshipt a “correlation”.",
+        "calls this relationship a “correlation”.",
         "18px Arial",
         "#000"
     ).set({
