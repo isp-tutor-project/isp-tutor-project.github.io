@@ -580,7 +580,7 @@ function startPage() {
 function definitionPage1() {
     stage.removeAllChildren();
     let text = new createjs.DOMElement("start_page_overlay").set({
-        x: 20 * 2 / PIXEL_RATIO, y: 10 * 2 / PIXEL_RATIO,
+        x: 15 * 2 / PIXEL_RATIO, y: 10 * 2 / PIXEL_RATIO,
         scaleX: 0.6 * 2 / PIXEL_RATIO, scaleY: 0.6 * 2 / PIXEL_RATIO
     });
     showDOMElement(text);
@@ -628,8 +628,8 @@ function definitionPage2() {
     stage.removeAllChildren();
 
     let text = new createjs.Text(
-        "Many middle school students have difficulty developing a good " +
-        "hypothesis for their prediction.\n\nFor example, most middle school " +
+        "Many middle school students have difficulty writing a detailed scientific " +
+        "explanation for their prediction.\n\nFor example, most middle school " +
         "students have difficulty explaining how hot/room temperature water " +
         "would lead to more crystal growth.",
         "24px Arial",
@@ -656,13 +656,14 @@ function definitionPage2() {
     stage.update();
 }
 
+
 function definitionPage3() {
     stage.removeAllChildren();
 
     let text1 = new createjs.Text(
-        "To help you make a hypothesis for your prediction, we will ask you " +
-        "to make a concept map (an example is shown below). The final " +
-        "concept map should show step-by-step how the independent variable " +
+        "To help you write a detailed scientific explanation for your prediction, " +
+        "we will ask you to make a concept map (an example is shown below). The " +
+        "final concept map should show step-by-step how the independent variable " +
         "(water temperature) affects the dependent variable (amount of " +
         "crystal growth).",
         "24px Arial",
@@ -752,9 +753,9 @@ function definitionPage5() {
     });
 
     let text1 = new createjs.Text(
-        "When you make your hypothesis, you will need to choose the type of " +
-        "relationship between pairs of concepts. Here are the three types " + 
-        "of relationships you can choose from when you make your hypothesis:",
+        "When you make your explanation for your prediction, you will need to " +
+        "choose the type of relationship between pairs of concepts. Here are " + 
+        "the three types of relationships you can choose:",
         "24px Arial",
         "#000"
     ).set({
@@ -873,8 +874,8 @@ function definitionPage6() {
 function definitionPage7() {
     stage.removeAllChildren();
     let text1 = new createjs.Text(
-        "(2) Causes: One variable influences another variable or something " +
-        "directly affects something else.",
+        "(2) Causes: This is when a change in one variable makes another variable " +
+        "change (or directly affects another variable).",
         "24px Arial",
         "#000"
     ).set({
@@ -882,9 +883,8 @@ function definitionPage7() {
     });
     
     let text2 = new createjs.Text(
-        "For example, being distracted while driving causes driving mistakes " +
-        "(because people’s attention is shifted away from what is happening " +
-        "on the road).",
+        "For example, a change in how distracted people are while driving affects " +
+        "how well people drive.",
         "18px Arial",
         "#000"
     ).set({
@@ -892,8 +892,8 @@ function definitionPage7() {
     });
 
     let text3 = new createjs.Text(
-        "Or, the amount of caffeine someone drinks causes different amounts " + 
-        "of alertness (because caffeine increases brain activity).",
+        "Or, changing the amount of caffeine we drink causes a change in how " +
+        "how alert we are.",
         "18px Arial",
         "#000"
     ).set({
@@ -935,7 +935,7 @@ function definitionPage8() {
     let text1 = new createjs.Text(
         "(3) Correlation: A relationship between two variables where both " +
         "variables increase (or decrease) together, or one increases " +
-        "as the other decreases. However, these variables may not directly " +
+        "as the other decreases. But, these variables might not directly " +
         "affect each other.",
         "24px Arial",
         "#000"
@@ -946,9 +946,9 @@ function definitionPage8() {
 
     let text2 = new createjs.Text(
         "For example, let’s say you found that there is a relationship between " + 
-        "how often students eat pizza and their grades in school. You don’t " +
-        "know why there would be, so you can call that relationship a " +
-        "“correlation” in your hypothesis.",
+        "how often students eat pizza and their grades in school. If you don’t " +
+        "know why/how eating pizza could directly affect grades, then you would " +
+        "calls this relationshipt a “correlation”.",
         "18px Arial",
         "#000"
     ).set({
@@ -1017,9 +1017,8 @@ function definitionPage9() {
     });
 
     let text2 = new createjs.Text(
-        "For example, the relationship between how often students eat pizza " +
-        "and grades could be because both eating pizza and grades are caused " +
-        "by a third variable: how often they study.",
+        "For example, a third variable, how often they study, could cause them " +
+        "to eat more pizza and also cause them to get better grades!",
         "18px Arial",
         "#000"
     ).set({
@@ -1027,9 +1026,8 @@ function definitionPage9() {
     });
 
     let text3 = new createjs.Text(
-        "Or, the relationship between ice cream sales and how often people go " +
-        "swimming could be because both ice cream sales and swimming are " +
-        "caused by a third variable: temperature.",
+        "Or, a third variable, the temperature, could cause people to eat more " + 
+        "ice cream and also cause people to want to go swimming to coll off.",
         "18px Arial",
         "#000"
     ).set({
@@ -1636,8 +1634,7 @@ function predictionPage2() {
     // `);
     
     let title = new createjs.Text(
-        "What do you think now (that you've finished your research in the " +
-        "Background Research website)?",
+        "What do you think now that you've finished your research?",
         "bold 22px Arial",
         "#000"
     ).set({
@@ -1826,11 +1823,10 @@ function notePadPage() {
         x: 25, y: 10
     });
     let dirText = new createjs.Text(
-        "Please take a few minutes to write your hypothesis for your " +
-        "research question in the notepad below. Your hypothesis should be a " +
-        "detailed explanation of how water temperature affects the weight of " +
-        "the crystal growth after two weeks. You may want to use some of the " +
-        "concepts listed below in your hypothesis.",
+        "Before you make your concept map, please take a few minutes to write " +
+        "a detailed explanation of how you think water temperature affects the " +
+        "weight of the crystal growth after two weeks. You can use some of the " +
+        "concepts listed below, which you can also use in your concept map.",
         "22px Arial",
         "#FFF"
     ).set({
@@ -1862,7 +1858,7 @@ function notePadPage() {
         x: 25, y: 210, lineHeight: 20, lineWidth: 400
     });
     
-    let predLabel = new createjs.Text("Your Prediction:", "bold 22px Arial", "#000").set({
+    let predLabel = new createjs.Text("Prediction for Your Hypothesis", "bold 22px Arial", "#000").set({
         x: 25, y: 295
     });
     let predictionText = 
