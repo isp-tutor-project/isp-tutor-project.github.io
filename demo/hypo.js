@@ -1182,9 +1182,6 @@ function corr2() {
 
 function quizPage() {
     // answers for quiz questions
-    // const QUIZ_ANSWERS = [
-    //     "Causes", "Correlation", "Definition", "Causes", "Definition"
-    // ];
     const QUIZ_ANSWERS = [
         "Correlation", "Definition", "Causes", "Definition"
     ];
@@ -1205,24 +1202,6 @@ function quizPage() {
     ).set({
         x: 150, y: 100, lineWidth: 900, lineHeight: 30
     });
-
-    // let text3 = new createjs.Text(
-    //     "Reminder: Correlations and causes are different types of relationships.",
-    //     "18px Arial",
-    //     "#000"
-    // ).set({
-    //     x: 150, y: 470, lineHeight: 25, lineWidth: 800
-    // });
-
-    // let text4 = new createjs.Text(
-    //     "Just because two things are strongly related does not mean that one " +
-    //     "caused the other. There may be other reasons for this correlation. " +
-    //     "Both things may be caused by something else.",
-    //     "18px Arial",
-    //     "#000"
-    // ).set({
-    //     x: 230, y: 520, lineHeight: 25, lineWidth: 800
-    // });
 
     let quiz = new createjs.DOMElement("quiz_overlay").set({
         x: 50 * 2 / PIXEL_RATIO, y: 50 * 2 / PIXEL_RATIO,
