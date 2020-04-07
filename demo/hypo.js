@@ -956,15 +956,24 @@ function causes2() {
 
     let text1 = new createjs.Text(
         "(2) Causes: This is when a change in one variable makes another variable " +
-        "change.\n\nOften we can explain a cause-effect relationship in more " +
-        "detail...",
+        "change.",
         "24px Arial",
         "#000"
     ).set({
-        x: CANVAS_WIDTH / 2, y: 90, textAlign: "center", lineWidth: 1000, lineHeight: 20
+        x: CANVAS_WIDTH / 2, y: 90, 
+        textAlign: "center", lineWidth: 1000, lineHeight: 20
     });
 
     let text2 = new createjs.Text(
+        "Often we can explain a cause-effect relationship in more detail...",
+        "24px Arial",
+        "#000"
+    ).set({
+        x: CANVAS_WIDTH / 2, y: 125,
+        textAlign: "center", lineWidth: 1000, lineHeight: 20
+    });
+
+    let text3 = new createjs.Text(
         "For example, a change in how distracted people are while driving affects " +
         "how well people drive, because people's attention is shifted away from " +
         "the road.",
@@ -974,7 +983,7 @@ function causes2() {
         x: 150, y: 180, lineHeight: 25, lineWidth: 450
     });
 
-    let text3 = new createjs.Text(
+    let text4 = new createjs.Text(
         "Or, changing the amount of caffeine we drink causes a change in how " +
         "how alert we are, because caffeine is a chemical that increases brain " +
         "activity.",
@@ -992,7 +1001,7 @@ function causes2() {
         x: 650, y: 300, scaleX: 0.7, scaleY: 0.7
     });
 
-    let text4 = new createjs.Text(
+    let text5 = new createjs.Text(
         "In the concept map, if you select “cause” for the type of relationship, " +
         "you will be asked to pick another concept that explains the relationship.",
         "bold 18px Arial",
@@ -1008,15 +1017,18 @@ function causes2() {
     let iteration = 0;
     nextButton.on("click", e => {
         if (iteration === 0) {
-            stage.addChild(text2, image1);
+            stage.addChild(text2);
             stage.update();
         } else if (iteration === 1) {
-            stage.addChild(text3, image2);
+            stage.addChild(text3, image1);
             stage.update();
         } else if (iteration === 2) {
-            stage.addChild(text4);
+            stage.addChild(text4, image2);
             stage.update();
         } else if (iteration === 3) {
+            stage.addChild(text5);
+            stage.update();
+        } else if (iteration === 4) {
             nextHypoTask();
         }
         
