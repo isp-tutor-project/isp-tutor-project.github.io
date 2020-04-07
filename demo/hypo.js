@@ -1143,7 +1143,7 @@ function corr2() {
 
     let text3 = new createjs.Text(
         "Or, a third variable, the temperature, could cause people to eat more " + 
-        "ice cream and also cause people to want to go swimming to coll off.",
+        "ice cream and also cause people to want to go swimming to cool off.",
         "18px Arial",
         "#000"
     ).set({
