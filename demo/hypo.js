@@ -1187,6 +1187,7 @@ function quizPage() {
     ];
 
     stage.removeAllChildren();
+    let correct = false;
 
     let heading = new createjs.Text(
         "Check your understanding!", "bold 24px Arial", "#000").set({
@@ -1224,51 +1225,46 @@ function quizPage() {
         prevHypoTask();
     });
 
-    let verifyButton = createTextWidthButton(
-        CANVAS_WIDTH / 2, CANVAS_HEIGHT * 0.95, " Check Answers ", BUTTON_COLOR
-    );
-
-    verifyButton.on("click", e => {
-        // checking validity info for quiz questions
-        let quizSelectors = document.getElementsByClassName("quiz_questions");
-        for (let i = 0; i < quizSelectors.length; i++) {
-            if (quizSelectors[i].value != QUIZ_ANSWERS[i]) {
-                quizSelectors[i].setCustomValidity("Wrong Answer");
-            } else {
-                quizSelectors[i].setCustomValidity("");
-                quizSelectors[i].style.color = "green";
-            }
-            // resetting validity
-            quizSelectors[i].onchange = (() => {
-                quizSelectors[i].setCustomValidity("");
-                quizSelectors[i].style.color = "";
-            });
-        }
-        // testing if all answers are correct
-        if (quizQuestions.htmlElement.reportValidity()) {
-            showSnackbar("Your answers are all correct. Click Next to move on.");
-            stage.removeChild(verifyButton);
-            nextButton.enable();
-        }
-    });
-
     let nextButton = createNextButton();
     nextButton.on("click", e => {
-        hideDOMOverlays();
-        nextHypoTask();
+        if (correct) {
+            hideDOMOverlays();
+            nextHypoTask();
+        } else {
+            // checking validity info for quiz questions
+            let quizSelectors = document.getElementsByClassName("quiz_questions");
+            for (let i = 0; i < quizSelectors.length; i++) {
+                if (quizSelectors[i].value != QUIZ_ANSWERS[i]) {
+                    quizSelectors[i].setCustomValidity("Wrong Answer");
+                } else {
+                    quizSelectors[i].setCustomValidity("");
+                    quizSelectors[i].style.color = "green";
+                }
+                // resetting validity
+                quizSelectors[i].onchange = (() => {
+                    quizSelectors[i].setCustomValidity("");
+                    quizSelectors[i].style.color = "";
+                });
+            }
+            // testing if all answers are correct
+            if (quizQuestions.htmlElement.reportValidity()) {
+                showSnackbar(
+                    "Your answers are all correct. Click Next again to move on."
+                );
+                correct = true;
+            }
+        }
     });
-    nextButton.disable();
 
     stage.addChild(
         heading, text1, 
         quiz, quizQuestions,
-        backButton, verifyButton, nextButton
+        backButton, nextButton
     );
-    // text3, text4,
+
     stage.update();
     showDOMElement(quiz);
     showDOMElement(quizQuestions);
-
 }
 
 function instructionPage() {
