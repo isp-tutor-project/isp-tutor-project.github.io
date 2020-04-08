@@ -36,34 +36,67 @@
       <canvas id="hypo-canvas" width="1200" height="750">
         Error: HTML5 canvas is not working. Please make sure JavaScript is enabled.
       </canvas>
-      <!-- Note!!! In the Youtube URL below, the enablejsapi parameter must be 
-        set to 1 and the rel parameter set to 0!!! This is so the hypo.js code 
-        can pause the video when necessary, and block related videos from appearing -->
-      <!--      
-      <iframe id="instruction_video_overlay"
-              width="800" 
-              height="450" 
-              enablejsapi="1"
-              src="https://www.youtube.com/embed/ATlmZHaw8ys?rel=0"
-              frameborder="0"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-      </iframe>
-      -->
-      <div id="modal_bg_overlay" class="overlay">
-        <div id="semi_transparent_bg"></div>
+
+      <div id="start_page_overlay" class="overlay">
+        <h3>Reminder: The Three Parts of your Hypothesis include...</h3>
+        <ol>
+          <li>
+            A <b>general prediction</b> of the relationship between your
+            independent and dependent variables.
+          </li>
+          <li>
+            A <u>detailed scientific explanation</u> of your general prediction.
+            This should include a step-by-step explanation for how the independent
+            variable affects the dependent variable.
+          </li>
+          <li>
+            A <i>specific prediction</i> for the results of your experiment.
+          </li>
+        </ol>
       </div>
+
+      <div id="lesson_overview_overlay" class="overlay">
+        <h3>Lesson overview:</h3>
+        <p>
+          In this lesson, we will focus on the first two parts of your hypothesis:
+          the general prediction and detailed scientific explanation for your
+          general prediction.
+        </p>
+        <p>
+          You will make a general prediction for your experiment. For example,
+          your general prediction could be either:
+        </p>
+      
+        <ul style="list-style-position:outside;">
+          <li>
+            <b>"As the initial water temperature increases, the weight of crystal
+              growth on the string after two weeks increases."</b><br />
+            This means that the hotter the water is at first, the higher the
+            final weight of crystal growth will be.
+            <ul style="list-style:none;">
+              <li style="padding-top:10px;padding-bottom:10px;"> <b>- OR -</b> </li>
+            </ul>
+          </li>
+          <li>
+            <b>"As the initial water temperature increases, the weight of crystal
+              growth on the string after two weeks decreases."</b> <br />
+            This means that the hotter the water is at first, the lower the
+            final weight of crystal growth will be.
+          </li>
+        </ul>
+      
+        <p>
+          You will also write a <u>scientific explanation</u> for your general
+          prediction. We’ll help you do that.
+        </p>
+      </div>
+
       <img id="temperature_gif_overlay"
            class="overlay"
            src="HypoGraphics/slide2/temperaturegif.gif">
-    
+
       <div id="quiz_overlay" class="overlay">
         <ul>
-        <!--         
-          <li>
-            <u>How often a city is hit by a hurricane</u> and <u>how often it floods</u>
-          </li>
-         -->
           <li>
             <u>School candy sales</u> and <u>number of science fair poster awards</u>
           </li>
@@ -78,17 +111,8 @@
           </li>
         </ul>
       </div>
-    
+      
       <form id="quiz_questions_overlay" class="overlay">
-        <!--         
-        <select id="quiz_q1" class="quiz_questions">
-          <option value="" disabled selected hidden>Choose one...</option>
-          <option>Definition</option>
-          <option>Causes</option>
-          <option>Correlation</option>
-        </select>
-        <br>
-         -->
         <select id="quiz_q2" class="quiz_questions">
           <option value="" disabled selected hidden>Choose one...</option>
           <option>Definition</option>
@@ -117,71 +141,29 @@
           <option>Correlation</option>
         </select>
       </form>
-    
-      <div id="start_page_overlay" class="overlay">
-        <h3>Reminder: The Three Parts of your Hypothesis include...</h3>
-        <ol>
-          <li>
-            A <b>general prediction</b> of the relationship between your
-            independent and dependent variables.
-          </li>
-          <li>
-            A <u>detailed scientific explanation</u> of your general prediction.
-            This should include a step-by-step explanation for how the independent
-            variable affects the dependent variable.
-          </li>
-          <li>
-            A <i>specific prediction</i> for the results of your experiment.
-          </li>
-        </ol>
-      </div>
 
-      <div id="lesson_overview_overlay" class="overlay">
-        <h3>Lesson overview:</h3>
-        <p>
-          In this lesson, we will focus on the first two parts of your hypothesis: 
-          the general prediction and detailed scientific explanation for your 
-          general prediction.
-        </p>
-        <p>
-          You will make a general prediction for your experiment. For example, 
-          your general prediction could be either:
-        </p>
-
-        <ul style="list-style-position:outside;">
-          <li>
-              <b>"As the initial water temperature increases, the weight of crystal
-              growth on the string after two weeks increases."</b><br/>
-              This means that the hotter the water is at first, the higher the 
-              final weight of crystal growth will be.
-              <ul style="list-style:none;">
-                <li style="padding-top:10px;padding-bottom:10px;"> <b>- OR -</b> </li>
-              </ul>
-          </li>
-          <li>
-            <b>"As the initial water temperature increases, the weight of crystal 
-            growth on the string after two weeks decreases."</b> <br/>
-            This means that the hotter the water is at first, the lower the 
-            final weight of crystal growth will be.
-          </li>
-        </ul>
-        
-        <p>
-          You will also write a <u>scientific explanation</u> for your general 
-          prediction. We’ll help you do that.
-        </p>
-      </div>
-
+      <!-- Note!!! In the Youtube URL below, the enablejsapi parameter must be 
+        set to 1 and the rel parameter set to 0!!! This is so the hypo.js code 
+        can pause the video when necessary, and block related videos from appearing -->
+      <!--      
+      <iframe id="instruction_video_overlay"
+              width="800" 
+              height="450" 
+              enablejsapi="1"
+              src="https://www.youtube.com/embed/ATlmZHaw8ys?rel=0"
+              frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+      </iframe>
+      -->
+      
+  
       <div id="concepts_list_overlay" class="overlay">
         <div id="concepts_list_header"><b>Concepts:</b></div>
         <ul id="concepts_list">
         </ul>
       </div>
 
-      <form id="concepts_menu_overlay" class="overlay">
-        <select id="concepts_menu"></select>
-      </form>
-      
       <div id="concept_map_notepad_overlay" class="overlay notepad">
         <div id="paper">
           <div id="pattern">
@@ -190,6 +172,14 @@
         </div>
       </div>
 
+      <div id="instruction_video_overlay" class="overlay">
+        <video controls width="1000" src="hypoVideo.mp4" type="video/mp4"></video>
+      </div>
+
+      <form id="concepts_menu_overlay" class="overlay">
+        <select id="concepts_menu"></select>
+      </form>
+      
       <div id="combined_cpt_map_help" class="overlay combined-help">
         <div class="concept-map-help-heading">
           Concept Map Help
