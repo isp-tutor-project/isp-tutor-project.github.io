@@ -50,6 +50,16 @@ class Database {
             // console.log(rqted);
             if (rqted) {
                 retVal = rqted;
+            } else {
+                // if the rq isn't selected hard-code to crystal growth
+                retVal = {
+                    moduleState: {
+                        selectedArea: { index: 1 },
+                        selectedTopic: { index: 1 },
+                        selectedVariable: { index: 1 },
+                        selectedRQ: { index: 1 }
+                    }
+                };
             }
             // console.log(retVal); 
             return retVal;
@@ -59,12 +69,7 @@ class Database {
             return retVal;
         });
     }
-    // moduleState: {
-    //     selectedArea: { index: 1 },
-    //     selectedTopic: { index: 1 },
-    //     selectedVariable: { index: 1 },
-    //     selectedRQ: { index: 1 }
-    // }
+    
     getCurrHypoTask() {
         return this.getIntValue("currHypoTaskIdx")
     }
