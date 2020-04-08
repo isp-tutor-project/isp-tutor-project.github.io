@@ -80,6 +80,7 @@ const conditionHypoTasks = {
         "graphPage1",
         "graphPage2",
         "notePadPage",
+        "instructionPage",
         "finalConceptMap",
         "completePage"
     ],
