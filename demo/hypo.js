@@ -607,7 +607,7 @@ function lessonOverview() {
 
     let html = new createjs.DOMElement("lesson_overview_overlay").set({
         x: 20 * 2 / PIXEL_RATIO, y: 10 * 2 / PIXEL_RATIO, 
-        scaleX: 0.6 * 2 / PIXEL_RATIO, scaleY: 0.6 * 2  / PIXEL_RATIO
+        scaleX: 0.55 * 2 / PIXEL_RATIO, scaleY: 0.55 * 2  / PIXEL_RATIO
     });
 
     let prevButton = createBackButton();
