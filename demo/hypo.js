@@ -1281,61 +1281,78 @@ function quizPage() {
 
 function instructionPage() {
     stage.removeAllChildren();
-    let delayStarted = false;
-    let delayAchieved = false;
+    // let delayStarted = false;
+    // let delayAchieved = false;
     
-    let text = new createjs.Text("Instructions", "bold 22px Arial", "#000").set({
-        x: CANVAS_WIDTH / 2, y: (CANVAS_HEIGHT / 8) - 15, textAlign: "center"
+    let text = new createjs.Text(
+        "Concept Map Activity Instructions", 
+        "bold 22px Arial", 
+        "#000").set({
+        x: CANVAS_WIDTH / 2, y: (CANVAS_HEIGHT / 8) - 70, textAlign: "center"
     });
 
     let video = new createjs.DOMElement("instruction_video_overlay").set({
-        x: 50 * 2 / PIXEL_RATIO, y: 30 * 2 / PIXEL_RATIO,
-        scaleX: 0.25 * 2 / PIXEL_RATIO, scaleY: 0.25 * 2 / PIXEL_RATIO
-    });
-    video.htmlElement.style.display = "block";
-
-    let backButton = createBackButton();
-    backButton.on("click", e => {
-        let vid = document.getElementById("instruction_video_overlay");
-        vid.style.display = "none";
-        vid.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
-        prevHypoTask();
-    });
-
-    let nextButton = createNextButton();
-    nextButton.on("click", e => {
-        if (!delayStarted) {
-            showSnackbar("Please watch the tutorial video.");
-            nextButton.disable();
-            delayStarted = true;
-            setTimeout(() => {
-                delayAchieved = true;
-                nextButton.enable();
-            }, 20000);
-        } else if (!delayAchieved) {
-            console.log("still delaying");
-        } else {
-            let vid = document.getElementById("instruction_video_overlay");
-            vid.style.display = "none";
-            vid.contentWindow.postMessage(
-                '{"event": "command", "func": "stopVideo", "args": ""}', '*'
-            );
-            nextHypoTask();
-        }
+        x: 40 * 2 / PIXEL_RATIO, y: 18 * 2 / PIXEL_RATIO,
+        scaleX: 0.22 * 2 / PIXEL_RATIO, scaleY: 0.22 * 2 / PIXEL_RATIO
     });
 
     let advice = new createjs.Text(
-        "Please watch the video above for a brief tutorial.\nWe recommend you " +
-        "watch the video in full screen.",
+        "Please watch the video above for a brief tutorial. We recommend you " +
+        "watch the video in full screen.\n\nFrom the Concept Map page, you can " + 
+        "always click the back button to return to this video. That page also " +
+        "contains a \"Show Help\" button which will display a popup summarizing " + 
+        "these instructions." ,
         "16px Arial",
         "#000"
     ).set({
-        x: CANVAS_WIDTH / 2, y: CANVAS_HEIGHT * 0.8, textAlign: "center"
+        x: CANVAS_WIDTH / 2, y: CANVAS_HEIGHT * 0.85, 
+        textAlign: "center", lineWidth: 800
     });
 
-    stage.addChild(text, video, backButton, nextButton, advice);
+    let backButton = createBackButton();
+    backButton.on("click", function() {
+        hideDOMElement(video);
+        prevHypoTask();
+    });
+    // backButton.on("click", e => {
+    //     let vid = document.getElementById("instruction_video_overlay");
+    //     vid.style.display = "none";
+    //     vid.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+    //     prevHypoTask();
+    // });
+
+    let nextButton = createNextButton();
+    nextButton.on("click", function() {
+        console.log("next button clicked");
+        hideDOMElement(video);
+        nextHypoTask();
+    });
+    // nextButton.on("click", e => {
+    //     if (!delayStarted) {
+    //         showSnackbar("Please watch the tutorial video.");
+    //         nextButton.disable();
+    //         delayStarted = true;
+    //         setTimeout(() => {
+    //             delayAchieved = true;
+    //             nextButton.enable();
+    //         }, 20000);
+    //     } else if (!delayAchieved) {
+    //         console.log("still delaying");
+    //     } else {
+    //         let vid = document.getElementById("instruction_video_overlay");
+    //         vid.style.display = "none";
+    //         vid.contentWindow.postMessage(
+    //             '{"event": "command", "func": "stopVideo", "args": ""}', '*'
+    //         );
+    //         nextHypoTask();
+    //     }
+    // });
+
+    stage.addChild(text, video, advice, backButton, nextButton);
     stage.update();
+    showDOMElement(video);
 }
+
 
 function backToYourRQ() {
     stage.removeAllChildren();
