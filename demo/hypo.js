@@ -1086,43 +1086,60 @@ function corr1() {
         textAlign: "center", lineWidth: 1000, lineHeight: 30
     });
 
-    let text2 = new createjs.Text(
+    let pizzaText1 = new createjs.Text(
         "For example, let’s say you found that there is a relationship between " + 
-        "how often students eat pizza and their grades in school. If you don’t " +
-        "know why/how eating pizza could directly affect grades, then you would " +
-        "calls this relationship a “correlation”.",
+        "how often students eat pizza and their grades in school.",
         "18px Arial",
         "#000"
     ).set({
         x: 130, y: 200, lineHeight: 25, lineWidth: 460
     });
 
-    let text3 = new createjs.Text(
+    let image1 = new createjs.Bitmap(queue.getResult("correlation")).set({
+        x: 170, y: 280, scaleX: 0.4, scaleY: 0.4,
+    });
+
+    let graph1 = new createjs.Bitmap(queue.getResult("graph1")).set({
+        x: 220, y: 400, scaleX: 0.4, scaleY: 0.4
+    });
+
+    let pizzaText2 = new createjs.Text(
+        "If you don’t know why/how eating pizza could directly affect grades, " +
+        "then you would call this relationship a “correlation”.",
+        "18px Arial",
+        "#000"
+    ).set({
+        x: 130, y: 600, lineHeight: 25, lineWidth: 460
+    });
+
+
+    let iceCreamText1 = new createjs.Text(
         "Or, you might find a relationship between the amount of ice cream people " + 
-        "buy and how often people go swimming.  If you don't know why/how ice " + 
-        "cream sales directly affects how often people go swimming, then you'd " +
-        "call this relationship a correlation.",
+        "buy and how often people go swimming.",
         "18px Arial",
         "#000"
     ).set({
         x: 630, y: 200, lineHeight: 25, lineWidth: 460
     });
 
-    let image1 = new createjs.Bitmap(queue.getResult("correlation")).set({
-        x: 170, y: 320, scaleX: 0.4, scaleY: 0.4,
-    });
-
     let image2 = new createjs.Bitmap(queue.getResult("IceCreamSwimming")).set({
-        x: 680, y: 320, scaleX: 0.5, scaleY: 0.5
-    });
-
-    let graph1 = new createjs.Bitmap(queue.getResult("graph1")).set({
-        x: 220, y: 450, scaleX: 0.4, scaleY: 0.4
+        x: 680, y: 280, scaleX: 0.5, scaleY: 0.5
     });
 
     let graph2 = new createjs.Bitmap(queue.getResult("graph2")).set({
-        x: 710, y: 450, scaleX: 0.4, scaleY: 0.4
+        x: 710, y: 400, scaleX: 0.4, scaleY: 0.4
     });
+
+    let iceCreamText2 = new createjs.Text(
+        "If you don't know why/how ice cream sales directly affects how often " +
+        "people go swimming, then you'd call this relationship a correlation.",
+        "18px Arial",
+        "#000"
+    ).set({
+        x: 630, y: 600, lineHeight: 25, lineWidth: 460
+    });
+
+    
 
     let backButton = createBackButton();
     backButton.on("click", prevHypoTask);
@@ -1130,13 +1147,19 @@ function corr1() {
     let nextButton = createNextButton();
     let iteration = 0;
     nextButton.on("click", e => {
-        if (iteration == 0) {
-            stage.addChild(text2, image1, graph1);
+        if (iteration === 0) {
+            stage.addChild(pizzaText1, image1, graph1);
             stage.update();
-        } else if (iteration == 1) {
-            stage.addChild(text3, image2, graph2);
+        } else if (iteration === 1) {
+            stage.addChild(pizzaText2);
             stage.update();
-        } else if (iteration == 2) {
+        } else if (iteration === 2) {
+            stage.addChild(iceCreamText1, image2, graph2);
+            stage.update();
+        } else if (iteration === 3) {
+            stage.addChild(iceCreamText2);
+            stage.update();
+        } else if (iteration === 4) {
             nextHypoTask();
         }
         iteration++;
