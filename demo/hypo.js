@@ -230,7 +230,10 @@ function loadData() {
         initialHypoLocked = userData.initialHypo !== null;
         secondPrediction = userData.secondPrediction;
         finalHypoLocked = userData.finalHypo !== null;
+        if (userData.finalHypo && userData.finalHypo.notesHtml) {
+            let notes = document.getElementById("notepad_notes");
             notes.innerHTML = userData.finalHypo.notesHtml
+        }
         if (userData.rqted && userData.rqted.moduleState) {
             let moduleData = userData.rqted.moduleState;
             let area = moduleData['selectedArea']['index'];
