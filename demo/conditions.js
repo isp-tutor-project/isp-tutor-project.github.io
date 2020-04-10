@@ -65,6 +65,7 @@ const conditionHypoTasks = {
         "startPage",
         "definitionPage1",
         "lessonOverview",
+        "lessonOverview2",
         "definitionPage2",
         "definitionPage3",
         "definitionPage4",

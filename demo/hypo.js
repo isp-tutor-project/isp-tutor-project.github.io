@@ -473,6 +473,7 @@ const pageNamesToFunctions = {
     "startPage": startPage,
     "definitionPage1": definitionPage1,
     "lessonOverview": lessonOverview,
+    "lessonOverview2": lessonOverview2,
     "definitionPage2": definitionPage2,
     "definitionPage3": definitionPage3,
     "definitionPage4": definitionPage4,
@@ -581,7 +582,7 @@ function startPage() {
 function definitionPage1() {
     stage.removeAllChildren();
     let text = new createjs.DOMElement("start_page_overlay").set({
-        x: 15 * 2 / PIXEL_RATIO, y: 10 * 2 / PIXEL_RATIO,
+        x: 0, y: 10 * 2 / PIXEL_RATIO,
         scaleX: 0.6 * 2 / PIXEL_RATIO, scaleY: 0.6 * 2 / PIXEL_RATIO
     });
     showDOMElement(text);
@@ -617,6 +618,29 @@ function lessonOverview() {
     });
     let nextButton = createNextButton();
     nextButton.on("click", function() {
+        hideDOMElement(html);
+        nextHypoTask();
+    });
+    stage.addChild(html, prevButton, nextButton);
+    stage.update();
+    showDOMElement(html);
+}
+
+function lessonOverview2() {
+    stage.removeAllChildren();
+
+    let html = new createjs.DOMElement("lesson_overview2_overlay").set({
+        x: 10 * 2 / PIXEL_RATIO, y: 10 * 2 / PIXEL_RATIO,
+        scaleX: 0.55 * 2 / PIXEL_RATIO, scaleY: 0.55 * 2 / PIXEL_RATIO
+    });
+
+    let prevButton = createBackButton();
+    prevButton.on("click", function () {
+        hideDOMElement(html);
+        prevHypoTask();
+    });
+    let nextButton = createNextButton();
+    nextButton.on("click", function () {
         hideDOMElement(html);
         nextHypoTask();
     });
