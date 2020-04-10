@@ -2518,7 +2518,7 @@ function conceptMapPage(whichHypo, prediction)
     
     function saveHandler() {
         hideSaveWarning();
-        logData2(ivBubble, whichHypo);
+        logData(ivBubble, whichHypo);
         hypoSaved = true;
         if ("initial" === whichHypo) {
             firstPredictionLocked = true;
