@@ -331,7 +331,7 @@ button:hover {
 }
 
 #lesson_overview_overlay {
-font-size: 10px;
+  font-size: 10px;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -340,7 +340,6 @@ font-size: 10px;
   width: 475px;
   height: 250px;
 }
-
 
 #lesson_overview2_overlay {
   font-size: 10px;
@@ -359,6 +358,13 @@ font-size: 10px;
 #lesson_overview2_overlay  li {
   padding-bottom: 10px;
 }
+
+#corr2_driving_overlay, #corr2_coffee_overlay {
+  font-size: 22px;
+  line-height: 30px;
+  width: 560px;
+}
+
 .notepad {
   position: absolute;
   top: 0;

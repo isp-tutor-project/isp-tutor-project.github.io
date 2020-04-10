@@ -653,15 +653,17 @@ function definitionPage2() {
     stage.removeAllChildren();
 
     let text = new createjs.Text(
-        "Many middle school students have difficulty writing a detailed scientific " +
-        "explanation for their prediction.\n\nFor example, most middle school " +
-        "students have difficulty explaining how hot/room temperature water " +
-        "would lead to more crystal growth.",
+        "You can use a concept map to help you explain how water temperature is " +
+        "related to the weight of crystal growth.",
         "24px Arial",
         "#000"
     ).set({
         x: 80, y: 50, lineHeight: 35, lineWidth: CANVAS_WIDTH - 160
     });
+    // "Many middle school students have difficulty writing a detailed scientific " +
+    //     "explanation for their prediction.\n\nFor example, most middle school " +
+    //     "students have difficulty explaining how hot/room temperature water " +
+    //     "would lead to more crystal growth.",
 
     let image = new createjs.Bitmap(queue.getResult("ivToDvWithArrow")).set({
         x: 215, y: 485, scaleX: 0.55, scaleY: 0.55
@@ -997,24 +999,14 @@ function causes2() {
         textAlign: "center", lineWidth: 1000, lineHeight: 20
     });
 
-    let text3 = new createjs.Text(
-        "For example, a change in how distracted people are while driving affects " +
-        "how well people drive, because people's attention is shifted away from " +
-        "the road.",
-        "18px Arial",
-        "#000"
-    ).set({
-        x: 150, y: 180, lineHeight: 25, lineWidth: 450
+    let html1 = new createjs.DOMElement("corr2_driving_overlay").set({
+        x: 38 * 2 / PIXEL_RATIO, y: 45 * 2 / PIXEL_RATIO,
+        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     });
 
-    let text4 = new createjs.Text(
-        "Or, changing the amount of caffeine we drink causes a change in how " +
-        "how alert we are, because caffeine is a chemical that increases brain " +
-        "activity.",
-        "18px Arial",
-        "#000"
-    ).set({
-        x: 650, y: 180, lineHeight: 25, lineWidth: 450
+    let html2 = new createjs.DOMElement("corr2_coffee_overlay").set({
+        x: 163 * 2 / PIXEL_RATIO, y: 45 * 2 / PIXEL_RATIO,
+        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     });
 
     let image1 = new createjs.Bitmap(queue.getResult("comic")).set({
@@ -1034,8 +1026,13 @@ function causes2() {
         x: 150, y: 600, lineHeight: 25, lineWidth: CANVAS_WIDTH - 200
     });
 
+    
     let backButton = createBackButton();
-    backButton.on("click", prevHypoTask);
+    backButton.on("click", function() {
+        hideDOMElement(html1);
+        hideDOMElement(html2);
+        prevHypoTask();
+    });
 
     let nextButton = createNextButton();
     let iteration = 0;
@@ -1044,15 +1041,19 @@ function causes2() {
             stage.addChild(text2);
             stage.update();
         } else if (iteration === 1) {
-            stage.addChild(text3, image1);
+            stage.addChild(html1, image1);
             stage.update();
+            showDOMElement(html1);
         } else if (iteration === 2) {
-            stage.addChild(text4, image2);
+            stage.addChild(html2, image2);
             stage.update();
+            showDOMElement(html2);
         } else if (iteration === 3) {
             stage.addChild(text5);
             stage.update();
         } else if (iteration === 4) {
+            hideDOMElement(html1);
+            hideDOMElement(html2);
             nextHypoTask();
         }
         
