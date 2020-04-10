@@ -349,6 +349,83 @@ function logData2(ivBubble, whichHypo) {
     });
 }
 
+function logData(ivBubble, whichHypo) {
+    let log = {};
+    let currentPrediction;
+    let currentPredictionValue;
+    if ("initial" === whichHypo) {
+        currentPrediction = "first";
+        currentPredictionValue = firstPrediction;
+    } else if ("opposite" === whichHypo) {
+        currentPrediction = "opposite(first)";
+        currentPredictionValue = (firstPrediction === "increase") ? "decrease" : "increase";
+    } else {
+        currentPrediction = "second";
+        currentPredictionValue = secondPrediction;
+    }
+    let notes = document.getElementById("notepad_notes");
+    let notesHtml = notes.innerHTML;
+    let notesText = notepadHtmlAsText(notesHtml);
+    log.currentPrediction = currentPrediction;
+    log.currentPredictionValue = currentPredictionValue;
+    log.notesHtml = notesHtml;
+    log.notesText = notesText;
+    log.steps = steps;
+
+    let concepts = [];
+    let arrows = [];
+    function logBubble(bub) {
+        concepts.push({
+            x: bub.x,
+            y: bub.y,
+            label: bub.text,
+            direction: bub.getChildByName("dirButton").direction
+        });
+    }
+    // let nodes = [];
+    // let arrowLabels = [];
+    // let directions = [];
+    // logBubble(currBubble);
+    // let connector = currBubble.outConnector;
+    let currBubble = ivBubble;
+    while (currBubble) {
+        logBubble(currBubble);
+        let connector = currBubble.outConnector;
+        if (!connector) {
+            break;
+        }
+        let from = currBubble.text;
+        let arrow = connector.arrow;
+        let label = arrow.label.text;
+        // arrowLabels.push(arrow.label.text.replace("\n", " "));
+        let nextBubble = arrow.connectorOver.parent;
+        let to = nextBubble.text;
+        arrows.push({from, to, label});
+        currBubble = nextBubble;
+        // nodes.push(nextBubble.text);
+        // directions.push(nextBubble.getChildByName("dirButton").direction);
+        // connector = nextBubble.outConnector;
+    }
+    log.concepts = concepts;
+    log.arrows = arrows;
+    // log.nodes = nodes;
+    // log.arrowLabels = arrowLabels;
+    // log.directions = directions;
+    // log.notes = notes.innerText;
+    // db.collection(collectionID).doc(userID).update({
+    //     [`${whichHypo}Hypo`]: JSON.stringify(log)
+    // })
+    db.saveJSONValue(`${whichHypo}Hypo`, log)
+        .then(() => {
+            console.log("Successfully logged hypothesis data");
+            showSnackbar("Successfully logged hypothesis data.");
+            console.log(log);
+        })
+        .catch((error) => {
+            console.error("Error writing document: ", error);
+            showSnackbar("Error: Failed to log hypothesis data.");
+        });
+}
 
 // ============================================================================
 // ====================== App Initializization ================================
