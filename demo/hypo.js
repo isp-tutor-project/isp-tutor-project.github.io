@@ -1210,7 +1210,7 @@ function corr2() {
     });
 
     let image1 = new createjs.Bitmap(queue.getResult("causation_correlation")).set({
-        x: 90, y: 280, scaleX: 0.35, scaleY: 0.35
+        x: 90, y: 300, scaleX: 0.35, scaleY: 0.35
     });
 
     let image2 = new createjs.Bitmap(queue.getResult("Picture_SunTempIcecream")).set({
