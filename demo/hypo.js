@@ -1198,7 +1198,7 @@ function corr2() {
         "18px Arial",
         "#000"
     ).set({
-        x: 110, y: 260, lineHeight: 25, lineWidth: 460,
+        x: 110, y: 230, lineHeight: 25, lineWidth: 460,
     });
 
     let text3 = new createjs.Text(
@@ -1207,15 +1207,15 @@ function corr2() {
         "18px Arial",
         "#000"
     ).set({
-        x: 650, y: 260, lineHeight: 25, lineWidth: 460
+        x: 650, y: 230, lineHeight: 25, lineWidth: 460
     });
 
     let image1 = new createjs.Bitmap(queue.getResult("causation_correlation")).set({
-        x: 110, y: 330, scaleX: 0.25, scaleY: 0.25
+        x: 90, y: 280, scaleX: 0.35, scaleY: 0.35
     });
 
     let image2 = new createjs.Bitmap(queue.getResult("Picture_SunTempIcecream")).set({
-        x: 660, y: 350, scaleX: 0.25, scaleY: 0.25
+        x: 610, y: 300, scaleX: 0.35, scaleY: 0.35
     });
 
     let backButton = createBackButton();
