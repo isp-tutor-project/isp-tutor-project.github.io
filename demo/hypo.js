@@ -2599,8 +2599,6 @@ function conceptMapPage(whichHypo, prediction)
         currentBubbles.push(dvBubble);
         arrowz.push(arrow);
         stage.addChild(ivBubble, dvBubble, arrow);
-        // showHelp = true;
-        // showHelp = false;
     } else {
         redrawHypo();
         ivBubble = currentBubbles.filter(
