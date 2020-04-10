@@ -2364,10 +2364,8 @@ function conceptMapPage(whichHypo, prediction)
     let saveWarning = new createjs.DOMElement("save_concept_map_warning").set(modalProps);
     let notepadPaste = new createjs.DOMElement("notepad_paste").set(modalProps);
     let drawCptMap = new createjs.DOMElement("draw_cpt_map").set(modalProps);
-
-    // let verifyButton = createTextWidthButton(
-    //     CANVAS_WIDTH / 2, CANVAS_HEIGHT * 0.95, " I'm Finished ", BUTTON_COLOR
-    // );
+    let goHome = new createjs.DOMElement('completion-overlay').set(modalProps);
+    
     let dismissHelp = document.getElementById("dismiss_cpt_map_help");
     let helpContents = document.getElementById("cpt_map_help_contents")
     let dismissNotepadPaste = document.getElementById("dismiss_notepad_paste");
@@ -2559,7 +2557,9 @@ function conceptMapPage(whichHypo, prediction)
         dealWithDOMElements();
         // add background for 'home' modal
         stage.addChild(modalBg);
-        nextHypoTask();
+        showDOMElement(goHome);
+        // don't got to complete page
+        // nextHypoTask();
 
     }
     function nextButtonHandler(e) {
