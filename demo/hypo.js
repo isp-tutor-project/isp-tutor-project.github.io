@@ -487,8 +487,7 @@ const pageNamesToFunctions = {
     "instructionPage": instructionPage,
     "backToYourRQ": backToYourRQ,
     "predictionPage1": predictionPage1,
-    "graphPage1": graphPage1,
-    "graphPage2": graphPage2,
+    "graphPage": graphPage,
     "notePadPage": notePadPage,
     "initialConceptMap": initialConceptMap,
     "initialConceptMapPlaceholder": initialConceptMapPlaceholder,
@@ -1566,7 +1565,7 @@ function getImageForPrediction(prediction) {
     return image;
 }
 
-function graphPage1() {
+function graphPage() {
     stage.removeAllChildren();
     
     let prediction = (secondPrediction === "increase") ? "increase" : "decrease";
@@ -1584,31 +1583,13 @@ function graphPage1() {
     let image = getImageForPrediction(prediction);
     image.set({x: 400, y: 150});
     
-    let backButton = createBackButton();
-    backButton.on("click", e => prevHypoTask());
-    
-    let nextButton = createNextButton();
-    nextButton.on("click", e => nextHypoTask());
-
-    stage.addChild(text1, image, backButton, nextButton);
-    stage.update();
-}
-
-function graphPage2() {
-    stage.removeAllChildren();
-
-    let prediction = (secondPrediction === "increase") ? "increase" : "decrease";
-    
-    let image = getImageForPrediction(prediction);
-    image.set({x: 400, y: 150});
-
-    let text1 = new createjs.Text(
+    let text2 = new createjs.Text(
         'Your prediction is represented as: ', "22px Arial", "#000"
     ).set({
-        x: CANVAS_WIDTH / 2, y: 475,
+        x: CANVAS_WIDTH / 2, y: 480,
         textAlign: "center", lineWidth: 700, lineHeight: 35
     });
-    
+
     let ivBubble = createFixedBubble(
         IV_X, IV_Y, capitalizeFirstLetter(iv), "#99bbff", "increase", false
     );
@@ -1622,18 +1603,65 @@ function graphPage2() {
         dvBubble.x - BUBBLE_WIDTH / 2,
         dvBubble.y
     );
-    
+
     let backButton = createBackButton();
     backButton.on("click", e => prevHypoTask());
     
+    let iteration = 0;
     let nextButton = createNextButton();
-    nextButton.on("click", e => nextHypoTask());
-    
-    stage.addChild(
-        image, text1, ivBubble, dvBubble, arrow, backButton, nextButton
-    );
+    nextButton.on("click", function(e) {
+        if (0 === iteration) {
+            stage.addChild(text2, ivBubble, dvBubble, arrow);
+        } else if (1 === iteration) {
+            nextHypoTask();
+        }
+        iteration++;
+    });
+
+    stage.addChild(text1, image, backButton, nextButton);
     stage.update();
 }
+
+// function graphPage2() {
+//     stage.removeAllChildren();
+
+//     let prediction = (secondPrediction === "increase") ? "increase" : "decrease";
+    
+//     let image = getImageForPrediction(prediction);
+//     image.set({x: 400, y: 150});
+
+//     let text1 = new createjs.Text(
+//         'Your prediction is represented as: ', "22px Arial", "#000"
+//     ).set({
+//         x: CANVAS_WIDTH / 2, y: 475,
+//         textAlign: "center", lineWidth: 700, lineHeight: 35
+//     });
+    
+//     let ivBubble = createFixedBubble(
+//         IV_X, IV_Y, capitalizeFirstLetter(iv), "#99bbff", "increase", false
+//     );
+//     let dvBubble = createFixedBubble(
+//         DV_X, DV_Y, capitalizeFirstLetter(dvabb), "#99bbff", prediction, true
+//     );
+
+//     let arrow = createUnlabeledArrow(
+//         ivBubble.x + BUBBLE_WIDTH / 2,
+//         ivBubble.y,
+//         dvBubble.x - BUBBLE_WIDTH / 2,
+//         dvBubble.y
+//     );
+    
+//     let backButton = createBackButton();
+//     backButton.on("click", e => prevHypoTask());
+    
+//     let nextButton = createNextButton();
+//     nextButton.on("click", e => nextHypoTask());
+    
+//     stage.addChild(
+//         image, text1, ivBubble, dvBubble, arrow, backButton, nextButton
+//     );
+//     stage.update();
+// }
 
 function biDirInstructionPage1() {
     stage.removeAllChildren();
