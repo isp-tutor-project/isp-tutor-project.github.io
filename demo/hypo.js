@@ -1800,8 +1800,13 @@ function predictionPage2() {
     // secondPredictionSet: ${secondPredictionSet}
     // finalHypoLocked: ${finalHypoLocked}
     // `);
-    
     let title = new createjs.Text(
+        "Make Your General Prediction", "bold 24px Arial", "#000"
+    ).set({
+        x: CANVAS_WIDTH / 2, y: 20, textAlign: "center"
+    });
+    
+    let text1 = new createjs.Text(
         "What do you think now that you've finished your research?",
         "bold 22px Arial",
         "#000"
@@ -1815,13 +1820,13 @@ function predictionPage2() {
         "20px Arial", 
         "#000"
     ).set({
-        x: CANVAS_WIDTH / 2, y: title.y + 40,
+        x: CANVAS_WIDTH / 2, y: text1.y + 60,
         textAlign: "center", lineWidth: 800, lineHeight: 30
     });
 
     let chosenDVDirection;
     let choice1 = new createjs.Text("Increase", "20px Arial", "#000").set({
-        x: CANVAS_WIDTH / 2, y: question.y + 150, textAlign: "center"
+        x: CANVAS_WIDTH / 2, y: question.y + 120, textAlign: "center"
     });
 
     let choice2 = new createjs.Text("Decrease", "20px Arial", "#000").set({
@@ -1887,7 +1892,7 @@ function predictionPage2() {
     });
     
     stage.addChild(
-        title, question, choice1, choice2, backButton, nextButton
+        title, text1, question, choice1, choice2, backButton, nextButton
     );
     stage.update();
 }
