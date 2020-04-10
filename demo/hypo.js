@@ -230,7 +230,7 @@ function loadData() {
         initialHypoLocked = userData.initialHypo !== null;
         secondPrediction = userData.secondPrediction;
         finalHypoLocked = userData.finalHypo !== null;
-        
+            notes.innerHTML = userData.finalHypo.notesHtml
         if (userData.rqted && userData.rqted.moduleState) {
             let moduleData = userData.rqted.moduleState;
             let area = moduleData['selectedArea']['index'];
