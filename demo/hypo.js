@@ -2159,7 +2159,7 @@ function notePadPage() {
         scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     });
     
-    let notepad = new createjs.DOMElement("concept_map_notepad_overlay").set({
+    let notepad = new createjs.DOMElement("notepad_overlay").set({
         x: 110 * (2 / PIXEL_RATIO),
         y: 43 * (2 / PIXEL_RATIO),
         scaleX: .20 * (2 / PIXEL_RATIO),
