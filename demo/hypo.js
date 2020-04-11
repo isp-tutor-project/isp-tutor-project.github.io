@@ -2549,13 +2549,6 @@ function conceptMapPage(whichHypo, prediction)
         prevHypoTask();
     }
 
-    // function verifyButtonHandler(e) {
-    //     if (verifyConceptMap(ivBubble)) {
-    //         showSaveWarning();
-    //     } else {
-    //         console.log("verification failed");
-    //     }
-    // }
     function leavePage() {
         disableElements();
         dealWithDOMElements();
