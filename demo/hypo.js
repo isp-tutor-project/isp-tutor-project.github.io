@@ -2968,6 +2968,8 @@ function createDeletableBubble(x, y, text, direction) {
     bubble.y = y;
     bubble.name = "bubble";
     bubble.text = text;
+    bubble.isFixed = false;
+    bubble.isDV = false;
     // this sets the registration point
     bubble.regX = BUBBLE_WIDTH / 2;
     bubble.regY = BUBBLE_HEIGHT / 2;
@@ -3058,6 +3060,8 @@ function createBubble(x, y, text, color, direction) {
     bubble.y = y;
     bubble.name = "bubble";
     bubble.text = text;
+    bubble.isFixed = false;
+    bubble.isDV = false;
     // this sets the registration point
     bubble.regX = BUBBLE_WIDTH / 2;
     bubble.regY = BUBBLE_HEIGHT / 2;
