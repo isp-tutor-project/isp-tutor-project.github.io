@@ -2583,7 +2583,6 @@ function conceptMapPage(whichHypo, prediction)
     saveBtn.addEventListener("click", saveHandler);
     showHelpButton.addEventListener("click", displayHelp);
     backButton.on("click", backButtonHandler);
-    // verifyButton.on("click", verifyButtonHandler);
     nextButton.on("click", nextButtonHandler);
     conceptsMenu.addEventListener("change", selectConceptHandler);
 
@@ -2603,7 +2602,6 @@ function conceptMapPage(whichHypo, prediction)
         backButton, nextButton,
         help, saveWarning, notepadPaste, drawCptMap
     );
-    // verifyButton,
 
     stage.on("stagemouseup", removePanel);
     stage.update();
