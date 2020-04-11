@@ -2837,6 +2837,29 @@ function generateHitAreaCenterAlignment(text) {
 // ============================== Connectors ===================================
 // =============================================================================
 
+function getOutConnectorCoords(conn) {
+    let x, y;
+    if (conn.parent.isFixed) {
+        x = conn.parent.x;
+        y = conn.parent.y - (BUBBLE_HEIGHT / 2)
+    } else {
+        x = conn.parent.x + (BUBBLE_WIDTH / 2);
+        y = conn.parent.y;
+    }
+    return [x, y];
+}
+function getInConnectorCoords(conn) {
+    let x, y;
+    if (conn.parent.isFixed) {
+        x = conn.parent.x;
+        y = conn.parent.y - (BUBBLE_HEIGHT / 2);
+    } else {
+        x = conn.parent.x - (BUBBLE_WIDTH / 2);
+        y = conn.parent.y;
+    }
+    return [x, y];
+}
+
 function createInConnector(x, y) {
     let connector = new createjs.Shape();
     connector
