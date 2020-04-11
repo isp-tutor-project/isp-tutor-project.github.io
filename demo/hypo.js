@@ -3159,6 +3159,8 @@ function createFixedBubble(x, y, text, direction, isDV) {
     bubble.dirButton = dirButton;
     // bubble.name = "fixed bubble";
     bubble.text = text;
+    bubble.isFixed = true;
+    bubble.isDV = isDV;
     // this sets the registration point
     bubble.regX = BUBBLE_WIDTH / 2;
     bubble.regY = BUBBLE_HEIGHT / 2;
