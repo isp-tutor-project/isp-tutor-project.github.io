@@ -380,8 +380,10 @@ function logData(ivBubble, whichHypo) {
         concepts.push({
             x: bub.x,
             y: bub.y,
-            label: bub.text,
-            direction: bub.getChildByName("dirButton").direction
+            text: bub.text,
+            direction: bub.getChildByName("dirButton").direction,
+            isFixed: bub.isFixed,
+            isDV: bub.isDV
         });
     }
     // let nodes = [];
