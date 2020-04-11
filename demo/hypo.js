@@ -1675,10 +1675,10 @@ function graphPage() {
     });
 
     let ivBubble = createFixedBubble(
-        IV_X, IV_Y, capitalizeFirstLetter(iv), "#99bbff", "increase", false
+        IV_X, IV_Y, capitalizeFirstLetter(iv), "increase", false
     );
     let dvBubble = createFixedBubble(
-        DV_X, DV_Y, capitalizeFirstLetter(dvabb), "#99bbff", prediction, true
+        DV_X, DV_Y, capitalizeFirstLetter(dvabb), prediction, true
     );
 
     let arrow = createUnlabeledArrow(
@@ -1722,10 +1722,10 @@ function graphPage() {
 //     });
     
 //     let ivBubble = createFixedBubble(
-//         IV_X, IV_Y, capitalizeFirstLetter(iv), "#99bbff", "increase", false
+//         IV_X, IV_Y, capitalizeFirstLetter(iv), "increase", false
 //     );
 //     let dvBubble = createFixedBubble(
-//         DV_X, DV_Y, capitalizeFirstLetter(dvabb), "#99bbff", prediction, true
+//         DV_X, DV_Y, capitalizeFirstLetter(dvabb), prediction, true
 //     );
 
 //     let arrow = createUnlabeledArrow(
@@ -2484,7 +2484,7 @@ function conceptMapPage(whichHypo, prediction)
         let bubble = createDeletableBubble(
             CANVAS_WIDTH / 2 + ((currentBubbles.length - 2) * 15), 
             CANVAS_HEIGHT / 2 + ((currentBubbles.length - 2) * 15),
-            value, "#4286f4", "none");
+            value, "none");
         bubble.idx = nodes.indexOf(value);
         steps.push({
             action: "NODE_CREATE",
@@ -2590,37 +2590,8 @@ function conceptMapPage(whichHypo, prediction)
     initializeConceptsMenu(conceptsMenu);
     if (currentBubbles.length === 0) {
         ivBubble = createFixedBubble(
-            IV_X, IV_Y, capitalizeFirstLetter(iv), "#99bbff", "increase", false
-        );
-        dvBubble = createFixedBubble(
-            DV_X, DV_Y, capitalizeFirstLetter(dvabb), "#99bbff", prediction, true
-        );
-        arrow = createUnlabeledArrow(ivBubble.x + BUBBLE_WIDTH / 2,
-            ivBubble.y,
-            dvBubble.x - BUBBLE_WIDTH / 2,
-            dvBubble.y);
-        currentBubbles.push(ivBubble);
-        currentBubbles.push(dvBubble);
-        arrowz.push(arrow);
-        stage.addChild(ivBubble, dvBubble, arrow);
-    } else {
-        redrawHypo();
-        ivBubble = currentBubbles.filter(
-            (bub) => bub.text.toLowerCase() === iv.toLowerCase()
-        )[0];
-        dvBubble = currentBubbles.filter(
-            (bub) => bub.text.toLowerCase() === dvabb.toLowerCase()
-        )[0];
-        // in case user has gone back to the prediction page and changed it
-        let dvDirButton = dvBubble.dirButton;
-        let dvDirection = dvDirButton.direction;
-        if (dvDirection !== prediction) {
-            drawDirButton(
-                dvDirButton, dvDirButton.x, dvDirButton.y, prediction, dvDirButton.color
-            );
-            dvDirButton.mouseEnabled = false;
-        }
-        updateConceptsMenu(conceptsMenu);
+                    IV_X, IV_Y, capitalizeFirstLetter(iv), "increase", false
+                    DV_X, DV_Y, capitalizeFirstLetter(dvabb), prediction, true
     } 
  
     showDOMElement(conceptsDropDown);
@@ -2965,13 +2936,13 @@ function createOutConnector(x, y) {
 // ============================== Bubbles ======================================
 // =============================================================================
 
-function createDeletableBubble(x, y, text, color, direction) {
+function createDeletableBubble(x, y, text, direction) {
     let background = new createjs.Shape();
     background
         .graphics
         .setStrokeStyle(1)
         .beginStroke("#000")
-        .beginFill(color)
+        .beginFill(BUBBLE_COLOR)
         .drawRoundRect(0, 0, BUBBLE_WIDTH, BUBBLE_HEIGHT, BUBBLE_RADIUS);
 
     let label = new createjs.Text(text, "16px Arial", "#FFFFFF").set({
@@ -3138,13 +3109,13 @@ function createBubble(x, y, text, color, direction) {
     return bubble;
 }
 
-function createFixedBubble(x, y, text, color, direction, isDV) {
+function createFixedBubble(x, y, text, direction, isDV) {
     let background = new createjs.Shape();
     background
         .graphics
         .setStrokeStyle(1)
         .beginStroke("#000")
-        .beginFill(color)
+        .beginFill(FIXED_BUBBLE_COLOR)
         .drawRoundRect(0, 0, BUBBLE_WIDTH, BUBBLE_HEIGHT, BUBBLE_RADIUS);
 
     let label = new createjs.Text(text, "16px Arial", "#FFFFFF").set({
