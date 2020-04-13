@@ -2299,6 +2299,67 @@ function updateConceptsMenu(menu) {
     }
 }
 
+function rehydrateHypothesis(hypoData, prediction) {
+    // clear and repopulate currentBubbles and arrowz from what is
+    // in the db
+    currentBubbles = [];
+    arrowz = [];
+    ivBubble = createFixedBubble(
+        IV_X, IV_Y, capitalizeFirstLetter(iv), "increase", false
+    );
+    // ivBubble.disable();
+    dvBubble = createFixedBubble(
+        DV_X, DV_Y, capitalizeFirstLetter(dvabb), prediction, true
+    );
+    // dvBubble.disable();
+    arrow = createUnlabeledArrow(ivBubble.x + BUBBLE_WIDTH / 2,
+        ivBubble.y,
+        dvBubble.x - BUBBLE_WIDTH / 2,
+        dvBubble.y);
+    currentBubbles.push(ivBubble);
+    currentBubbles.push(dvBubble);
+    arrowz.push(arrow);
+    // stage.addChild(ivBubble, dvBubble, arrow);
+    let nonFixedBubs = hypoData.concepts.filter(
+        (bub) => bub.isFixed === false
+    );
+    console.log("nonFixed bubs", nonFixedBubs);
+    nonFixedBubs.forEach((bub) => {
+        let nfb = createDeletableBubble(
+            bub.x, bub.y, bub.text, bub.direction
+        );
+        currentBubbles.push(nfb);
+        // stage.add(nfb);
+        // nfb.disable();
+    });
+    hypoData.arrows.forEach((arr) => {
+        let fromBubs = currentBubbles.filter((bub) => bub.text === arr.from);
+        let toBubs = currentBubbles.filter((bub) => bub.text === arr.to);
+        if (fromBubs.length !== 1 || toBubs.length !== 1) {
+            console.log("fromBubs, toBubs", fromBubs, toBubs);
+        } else {
+            let oConn = fromBubs[0].outConnector;
+            let iConn = toBubs[0].inConnector;
+            if (!oConn || !iConn) {
+                console.log("oConn, iConn", oConn, iConn)
+            } else {
+
+                let [startX, startY] = getOutConnectorCoords(oConn);
+                let [endX, endY] = getInConnectorCoords(iConn);
+                let arrow = createArrow(
+                    startX, startY, endX, endY, arr.label
+                );
+                iConn.arrow = arrow;
+                oConn.arrow = arrow;
+                // stage.add(arrow);
+                arrowz.push(arrow);
+            }
+        }
+    });
+    console.log(currentBubbles);
+    console.log(arrowz);
+}
+
 function conceptMapPage(whichHypo, prediction)
 {
     stage.removeAllChildren();
@@ -2580,12 +2641,6 @@ function conceptMapPage(whichHypo, prediction)
     conceptsMenu.addEventListener("change", selectConceptHandler);
 
     initializeConceptsMenu(conceptsMenu);
-    if (currentBubbles.length === 0) {
-        ivBubble = createFixedBubble(
-                    IV_X, IV_Y, capitalizeFirstLetter(iv), "increase", false
-                    DV_X, DV_Y, capitalizeFirstLetter(dvabb), prediction, true
-    } 
- 
     showDOMElement(conceptsDropDown);
     stage.addChild(
         lightBulb,
@@ -2598,20 +2653,54 @@ function conceptMapPage(whichHypo, prediction)
 
     stage.on("stagemouseup", removePanel);
     stage.update();
-
     fetchPrevSavedHypo(whichHypo)
-    .then((hypoData) => {
-        if (null !== hypoData) {
-            hypoSaved = true;
-            showSnackbar("Your hypothesis has already been saved. You can not make any changes.");
-        }
-        //  else {
-        //     nextButton.disable();
-        // }
-    })
-    .catch(function (error) {
-        console.error(error);
-    });
+        .then((hypoData) => {
+            if (null !== hypoData) {
+                hypoSaved = true;
+                showSnackbar("Your hypothesis has already been saved. You can not make any changes.");
+                rehydrateHypothesis(hypoData, prediction);
+                redrawHypo();
+                disableElements();
+                backButton.enable();
+                nextButton.enable();
+            } else if (currentBubbles.length === 0) {
+                console.log()
+                ivBubble = createFixedBubble(
+                    IV_X, IV_Y, capitalizeFirstLetter(iv), "increase", false
+                );
+                dvBubble = createFixedBubble(
+                    DV_X, DV_Y, capitalizeFirstLetter(dvabb), prediction, true
+                );
+                arrow = createUnlabeledArrow(ivBubble.x + BUBBLE_WIDTH / 2,
+                    ivBubble.y,
+                    dvBubble.x - BUBBLE_WIDTH / 2,
+                    dvBubble.y);
+                currentBubbles.push(ivBubble);
+                currentBubbles.push(dvBubble);
+                arrowz.push(arrow);
+                stage.addChild(ivBubble, dvBubble, arrow);
+            } else {
+                redrawHypo();
+                ivBubble = currentBubbles.filter(
+                    (bub) => bub.text.toLowerCase() === iv.toLowerCase()
+                )[0];
+                dvBubble = currentBubbles.filter(
+                    (bub) => bub.text.toLowerCase() === dvabb.toLowerCase()
+                )[0];
+                // in case user has gone back to the prediction page and changed it
+                let dvDirButton = dvBubble.dirButton;
+                let dvDirection = dvDirButton.direction;
+                if (dvDirection !== prediction) {
+                    drawDirButton(
+                        dvDirButton, dvDirButton.x, dvDirButton.y, prediction, dvDirButton.color
+                    );
+                    dvDirButton.mouseEnabled = false;
+                }
+                updateConceptsMenu(conceptsMenu);
+            }    })
+        .catch(function (error) {
+            console.error(error);
+        });    
 }
 
 
