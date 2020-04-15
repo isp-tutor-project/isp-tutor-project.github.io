@@ -2767,7 +2767,7 @@ function handleClick(event) {
 }
 
 function handleArrowClick(event) {
-    console.log(event.target);
+    // console.log(event.target);
     panel = createDeletePanel(event.stageX / scalingRatio,
                               event.stageY / scalingRatio,
                               event.target.parent);
