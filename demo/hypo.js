@@ -1140,12 +1140,12 @@ function causes2() {
         textAlign: "center", lineWidth: 1000, lineHeight: 20
     });
 
-    let html1 = new createjs.DOMElement("corr2_driving_overlay").set({
+    let html1 = new createjs.DOMElement("causes2_driving_overlay").set({
         x: 38 * 2 / PIXEL_RATIO, y: 45 * 2 / PIXEL_RATIO,
         scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     });
 
-    let html2 = new createjs.DOMElement("corr2_coffee_overlay").set({
+    let html2 = new createjs.DOMElement("causes2_coffee_overlay").set({
         x: 163 * 2 / PIXEL_RATIO, y: 45 * 2 / PIXEL_RATIO,
         scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     });
