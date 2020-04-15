@@ -102,6 +102,9 @@ button:hover {
   opacity: 0.8;
 }
 
+button:focus {
+  outline: none;
+}
 
 div.left {
   vertical-align: top;
@@ -587,12 +590,50 @@ div.right {
   left: 48vw;
 }
 
-#concepts_menu {
-  font-size: 30px;
+#notepad_rq_overlay, #notepad_pred_overlay {
+  width: 540px;
 }
-#concepts_menu option {
+
+#toggle_rq_body, #toggle_pred_body {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.link-button {
+  background-color: white;
+  text-align: left;
+  color: black;
+  width: 95%;
+  margin-left: 10px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.collapsable-text {
+  margin-left: 37px;
+}
+#notepad_rq_body, #notepad_pred_body {
   font-size: 24px;
 }
+
+
+.toggler {
+  width: 10px; 
+  height: 0; 
+  display: inline-block;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid black;
+}
+.toggler.collapsed {
+  width: 10px; 
+  height: 0;
+  display: inline-block;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid black;
+}
+
 
 #concepts_list_overlay {
   background-color: #fff3d9;
@@ -677,3 +718,11 @@ div.right {
   outline: none;
 }
 
+
+#concepts_menu {
+  font-size: 30px;
+}
+
+#concepts_menu option {
+  font-size: 24px;
+}

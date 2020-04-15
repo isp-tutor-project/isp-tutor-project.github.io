@@ -2194,20 +2194,45 @@ function notePadPage() {
         x: 140, y: 100, textAlign: "left", lineHeight: 24, lineWidth: CANVAS_WIDTH - 170
     });
 
-    let rqLabel = new createjs.Text("Your Research Question:", "bold 22px Arial", "#000").set({
-        x: 25, y: 175
+    // let rqLabel = new createjs.Text("Your Research Question:", "bold 22px Arial", "#000").set({
+    //     x: 25, y: 175
+    // });
+    // let rqText = new createjs.Text(getRQ(), "20px Arial", "#000").set({
+    //     x: 25, y: 210, lineHeight: 20, lineWidth: 400
+    // });
+    let rqOverlay = new createjs.DOMElement("notepad_rq_overlay").set({
+        x: 0, y: 38, scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     });
-    let rqText = new createjs.Text(getRQ(), "20px Arial", "#000").set({
-        x: 25, y: 210, lineHeight: 20, lineWidth: 400
+    let rqBody = document.getElementById("notepad_rq_body");
+    rqBody.innerText = getRQ();
+    let toggleRQ = document.getElementById("toggle_rq_body");
+    let rqToggle = document.getElementById("rq_toggler");
+    toggleRQ.addEventListener("click", (e) => {
+        e.preventDefault();
+        rqBody.classList.toggle("invisible");
+        toggleRQ.classList.toggle("collapsed");
+        rqToggle.classList.toggle("collapsed")
     });
-    
-    let predLabel = new createjs.Text("Prediction for Your Hypothesis", "bold 22px Arial", "#000").set({
-        x: 25, y: 295
+    // let predLabel = new createjs.Text("Prediction for Your Hypothesis", "bold 22px Arial", "#000").set({
+    //     x: 25, y: 295
+    // });
+    // let predictionText = 
+    //     `As ${iv.toLowerCase()} (independent variable) increases, the ${dv.toLowerCase()} (dependent variable) will ${secondPrediction}.`;
+    // let predText = new createjs.Text(predictionText, "20px Arial", "#000").set({
+    //     x: 25, y: 325, lineHeight: 20, lineWidth: 400
+    // });
+
+    let predOverlay = new createjs.DOMElement("notepad_pred_overlay").set({
+        x: 0, y: 70, scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     });
-    let predictionText = 
-        `As ${iv.toLowerCase()} (independent variable) increases, the ${dv.toLowerCase()} (dependent variable) will ${secondPrediction}.`;
-    let predText = new createjs.Text(predictionText, "20px Arial", "#000").set({
-        x: 25, y: 325, lineHeight: 20, lineWidth: 400
+    let predBody = document.getElementById("notepad_pred_body");
+    predBody.innerText = `As ${iv.toLowerCase()} (independent variable) increases, the ${dv.toLowerCase()} (dependent variable) will ${secondPrediction}.`;
+    let togglePred = document.getElementById("toggle_pred_body");
+    let predToggle = document.getElementById("pred_toggler");
+    togglePred.addEventListener("click", (e) => {
+        predBody.classList.toggle("invisible");
+        togglePred.classList.toggle("collapsed");
+        predToggle.classList.toggle("collapsed");
     });
     
     let cptsList = document.getElementById("concepts_list");
@@ -2225,11 +2250,17 @@ function notePadPage() {
         name: "notepad"
     });
     let notes = document.getElementById("notepad_notes");
+    
     let backButton = createBackButton();
     let nextButton = createNextButton();
-    backButton.on("click", function() {
-        hideDOMElement(notepad);
+    function hideDOMOverlays() {
+        hideDOMElement(rqOverlay);
+        hideDOMElement(predOverlay);
         hideDOMElement(cptsBulletList);
+        hideDOMElement(notepad);
+    }
+    backButton.on("click", function() {
+        hideDOMOverlays();
         prevHypoTask();
     });
 
@@ -2245,8 +2276,7 @@ function notePadPage() {
 
     nextButton.on("click", function() {
         if (checkForMinWords()) {
-            hideDOMElement(notepad);
-            hideDOMElement(cptsBulletList);
+            hideDOMOverlays();
             nextHypoTask();
         } else {
             showSnackbar("Please use at least 10 words in your hypothesis");
@@ -2256,12 +2286,16 @@ function notePadPage() {
     stage.addChild(
         directionsContainer,
         text1,
-        rqLabel, rqText, 
-        predLabel, predText,
+        rqOverlay,
+        predOverlay,
         cptsBulletList,
         notepad,
         backButton, nextButton
     );
+    // rqLabel, rqText,
+    // predLabel, predText,
+    showDOMElement(rqOverlay);
+    showDOMElement(predOverlay);
     showDOMElement(notepad);
     showDOMElement(cptsBulletList);
     stage.update();
