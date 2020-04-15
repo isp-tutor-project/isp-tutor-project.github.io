@@ -78,13 +78,15 @@ const DV_Y = CANVAS_HEIGHT * 0.8;
 
 // these are for displaying information
 let stage;
-let textField;
+// isn't used anywhere
+// let textField;
 // yellow panel that shows up upon mouse click
 let panel;
 
 // related with drawing arrows
 let currentArrow = null;
-let connectorOver = null;
+// no longer using
+// let connectorOver = null;
 let somethingHighlighted = false;
 
 // for option width purposes
