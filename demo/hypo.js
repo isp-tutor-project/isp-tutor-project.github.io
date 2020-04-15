@@ -3009,7 +3009,10 @@ function createOutConnector(x, y) {
             stage.update();
         });
         // Stop the drag
-        let upListener = stage.on("stagemouseup", function () {
+        let upListener = stage.on("stagemouseup", function (e) {
+            let cx = e.stageX / stage.scaleX;
+            let cy = e.stageY / stage.scaleY;
+            let connectorOver = getInConnectorAtPoint(cx, cy);
             stage.off("stagemousemove", moveListener);
             stage.off("stagemouseup", upListener);
             if (connectorOver === null ||
