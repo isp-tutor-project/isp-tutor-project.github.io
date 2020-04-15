@@ -2741,12 +2741,12 @@ function handlePanelOver(event) {
 function handleConnectorOver(event) {
     if (event.type === "mouseover") {
         event.target.alpha = .5;
-        connectorOver = event.target;
+        // connectorOver = event.target;
         // console.info("connOver:");
         // console.info(connectorOver);
     } else {
         event.target.alpha = 1;
-        connectorOver = null;
+        // connectorOver = null;
     }
 }
 
