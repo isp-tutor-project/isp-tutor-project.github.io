@@ -2750,6 +2750,14 @@ function handleConnectorOver(event) {
     }
 }
 
+function getInConnectorAtPoint(x, y) {
+    let retVal = null;
+    let objs = stage.getObjectsUnderPoint(x, y).filter((obj) => obj.name === "inConnector");
+    if (objs.length === 1) {
+        retVal = objs[0];
+    }
+    return retVal;
+}
 // =============================================================================
 // ============================= Handle Clicks =================================
 // =============================================================================
