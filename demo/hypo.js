@@ -813,7 +813,7 @@ function definitionPage4() {
     stage.removeAllChildren();
 
     let text = new createjs.Text(
-        "For each connected pair of concepts (e.g. water temperature and " +
+        "For each connected pair of concepts (for example, water temperature and " +
         "Concept 1), you will be asked to indicate how the concepts are related.",
         "24px Arial",
         "#000"
