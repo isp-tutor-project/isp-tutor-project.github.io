@@ -740,6 +740,24 @@ function lessonOverview() {
 
 function lessonOverview2() {
     stage.removeAllChildren();
+    let overlay = document.getElementById("lesson_overview2_overlay");
+    let invisibles = overlay.querySelectorAll(".invisible");
+    let showOnTransition = {};
+    invisibles.forEach((inv) => {
+        let showOn = inv.dataset.showOnTransition;
+        // console.log("showOn", showOn, inv);
+        if (!showOnTransition[showOn]) {
+            showOnTransition[showOn] = [];
+        }
+        showOnTransition[showOn].push(inv);
+    });
+    // console.log(showOnTransition);
+    let maxTransition = Math.max(...Object.keys(showOnTransition)) + 1;
+    if (maxTransition === -Infinity) {
+        maxTransition = 1;
+    }
+    // console.log(maxTransition);
+    let currentTransition = 0;
 
     let html = new createjs.DOMElement("lesson_overview2_overlay").set({
         x: 10 * 2 / PIXEL_RATIO, y: 10 * 2 / PIXEL_RATIO,
@@ -753,8 +771,18 @@ function lessonOverview2() {
     });
     let nextButton = createNextButton();
     nextButton.on("click", function () {
-        hideDOMElement(html);
-        nextHypoTask();
+        currentTransition++;
+        // console.log(`current: ${currentTransition} max: ${maxTransition}`);
+        if (currentTransition === maxTransition) {
+            hideDOMElement(html);
+            nextHypoTask();
+        } else {
+            if (showOnTransition[currentTransition]) {
+                for (let ele of showOnTransition[currentTransition]) {
+                    ele.classList.remove("invisible");
+                }
+            }
+        }
     });
     stage.addChild(html, prevButton, nextButton);
     stage.update();
