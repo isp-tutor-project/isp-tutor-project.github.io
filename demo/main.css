@@ -128,6 +128,10 @@ div.right {
   display: none;
 }
 
+.invisible {
+  visibility: hidden;
+}
+
 /* to show borders during development */
 .dev {
   border: 1px solid hotpink;
