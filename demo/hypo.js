@@ -1415,37 +1415,49 @@ function quizPage() {
         scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     });
     
+    let quizDropDowns = document.getElementsByClassName("quiz_questions");
+    let backButton = createBackButton();
+    let nextButton = createNextButton();
+
     function hideDOMOverlays() {
         hideDOMElement(quiz);
         hideDOMElement(quizQuestions);
+        for (let qdd of quizDropDowns) {
+            qdd.removeEventListener("change", onChangeAnswer);
+        }
     }
 
-    let backButton = createBackButton();
     backButton.on("click", e => {
         hideDOMOverlays();
         prevHypoTask();
     });
 
-    let nextButton = createNextButton();
+    function onChangeAnswer(e) {
+        e.target.setCustomValidity("");
+        e.target.style.color = "";
+    }
+    for (let qdd of quizDropDowns) {
+        qdd.addEventListener("change", onChangeAnswer);
+    }
+
     nextButton.on("click", e => {
         if (correct) {
             hideDOMOverlays();
             nextHypoTask();
         } else {
             // checking validity info for quiz questions
-            let quizSelectors = document.getElementsByClassName("quiz_questions");
-            for (let i = 0; i < quizSelectors.length; i++) {
-                if (quizSelectors[i].value != QUIZ_ANSWERS[i]) {
-                    quizSelectors[i].setCustomValidity("Wrong Answer");
+            for (let i = 0; i < quizDropDowns.length; i++) {
+                if (quizDropDowns[i].value != QUIZ_ANSWERS[i]) {
+                    quizDropDowns[i].setCustomValidity("Wrong Answer");
                 } else {
-                    quizSelectors[i].setCustomValidity("");
-                    quizSelectors[i].style.color = "green";
+                    quizDropDowns[i].setCustomValidity("");
+                    quizDropDowns[i].style.color = "green";
                 }
                 // resetting validity
-                quizSelectors[i].onchange = (() => {
-                    quizSelectors[i].setCustomValidity("");
-                    quizSelectors[i].style.color = "";
-                });
+                // quizSelectors[i].onchange = (() => {
+                //     quizSelectors[i].setCustomValidity("");
+                //     quizSelectors[i].style.color = "";
+                // });
             }
             // testing if all answers are correct
             if (quizQuestions.htmlElement.reportValidity()) {
