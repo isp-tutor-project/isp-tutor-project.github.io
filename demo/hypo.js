@@ -979,7 +979,8 @@ function definitionPage6() {
     });
 
     let text1 = new createjs.Text(
-        "(1) Definition: The meaning of a concept",
+        "(1) Definition: The meaning of a concept or another way of saying " +
+        "the same thing.",
         "24px Arial",
         "#000"
     ).set({
