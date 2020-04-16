@@ -2220,7 +2220,8 @@ function notePadPage() {
     //     x: 25, y: 210, lineHeight: 20, lineWidth: 400
     // });
     let rqOverlay = new createjs.DOMElement("notepad_rq_overlay").set({
-        x: 0, y: 38, scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
+        x: 2 * 2 / PIXEL_RATIO, y: 38 * 2 / PIXEL_RATIO, 
+        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     });
     let rqBody = document.getElementById("notepad_rq_body");
     rqBody.innerText = getRQ();
@@ -2242,7 +2243,8 @@ function notePadPage() {
     // });
 
     let predOverlay = new createjs.DOMElement("notepad_pred_overlay").set({
-        x: 0, y: 70, scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
+        x: 2 * 2 / PIXEL_RATIO, y: 70 * 2 / PIXEL_RATIO, 
+        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     });
     let predBody = document.getElementById("notepad_pred_body");
     predBody.innerText = `As ${iv.toLowerCase()} (independent variable) increases, the ${dv.toLowerCase()} (dependent variable) will ${secondPrediction}.`;
