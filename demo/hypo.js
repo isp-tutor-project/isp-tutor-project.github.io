@@ -2719,14 +2719,12 @@ function conceptMapPage(whichHypo, prediction)
 
     function backButtonHandler(e) {
         dealWithDOMElements();
-        createjs.Touch.disable(stage);
         prevHypoTask();
     }
 
     function leavePage() {
         disableElements();
         dealWithDOMElements();
-        createjs.Touch.disable(stage);
         // add background for 'home' modal
         stage.addChild(modalBg);
         showDOMElement(goHome);
