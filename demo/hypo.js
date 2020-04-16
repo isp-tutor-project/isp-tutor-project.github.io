@@ -3098,26 +3098,38 @@ function createOutConnector(x, y) {
     connector.arrow = null;
     connector.on("mousedown", function (e) {
         // Create a new arrow on stage press
-        currentArrow = createArrow(stage.mouseX / scalingRatio,
-                                   stage.mouseY / scalingRatio,
-                                   stage.mouseX / scalingRatio,
-                                   stage.mouseY / scalingRatio,
+        console.log(`e.stage(x,y):(${e.stageX},${e.stageY}) stage.mouse(x,y): (${stage.mouseX},${stage.mouseY})`);
+        // currentArrow = createArrow(stage.mouseX / scalingRatio,
+        //                            stage.mouseY / scalingRatio,
+        //                            stage.mouseX / scalingRatio,
+        //                            stage.mouseY / scalingRatio,
+        //                            "Add label");
+        currentArrow = createArrow(e.stageX / scalingRatio,
+                                   e.stageY / scalingRatio,
+                                   e.stageX / scalingRatio,
+                                   e.stageY / scalingRatio,
                                    "Add label");
         stage.addChild(currentArrow);
         // Update the current arrow on move
         let moveListener = stage.on("stagemousemove", function (e) {
+            // drawArrow(currentArrow,
+            //           currentArrow.x,
+            //           currentArrow.y,
+            //           stage.mouseX / scalingRatio,
+            //           stage.mouseY / scalingRatio,
+            //           "Add label");
             drawArrow(currentArrow,
-                      currentArrow.x,
-                      currentArrow.y,
-                      stage.mouseX / scalingRatio,
-                      stage.mouseY / scalingRatio,
-                      "Add label");
+                currentArrow.x,
+                currentArrow.y,
+                e.stageX / scalingRatio,
+                e.stageY / scalingRatio,
+                "Add label");
             stage.update();
         });
         // Stop the drag
         let upListener = stage.on("stagemouseup", function (e) {
-            let cx = e.stageX / stage.scaleX;
-            let cy = e.stageY / stage.scaleY;
+            let cx = e.stageX / scalingRatio;
+            let cy = e.stageY / scalingRatio;
             let connectorOver = getInConnectorAtPoint(cx, cy);
             stage.off("stagemousemove", moveListener);
             stage.off("stagemouseup", upListener);
