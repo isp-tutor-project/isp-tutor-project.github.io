@@ -374,6 +374,34 @@ div.right {
   overflow-y: auto;
 }
 
+.toggler {
+  width: 10px;
+  height: 0;
+  display: inline-block;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid black;
+}
+
+.toggler.collapsed {
+  width: 10px;
+  height: 0;
+  display: inline-block;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid black;
+}
+
+.link-button {
+  background-color: white;
+  text-align: left;
+  color: black;
+  width: 95%;
+  margin-left: 10px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 #signin-button {
   background-color: #0F52BA;
 }
@@ -388,6 +416,20 @@ div.right {
   margin: auto;
 }
 
+#sign-in-text {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+}
+
+#sign-out-region {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  z-index: 1;
+}
+
 #footer {
   font-size: 10px;
   background-color: #Edf7f9;
@@ -395,6 +437,19 @@ div.right {
   text-align: left;
 }
 
+/* Footer */
+#footer {
+  font-size: 10px;
+  background-color: #E4E3E3;
+  padding: 10px;
+  margin-top: 80px;
+}
+
+#loading_gif {
+  position: absolute;
+  top: 48vh;
+  left: 48vw;
+}
 
 #home-icon {
   display: absolute;
@@ -402,9 +457,28 @@ div.right {
   cursor: pointer;
   z-index: 1;
 }
-
 #home-icon:hover {
   color: #828282;
+}
+
+/* for adobe animate (rq and ted) */
+#animation_container,
+#_preload_div_ {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#hypo-canvas {
+  position: absolute;
+  /* margin: auto; */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 #home-overlay {
@@ -425,17 +499,26 @@ div.right {
   height: 250px;
 }
 
-#sign-in-text {
+
+#start_page_overlay, 
+#lesson_overview_overlay,
+#lesson_overview2_overlay {
+  font-size: 10px;
   position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 475px;
+  height: 250px;
 }
-#sign-out-region {
-  position: absolute;
-  top: 30px;
-  right: 20px;
-  z-index: 1;
+
+#lesson_overview2_overlay ul {
+  padding-top: 20px;
+}
+
+#lesson_overview2_overlay li {
+  padding-bottom: 10px;
 }
 
 /* For Hypo module */
@@ -451,63 +534,16 @@ div.right {
   height: fit-content;
 }
 
-#hypo-canvas {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+#causes2_driving_overlay,
+#causes2_coffee_overlay {
+  font-size: 22px;
+  line-height: 30px;
+  width: 560px;
 }
 
 #quiz_overlay ul li {
   margin-bottom: 20px;
   font-size: 24px;
-}
-
-#start_page_overlay {
-  font-size: 10px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 475px;
-  height: 250px;
-}
-
-#lesson_overview_overlay {
-  font-size: 10px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 475px;
-  height: 250px;
-}
-
-#lesson_overview2_overlay {
-  font-size: 10px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 475px;
-  height: 250px;
-}
-#lesson_overview2_overlay ul {
-  padding-top: 20px;
-}
-
-#lesson_overview2_overlay  li {
-  padding-bottom: 10px;
-}
-
-#causes2_driving_overlay, #causes2_coffee_overlay {
-  font-size: 22px;
-  line-height: 30px;
-  width: 560px;
 }
 
 
@@ -568,89 +604,39 @@ div.right {
   to {bottom: 0; opacity: 0;}
 }
 
-/* for adobe animate (rq and ted) */
-#animation_container, #_preload_div_ {
-  position:absolute;
-  margin:auto;
-  left:0;right:0;
-  top:0;bottom:0;
-}
-
-/* Footer */
-#footer {
-  font-size: 10px;
-  background-color: #E4E3E3;
-  padding: 10px;
-  margin-top: 80px;
-}
-
-#loading_gif {
-  position: absolute;
-  top: 48vh;
-  left: 48vw;
-}
-
-#notepad_rq_overlay, #notepad_pred_overlay {
+#notepad_page_lhs_overlay
+{
   width: 540px;
 }
 
-#toggle_rq_body, #toggle_pred_body {
-  font-size: 28px;
+#toggle_rq_body, 
+#toggle_pred_body,
+#toggle_concepts_body{
+  font-size: 24px;
   font-weight: bold;
-}
-
-.link-button {
-  background-color: white;
-  text-align: left;
-  color: black;
-  width: 95%;
-  margin-left: 10px;
-  margin-top: 0;
-  margin-bottom: 0;
 }
 
 .collapsable-text {
   margin-left: 37px;
 }
-#notepad_rq_body, #notepad_pred_body {
+
+#notepad_rq_body, 
+#notepad_pred_body,
+#notepad_concepts_body 
+{
   font-size: 24px;
-}
-
-
-.toggler {
-  width: 10px; 
-  height: 0; 
-  display: inline-block;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 10px solid black;
-}
-.toggler.collapsed {
-  width: 10px; 
-  height: 0;
-  display: inline-block;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 10px solid black;
-}
-
-
-#concepts_list_overlay {
-  background-color: #fff3d9;
-  width: 500px;
-}
-
-#concepts_list_header {
-  font-size: 28px;
 }
 
 #concepts_list {
-  margin-top: 12px;
-  margin-bottom: 12px;
+  padding-top: 0px;
+  margin-top: 0px;
+  margin-bottom: 6px;
   font-size: 24px;
   -webkit-padding-start: 25px;
-          padding-inline-start: 25px;
+  padding-inline-start: 25px;
 }
+
+
 
 /* styling paper */
 #paper {
