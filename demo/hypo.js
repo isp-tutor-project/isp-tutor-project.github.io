@@ -2223,7 +2223,7 @@ function notePadPage() {
 
     let predBody = document.getElementById("notepad_pred_body");
     predBody.innerHTML = "As " + iv.toLowerCase() + " <i>(independent variable)</i> " +
-        "increases, the " + dv.toLowerCase() + "<i>(dependent variable)</i> will " +
+        "increases, the " + dv.toLowerCase() + " <i>(dependent variable)</i> will " +
         secondPrediction + ".";
     let togglePred = document.getElementById("toggle_pred_body");
 
