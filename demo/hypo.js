@@ -538,6 +538,13 @@ function initStage() {
         }
     }
 
+    if (createjs.Touch.isSupported()) {
+        createjs.Touch.enable(stage);
+        window.addEventListener("beforeunload", (e) => {
+            createjs.Touch.disable(stage);
+        });
+    }
+
     // create canvas with the device resolution.
     // let myCanvas = createHiPPICanvas(CANVAS_WIDTH, CANVAS_HEIGHT, PIXEL_RATIO);
     makeResponsive(true, 'both', true, 1);
