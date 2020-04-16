@@ -64,7 +64,7 @@ const OPTION_MIN_WIDTH = 100;
 const OPTION_HEIGHT = 40;
 const OPTION_COLOR = "#f4d041";
 
-const CONNECTOR_RADIUS = 5;
+const CONNECTOR_RADIUS = 7;
 
 // constants regarding position of nodes,
 // nodes/bubbles are centered upon the x and y positions selected
