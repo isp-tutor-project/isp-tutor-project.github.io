@@ -2212,57 +2212,25 @@ function notePadPage() {
     ).set({
         x: 140, y: 100, textAlign: "left", lineHeight: 24, lineWidth: CANVAS_WIDTH - 170
     });
-
-    // let rqLabel = new createjs.Text("Your Research Question:", "bold 22px Arial", "#000").set({
-    //     x: 25, y: 175
-    // });
-    // let rqText = new createjs.Text(getRQ(), "20px Arial", "#000").set({
-    //     x: 25, y: 210, lineHeight: 20, lineWidth: 400
-    // });
-    let rqOverlay = new createjs.DOMElement("notepad_rq_overlay").set({
-        x: 2 * 2 / PIXEL_RATIO, y: 38 * 2 / PIXEL_RATIO, 
+    let lhsOverlay = new createjs.DOMElement("notepad_page_lhs_overlay").set({
+        x: 2 * 2 / PIXEL_RATIO, y: 38 * 2 / PIXEL_RATIO,
         scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     });
+
     let rqBody = document.getElementById("notepad_rq_body");
     rqBody.innerText = getRQ();
-    let toggleRQ = document.getElementById("toggle_rq_body");
-    let rqToggle = document.getElementById("rq_toggler");
-    toggleRQ.addEventListener("click", (e) => {
-        e.preventDefault();
-        rqBody.classList.toggle("invisible");
-        toggleRQ.classList.toggle("collapsed");
-        rqToggle.classList.toggle("collapsed")
-    });
-    // let predLabel = new createjs.Text("Prediction for Your Hypothesis", "bold 22px Arial", "#000").set({
-    //     x: 25, y: 295
-    // });
-    // let predictionText = 
-    //     `As ${iv.toLowerCase()} (independent variable) increases, the ${dv.toLowerCase()} (dependent variable) will ${secondPrediction}.`;
-    // let predText = new createjs.Text(predictionText, "20px Arial", "#000").set({
-    //     x: 25, y: 325, lineHeight: 20, lineWidth: 400
-    // });
+    let toggleRq = document.getElementById("toggle_rq_body");
 
-    let predOverlay = new createjs.DOMElement("notepad_pred_overlay").set({
-        x: 2 * 2 / PIXEL_RATIO, y: 70 * 2 / PIXEL_RATIO, 
-        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
-    });
     let predBody = document.getElementById("notepad_pred_body");
-    predBody.innerText = `As ${iv.toLowerCase()} (independent variable) increases, the ${dv.toLowerCase()} (dependent variable) will ${secondPrediction}.`;
+    predBody.innerHTML = "As " + iv.toLowerCase() + " <i>(independent variable)</i> " +
+        "increases, the " + dv.toLowerCase() + "<i>(dependent variable)</i> will " +
+        secondPrediction + ".";
     let togglePred = document.getElementById("toggle_pred_body");
-    let predToggle = document.getElementById("pred_toggler");
-    togglePred.addEventListener("click", (e) => {
-        predBody.classList.toggle("invisible");
-        togglePred.classList.toggle("collapsed");
-        predToggle.classList.toggle("collapsed");
-    });
-    
+
     let cptsList = document.getElementById("concepts_list");
     initConceptsList(cptsList);
-    let cptsBulletList = new createjs.DOMElement("concepts_list_overlay").set({
-        x: 7 * 2 / PIXEL_RATIO, y: 110 * 2 / PIXEL_RATIO,
-        scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
-    });
-    
+    let toggleCpts = document.getElementById("toggle_concepts_body");
+
     let notepad = new createjs.DOMElement("notepad_overlay").set({
         x: 110 * (2 / PIXEL_RATIO),
         y: 43 * (2 / PIXEL_RATIO),
@@ -2271,19 +2239,38 @@ function notePadPage() {
         name: "notepad"
     });
     let notes = document.getElementById("notepad_notes");
-    
+
     let backButton = createBackButton();
     let nextButton = createNextButton();
+
+    // returns click handler closure
+    function toggle(btn) {
+        const toggleIcon = btn.querySelector(".toggler");
+        const target = document.getElementById(btn.dataset.target);
+        // console.log(btn, toggleIcon, target);
+        function toggler(e) {
+            target.classList.toggle("invisible");
+            btn.classList.toggle("collapsed");
+            toggleIcon.classList.toggle("collapsed")
+        }
+        return toggler;
+    }
+    const rqToggler = toggle(toggleRq);
+    toggleRq.addEventListener("click", rqToggler);
+
+    const predToggler = toggle(togglePred);
+    togglePred.addEventListener("click", predToggler);
+    
+    const cptsToggler = toggle(toggleCpts);
+    toggleCpts.addEventListener("click", cptsToggler);
+
     function hideDOMOverlays() {
-        hideDOMElement(rqOverlay);
-        hideDOMElement(predOverlay);
-        hideDOMElement(cptsBulletList);
+        toggleRq.removeEventListener("click", rqToggler);
+        togglePred.removeEventListener("click", predToggler);
+        toggleCpts.removeEventListener("click", cptsToggler);
+        hideDOMElement(lhsOverlay);
         hideDOMElement(notepad);
     }
-    backButton.on("click", function() {
-        hideDOMOverlays();
-        prevHypoTask();
-    });
 
     function checkForMinWords() {
         let retVal = true;
@@ -2294,6 +2281,11 @@ function notePadPage() {
         }
         return retVal;
     }
+
+    backButton.on("click", function () {
+        hideDOMOverlays();
+        prevHypoTask();
+    });
 
     nextButton.on("click", function() {
         if (checkForMinWords()) {
@@ -2307,18 +2299,12 @@ function notePadPage() {
     stage.addChild(
         directionsContainer,
         text1,
-        rqOverlay,
-        predOverlay,
-        cptsBulletList,
+        lhsOverlay,
         notepad,
         backButton, nextButton
     );
-    // rqLabel, rqText,
-    // predLabel, predText,
-    showDOMElement(rqOverlay);
-    showDOMElement(predOverlay);
+    showDOMElement(lhsOverlay);
     showDOMElement(notepad);
-    showDOMElement(cptsBulletList);
     stage.update();
     setTimeout(function() {
         notes.focus();
