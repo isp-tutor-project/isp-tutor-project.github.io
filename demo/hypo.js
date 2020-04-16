@@ -2476,9 +2476,6 @@ function rehydrateHypothesis(hypoData, prediction) {
 function conceptMapPage(whichHypo, prediction)
 {
     stage.removeAllChildren();
-    if (createjs.Touch.isSupported()) {
-        createjs.Touch.enable(stage);
-    }
     let hypoSaved = false;
     let ivBubble, dvBubble, arrow, showHelp;
     // set a white background to the stage so it isn't transparent when
