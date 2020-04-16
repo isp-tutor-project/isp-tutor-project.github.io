@@ -1732,8 +1732,8 @@ function graphPage() {
     let prediction = (secondPrediction === "increase") ? "increase" : "decrease";
     
     let text1 = new createjs.Text(
-        "You predicted that as the initial water temperature increases, the " +
-        "amount of crystal growth on the string will " + prediction + ".",
+        "You predicted that as " + iv.toLowerCase() + " increases, the " +
+        dv.toLowerCase() + " will " + prediction + ".",
         "22px Arial",
         "#000"
     ).set({
@@ -1864,8 +1864,8 @@ function biDirInstructionPage2() {
     });
 
     let text1 = new createjs.Text(
-        "They predicted that as initial water temperature increases, the " +
-        "amount of crystal growth would " + oppositePrediction + ".",
+        "They predicted that as " + iv.toLowerCase() + " increases, the " +
+        dv.toLowerCase() + " would " + oppositePrediction + ".",
         "22px Arial",
         "#000"
     ).set({
@@ -2186,8 +2186,8 @@ function notePadPage() {
     });
     let dirText = new createjs.Text(
         "Before you make your concept map, please take a few minutes to write " +
-        "a detailed explanation of how you think water temperature affects the " +
-        "weight of the crystal growth after two weeks. You can use some of the " +
+        "a detailed explanation of how you think " + iv.toLowerCase() + 
+        " affects the " + dv.toLowerCase() + ". You can use some of the " +
         "concepts listed below, which you can also use in your concept map.",
         "22px Arial",
         "#FFF"
