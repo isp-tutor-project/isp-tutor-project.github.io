@@ -64,7 +64,7 @@ const OPTION_MIN_WIDTH = 100;
 const OPTION_HEIGHT = 40;
 const OPTION_COLOR = "#f4d041";
 
-const CONNECTOR_RADIUS = 7;
+const CONNECTOR_RADIUS = (createjs.Touch.isSupported()) ? 15 : 7;
 
 // constants regarding position of nodes,
 // nodes/bubbles are centered upon the x and y positions selected
@@ -3162,6 +3162,9 @@ function createDeletableBubble(x, y, text, direction) {
     bubble.addChild(
         background, label, dirButton, leftConnector, rightConnector, closeButton
     );
+    // bubble.addChild(
+    //     leftConnector, rightConnector, background, label, dirButton, closeButton
+    // );
     // so bubble can be dragged
     bubble.on("pressmove", function (event) {
         let mouseX = event.stageX / scalingRatio;
@@ -3349,6 +3352,7 @@ function createFixedBubble(x, y, text, direction, isDV) {
     bubble.regY = BUBBLE_HEIGHT / 2;
     bubble.topConnector = topConnector;
     bubble.addChild(background, label, dirButton, topConnector);
+    // bubble.addChild(topConnector, background, label, dirButton);
     bubble.disable = () => {
         bubble.alpha = 0.5;
         bubble.mouseEnabled = false;
