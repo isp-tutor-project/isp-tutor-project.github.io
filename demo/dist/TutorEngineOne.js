@@ -5886,13 +5886,13 @@ System.register("core/CEFTutorDoc", ["managers/CLogManager", "network/CURLLoader
                     if (this.graphState && this.graphState.currNodeID && (this.graphState.currNodeID != "")) {
                         this.tutorNavigator.restoreGraph(this.graphState);
                     }
-                    if (this.testFeatures("FTR_WEB")) {
-                        window.addEventListener("click", this.clickBoundListener);
-                        console.log("$$ Waiting for user interaction. $$");
-                    }
-                    else {
+                    //if (this.testFeatures("FTR_WEB")) {
+                    //    window.addEventListener("click", this.clickBoundListener);
+                    //    console.log("$$ Waiting for user interaction. $$");
+                    //}
+                    //else {
                         this.tutorNavigator.gotoNextScene("$launchTutor");
-                    }
+                    //}
                 }
                 clickListener(e) {
                     if (e.type === "click") {
