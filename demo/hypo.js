@@ -72,11 +72,11 @@ const BUBBLE_X = CANVAS_WIDTH / 4;
 const BUBBLE_Y = CANVAS_HEIGHT * .75 - 1.5 * BUBBLE_HEIGHT;
 
 // const IV_X = CANVAS_WIDTH * 0.1;
-const IV_X = CANVAS_WIDTH * 0.225;
+const IV_X = CANVAS_WIDTH * 0.175;
 const IV_Y = CANVAS_HEIGHT * 0.8;
 
 // const DV_X = CANVAS_WIDTH * 0.9;
-const DV_X = CANVAS_WIDTH * 0.775;
+const DV_X = CANVAS_WIDTH * 0.825;
 const DV_Y = CANVAS_HEIGHT * 0.8;
 
 // these are for displaying information
