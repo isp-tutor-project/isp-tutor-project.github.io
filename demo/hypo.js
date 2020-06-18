@@ -70,10 +70,13 @@ const CONNECTOR_RADIUS = (createjs.Touch.isSupported()) ? 15 : 7;
 // nodes/bubbles are centered upon the x and y positions selected
 const BUBBLE_X = CANVAS_WIDTH / 4;
 const BUBBLE_Y = CANVAS_HEIGHT * .75 - 1.5 * BUBBLE_HEIGHT;
-const IV_X = CANVAS_WIDTH * 0.1;
+
+// const IV_X = CANVAS_WIDTH * 0.1;
+const IV_X = CANVAS_WIDTH * 0.225;
 const IV_Y = CANVAS_HEIGHT * 0.8;
 
-const DV_X = CANVAS_WIDTH * 0.9;
+// const DV_X = CANVAS_WIDTH * 0.9;
+const DV_X = CANVAS_WIDTH * 0.775;
 const DV_Y = CANVAS_HEIGHT * 0.8;
 
 // these are for displaying information
@@ -105,7 +108,7 @@ let loadingText;
 
 
 // placeholder (Crystal) constants regarding values of nodes
-// FIXME: we need a better way to have default values without resorting to 
+// FIXME: we need a better way to have default values without resorting to
 // globals
 // const IV = "Initial water temperature"
 // const DV = "Amount crystal growth on string"
@@ -199,7 +202,7 @@ let arrowz;
 // anymore
 //
 // Scott - this is definitely working, as it's in use and the rqted
-// data is indeed fetched.  My question is, does this really need to be an 
+// data is indeed fetched.  My question is, does this really need to be an
 // async function?  all of the other firebase promise stuff isn't and works
 // // just fine
 // async function getTutorState() {
@@ -263,7 +266,7 @@ function loadData() {
             nodes = hypoOntologyTopic['NODES'];
             nodes[-2] = iv;
             nodes[-1] = dvabb;
-        } 
+        }
         // console.log(`
         // firstPrediction: ${firstPrediction}
         // initialHypoLocked: ${initialHypoLocked}
@@ -277,7 +280,7 @@ function loadData() {
         // `);
         // console.log(area + "," + topic + "," + variable);
         // console.log(hypoOntologyTopic)
-       
+
         return userData;
     });
 }
@@ -573,7 +576,7 @@ const pageNamesToFunctions = {
     "definitionPage5": definitionPage5,
     "definitionPage6": definitionPage6,
     "causes1": causes1,
-    "causes2": causes2, 
+    "causes2": causes2,
     "corr1": corr1,
     "corr2": corr2,
     "quizPage": quizPage,
@@ -641,7 +644,7 @@ function raiseYourHand() {
 
     let nextButton = createNextButton();
     nextButton.on("click", e => nextHypoTask());
-    
+
     stage.addChild(image1, text1, text2, text3, text4, backButton, nextButton);
     stage.update();
 }
@@ -650,7 +653,7 @@ function startPage() {
     stage.removeAllChildren();
     let text = new createjs.Text(
         "Welcome to the ISP Tutor's Hypothesis module.",
-        "28px Arial ", 
+        "28px Arial ",
         "#000"
     ).set({
         x: (CANVAS_WIDTH / 2) + 20, y: 80,
@@ -666,7 +669,7 @@ function startPage() {
 
     let nextButton = createLargeButton(CANVAS_WIDTH / 2, 350, "Next", BUTTON_COLOR);
     nextButton.on("click", nextHypoTask);
-    
+
     stage.addChild(text, image1, nextButton);
     stage.update();
 }
@@ -716,7 +719,7 @@ function lessonOverview() {
     // console.log(maxTransition);
     let currentTransition = 0;
     let html = new createjs.DOMElement("lesson_overview_overlay").set({
-        x: 20 * 2 / PIXEL_RATIO, y: 10 * 2 / PIXEL_RATIO, 
+        x: 20 * 2 / PIXEL_RATIO, y: 10 * 2 / PIXEL_RATIO,
         scaleX: 0.55 * 2 / PIXEL_RATIO, scaleY: 0.55 * 2  / PIXEL_RATIO
     });
 
@@ -822,10 +825,10 @@ function definitionPage2() {
 
     let backButton = createBackButton();
     backButton.on("click", prevHypoTask);
-    
+
     let nextButton = createNextButton();
     nextButton.on("click", nextHypoTask);
-    
+
     stage.addChild(text, image, text2, backButton, nextButton);
     stage.update();
 }
@@ -860,13 +863,13 @@ function definitionPage3() {
     let image = new createjs.Bitmap(queue.getResult("defPagesCptMap")).set({
         x: 200, y: 350
     });
-    
+
     let backButton = createBackButton();
     backButton.on("click", prevHypoTask);
-    
+
     let nextButton = createNextButton();
     nextButton.on("click", nextHypoTask);
-    
+
     stage.addChild(text1, text2, image, backButton, nextButton);
     stage.update();
 }
@@ -882,7 +885,7 @@ function definitionPage4() {
     ).set({
         x: 60, y: 60, lineHeight: 35, lineWidth: CANVAS_WIDTH - 120
     });
-    
+
     let text2 = new createjs.Text(
         "The relationships between concepts (as shown below) could be " +
         "correlations, causes, or definitions.",
@@ -895,13 +898,13 @@ function definitionPage4() {
     let image = new createjs.Bitmap(queue.getResult("defPagesCptMap")).set({
         x: 200, y: 350
     });
-    
+
     let backButton = createBackButton();
     backButton.on("click", prevHypoTask);
-    
+
     let nextButton = createNextButton();
     nextButton.on("click", nextHypoTask);
-    
+
     stage.addChild(text, text2, image, backButton, nextButton);
     stage.update();
 }
@@ -928,7 +931,7 @@ function definitionPage5() {
 
     let text1 = new createjs.Text(
         "When you make your explanation for your prediction, you will need to " +
-        "choose the type of relationship between pairs of concepts. Here are " + 
+        "choose the type of relationship between pairs of concepts. Here are " +
         "the three types of relationships you can choose:",
         "24px Arial",
         "#000"
@@ -951,10 +954,10 @@ function definitionPage5() {
     // let text3 = new createjs.Text('', 'italic 14px Arial', "#000").set({
     //     x: CANVAS_WIDTH / 2, y: 370, textAlign: "center"
     // });
-    
+
     let backButton = createBackButton();
     backButton.on("click", prevHypoTask);
-    
+
     let nextButton = createNextButton();
     // let images = [image1, image2, image3];
     // let iteration = 0;
@@ -995,8 +998,8 @@ function definitionPage6() {
     });
 
     let text2 = new createjs.Text(
-        "Often, an “everyday” term is defined by the behaviors of " + 
-        "molecules...\n\nFor example, the concept of the “temperature” of " + 
+        "Often, an “everyday” term is defined by the behaviors of " +
+        "molecules...\n\nFor example, the concept of the “temperature” of " +
         "an object is defined as the average kinetic energy of the " +
         "molecules that make up the object.",
         "18px Arial",
@@ -1006,7 +1009,7 @@ function definitionPage6() {
     });
 
     let text3 = new createjs.Text(
-        "Or, “Density” is the amount of mass of an object divided by its " + 
+        "Or, “Density” is the amount of mass of an object divided by its " +
         "volume (or how much space it takes up).",
         "18px Arial",
         "#000"
@@ -1029,7 +1032,7 @@ function definitionPage6() {
         hideDOMElement(image1);
         prevHypoTask();
     });
-    
+
     let nextButton = createNextButton();
     let iteration = 0;
     nextButton.on("click", e => {
@@ -1069,7 +1072,7 @@ function causes1() {
     ).set({
         x: CANVAS_WIDTH / 2, y: 90, textAlign: "center", lineWidth: 1000
     });
-    
+
     let text2 = new createjs.Text(
         "For example, a change in how distracted people are while driving affects " +
         "how well people drive.",
@@ -1098,7 +1101,7 @@ function causes1() {
 
     let backButton = createBackButton();
     backButton.on("click", prevHypoTask);
-    
+
     let nextButton = createNextButton();
     let iteration = 0;
     nextButton.on("click", e => {
@@ -1113,7 +1116,7 @@ function causes1() {
         }
         iteration++;
     });
-    
+
     stage.addChild(title, text1, backButton, nextButton);
     stage.update();
 }
@@ -1134,7 +1137,7 @@ function causes2() {
         "24px Arial",
         "#000"
     ).set({
-        x: CANVAS_WIDTH / 2, y: 90, 
+        x: CANVAS_WIDTH / 2, y: 90,
         textAlign: "center", lineWidth: 1000, lineHeight: 20
     });
 
@@ -1174,7 +1177,7 @@ function causes2() {
         x: 150, y: 600, lineHeight: 25, lineWidth: CANVAS_WIDTH - 200
     });
 
-    
+
     let backButton = createBackButton();
     backButton.on("click", function() {
         hideDOMElement(html1);
@@ -1204,7 +1207,7 @@ function causes2() {
             hideDOMElement(html2);
             nextHypoTask();
         }
-        
+
         iteration++;
     });
 
@@ -1235,7 +1238,7 @@ function corr1() {
     });
 
     let pizzaText1 = new createjs.Text(
-        "For example, let’s say you found that there is a relationship between " + 
+        "For example, let’s say you found that there is a relationship between " +
         "how often students eat pizza and their grades in school.",
         "18px Arial",
         "#000"
@@ -1262,7 +1265,7 @@ function corr1() {
 
 
     let iceCreamText1 = new createjs.Text(
-        "Or, you might find a relationship between the amount of ice cream people " + 
+        "Or, you might find a relationship between the amount of ice cream people " +
         "buy and how often people go swimming.",
         "18px Arial",
         "#000"
@@ -1287,11 +1290,11 @@ function corr1() {
         x: 630, y: 600, lineHeight: 25, lineWidth: 460
     });
 
-    
+
 
     let backButton = createBackButton();
     backButton.on("click", prevHypoTask);
-    
+
     let nextButton = createNextButton();
     let iteration = 0;
     nextButton.on("click", e => {
@@ -1312,7 +1315,7 @@ function corr1() {
         }
         iteration++;
     });
-    
+
     stage.addChild(title, text1, backButton, nextButton);
     stage.update();
 }
@@ -1330,7 +1333,7 @@ function corr2() {
 
     let text1 = new createjs.Text(
         "(3) Correlation: Just because two things are correlated does not mean " +
-        "that one caused the other. There may be other reasons for two variables " + 
+        "that one caused the other. There may be other reasons for two variables " +
         "to change together. For example, both variables might be caused by a " +
         "third variable.",
         "24px Arial",
@@ -1350,7 +1353,7 @@ function corr2() {
     });
 
     let text3 = new createjs.Text(
-        "Or, a third variable, the temperature, could cause people to eat more " + 
+        "Or, a third variable, the temperature, could cause people to eat more " +
         "ice cream and also cause people to want to go swimming to cool off.",
         "18px Arial",
         "#000"
@@ -1368,7 +1371,7 @@ function corr2() {
 
     let backButton = createBackButton();
     backButton.on("click", prevHypoTask);
-    
+
     let nextButton = createNextButton();
     let iteration = 0;
     nextButton.on("click", e => {
@@ -1383,7 +1386,7 @@ function corr2() {
         }
         iteration++;
     });
-    
+
     stage.addChild(title, text1, backButton, nextButton);
     stage.update();
 }
@@ -1404,7 +1407,7 @@ function quizPage() {
 
     let text1 = new createjs.Text(
         "For each phrase below, as one concept (underlined) increases, the " +
-        "other (underlined) concept may increase or decrease. Select the " + 
+        "other (underlined) concept may increase or decrease. Select the " +
         "type of relationship that best describes the following pairs of concepts:",
         "24px Arial",
         "#000"
@@ -1416,12 +1419,12 @@ function quizPage() {
         x: 50 * 2 / PIXEL_RATIO, y: 50 * 2 / PIXEL_RATIO,
         scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO,
     });
-    
+
     let quizQuestions = new createjs.DOMElement("quiz_questions_overlay").set({
         x: 225 * 2 / PIXEL_RATIO, y: 53 * 2 / PIXEL_RATIO,
         scaleX: 0.2 * 2 / PIXEL_RATIO, scaleY: 0.2 * 2 / PIXEL_RATIO
     });
-    
+
     let quizDropDowns = document.getElementsByClassName("quiz_questions");
     let backButton = createBackButton();
     let nextButton = createNextButton();
@@ -1477,7 +1480,7 @@ function quizPage() {
     });
 
     stage.addChild(
-        heading, text1, 
+        heading, text1,
         quiz, quizQuestions,
         backButton, nextButton
     );
@@ -1491,10 +1494,10 @@ function instructionPage() {
     stage.removeAllChildren();
     // let delayStarted = false;
     // let delayAchieved = false;
-    
+
     let text = new createjs.Text(
-        "Concept Map Activity Instructions", 
-        "bold 22px Arial", 
+        "Concept Map Activity Instructions",
+        "bold 22px Arial",
         "#000").set({
         x: CANVAS_WIDTH / 2, y: (CANVAS_HEIGHT / 8) - 70, textAlign: "center"
     });
@@ -1506,14 +1509,14 @@ function instructionPage() {
 
     let advice = new createjs.Text(
         "Please watch the video above for a brief tutorial. We recommend you " +
-        "watch the video in full screen.\n\nFrom the Concept Map page, you can " + 
+        "watch the video in full screen.\n\nFrom the Concept Map page, you can " +
         "always click the back button to return to this video. That page also " +
-        "contains a \"Show Help\" button which will display a popup summarizing " + 
+        "contains a \"Show Help\" button which will display a popup summarizing " +
         "these instructions." ,
         "16px Arial",
         "#000"
     ).set({
-        x: CANVAS_WIDTH / 2, y: CANVAS_HEIGHT * 0.85, 
+        x: CANVAS_WIDTH / 2, y: CANVAS_HEIGHT * 0.85,
         textAlign: "center", lineWidth: 800
     });
 
@@ -1583,7 +1586,7 @@ function backToYourRQ() {
         x: CANVAS_WIDTH / 2, y: 300,
         textAlign: "center", lineHeight: 35, lineWidth: 700
     });
-    
+
     let backButton = createBackButton();
     backButton.on("click", e => prevHypoTask());
 
@@ -1604,9 +1607,9 @@ function predictionPage1() {
     });
 
     let question = new createjs.Text(
-        "As " + iv.toLowerCase() + " increases, what will happen to the " + 
-        dv.toLowerCase() + "?", 
-        "20px Arial", 
+        "As " + iv.toLowerCase() + " increases, what will happen to the " +
+        dv.toLowerCase() + "?",
+        "20px Arial",
         "#000"
     ).set({
         x: CANVAS_WIDTH / 2, textAlign: "center", lineWidth: 800, lineHeight: 30
@@ -1728,9 +1731,9 @@ function getImageForPrediction(prediction) {
 
 function graphPage() {
     stage.removeAllChildren();
-    
+
     let prediction = (secondPrediction === "increase") ? "increase" : "decrease";
-    
+
     let text1 = new createjs.Text(
         "You predicted that as " + iv.toLowerCase() + " increases, the " +
         dv.toLowerCase() + " will " + prediction + ".",
@@ -1743,7 +1746,7 @@ function graphPage() {
 
     let image = getImageForPrediction(prediction);
     image.set({x: 400, y: 150});
-    
+
     let text2 = new createjs.Text(
         'Your prediction is represented as: ', "22px Arial", "#000"
     ).set({
@@ -1767,7 +1770,7 @@ function graphPage() {
 
     let backButton = createBackButton();
     backButton.on("click", e => prevHypoTask());
-    
+
     let iteration = 0;
     let nextButton = createNextButton();
     nextButton.on("click", function(e) {
@@ -1817,7 +1820,7 @@ function biDirInstructionPage1() {
 function biDirInstructionPage2() {
     stage.removeAllChildren();
     let oppositePrediction = (firstPrediction) ? "decrease" : "increase";
-    
+
     let image1 = new createjs.Bitmap(queue.getResult("TeacherPointing")).set({
         x: 50, y: 50
     });
@@ -1831,16 +1834,16 @@ function biDirInstructionPage2() {
         x: CANVAS_WIDTH / 2, y: 150,
         textAlign: "center", lineWidth: 700, lineHeight: 35
     });
-    
+
     let image2 = getImageForPrediction(oppositePrediction);
     image2.set({x: 400, y: 250});
-    
+
     let backButton = createBackButton();
     backButton.on("click", e => prevHypoTask());
-    
+
     let nextButton = createNextButton();
     nextButton.on("click", e => nextHypoTask());
-    
+
     stage.addChild(image1, text1, image2, backButton, nextButton);
     stage.update();
 }
@@ -1849,7 +1852,7 @@ function biDirInstructionPage3() {
     stage.removeAllChildren();
 
     let oppositePrediction = (firstPrediction) ? "decrease" : "increase";
-    
+
     let image1 = new createjs.Bitmap(queue.getResult("TeacherPointing")).set({
         x: 50, y: 50
     });
@@ -1887,7 +1890,7 @@ function biDirInstructionPage3() {
 
 function brmPage() {
     stage.removeAllChildren();
-   
+
     let brmBtnClicked = false;
     let text = new createjs.Text(
         'Click the "Go to Background Research website" button to go to the ' +
@@ -1920,7 +1923,7 @@ function brmPage() {
         setTimeout(() => {
             brmBtnClicked = true;
             nextButton.enable();
-        }, 20000); 
+        }, 20000);
     });
 
     let backButton = createBackButton();
@@ -1953,7 +1956,7 @@ function predictionPage2() {
     ).set({
         x: CANVAS_WIDTH / 2, y: 20, textAlign: "center"
     });
-    
+
     let text1 = new createjs.Text(
         "What do you think now that you've finished your research?",
         "bold 22px Arial",
@@ -1963,9 +1966,9 @@ function predictionPage2() {
     });
 
     let question = new createjs.Text(
-        "As " + iv.toLowerCase() + " increases, what will happen to the " + 
-        dv.toLowerCase() + "?", 
-        "20px Arial", 
+        "As " + iv.toLowerCase() + " increases, what will happen to the " +
+        dv.toLowerCase() + "?",
+        "20px Arial",
         "#000"
     ).set({
         x: CANVAS_WIDTH / 2, y: text1.y + 60,
@@ -2009,7 +2012,7 @@ function predictionPage2() {
     if (secondPredictionSet) {
         // set chosenDVDirection to the value of secondPrediction and
         chosenDVDirection = secondPrediction;
-        // set the choices to the appropriate colors based on the saved value  
+        // set the choices to the appropriate colors based on the saved value
         if ("increase" === secondPrediction) {
             setIncreaseColors();
         } else {
@@ -2018,7 +2021,7 @@ function predictionPage2() {
     }
     let backButton = createBackButton();
     backButton.on("click", e => prevHypoTask());
-    
+
     let nextButton = createNextButton();
     nextButton.on("click", e => {
         if (chosenDVDirection === undefined) {
@@ -2036,9 +2039,9 @@ function predictionPage2() {
             .catch(function(error) {
                 console.error(error);
             });
-        }   
+        }
     });
-    
+
     stage.addChild(
         title, text1, question, choice1, choice2, backButton, nextButton
     );
@@ -2099,10 +2102,10 @@ function initialConceptMapPlaceholder() {
 
     let backButton = createBackButton();
     backButton.on("click", e => prevHypoTask());
-    
+
     let nextButton = createNextButton();
     nextButton.on("click", e => nextHypoTask());
-    
+
     stage.addChild(image1, backButton, nextButton);
 }
 
@@ -2145,7 +2148,7 @@ function notePadPage() {
     });
     let dirText = new createjs.Text(
         "Before you make your concept map, please take a few minutes to write " +
-        "a detailed explanation of how you think " + iv.toLowerCase() + 
+        "a detailed explanation of how you think " + iv.toLowerCase() +
         " affects the " + dv.toLowerCase() + ". You can use some of the " +
         "concepts listed below, which you can also use in your concept map.",
         "22px Arial",
@@ -2153,7 +2156,7 @@ function notePadPage() {
     ).set({
         x: 140, y: 10, textAlign: "left", lineHeight: 24, lineWidth: CANVAS_WIDTH - 170
     });
-    let dirWidth = CANVAS_WIDTH -20; 
+    let dirWidth = CANVAS_WIDTH -20;
     let dirHeight = dirText.getMeasuredHeight() + 20;
     let dirBg = new createjs.Shape();
     dirBg.graphics
@@ -2162,7 +2165,7 @@ function notePadPage() {
          .beginFill("#2858a9")
          .drawRect(0, 0, dirWidth, dirHeight);
     directionsContainer.addChild(dirBg, dirLabel, dirText);
-    
+
     let text1 = new createjs.Text(
         "The important thing is that your hypothesis makes sense to you. You can " +
         "come back to this page later to make improvements to your hypothesis.",
@@ -2219,7 +2222,7 @@ function notePadPage() {
 
     const predToggler = toggle(togglePred);
     togglePred.addEventListener("click", predToggler);
-    
+
     const cptsToggler = toggle(toggleCpts);
     toggleCpts.addEventListener("click", cptsToggler);
 
@@ -2254,7 +2257,7 @@ function notePadPage() {
             showSnackbar("Please use at least 10 words in your hypothesis");
         }
     });
-    
+
     stage.addChild(
         directionsContainer,
         text1,
@@ -2433,7 +2436,7 @@ function conceptMapPage(whichHypo, prediction)
       .drawRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     // add this to the stage immediately, so it literally is in the background
     stage.addChild(bg);
-    
+
     // gray background which we place on top of everything (other than
     // DOM Elements) when displaying a modal.  I had to set mouseEnabled
     // to true, and setup a noop click handler so that it actually prevents
@@ -2487,7 +2490,7 @@ function conceptMapPage(whichHypo, prediction)
     let notepadPaste = new createjs.DOMElement("notepad_paste").set(modalProps);
     let drawCptMap = new createjs.DOMElement("draw_cpt_map").set(modalProps);
     let goHome = new createjs.DOMElement('completion-overlay').set(modalProps);
-    
+
     let dismissHelp = document.getElementById("dismiss_cpt_map_help");
     let helpContents = document.getElementById("cpt_map_help_contents")
     let dismissNotepadPaste = document.getElementById("dismiss_notepad_paste");
@@ -2497,7 +2500,7 @@ function conceptMapPage(whichHypo, prediction)
     let backButton = createBackButton();
     let nextButton = createNextButton();
 
-    
+
     // event handlers and other functions
     function noop(e) {
         return;
@@ -2555,7 +2558,7 @@ function conceptMapPage(whichHypo, prediction)
     function hideHelp() {
         hideModal(help);
     }
-    
+
     function showSaveWarning() {
         showModal(saveWarning);
     }
@@ -2600,7 +2603,7 @@ function conceptMapPage(whichHypo, prediction)
     function selectConceptHandler(e) {
         let value = e.target.value;
         let bubble = createDeletableBubble(
-            CANVAS_WIDTH / 2 + ((currentBubbles.length - 2) * 15), 
+            CANVAS_WIDTH / 2 + ((currentBubbles.length - 2) * 15),
             CANVAS_HEIGHT / 2 + ((currentBubbles.length - 2) * 15),
             value, "none");
         bubble.idx = nodes.indexOf(value);
@@ -2637,7 +2640,7 @@ function conceptMapPage(whichHypo, prediction)
         conceptsMenu.value = "";
         stage.addChild(bubble);
     }
-    
+
     function saveHandler() {
         hideSaveWarning();
         logData(ivBubble, whichHypo);
@@ -2757,7 +2760,7 @@ function conceptMapPage(whichHypo, prediction)
             }    })
         .catch(function (error) {
             console.error(error);
-        });    
+        });
 }
 
 
@@ -2867,8 +2870,8 @@ function notepadHtmlAsText(notePadHtml) {
 
 function wrapText(text, maxWidth) {
     return text.replace(
-        new RegExp(`(?![^\\n]{1,${maxWidth}}$)([^\\n]{1,${maxWidth}})\\s`, 
-                  'g'), 
+        new RegExp(`(?![^\\n]{1,${maxWidth}}$)([^\\n]{1,${maxWidth}})\\s`,
+                  'g'),
         '$1\n'
     );
 }
@@ -2899,7 +2902,7 @@ function verifyConceptMap(ivBubble) {
             let dirButton = child.getChildByName("dirButton");
             let connected = false;
             for (let bubbleChild of child.children) {
-                if ((bubbleChild.name === "inConnector" || 
+                if ((bubbleChild.name === "inConnector" ||
                      bubbleChild.name === "outConnector") &&
                     bubbleChild.arrow != null) {
                     connected = true;
@@ -3523,7 +3526,7 @@ function createArrowButton(x, name, direction) {
     });
     let imgHeight = normal.image.height * scaling;
     let hover = new createjs.Bitmap(queue.getResult("yellowBtn")).set({
-        scaleX: scaling, scaleY: scaling    
+        scaleX: scaling, scaleY: scaling
     });
     if ("right" === direction) {
         normal.rotation = 180;
@@ -3700,7 +3703,7 @@ function createXButton(x, y, buttonSize) {
 function createCloseButton(x, y, buttonSize) {
     let background = new createjs.Shape();
     background.graphics.beginFill("#000").drawCircle(0, 0, 10);
-    
+
     let label = new createjs.Text("x", "12px Arial", "#FFF").set({
         x: 0, y: 0, textAlign: "center", textBaseline: "middle"
     });
