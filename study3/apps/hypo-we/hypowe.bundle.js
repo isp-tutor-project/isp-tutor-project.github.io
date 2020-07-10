@@ -624,8 +624,12 @@ class NavBar {
 
     signOutUser(e) {
         this.userInfoRegion.classList.add("invisible");
+        let homePage = localStorage.getItem("homepage");
+        if (null === homePage) {
+            homePage = window.location.origin + "/";
+        }
         localStorage.clear();
-        window.location.path = "/";
+        window.location.href = homePage;
     }
 
     displayActivityTitle(title) {
