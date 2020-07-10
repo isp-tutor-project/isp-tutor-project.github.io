@@ -1,0 +1,2615 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Google Material Icons (Home Icon) -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- Google Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-firestore.js"></script>
+
+    <title>Data Interpretation Pre-Test</title>
+
+    <link rel="stylesheet" href="diprepost.bundle.css" />
+  </head>
+  <body>
+    <div id="scene_id_region"></div>
+    <main>
+      <section id="memoryResults1Intro" class="scene">
+        <div class="single_column_content">
+          <h1>Possible Memory Results: #1 of 5</h1>
+        </div>
+      </section>
+
+      <section id="memoryResults2Intro" class="scene">
+        <div class="single_column_content">
+          <h1>Possible Memory Results: #2 of 5</h1>
+        </div>
+      </section>
+
+      <section id="memoryResults3Intro" class="scene">
+        <div class="single_column_content">
+          <h1>Possible Memory Results: #3 of 5</h1>
+        </div>
+      </section>
+
+      <section id="memoryResults4Intro" class="scene">
+        <div class="single_column_content">
+          <h1>Possible Memory Results: #4 of 5</h1>
+        </div>
+      </section>
+
+      <section id="memoryResults5Intro" class="scene">
+        <div class="single_column_content">
+          <h1>Possible Memory Results: #5 of 5</h1>
+        </div>
+      </section>
+
+      <section id="memoryResults1" class="scene">
+        <header class="results-heading">
+          Below is the first set of possible results for the number of correct
+          responses for each friend.
+        </header>
+
+        <div class="results-top">
+          <div class="results-top-left">
+            <div class="results-centered">
+              <button
+                id="memoryResults1_reveal_left_mean"
+                class="reveal-mean btn btn-lg btn-primary"
+              >
+                Reveal Table 1 Mean
+              </button>
+              <div id="memoryResults1_left_mean" class="left-mean hidden">
+                Table 1 Mean = 7
+              </div>
+            </div>
+          </div>
+
+          <div class="results-top-center">
+            <div class="results-centered">
+              <div>
+                <img
+                  id="memoryResults1_sorted"
+                  src="img/memory_pretest_1/Pre_T1_sorted.jpg"
+                  class="img-centered hidden"
+                />
+                <img
+                  id="memoryResults1_unsorted"
+                  src="img/memory_pretest_1/Pre_T1_unsorted.jpg"
+                  class="img-centered"
+                />
+              </div>
+              <p>
+                <button
+                  id="memoryResults1_show_sorted_table"
+                  class="show-sorted-img btn-lg btn-primary"
+                >
+                  Sort each condition from lowest to highest
+                </button>
+              </p>
+              <p id="memoryResults1_sorted_text" class="hidden">
+                Conditions are sorted from lowest to highest
+              </p>
+            </div>
+          </div>
+
+          <div class="results-top-right">
+            <div class="results-centered">
+              <button
+                id="memoryResults1_reveal_right_mean"
+                class="reveal-mean btn btn-lg btn-primary"
+              >
+                Reveal Table 2 Mean
+              </button>
+              <div id="memoryResults1_right_mean" class="right-mean hidden">
+                Table 2 Mean = 3
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="results-bottom">
+          <div class="question-region">
+            <form id="memoryResults1_q1_form" class="form-centered">
+              <p id="memoryResults1_q1_text" class="question-text text-lg">
+                Q1) What do these results suggest students remember better?
+              </p>
+              <div id="memoryResults1_q1_form_controls" class="form-controls">
+                <label
+                  for="memoryResults1_q1-d6cba720-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults1_q1-d6cba720-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults1_q1"
+                    value="words"
+                    required
+                  />
+                  Words
+                </label>
+
+                <label
+                  for="memoryResults1_q1-d6cba721-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults1_q1-d6cba721-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults1_q1"
+                    value="pictures"
+                    required
+                  />
+                  Pictures
+                </label>
+
+                <label
+                  for="memoryResults1_q1-d6cba722-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults1_q1-d6cba722-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults1_q1"
+                    value="neither"
+                    required
+                  />
+                  Neither (they remember words and pictures the same)
+                </label>
+              </div>
+              <button
+                id="memoryResults1_q1_submit"
+                class="submit-q1 form-submit-centered btn btn-lg"
+              >
+                Submit
+              </button>
+            </form>
+
+            <form id="memoryResults1_q2_form" class="form-centered">
+              <p id="memoryResults1_q2_text" class="question-text text-lg"></p>
+              <div id="memoryResults1_q2_form_controls" class="form-controls">
+                <textarea
+                  id="memoryResults1_q2_answer"
+                  class="text-area form-control"
+                  rows="4"
+                  cols="80"
+                  required
+                ></textarea>
+              </div>
+              <button
+                id="memoryResults1_q2_submit"
+                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
+              >
+                Submit
+              </button>
+            </form>
+
+            <form id="memoryResults1_q3_form" class="form-centered">
+              <p id="memoryResults1_q3_text" class="question-text text-lg"></p>
+              <div id="memoryResults1_q3_form_controls" class="form-controls">
+                <label
+                  for="memoryResults1_q3-d6cba723-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults1_q3-d6cba723-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults1_q3"
+                    value="not at all sure"
+                    required
+                  />
+                  Not at all sure
+                </label>
+
+                <label
+                  for="memoryResults1_q3-d6cba724-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults1_q3-d6cba724-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults1_q3"
+                    value="a little sure"
+                    required
+                  />
+                  A little sure
+                </label>
+
+                <label
+                  for="memoryResults1_q3-d6cba725-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults1_q3-d6cba725-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults1_q3"
+                    value="fairly sure"
+                    required
+                  />
+                  Fairly sure
+                </label>
+
+                <label
+                  for="memoryResults1_q3-d6cba726-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults1_q3-d6cba726-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults1_q3"
+                    value="very sure"
+                    required
+                  />
+                  Very sure
+                </label>
+
+                <label
+                  for="memoryResults1_q3-d6cba727-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults1_q3-d6cba727-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults1_q3"
+                    value="absolutely sure"
+                    required
+                  />
+                  Absolutely sure
+                </label>
+              </div>
+              <button
+                id="memoryResults1_q3_submit"
+                class="submit-q3 form-submit-centered btn btn-lg"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="memoryResults2" class="scene">
+        <header class="results-heading">
+          Below is the second set of possible results for the number of correct
+          responses for each friend.
+        </header>
+
+        <div class="results-top">
+          <div class="results-top-left">
+            <div class="results-centered">
+              <button
+                id="memoryResults2_reveal_left_mean"
+                class="reveal-mean btn btn-lg btn-primary"
+              >
+                Reveal Table 1 Mean
+              </button>
+              <div id="memoryResults2_left_mean" class="left-mean hidden">
+                Table 1 Mean = 4
+              </div>
+            </div>
+          </div>
+
+          <div class="results-top-center">
+            <div class="results-centered">
+              <div>
+                <img
+                  id="memoryResults2_sorted"
+                  src="img/memory_pretest_1/Pre_T2_sorted.jpg"
+                  class="img-centered hidden"
+                />
+                <img
+                  id="memoryResults2_unsorted"
+                  src="img/memory_pretest_1/Pre_T2_unsorted.jpg"
+                  class="img-centered"
+                />
+              </div>
+              <p>
+                <button
+                  id="memoryResults2_show_sorted_table"
+                  class="show-sorted-img btn-lg btn-primary"
+                >
+                  Sort each condition from lowest to highest
+                </button>
+              </p>
+              <p id="memoryResults2_sorted_text" class="hidden">
+                Conditions are sorted from lowest to highest
+              </p>
+            </div>
+          </div>
+
+          <div class="results-top-right">
+            <div class="results-centered">
+              <button
+                id="memoryResults2_reveal_right_mean"
+                class="reveal-mean btn btn-lg btn-primary"
+              >
+                Reveal Table 2 Mean
+              </button>
+              <div id="memoryResults2_right_mean" class="right-mean hidden">
+                Table 2 Mean = 6
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="results-bottom">
+          <div class="question-region">
+            <form id="memoryResults2_q1_form" class="form-centered">
+              <p id="memoryResults2_q1_text" class="question-text text-lg">
+                Q1) What do these results suggest students remember better?
+              </p>
+              <div id="memoryResults2_q1_form_controls" class="form-controls">
+                <label
+                  for="memoryResults2_q1-d6cbce30-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults2_q1-d6cbce30-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults2_q1"
+                    value="words"
+                    required
+                  />
+                  Words
+                </label>
+
+                <label
+                  for="memoryResults2_q1-d6cbce31-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults2_q1-d6cbce31-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults2_q1"
+                    value="pictures"
+                    required
+                  />
+                  Pictures
+                </label>
+
+                <label
+                  for="memoryResults2_q1-d6cbce32-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults2_q1-d6cbce32-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults2_q1"
+                    value="neither"
+                    required
+                  />
+                  Neither (they remember words and pictures the same)
+                </label>
+              </div>
+              <button
+                id="memoryResults2_q1_submit"
+                class="submit-q1 form-submit-centered btn btn-lg"
+              >
+                Submit
+              </button>
+            </form>
+
+            <form id="memoryResults2_q2_form" class="form-centered">
+              <p id="memoryResults2_q2_text" class="question-text text-lg"></p>
+              <div id="memoryResults2_q2_form_controls" class="form-controls">
+                <textarea
+                  id="memoryResults2_q2_answer"
+                  class="text-area form-control"
+                  rows="4"
+                  cols="80"
+                  required
+                ></textarea>
+              </div>
+              <button
+                id="memoryResults2_q2_submit"
+                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
+              >
+                Submit
+              </button>
+            </form>
+
+            <form id="memoryResults2_q3_form" class="form-centered">
+              <p id="memoryResults2_q3_text" class="question-text text-lg"></p>
+              <div id="memoryResults2_q3_form_controls" class="form-controls">
+                <label
+                  for="memoryResults2_q3-d6cbce33-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults2_q3-d6cbce33-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults2_q3"
+                    value="not at all sure"
+                    required
+                  />
+                  Not at all sure
+                </label>
+
+                <label
+                  for="memoryResults2_q3-d6cbce34-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults2_q3-d6cbce34-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults2_q3"
+                    value="a little sure"
+                    required
+                  />
+                  A little sure
+                </label>
+
+                <label
+                  for="memoryResults2_q3-d6cbce35-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults2_q3-d6cbce35-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults2_q3"
+                    value="fairly sure"
+                    required
+                  />
+                  Fairly sure
+                </label>
+
+                <label
+                  for="memoryResults2_q3-d6cbce36-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults2_q3-d6cbce36-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults2_q3"
+                    value="very sure"
+                    required
+                  />
+                  Very sure
+                </label>
+
+                <label
+                  for="memoryResults2_q3-d6cbce37-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults2_q3-d6cbce37-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults2_q3"
+                    value="absolutely sure"
+                    required
+                  />
+                  Absolutely sure
+                </label>
+              </div>
+              <button
+                id="memoryResults2_q3_submit"
+                class="submit-q3 form-submit-centered btn btn-lg"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="memoryResults3" class="scene">
+        <header class="results-heading">
+          Below is the third set of possible results for the number of correct
+          responses for each friend.
+        </header>
+
+        <div class="results-top">
+          <div class="results-top-left">
+            <div class="results-centered">
+              <button
+                id="memoryResults3_reveal_left_mean"
+                class="reveal-mean btn btn-lg btn-primary"
+              >
+                Reveal Table 1 Mean
+              </button>
+              <div id="memoryResults3_left_mean" class="left-mean hidden">
+                Table 1 Mean = 7
+              </div>
+            </div>
+          </div>
+
+          <div class="results-top-center">
+            <div class="results-centered">
+              <div>
+                <img
+                  id="memoryResults3_sorted"
+                  src="img/memory_pretest_1/Pre_T3_sorted.jpg"
+                  class="img-centered hidden"
+                />
+                <img
+                  id="memoryResults3_unsorted"
+                  src="img/memory_pretest_1/Pre_T3_unsorted.jpg"
+                  class="img-centered"
+                />
+              </div>
+              <p>
+                <button
+                  id="memoryResults3_show_sorted_table"
+                  class="show-sorted-img btn-lg btn-primary"
+                >
+                  Sort each condition from lowest to highest
+                </button>
+              </p>
+              <p id="memoryResults3_sorted_text" class="hidden">
+                Conditions are sorted from lowest to highest
+              </p>
+            </div>
+          </div>
+
+          <div class="results-top-right">
+            <div class="results-centered">
+              <button
+                id="memoryResults3_reveal_right_mean"
+                class="reveal-mean btn btn-lg btn-primary"
+              >
+                Reveal Table 2 Mean
+              </button>
+              <div id="memoryResults3_right_mean" class="right-mean hidden">
+                Table 2 Mean = 3
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="results-bottom">
+          <div class="question-region">
+            <form id="memoryResults3_q1_form" class="form-centered">
+              <p id="memoryResults3_q1_text" class="question-text text-lg">
+                Q1) What do these results suggest students remember better?
+              </p>
+              <div id="memoryResults3_q1_form_controls" class="form-controls">
+                <label
+                  for="memoryResults3_q1-d6cbf540-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults3_q1-d6cbf540-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults3_q1"
+                    value="words"
+                    required
+                  />
+                  Words
+                </label>
+
+                <label
+                  for="memoryResults3_q1-d6cbf541-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults3_q1-d6cbf541-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults3_q1"
+                    value="pictures"
+                    required
+                  />
+                  Pictures
+                </label>
+
+                <label
+                  for="memoryResults3_q1-d6cbf542-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults3_q1-d6cbf542-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults3_q1"
+                    value="neither"
+                    required
+                  />
+                  Neither (they remember words and pictures the same)
+                </label>
+              </div>
+              <button
+                id="memoryResults3_q1_submit"
+                class="submit-q1 form-submit-centered btn btn-lg"
+              >
+                Submit
+              </button>
+            </form>
+
+            <form id="memoryResults3_q2_form" class="form-centered">
+              <p id="memoryResults3_q2_text" class="question-text text-lg"></p>
+              <div id="memoryResults3_q2_form_controls" class="form-controls">
+                <textarea
+                  id="memoryResults3_q2_answer"
+                  class="text-area form-control"
+                  rows="4"
+                  cols="80"
+                  required
+                ></textarea>
+              </div>
+              <button
+                id="memoryResults3_q2_submit"
+                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
+              >
+                Submit
+              </button>
+            </form>
+
+            <form id="memoryResults3_q3_form" class="form-centered">
+              <p id="memoryResults3_q3_text" class="question-text text-lg"></p>
+              <div id="memoryResults3_q3_form_controls" class="form-controls">
+                <label
+                  for="memoryResults3_q3-d6cbf543-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults3_q3-d6cbf543-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults3_q3"
+                    value="not at all sure"
+                    required
+                  />
+                  Not at all sure
+                </label>
+
+                <label
+                  for="memoryResults3_q3-d6cbf544-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults3_q3-d6cbf544-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults3_q3"
+                    value="a little sure"
+                    required
+                  />
+                  A little sure
+                </label>
+
+                <label
+                  for="memoryResults3_q3-d6cbf545-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults3_q3-d6cbf545-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults3_q3"
+                    value="fairly sure"
+                    required
+                  />
+                  Fairly sure
+                </label>
+
+                <label
+                  for="memoryResults3_q3-d6cbf546-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults3_q3-d6cbf546-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults3_q3"
+                    value="very sure"
+                    required
+                  />
+                  Very sure
+                </label>
+
+                <label
+                  for="memoryResults3_q3-d6cbf547-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults3_q3-d6cbf547-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults3_q3"
+                    value="absolutely sure"
+                    required
+                  />
+                  Absolutely sure
+                </label>
+              </div>
+              <button
+                id="memoryResults3_q3_submit"
+                class="submit-q3 form-submit-centered btn btn-lg"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="memoryResults4" class="scene">
+        <header class="results-heading">
+          Below is the fourth set of possible results for the number of correct
+          responses for each friend.
+        </header>
+
+        <div class="results-top">
+          <div class="results-top-left">
+            <div class="results-centered">
+              <button
+                id="memoryResults4_reveal_left_mean"
+                class="reveal-mean btn btn-lg btn-primary"
+              >
+                Reveal Table 1 Mean
+              </button>
+              <div id="memoryResults4_left_mean" class="left-mean hidden">
+                Table 1 Mean = 4
+              </div>
+            </div>
+          </div>
+
+          <div class="results-top-center">
+            <div class="results-centered">
+              <div>
+                <img
+                  id="memoryResults4_sorted"
+                  src="img/memory_pretest_1/Pre_T4_sorted.jpg"
+                  class="img-centered hidden"
+                />
+                <img
+                  id="memoryResults4_unsorted"
+                  src="img/memory_pretest_1/Pre_T4_unsorted.jpg"
+                  class="img-centered"
+                />
+              </div>
+              <p>
+                <button
+                  id="memoryResults4_show_sorted_table"
+                  class="show-sorted-img btn-lg btn-primary"
+                >
+                  Sort each condition from lowest to highest
+                </button>
+              </p>
+              <p id="memoryResults4_sorted_text" class="hidden">
+                Conditions are sorted from lowest to highest
+              </p>
+            </div>
+          </div>
+
+          <div class="results-top-right">
+            <div class="results-centered">
+              <button
+                id="memoryResults4_reveal_right_mean"
+                class="reveal-mean btn btn-lg btn-primary"
+              >
+                Reveal Table 2 Mean
+              </button>
+              <div id="memoryResults4_right_mean" class="right-mean hidden">
+                Table 2 Mean = 6
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="results-bottom">
+          <div class="question-region">
+            <form id="memoryResults4_q1_form" class="form-centered">
+              <p id="memoryResults4_q1_text" class="question-text text-lg">
+                Q1) What do these results suggest students remember better?
+              </p>
+              <div id="memoryResults4_q1_form_controls" class="form-controls">
+                <label
+                  for="memoryResults4_q1-d6cc4360-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults4_q1-d6cc4360-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults4_q1"
+                    value="words"
+                    required
+                  />
+                  Words
+                </label>
+
+                <label
+                  for="memoryResults4_q1-d6cc4361-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults4_q1-d6cc4361-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults4_q1"
+                    value="pictures"
+                    required
+                  />
+                  Pictures
+                </label>
+
+                <label
+                  for="memoryResults4_q1-d6cc4362-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults4_q1-d6cc4362-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults4_q1"
+                    value="neither"
+                    required
+                  />
+                  Neither (they remember words and pictures the same)
+                </label>
+              </div>
+              <button
+                id="memoryResults4_q1_submit"
+                class="submit-q1 form-submit-centered btn btn-lg"
+              >
+                Submit
+              </button>
+            </form>
+
+            <form id="memoryResults4_q2_form" class="form-centered">
+              <p id="memoryResults4_q2_text" class="question-text text-lg"></p>
+              <div id="memoryResults4_q2_form_controls" class="form-controls">
+                <textarea
+                  id="memoryResults4_q2_answer"
+                  class="text-area form-control"
+                  rows="4"
+                  cols="80"
+                  required
+                ></textarea>
+              </div>
+              <button
+                id="memoryResults4_q2_submit"
+                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
+              >
+                Submit
+              </button>
+            </form>
+
+            <form id="memoryResults4_q3_form" class="form-centered">
+              <p id="memoryResults4_q3_text" class="question-text text-lg"></p>
+              <div id="memoryResults4_q3_form_controls" class="form-controls">
+                <label
+                  for="memoryResults4_q3-d6cc4363-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults4_q3-d6cc4363-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults4_q3"
+                    value="not at all sure"
+                    required
+                  />
+                  Not at all sure
+                </label>
+
+                <label
+                  for="memoryResults4_q3-d6cc4364-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults4_q3-d6cc4364-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults4_q3"
+                    value="a little sure"
+                    required
+                  />
+                  A little sure
+                </label>
+
+                <label
+                  for="memoryResults4_q3-d6cc4365-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults4_q3-d6cc4365-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults4_q3"
+                    value="fairly sure"
+                    required
+                  />
+                  Fairly sure
+                </label>
+
+                <label
+                  for="memoryResults4_q3-d6cc4366-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults4_q3-d6cc4366-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults4_q3"
+                    value="very sure"
+                    required
+                  />
+                  Very sure
+                </label>
+
+                <label
+                  for="memoryResults4_q3-d6cc4367-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults4_q3-d6cc4367-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults4_q3"
+                    value="absolutely sure"
+                    required
+                  />
+                  Absolutely sure
+                </label>
+              </div>
+              <button
+                id="memoryResults4_q3_submit"
+                class="submit-q3 form-submit-centered btn btn-lg"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="memoryResults5" class="scene">
+        <header class="results-heading">
+          Below is the last set of possible results for the number of correct
+          responses for each friend.
+        </header>
+
+        <div class="results-top">
+          <div class="results-top-left">
+            <div class="results-centered">
+              <button
+                id="memoryResults5_reveal_left_mean"
+                class="reveal-mean btn btn-lg btn-primary"
+              >
+                Reveal Table 1 Mean
+              </button>
+              <div id="memoryResults5_left_mean" class="left-mean hidden">
+                Table 1 Mean = 5.4
+              </div>
+            </div>
+          </div>
+
+          <div class="results-top-center">
+            <div class="results-centered">
+              <div>
+                <img
+                  id="memoryResults5_sorted"
+                  src="img/memory_pretest_1/Pre_T5_sorted.jpg"
+                  class="img-centered hidden"
+                />
+                <img
+                  id="memoryResults5_unsorted"
+                  src="img/memory_pretest_1/Pre_T5_unsorted.jpg"
+                  class="img-centered"
+                />
+              </div>
+              <p>
+                <button
+                  id="memoryResults5_show_sorted_table"
+                  class="show-sorted-img btn-lg btn-primary"
+                >
+                  Sort each condition from lowest to highest
+                </button>
+              </p>
+              <p id="memoryResults5_sorted_text" class="hidden">
+                Conditions are sorted from lowest to highest
+              </p>
+            </div>
+          </div>
+
+          <div class="results-top-right">
+            <div class="results-centered">
+              <button
+                id="memoryResults5_reveal_right_mean"
+                class="reveal-mean btn btn-lg btn-primary"
+              >
+                Reveal Table 2 Mean
+              </button>
+              <div id="memoryResults5_right_mean" class="right-mean hidden">
+                Table 2 Mean = 5.8
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="results-bottom">
+          <div class="question-region">
+            <form id="memoryResults5_q1_form" class="form-centered">
+              <p id="memoryResults5_q1_text" class="question-text text-lg">
+                Q1) What do these results suggest students remember better?
+              </p>
+              <div id="memoryResults5_q1_form_controls" class="form-controls">
+                <label
+                  for="memoryResults5_q1-d6cc6a70-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults5_q1-d6cc6a70-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults5_q1"
+                    value="words"
+                    required
+                  />
+                  Words
+                </label>
+
+                <label
+                  for="memoryResults5_q1-d6cc6a71-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults5_q1-d6cc6a71-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults5_q1"
+                    value="pictures"
+                    required
+                  />
+                  Pictures
+                </label>
+
+                <label
+                  for="memoryResults5_q1-d6cc6a72-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults5_q1-d6cc6a72-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults5_q1"
+                    value="neither"
+                    required
+                  />
+                  Neither (they remember words and pictures the same)
+                </label>
+              </div>
+              <button
+                id="memoryResults5_q1_submit"
+                class="submit-q1 form-submit-centered btn btn-lg"
+              >
+                Submit
+              </button>
+            </form>
+
+            <form id="memoryResults5_q2_form" class="form-centered">
+              <p id="memoryResults5_q2_text" class="question-text text-lg"></p>
+              <div id="memoryResults5_q2_form_controls" class="form-controls">
+                <textarea
+                  id="memoryResults5_q2_answer"
+                  class="text-area form-control"
+                  rows="4"
+                  cols="80"
+                  required
+                ></textarea>
+              </div>
+              <button
+                id="memoryResults5_q2_submit"
+                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
+              >
+                Submit
+              </button>
+            </form>
+
+            <form id="memoryResults5_q3_form" class="form-centered">
+              <p id="memoryResults5_q3_text" class="question-text text-lg"></p>
+              <div id="memoryResults5_q3_form_controls" class="form-controls">
+                <label
+                  for="memoryResults5_q3-d6cc6a73-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults5_q3-d6cc6a73-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults5_q3"
+                    value="not at all sure"
+                    required
+                  />
+                  Not at all sure
+                </label>
+
+                <label
+                  for="memoryResults5_q3-d6cc6a74-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults5_q3-d6cc6a74-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults5_q3"
+                    value="a little sure"
+                    required
+                  />
+                  A little sure
+                </label>
+
+                <label
+                  for="memoryResults5_q3-d6cc6a75-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults5_q3-d6cc6a75-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults5_q3"
+                    value="fairly sure"
+                    required
+                  />
+                  Fairly sure
+                </label>
+
+                <label
+                  for="memoryResults5_q3-d6cc6a76-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults5_q3-d6cc6a76-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults5_q3"
+                    value="very sure"
+                    required
+                  />
+                  Very sure
+                </label>
+
+                <label
+                  for="memoryResults5_q3-d6cc6a77-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="memoryResults5_q3-d6cc6a77-c2c8-11ea-b205-5be41098e3b9"
+                    name="memoryResults5_q3"
+                    value="absolutely sure"
+                    required
+                  />
+                  Absolutely sure
+                </label>
+              </div>
+              <button
+                id="memoryResults5_q3_submit"
+                class="submit-q3 form-submit-centered btn btn-lg"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="rocketsResults1" class="scene">
+        <header class="results-heading">
+          Below is the first set of possible results for each <u>height</u> the
+          rocket traveled (in meters).
+        </header>
+
+        <div class="results-top">
+          <div class="results-top-left">
+            <div class="results-centered">
+              <button
+                id="rocketsResults1_reveal_left_mean"
+                class="reveal-mean btn btn-lg btn-primary"
+              >
+                Reveal Curved Mean
+              </button>
+              <div id="rocketsResults1_left_mean" class="left-mean hidden">
+                Curved Mean = 20
+              </div>
+            </div>
+          </div>
+
+          <div class="results-top-center">
+            <div class="results-centered">
+              <div>
+                <img
+                  id="rocketsResults1_sorted"
+                  src="img/rockets_pretest_2/Pre_T6_sorted.jpg"
+                  class="img-centered hidden"
+                />
+                <img
+                  id="rocketsResults1_unsorted"
+                  src="img/rockets_pretest_2/Pre_T6_unsorted.jpg"
+                  class="img-centered"
+                />
+              </div>
+              <p>
+                <button
+                  id="rocketsResults1_show_sorted_table"
+                  class="show-sorted-img btn-lg btn-primary"
+                >
+                  Sort each condition from lowest to highest
+                </button>
+              </p>
+              <p id="rocketsResults1_sorted_text" class="hidden">
+                Conditions are sorted from lowest to highest
+              </p>
+            </div>
+          </div>
+
+          <div class="results-top-right">
+            <div class="results-centered">
+              <button
+                id="rocketsResults1_reveal_right_mean"
+                class="reveal-mean btn btn-lg btn-primary"
+              >
+                Reveal Straight Mean
+              </button>
+              <div id="rocketsResults1_right_mean" class="right-mean hidden">
+                Straight Mean = 28
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="results-bottom">
+          <div class="question-region">
+            <form id="rocketsResults1_q1_form" class="form-centered">
+              <p id="rocketsResults1_q1_text" class="question-text text-lg">
+                Q1) What do these results suggest about which rocket flew
+                higher?
+              </p>
+              <div id="rocketsResults1_q1_form_controls" class="form-controls">
+                <label
+                  for="rocketsResults1_q1-d6ccdfa0-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults1_q1-d6ccdfa0-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults1_q1"
+                    value="curved"
+                    required
+                  />
+                  Curved
+                </label>
+
+                <label
+                  for="rocketsResults1_q1-d6ccdfa1-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults1_q1-d6ccdfa1-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults1_q1"
+                    value="straight"
+                    required
+                  />
+                  Straight
+                </label>
+
+                <label
+                  for="rocketsResults1_q1-d6ccdfa2-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults1_q1-d6ccdfa2-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults1_q1"
+                    value="neither"
+                    required
+                  />
+                  Neither (both rockets flew the same height)
+                </label>
+              </div>
+              <button
+                id="rocketsResults1_q1_submit"
+                class="submit-q1 form-submit-centered btn btn-lg"
+              >
+                Submit
+              </button>
+            </form>
+
+            <form id="rocketsResults1_q2_form" class="form-centered">
+              <p id="rocketsResults1_q2_text" class="question-text text-lg"></p>
+              <div id="rocketsResults1_q2_form_controls" class="form-controls">
+                <textarea
+                  id="rocketsResults1_q2_answer"
+                  class="text-area form-control"
+                  rows="4"
+                  cols="80"
+                  required
+                ></textarea>
+              </div>
+              <button
+                id="rocketsResults1_q2_submit"
+                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
+              >
+                Submit
+              </button>
+            </form>
+
+            <form id="rocketsResults1_q3_form" class="form-centered">
+              <p id="rocketsResults1_q3_text" class="question-text text-lg"></p>
+              <div id="rocketsResults1_q3_form_controls" class="form-controls">
+                <label
+                  for="rocketsResults1_q3-d6ccdfa3-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults1_q3-d6ccdfa3-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults1_q3"
+                    value="not at all sure"
+                    required
+                  />
+                  Not at all sure
+                </label>
+
+                <label
+                  for="rocketsResults1_q3-d6ccdfa4-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults1_q3-d6ccdfa4-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults1_q3"
+                    value="a little sure"
+                    required
+                  />
+                  A little sure
+                </label>
+
+                <label
+                  for="rocketsResults1_q3-d6ccdfa5-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults1_q3-d6ccdfa5-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults1_q3"
+                    value="fairly sure"
+                    required
+                  />
+                  Fairly sure
+                </label>
+
+                <label
+                  for="rocketsResults1_q3-d6ccdfa6-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults1_q3-d6ccdfa6-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults1_q3"
+                    value="very sure"
+                    required
+                  />
+                  Very sure
+                </label>
+
+                <label
+                  for="rocketsResults1_q3-d6ccdfa7-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults1_q3-d6ccdfa7-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults1_q3"
+                    value="absolutely sure"
+                    required
+                  />
+                  Absolutely sure
+                </label>
+              </div>
+              <button
+                id="rocketsResults1_q3_submit"
+                class="submit-q3 form-submit-centered btn btn-lg"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="rocketsResults2" class="scene">
+        <header class="results-heading">
+          Below is the second set of possible results for each <u>height</u> the
+          rocket traveled (in meters).
+        </header>
+
+        <div class="results-top">
+          <div class="results-top-left">
+            <div class="results-centered">
+              <button
+                id="rocketsResults2_reveal_left_mean"
+                class="reveal-mean btn btn-lg btn-primary"
+              >
+                Reveal Curved Mean
+              </button>
+              <div id="rocketsResults2_left_mean" class="left-mean hidden">
+                Curved Mean = 25
+              </div>
+            </div>
+          </div>
+
+          <div class="results-top-center">
+            <div class="results-centered">
+              <div>
+                <img
+                  id="rocketsResults2_sorted"
+                  src="img/rockets_pretest_2/Pre_T7_sorted.jpg"
+                  class="img-centered hidden"
+                />
+                <img
+                  id="rocketsResults2_unsorted"
+                  src="img/rockets_pretest_2/Pre_T7_unsorted.jpg"
+                  class="img-centered"
+                />
+              </div>
+              <p>
+                <button
+                  id="rocketsResults2_show_sorted_table"
+                  class="show-sorted-img btn-lg btn-primary"
+                >
+                  Sort each condition from lowest to highest
+                </button>
+              </p>
+              <p id="rocketsResults2_sorted_text" class="hidden">
+                Conditions are sorted from lowest to highest
+              </p>
+            </div>
+          </div>
+
+          <div class="results-top-right">
+            <div class="results-centered">
+              <button
+                id="rocketsResults2_reveal_right_mean"
+                class="reveal-mean btn btn-lg btn-primary"
+              >
+                Reveal Straight Mean
+              </button>
+              <div id="rocketsResults2_right_mean" class="right-mean hidden">
+                Straight Mean = 19
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="results-bottom">
+          <div class="question-region">
+            <form id="rocketsResults2_q1_form" class="form-centered">
+              <p id="rocketsResults2_q1_text" class="question-text text-lg">
+                Q1) What do these results suggest about which rocket flew
+                higher?
+              </p>
+              <div id="rocketsResults2_q1_form_controls" class="form-controls">
+                <label
+                  for="rocketsResults2_q1-d6cd2dc0-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults2_q1-d6cd2dc0-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults2_q1"
+                    value="curved"
+                    required
+                  />
+                  Curved
+                </label>
+
+                <label
+                  for="rocketsResults2_q1-d6cd2dc1-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults2_q1-d6cd2dc1-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults2_q1"
+                    value="straight"
+                    required
+                  />
+                  Straight
+                </label>
+
+                <label
+                  for="rocketsResults2_q1-d6cd2dc2-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults2_q1-d6cd2dc2-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults2_q1"
+                    value="neither"
+                    required
+                  />
+                  Neither (both rockets flew the same height)
+                </label>
+              </div>
+              <button
+                id="rocketsResults2_q1_submit"
+                class="submit-q1 form-submit-centered btn btn-lg"
+              >
+                Submit
+              </button>
+            </form>
+
+            <form id="rocketsResults2_q2_form" class="form-centered">
+              <p id="rocketsResults2_q2_text" class="question-text text-lg"></p>
+              <div id="rocketsResults2_q2_form_controls" class="form-controls">
+                <textarea
+                  id="rocketsResults2_q2_answer"
+                  class="text-area form-control"
+                  rows="4"
+                  cols="80"
+                  required
+                ></textarea>
+              </div>
+              <button
+                id="rocketsResults2_q2_submit"
+                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
+              >
+                Submit
+              </button>
+            </form>
+
+            <form id="rocketsResults2_q3_form" class="form-centered">
+              <p id="rocketsResults2_q3_text" class="question-text text-lg"></p>
+              <div id="rocketsResults2_q3_form_controls" class="form-controls">
+                <label
+                  for="rocketsResults2_q3-d6cd2dc3-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults2_q3-d6cd2dc3-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults2_q3"
+                    value="not at all sure"
+                    required
+                  />
+                  Not at all sure
+                </label>
+
+                <label
+                  for="rocketsResults2_q3-d6cd2dc4-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults2_q3-d6cd2dc4-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults2_q3"
+                    value="a little sure"
+                    required
+                  />
+                  A little sure
+                </label>
+
+                <label
+                  for="rocketsResults2_q3-d6cd2dc5-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults2_q3-d6cd2dc5-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults2_q3"
+                    value="fairly sure"
+                    required
+                  />
+                  Fairly sure
+                </label>
+
+                <label
+                  for="rocketsResults2_q3-d6cd2dc6-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults2_q3-d6cd2dc6-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults2_q3"
+                    value="very sure"
+                    required
+                  />
+                  Very sure
+                </label>
+
+                <label
+                  for="rocketsResults2_q3-d6cd2dc7-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults2_q3-d6cd2dc7-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults2_q3"
+                    value="absolutely sure"
+                    required
+                  />
+                  Absolutely sure
+                </label>
+              </div>
+              <button
+                id="rocketsResults2_q3_submit"
+                class="submit-q3 form-submit-centered btn btn-lg"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="rocketsResults3" class="scene">
+        <header class="results-heading">
+          Below is the third set of possible results for each <u>height</u> the
+          rocket traveled (in meters).
+        </header>
+
+        <div class="results-top">
+          <div class="results-top-left">
+            <div class="results-centered">
+              <button
+                id="rocketsResults3_reveal_left_mean"
+                class="reveal-mean btn btn-lg btn-primary"
+              >
+                Reveal Curved Mean
+              </button>
+              <div id="rocketsResults3_left_mean" class="left-mean hidden">
+                Curved Mean = 20
+              </div>
+            </div>
+          </div>
+
+          <div class="results-top-center">
+            <div class="results-centered">
+              <div>
+                <img
+                  id="rocketsResults3_sorted"
+                  src="img/rockets_pretest_2/Pre_T8_sorted.jpg"
+                  class="img-centered hidden"
+                />
+                <img
+                  id="rocketsResults3_unsorted"
+                  src="img/rockets_pretest_2/Pre_T8_unsorted.jpg"
+                  class="img-centered"
+                />
+              </div>
+              <p>
+                <button
+                  id="rocketsResults3_show_sorted_table"
+                  class="show-sorted-img btn-lg btn-primary"
+                >
+                  Sort each condition from lowest to highest
+                </button>
+              </p>
+              <p id="rocketsResults3_sorted_text" class="hidden">
+                Conditions are sorted from lowest to highest
+              </p>
+            </div>
+          </div>
+
+          <div class="results-top-right">
+            <div class="results-centered">
+              <button
+                id="rocketsResults3_reveal_right_mean"
+                class="reveal-mean btn btn-lg btn-primary"
+              >
+                Reveal Straight Mean
+              </button>
+              <div id="rocketsResults3_right_mean" class="right-mean hidden">
+                Straight Mean = 28
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="results-bottom">
+          <div class="question-region">
+            <form id="rocketsResults3_q1_form" class="form-centered">
+              <p id="rocketsResults3_q1_text" class="question-text text-lg">
+                Q1) What do these results suggest about which rocket flew
+                higher?
+              </p>
+              <div id="rocketsResults3_q1_form_controls" class="form-controls">
+                <label
+                  for="rocketsResults3_q1-d6cd54d0-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults3_q1-d6cd54d0-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults3_q1"
+                    value="curved"
+                    required
+                  />
+                  Curved
+                </label>
+
+                <label
+                  for="rocketsResults3_q1-d6cd54d1-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults3_q1-d6cd54d1-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults3_q1"
+                    value="straight"
+                    required
+                  />
+                  Straight
+                </label>
+
+                <label
+                  for="rocketsResults3_q1-d6cd54d2-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults3_q1-d6cd54d2-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults3_q1"
+                    value="neither"
+                    required
+                  />
+                  Neither (both rockets flew the same height)
+                </label>
+              </div>
+              <button
+                id="rocketsResults3_q1_submit"
+                class="submit-q1 form-submit-centered btn btn-lg"
+              >
+                Submit
+              </button>
+            </form>
+
+            <form id="rocketsResults3_q2_form" class="form-centered">
+              <p id="rocketsResults3_q2_text" class="question-text text-lg"></p>
+              <div id="rocketsResults3_q2_form_controls" class="form-controls">
+                <textarea
+                  id="rocketsResults3_q2_answer"
+                  class="text-area form-control"
+                  rows="4"
+                  cols="80"
+                  required
+                ></textarea>
+              </div>
+              <button
+                id="rocketsResults3_q2_submit"
+                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
+              >
+                Submit
+              </button>
+            </form>
+
+            <form id="rocketsResults3_q3_form" class="form-centered">
+              <p id="rocketsResults3_q3_text" class="question-text text-lg"></p>
+              <div id="rocketsResults3_q3_form_controls" class="form-controls">
+                <label
+                  for="rocketsResults3_q3-d6cd54d3-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults3_q3-d6cd54d3-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults3_q3"
+                    value="not at all sure"
+                    required
+                  />
+                  Not at all sure
+                </label>
+
+                <label
+                  for="rocketsResults3_q3-d6cd54d4-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults3_q3-d6cd54d4-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults3_q3"
+                    value="a little sure"
+                    required
+                  />
+                  A little sure
+                </label>
+
+                <label
+                  for="rocketsResults3_q3-d6cd54d5-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults3_q3-d6cd54d5-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults3_q3"
+                    value="fairly sure"
+                    required
+                  />
+                  Fairly sure
+                </label>
+
+                <label
+                  for="rocketsResults3_q3-d6cd54d6-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults3_q3-d6cd54d6-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults3_q3"
+                    value="very sure"
+                    required
+                  />
+                  Very sure
+                </label>
+
+                <label
+                  for="rocketsResults3_q3-d6cd54d7-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults3_q3-d6cd54d7-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults3_q3"
+                    value="absolutely sure"
+                    required
+                  />
+                  Absolutely sure
+                </label>
+              </div>
+              <button
+                id="rocketsResults3_q3_submit"
+                class="submit-q3 form-submit-centered btn btn-lg"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="rocketsResults4" class="scene">
+        <header class="results-heading">
+          Below is the fourth set of possible results for each <u>height</u> the
+          rocket traveled (in meters).
+        </header>
+
+        <div class="results-top">
+          <div class="results-top-left">
+            <div class="results-centered">
+              <button
+                id="rocketsResults4_reveal_left_mean"
+                class="reveal-mean btn btn-lg btn-primary"
+              >
+                Reveal Curved Mean
+              </button>
+              <div id="rocketsResults4_left_mean" class="left-mean hidden">
+                Curved Mean = 25
+              </div>
+            </div>
+          </div>
+
+          <div class="results-top-center">
+            <div class="results-centered">
+              <div>
+                <img
+                  id="rocketsResults4_sorted"
+                  src="img/rockets_pretest_2/Pre_T9_sorted.jpg"
+                  class="img-centered hidden"
+                />
+                <img
+                  id="rocketsResults4_unsorted"
+                  src="img/rockets_pretest_2/Pre_T9_unsorted.jpg"
+                  class="img-centered"
+                />
+              </div>
+              <p>
+                <button
+                  id="rocketsResults4_show_sorted_table"
+                  class="show-sorted-img btn-lg btn-primary"
+                >
+                  Sort each condition from lowest to highest
+                </button>
+              </p>
+              <p id="rocketsResults4_sorted_text" class="hidden">
+                Conditions are sorted from lowest to highest
+              </p>
+            </div>
+          </div>
+
+          <div class="results-top-right">
+            <div class="results-centered">
+              <button
+                id="rocketsResults4_reveal_right_mean"
+                class="reveal-mean btn btn-lg btn-primary"
+              >
+                Reveal Straight Mean
+              </button>
+              <div id="rocketsResults4_right_mean" class="right-mean hidden">
+                Straight Mean = 19
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="results-bottom">
+          <div class="question-region">
+            <form id="rocketsResults4_q1_form" class="form-centered">
+              <p id="rocketsResults4_q1_text" class="question-text text-lg">
+                Q1) What do these results suggest about which rocket flew
+                higher?
+              </p>
+              <div id="rocketsResults4_q1_form_controls" class="form-controls">
+                <label
+                  for="rocketsResults4_q1-d6cd7be0-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults4_q1-d6cd7be0-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults4_q1"
+                    value="curved"
+                    required
+                  />
+                  Curved
+                </label>
+
+                <label
+                  for="rocketsResults4_q1-d6cd7be1-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults4_q1-d6cd7be1-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults4_q1"
+                    value="straight"
+                    required
+                  />
+                  Straight
+                </label>
+
+                <label
+                  for="rocketsResults4_q1-d6cd7be2-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults4_q1-d6cd7be2-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults4_q1"
+                    value="neither"
+                    required
+                  />
+                  Neither (both rockets flew the same height)
+                </label>
+              </div>
+              <button
+                id="rocketsResults4_q1_submit"
+                class="submit-q1 form-submit-centered btn btn-lg"
+              >
+                Submit
+              </button>
+            </form>
+
+            <form id="rocketsResults4_q2_form" class="form-centered">
+              <p id="rocketsResults4_q2_text" class="question-text text-lg"></p>
+              <div id="rocketsResults4_q2_form_controls" class="form-controls">
+                <textarea
+                  id="rocketsResults4_q2_answer"
+                  class="text-area form-control"
+                  rows="4"
+                  cols="80"
+                  required
+                ></textarea>
+              </div>
+              <button
+                id="rocketsResults4_q2_submit"
+                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
+              >
+                Submit
+              </button>
+            </form>
+
+            <form id="rocketsResults4_q3_form" class="form-centered">
+              <p id="rocketsResults4_q3_text" class="question-text text-lg"></p>
+              <div id="rocketsResults4_q3_form_controls" class="form-controls">
+                <label
+                  for="rocketsResults4_q3-d6cd7be3-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults4_q3-d6cd7be3-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults4_q3"
+                    value="not at all sure"
+                    required
+                  />
+                  Not at all sure
+                </label>
+
+                <label
+                  for="rocketsResults4_q3-d6cd7be4-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults4_q3-d6cd7be4-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults4_q3"
+                    value="a little sure"
+                    required
+                  />
+                  A little sure
+                </label>
+
+                <label
+                  for="rocketsResults4_q3-d6cd7be5-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults4_q3-d6cd7be5-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults4_q3"
+                    value="fairly sure"
+                    required
+                  />
+                  Fairly sure
+                </label>
+
+                <label
+                  for="rocketsResults4_q3-d6cd7be6-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults4_q3-d6cd7be6-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults4_q3"
+                    value="very sure"
+                    required
+                  />
+                  Very sure
+                </label>
+
+                <label
+                  for="rocketsResults4_q3-d6cd7be7-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults4_q3-d6cd7be7-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults4_q3"
+                    value="absolutely sure"
+                    required
+                  />
+                  Absolutely sure
+                </label>
+              </div>
+              <button
+                id="rocketsResults4_q3_submit"
+                class="submit-q3 form-submit-centered btn btn-lg"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="rocketsResults5" class="scene">
+        <header class="results-heading">
+          Below is the last set of possible results for each <u>height</u> the
+          rocket traveled (in meters).
+        </header>
+
+        <div class="results-top">
+          <div class="results-top-left">
+            <div class="results-centered">
+              <button
+                id="rocketsResults5_reveal_left_mean"
+                class="reveal-mean btn btn-lg btn-primary"
+              >
+                Reveal Curved Mean
+              </button>
+              <div id="rocketsResults5_left_mean" class="left-mean hidden">
+                Curved Mean = 24.4
+              </div>
+            </div>
+          </div>
+
+          <div class="results-top-center">
+            <div class="results-centered">
+              <div>
+                <img
+                  id="rocketsResults5_sorted"
+                  src="img/rockets_pretest_2/Pre_T10_sorted.jpg"
+                  class="img-centered hidden"
+                />
+                <img
+                  id="rocketsResults5_unsorted"
+                  src="img/rockets_pretest_2/Pre_T10_unsorted.jpg"
+                  class="img-centered"
+                />
+              </div>
+              <p>
+                <button
+                  id="rocketsResults5_show_sorted_table"
+                  class="show-sorted-img btn-lg btn-primary"
+                >
+                  Sort each condition from lowest to highest
+                </button>
+              </p>
+              <p id="rocketsResults5_sorted_text" class="hidden">
+                Conditions are sorted from lowest to highest
+              </p>
+            </div>
+          </div>
+
+          <div class="results-top-right">
+            <div class="results-centered">
+              <button
+                id="rocketsResults5_reveal_right_mean"
+                class="reveal-mean btn btn-lg btn-primary"
+              >
+                Reveal Straight Mean
+              </button>
+              <div id="rocketsResults5_right_mean" class="right-mean hidden">
+                Straight Mean = 22.4
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="results-bottom">
+          <div class="question-region">
+            <form id="rocketsResults5_q1_form" class="form-centered">
+              <p id="rocketsResults5_q1_text" class="question-text text-lg">
+                Q1) What do these results suggest about which rocket flew
+                higher?
+              </p>
+              <div id="rocketsResults5_q1_form_controls" class="form-controls">
+                <label
+                  for="rocketsResults5_q1-d6cdca00-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults5_q1-d6cdca00-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults5_q1"
+                    value="curved"
+                    required
+                  />
+                  Curved
+                </label>
+
+                <label
+                  for="rocketsResults5_q1-d6cdca01-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults5_q1-d6cdca01-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults5_q1"
+                    value="straight"
+                    required
+                  />
+                  Straight
+                </label>
+
+                <label
+                  for="rocketsResults5_q1-d6cdca02-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults5_q1-d6cdca02-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults5_q1"
+                    value="neither"
+                    required
+                  />
+                  Neither (both rockets flew the same height)
+                </label>
+              </div>
+              <button
+                id="rocketsResults5_q1_submit"
+                class="submit-q1 form-submit-centered btn btn-lg"
+              >
+                Submit
+              </button>
+            </form>
+
+            <form id="rocketsResults5_q2_form" class="form-centered">
+              <p id="rocketsResults5_q2_text" class="question-text text-lg"></p>
+              <div id="rocketsResults5_q2_form_controls" class="form-controls">
+                <textarea
+                  id="rocketsResults5_q2_answer"
+                  class="text-area form-control"
+                  rows="4"
+                  cols="80"
+                  required
+                ></textarea>
+              </div>
+              <button
+                id="rocketsResults5_q2_submit"
+                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
+              >
+                Submit
+              </button>
+            </form>
+
+            <form id="rocketsResults5_q3_form" class="form-centered">
+              <p id="rocketsResults5_q3_text" class="question-text text-lg"></p>
+              <div id="rocketsResults5_q3_form_controls" class="form-controls">
+                <label
+                  for="rocketsResults5_q3-d6cdca03-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults5_q3-d6cdca03-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults5_q3"
+                    value="not at all sure"
+                    required
+                  />
+                  Not at all sure
+                </label>
+
+                <label
+                  for="rocketsResults5_q3-d6cdca04-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults5_q3-d6cdca04-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults5_q3"
+                    value="a little sure"
+                    required
+                  />
+                  A little sure
+                </label>
+
+                <label
+                  for="rocketsResults5_q3-d6cdca05-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults5_q3-d6cdca05-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults5_q3"
+                    value="fairly sure"
+                    required
+                  />
+                  Fairly sure
+                </label>
+
+                <label
+                  for="rocketsResults5_q3-d6cdca06-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults5_q3-d6cdca06-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults5_q3"
+                    value="very sure"
+                    required
+                  />
+                  Very sure
+                </label>
+
+                <label
+                  for="rocketsResults5_q3-d6cdca07-c2c8-11ea-b205-5be41098e3b9"
+                  class="text-lg"
+                >
+                  <input
+                    type="radio"
+                    class="radio-btn form-control"
+                    id="rocketsResults5_q3-d6cdca07-c2c8-11ea-b205-5be41098e3b9"
+                    name="rocketsResults5_q3"
+                    value="absolutely sure"
+                    required
+                  />
+                  Absolutely sure
+                </label>
+              </div>
+              <button
+                id="rocketsResults5_q3_submit"
+                class="submit-q3 form-submit-centered btn btn-lg"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="rocketsResults1Intro" class="scene">
+        <div class="single_column_content">
+          <h1>Possible Rocket Height Results: #1 of 5</h1>
+        </div>
+      </section>
+
+      <section id="rocketsResults2Intro" class="scene">
+        <div class="single_column_content">
+          <h1>Possible Rocket Height Results: #2 of 5</h1>
+        </div>
+      </section>
+
+      <section id="rocketsResults3Intro" class="scene">
+        <div class="single_column_content">
+          <h1>Possible Rocket Height Results: #3 of 5</h1>
+        </div>
+      </section>
+
+      <section id="rocketsResults4Intro" class="scene">
+        <div class="single_column_content">
+          <h1>Possible Rocket Height Results: #4 of 5</h1>
+        </div>
+      </section>
+
+      <section id="rocketsResults5Intro" class="scene">
+        <div class="single_column_content">
+          <h1>Possible Rocket Height Results: #5 of 5</h1>
+        </div>
+      </section>
+
+      <section id="intro" class="scene">
+        <div class="single_column_content">
+          <h1>Introduction to data interpretation questions</h1>
+          <p class="text-lg">
+            Now, we will interpret some results. We'll show you two different
+            scenarios:
+          </p>
+          <p class="text-lg">
+            Testing students' memories and Launching Rockets.
+          </p>
+          <p class="text-lg">
+            For each scenario, we will as you to interpret 5 different sets of
+            possible results.
+          </p>
+          <p class="text-lg">
+            OK, let's start!
+          </p>
+        </div>
+      </section>
+
+      <section id="memoryIntro1" class="scene">
+        <div class="single_column_content">
+          <h1>Memory Experiment</h1>
+          <p class="text-lg">
+            Chris wanted to see whether people are able to remember more
+            pictures or words.
+          </p>
+          <p class="text-lg">
+            Chris wrote a word on each of 16 cue cards.
+          </p>
+          <p class="text-lg">
+            Then Chris drew a picture for each of the same 15 words on a second
+            set of 15 cue cards.
+          </p>
+          <img
+            src="img/memory_pretest_1/S1_Flashcards.jpg"
+            class="img-centered"
+          />
+        </div>
+      </section>
+
+      <section id="memoryIntro2" class="scene">
+        <div class="single_column_content">
+          <p class="text-lg">
+            Chris asked each of his 5 friends to study the cards with words for
+            one minute on their own.
+          </p>
+          <img
+            src="img/memory_pretest_1/S2_MemoryGroup.jpg"
+            class="img-centered"
+          />
+        </div>
+      </section>
+
+      <section id="memoryIntro3" class="scene">
+        <div class="single_column_content">
+          <p class="text-lg">
+            Then he gathered 5 different friends and he asked them to study the
+            set of cards with <i>pictures</i> for one minute on their own.
+          </p>
+          <img
+            src="img/memory_pretest_1/S3_MemoryGroup.jpg"
+            class="img-centered"
+          />
+        </div>
+      </section>
+
+      <section id="memoryIntro4" class="scene">
+        <div class="single_column_content">
+          <p class="text-lg">
+            After one minute was up, each friend write down all of the words or
+            picture they could remember.
+          </p>
+          <p class="text-lg">
+            (Chris gave them all one minute to do that.)
+          </p>
+          <img
+            src="img/memory_pretest_1/S5_ComMemoryGroups.jpg"
+            class="img-centered"
+          />
+        </div>
+      </section>
+
+      <section id="memoryIntro5" class="scene">
+        <div class="single_column_content">
+          <h1>
+            Then Chris counted the number of correct responses for each person.
+          </h1>
+        </div>
+      </section>
+
+      <section id="memoryIntro6" class="scene">
+        <div class="single_column_content">
+          <p class="text-lg">
+            Next we'll show you 5 different possible sets of results of this
+            experiment. We will ask you to interpret each set of results.
+          </p>
+        </div>
+      </section>
+
+      <section id="memoryIntro7" class="scene">
+        <div class="single_column_content">
+          <h1>
+            You'll see tables with the number of correct responses for each
+            person.
+          </h1>
+          <img src="img/memory_pretest_1/S6_Names.jpg" class="img-centered" />
+        </div>
+      </section>
+
+      <section id="completed" class="scene">
+        <div class="single_column_content">
+          <p class="text-xxl">
+            Great Work! You're finished with this part.
+          </p>
+          <p class="text-xl">
+            Click the "Home" button to return to your home page.
+          </p>
+          <p>
+            <button
+              type="button"
+              id="go_home_btn"
+              class="btn btn-xxl btn-primary"
+            >
+              Home
+            </button>
+          </p>
+        </div>
+      </section>
+
+      <section id="start" class="scene">
+        <div class="single_column_content">
+          <img
+            src="img/site/RevisedHeader.jpg"
+            width="1000px"
+            class="img-centered"
+          />
+          <p class="text-xxl">
+            Welcome to the ISP User Testing Session! <br />
+            Click the "Start" button below to begin.
+          </p>
+          <p>
+            <button
+              id="start_btn"
+              class="transition-to btn btn-xxl btn-success"
+              data-transition="next"
+            >
+              Start
+            </button>
+          </p>
+        </div>
+      </section>
+
+      <section id="rocketsIntro1" class="scene">
+        <div class="single_column_content">
+          <h1>Scenario #2: Model Rocket Launches</h1>
+        </div>
+      </section>
+
+      <section id="rocketsIntro2" class="scene">
+        <div class="single_column_content">
+          <h1>Module Rocket Launches Experiment</h1>
+          <p class="text-lg">
+            Sophia wanted to see whether model rockets fly better with a curved
+            body or a straight body. She built two rockets: one with a curved
+            body and one with a straight body. But everything else about the
+            rockets was the same.
+          </p>
+
+          <img
+            src="img/rockets_pretest_2/RocketScene1.jpg"
+            class="img-centered"
+          />
+        </div>
+      </section>
+
+      <section id="rocketsIntro3" class="scene">
+        <div class="single_column_content">
+          <p class="text-lg">
+            Sophia launched the curved body rocket five times and recorded how
+            high it flew. Then she launched the straight body rocket five times
+            and recorded how high it flew. (She was careful to make everything
+            about how she launched the rockets the same.)
+          </p>
+
+          <img
+            src="img/rockets_pretest_2/RocketScene2.jpg"
+            class="img-centered"
+          />
+        </div>
+      </section>
+
+      <section id="rocketsIntro4" class="scene">
+        <div class="single_column_content">
+          <p class="text-xl">
+            Next we'll show you 5 different possible sets of results of this
+            experiment. We will ask you to interpret each set of results...
+          </p>
+        </div>
+      </section>
+    </main>
+    <img id="prev_btn" class="nav-btn prev-btn" />
+    <img id="next_btn" class="nav-btn next-btn" />
+    <div id="snackbar"></div>
+
+    <script src="dipretest.bundle.js"></script>
+  </body>
+</html>

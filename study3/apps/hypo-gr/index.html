@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Google Material Icons (Home Icon) -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- Google Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-firestore.js"></script>
+
+    <script src="https://code.createjs.com/createjs-2015.11.26.combined.js"></script>
+
+    <title>ISP Tutor Hypothesis Lesson</title>
+    <link rel="stylesheet" href="hypo-gr.bundle.css" />
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="navbar-items lhs">
+        <div class="brand">
+          <img src="img/site/icon.jpg" width="36" /> ISP Tutor
+        </div>
+      </div>
+      <div class="navbar-items center">
+        <div id="activity_title">Activity title goes here</div>
+        <div id="activity_section"></div>
+      </div>
+      <div id="user_info_region" class="navbar-items rhs invisible">
+        <button class="btn btn-sm navbar-btn" id="sign_out_button">
+          Sign Out
+        </button>
+        <div id="sign_in_text"></div>
+      </div>
+    </nav>
+
+    <img id="loading_gif" src="img/site/_preloader.gif" class="hidden" />
+    <main>
+      <canvas id="hypo-canvas" width="1200" height="750">
+        Error: HTML5 canvas is not working. Please make sure JavaScript is
+        enabled.
+      </canvas>
+
+      <!-- Tutor Completion Overlay-->
+      <div id="completion_overlay" class="border-container overlay">
+        <div class="container">
+          <h3>
+            You are now done with this section. Click Home to move on to the
+            next section.
+          </h3>
+          <br />
+          <div class="inline-btn-container">
+            <button id="completion-home-btn" type="button" class="inline-btn">
+              Home
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Home Icon Overlay -->
+      <div id="home_overlay" class="border-container overlay">
+        <div class="container">
+          <h3>
+            If you go back to the home page, you will lose all your progress.
+            Are you sure you wish to proceed?
+          </h3>
+          <br />
+          <div class="inline-btn-container">
+            <button id="yes-btn" type="button" class="inline-btn">Yes</button>
+            <button id="cancel-btn" type="button" class="inline-btn">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="start_page_overlay" class="overlay">
+        <h3>Reminder: The Three Parts of your Hypothesis include...</h3>
+        <ol>
+          <li>
+            A <b>general prediction</b> of the relationship between your
+            independent and dependent variables.
+          </li>
+          <li>
+            A <u>detailed scientific explanation</u> of your general prediction.
+            This should include a step-by-step explanation for how and why the
+            independent variable affects the dependent variable.
+          </li>
+          <li>
+            A <i>specific prediction</i> for the results of your experiment.
+          </li>
+        </ol>
+      </div>
+
+      <div id="lesson_overview_overlay" class="overlay">
+        <h3>Lesson Overview</h3>
+        <p>
+          In this lesson, we will focus on the first two parts of your
+          hypothesis: the general prediction and detailed scientific explanation
+          for your general prediction.
+        </p>
+        <p class="invisible" data-show-on-transition="1">
+          You will make a general prediction for your experiment. For example,
+          your general prediction could be either:
+        </p>
+
+        <ul style="list-style-position:outside;">
+          <li class="invisible" data-show-on-transition="2">
+            <b
+              >"As the initial water temperature increases, the weight of
+              crystal growth on the string after two weeks increases."</b
+            ><br />
+            This means that the hotter the water is at first, the higher the
+            final weight of crystal growth will be.
+            <ul
+              style="list-style:none;"
+              class="invisible"
+              data-show-on-transition="3"
+            >
+              <li style="padding-top:10px;padding-bottom:10px;">
+                <b>- OR -</b>
+              </li>
+            </ul>
+          </li>
+          <li class="invisible" data-show-on-transition="4">
+            <b
+              >"As the initial water temperature increases, the weight of
+              crystal growth on the string after two weeks decreases."</b
+            >
+            <br />
+            This means that the hotter the water is at first, the lower the
+            final weight of crystal growth will be.
+          </li>
+        </ul>
+
+        <p class="invisible" data-show-on-transition="5">
+          You will also write a <u>scientific explanation</u> for your general
+          prediction. We’ll help you do that.
+        </p>
+      </div>
+
+      <div id="lesson_overview2_overlay" class="overlay">
+        <h3>Lesson Overview</h3>
+        <ul>
+          <li>
+            Before you make your general prediction and scientific explanation,
+            we'll discuss how you can use a "concept map" to help you write a
+            detailed explanation for your prediction.
+          </li>
+          <li class="invisible" data-show-on-transition="1">
+            Then we'll ask you to make a general prediction for the relationship
+            between water temperature and weight of crystal growth on a string.
+          </li>
+          <li class="invisible" data-show-on-transition="2">
+            After that, you will first write a scientific explanation for your
+            general prediction.
+          </li>
+          <li class="invisible" data-show-on-transition="3">
+            Finally, you'll make a concept map to help you improve on your
+            scientific explanation.
+          </li>
+        </ul>
+      </div>
+
+      <img
+        id="temperature_gif_overlay"
+        src="img/hypo-gr/slide2/temperaturegif.gif"
+        class="overlay"
+      />
+
+      <div id="causes2_driving_overlay" class="overlay">
+        For example, a change in how distracted people are while driving affects
+        how well people drive,
+        <b>because people's attention is shifted away from the road.</b>
+      </div>
+
+      <div id="causes2_coffee_overlay" class="overlay">
+        Or, changing the amount of caffeine we drink causes a change in how how
+        alert we are,
+        <b>because caffeine is a chemical that increases brain activity.</b>
+      </div>
+
+      <div id="quiz_overlay" class="overlay">
+        <ul>
+          <li>
+            <u>School candy sales</u> and
+            <u>number of science fair poster awards</u>
+          </li>
+          <li><u>Humidity</u> and <u>the amount of water in the air</u></li>
+          <li>
+            <u>How hard you push on an object</u> and
+            <u>how much the object moves</u>
+          </li>
+          <li>
+            <u>Friction</u> and
+            <u>force of resistance to motion on a surface</u>
+          </li>
+        </ul>
+      </div>
+
+      <form id="quiz_questions_overlay" class="overlay">
+        <select id="quiz_q2" class="quiz_questions">
+          <option value="" disabled selected hidden>Choose one...</option>
+          <option>Definition</option>
+          <option>Causes</option>
+          <option>Correlation</option>
+        </select>
+        <br />
+        <select id="quiz_q3" class="quiz_questions">
+          <option value="" disabled selected hidden>Choose one...</option>
+          <option>Definition</option>
+          <option>Causes</option>
+          <option>Correlation</option>
+        </select>
+        <br />
+        <select id="quiz_q4" class="quiz_questions">
+          <option value="" disabled selected hidden>Choose one...</option>
+          <option>Definition</option>
+          <option>Causes</option>
+          <option>Correlation</option>
+        </select>
+        <br />
+        <select id="quiz_q5" class="quiz_questions">
+          <option value="" disabled selected hidden>Choose one...</option>
+          <option>Definition</option>
+          <option>Causes</option>
+          <option>Correlation</option>
+        </select>
+      </form>
+
+      <div id="notepad_page_lhs_overlay" class="overlay">
+        <div id="notepad_rq_header">
+          <button
+            id="toggle_rq_body"
+            class="link-button collapsed"
+            data-target="notepad_rq_body"
+          >
+            <div id="rq_toggler" class="toggler collapsed"></div>
+            Your Research Question
+          </button>
+        </div>
+        <div id="notepad_rq_body" class="invisible collapsable-text"></div>
+
+        <div id="notepad_pred_header">
+          <button
+            id="toggle_pred_body"
+            class="link-button collapsed"
+            data-target="notepad_pred_body"
+          >
+            <div id="pred_toggler" class="toggler collapsed"></div>
+            Prediction for Your Hypothesis
+          </button>
+        </div>
+        <div id="notepad_pred_body" class="invisible collapsable-text"></div>
+
+        <div id="notepad_concepts_header">
+          <button
+            id="toggle_concepts_body"
+            class="link-button collapsed"
+            data-target="notepad_concepts_body"
+          >
+            <div id="concepts_toggler" class="toggler collapsed"></div>
+            Concepts
+          </button>
+        </div>
+        <div id="notepad_concepts_body" class="invisible collapsable-text">
+          <ul id="concepts_list"></ul>
+        </div>
+      </div>
+
+      <div id="notepad_overlay" class="overlay notepad">
+        <div id="paper">
+          <div id="pattern">
+            <div
+              id="notepad_notes"
+              class="notepad-body"
+              contenteditable="true"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="instruction_video_overlay" class="overlay">
+        <video controls width="1000">
+          <source src="media/hypoVideo.webm" type="video/webm" />
+          <source src="media/hypoVideo.mp4" type="video/mp4" />
+          <source src="media/hypoVideo.ogv" type="video/ogg" />
+        </video>
+      </div>
+
+      <form id="concepts_menu_overlay" class="overlay">
+        <select id="concepts_menu"></select>
+      </form>
+
+      <div id="combined_cpt_map_help" class="overlay combined-help">
+        <div class="concept-map-help-heading">
+          Concept Map Help
+          <button id="dismiss_cpt_map_help" class="close-button">x</button>
+        </div>
+        <div id="cpt_map_help_contents" class="combined-help-contents">
+          <dl>
+            <dt>Adding Concepts</dt>
+            <dd>
+              Simply select a concept from the "Select Concept to Add"
+              drop-down.
+            </dd>
+
+            <dt>Moving Concepts</dt>
+            <dd>
+              To re-position a concept, click and drag it with your mouse.
+            </dd>
+
+            <dt>Deleting Concepts</dt>
+            <dd>
+              Click on the little "x" in the top right corner of the box. You
+              can always re-add the concept if you change your mind.
+              <div class="img-container">
+                <img src="img/hypo-gr/bubbleNoDir.png" />
+              </div>
+            </dd>
+
+            <dt>Setting Concept Directions</dt>
+            <dd>
+              Click on a concept's yellow "Set Direction" text, and from the
+              drop-down which appears, select either "increases" for an upward
+              arrow, or "decreases" for a downward arrow.
+              <div class="img-container">
+                <img src="img/hypo-gr/bubbleNoDir.png" />
+                <img src="img/hypo-gr/bubbleWithDir.png" />
+              </div>
+            </dd>
+
+            <dt>Connecting Concepts</dt>
+            <dd>
+              Click on a concept's black dot, and drag the line (which will
+              appear) to the white dot of the concept you wish to connect it to.
+              When you do that, an ‘add label’ drop-down will appear.<br />
+              <b>NOTE:</b> if the two concepts are closer to each other than the
+              width of the 'add label' box, you won't be able to connect them,
+              and will need to re-position the concepts first.
+              <div class="img-container">
+                <img src="img/hypo-gr/linkCpts.png" />
+              </div>
+            </dd>
+
+            <dt>Labeling Arrows</dt>
+            <dd>
+              Click the “Add label” box located on your connection line. A
+              drop-down selection will appear. Simply select your label.
+              <div class="img-container">
+                <img src="img/hypo-gr/labelArrows.png" />
+              </div>
+            </dd>
+          </dl>
+        </div>
+        <!-- <div class="modal-btn-container">
+        <hr/>
+        <button type="button" class="modal-btn" id="dismiss_cpt_map_help">OK</button>
+    </div> -->
+      </div>
+
+      <div id="save_concept_map_warning" class="overlay cpt-map-help">
+        <div class="help-heading">
+          <p>
+            Everything is now labeled and connected properly. This does not mean
+            that your work is <i>correct</i>.
+          </p>
+          <p>
+            <b>Warning:</b> If you click 'Save', you won't be able to make any
+            changes.
+          </p>
+          <p>
+            If you are finished, click 'Save'. If you wish to continue working,
+            click "Cancel".
+          </p>
+        </div>
+        <div class="inline-btn-container">
+          <button type="button" class="inline-btn" id="cpt_map_cancel_save">
+            Cancel
+          </button>
+          <button type="button" class="inline-btn" id="cpt_map_save">
+            Save
+          </button>
+        </div>
+      </div>
+
+      <div id="notepad_paste" class="overlay cpt-map-help">
+        <div class="help-heading">
+          Please copy/paste your hypothesis into your notepad or worksheet.
+          <pre id="current_hypo_text"></pre>
+        </div>
+        <div class="inline-btn-container">
+          <button type="button" class="inline-btn" id="dismiss_notepad_paste">
+            OK
+          </button>
+        </div>
+      </div>
+
+      <div id="draw_cpt_map" class="overlay cpt-map-help">
+        <div class="help-heading">
+          Click 'Download' to download the image of your concept map. Submit
+          this file to your teacher or parent along with your notepad or
+          worksheet.
+        </div>
+        <div class="inline-btn-container">
+          <button type="button" class="inline-btn" id="dismiss_draw_cpt_map">
+            Download
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Snackbar -->
+    <div id="snackbar">Some text some message..</div>
+
+    <script src="hypo-gr.bundle.js"></script>
+  </body>
+</html>
