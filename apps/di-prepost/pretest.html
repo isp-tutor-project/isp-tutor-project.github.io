@@ -18,6 +18,23 @@
     <link rel="stylesheet" href="diprepost.bundle.css" />
   </head>
   <body>
+    <nav class="navbar">
+      <div class="navbar-items navbar-lhs">
+        <div class="brand">
+          <img src="img/site/icon.jpg" width="36" /> ISP Tutor
+        </div>
+      </div>
+      <div class="navbar-items navbar-center">
+        <div id="activity_title">Activity title goes here</div>
+        <div id="activity_section"></div>
+      </div>
+      <div id="user_info_region" class="navbar-items navbar-rhs invisible">
+        <button class="btn btn-sm navbar-btn" id="sign_out_button">
+          Sign Out
+        </button>
+        <div id="sign_in_text"></div>
+      </div>
+    </nav>
     <div id="scene_id_region"></div>
     <main>
       <section id="memoryResults1Intro" class="scene">
@@ -121,14 +138,11 @@
                 Q1) Which do these results suggest students remember better?
               </p>
               <div id="memoryResults1_q1_form_controls" class="form-controls">
-                <label
-                  for="memoryResults1_q1-46461130-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults1_q1_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults1_q1-46461130-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults1_q1_option_a"
                     name="memoryResults1_q1"
                     value="words"
                     required
@@ -136,14 +150,11 @@
                   Words
                 </label>
 
-                <label
-                  for="memoryResults1_q1-46463840-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults1_q1_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults1_q1-46463840-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults1_q1_option_b"
                     name="memoryResults1_q1"
                     value="pictures"
                     required
@@ -151,14 +162,11 @@
                   Pictures
                 </label>
 
-                <label
-                  for="memoryResults1_q1-46463841-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults1_q1_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults1_q1-46463841-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults1_q1_option_c"
                     name="memoryResults1_q1"
                     value="neither"
                     required
@@ -166,12 +174,6 @@
                   Neither (they remember words and pictures the same)
                 </label>
               </div>
-              <button
-                id="memoryResults1_q1_submit"
-                class="submit-q1 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="memoryResults1_q2_form" class="form-centered">
@@ -185,98 +187,71 @@
                   required
                 ></textarea>
               </div>
-              <button
-                id="memoryResults1_q2_submit"
-                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="memoryResults1_q3_form" class="form-centered">
               <p id="memoryResults1_q3_text" class="question-text text-lg"></p>
               <div id="memoryResults1_q3_form_controls" class="form-controls">
-                <label
-                  for="memoryResults1_q3-46463842-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults1_q3_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults1_q3-46463842-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults1_q3_option_a"
                     name="memoryResults1_q3"
-                    value="not at all sure"
+                    value="a"
                     required
                   />
                   Not at all sure
                 </label>
 
-                <label
-                  for="memoryResults1_q3-46463843-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults1_q3_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults1_q3-46463843-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults1_q3_option_b"
                     name="memoryResults1_q3"
-                    value="a little sure"
+                    value="b"
                     required
                   />
                   A little sure
                 </label>
 
-                <label
-                  for="memoryResults1_q3-46463844-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults1_q3_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults1_q3-46463844-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults1_q3_option_c"
                     name="memoryResults1_q3"
-                    value="fairly sure"
+                    value="c"
                     required
                   />
                   Fairly sure
                 </label>
 
-                <label
-                  for="memoryResults1_q3-46463845-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults1_q3_option_d" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults1_q3-46463845-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults1_q3_option_d"
                     name="memoryResults1_q3"
-                    value="very sure"
+                    value="d"
                     required
                   />
                   Very sure
                 </label>
 
-                <label
-                  for="memoryResults1_q3-46463846-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults1_q3_option_e" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults1_q3-46463846-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults1_q3_option_e"
                     name="memoryResults1_q3"
-                    value="absolutely sure"
+                    value="e"
                     required
                   />
                   Absolutely sure
                 </label>
               </div>
-              <button
-                id="memoryResults1_q3_submit"
-                class="submit-q3 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
           </div>
         </div>
@@ -353,14 +328,11 @@
                 Q1) Which do these results suggest students remember better?
               </p>
               <div id="memoryResults2_q1_form_controls" class="form-controls">
-                <label
-                  for="memoryResults2_q1-46468660-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults2_q1_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults2_q1-46468660-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults2_q1_option_a"
                     name="memoryResults2_q1"
                     value="words"
                     required
@@ -368,14 +340,11 @@
                   Words
                 </label>
 
-                <label
-                  for="memoryResults2_q1-46468661-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults2_q1_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults2_q1-46468661-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults2_q1_option_b"
                     name="memoryResults2_q1"
                     value="pictures"
                     required
@@ -383,14 +352,11 @@
                   Pictures
                 </label>
 
-                <label
-                  for="memoryResults2_q1-46468662-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults2_q1_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults2_q1-46468662-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults2_q1_option_c"
                     name="memoryResults2_q1"
                     value="neither"
                     required
@@ -398,12 +364,6 @@
                   Neither (they remember words and pictures the same)
                 </label>
               </div>
-              <button
-                id="memoryResults2_q1_submit"
-                class="submit-q1 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="memoryResults2_q2_form" class="form-centered">
@@ -417,98 +377,71 @@
                   required
                 ></textarea>
               </div>
-              <button
-                id="memoryResults2_q2_submit"
-                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="memoryResults2_q3_form" class="form-centered">
               <p id="memoryResults2_q3_text" class="question-text text-lg"></p>
               <div id="memoryResults2_q3_form_controls" class="form-controls">
-                <label
-                  for="memoryResults2_q3-46468663-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults2_q3_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults2_q3-46468663-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults2_q3_option_a"
                     name="memoryResults2_q3"
-                    value="not at all sure"
+                    value="a"
                     required
                   />
                   Not at all sure
                 </label>
 
-                <label
-                  for="memoryResults2_q3-46468664-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults2_q3_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults2_q3-46468664-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults2_q3_option_b"
                     name="memoryResults2_q3"
-                    value="a little sure"
+                    value="b"
                     required
                   />
                   A little sure
                 </label>
 
-                <label
-                  for="memoryResults2_q3-46468665-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults2_q3_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults2_q3-46468665-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults2_q3_option_c"
                     name="memoryResults2_q3"
-                    value="fairly sure"
+                    value="c"
                     required
                   />
                   Fairly sure
                 </label>
 
-                <label
-                  for="memoryResults2_q3-46468666-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults2_q3_option_d" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults2_q3-46468666-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults2_q3_option_d"
                     name="memoryResults2_q3"
-                    value="very sure"
+                    value="d"
                     required
                   />
                   Very sure
                 </label>
 
-                <label
-                  for="memoryResults2_q3-46468667-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults2_q3_option_e" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults2_q3-46468667-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults2_q3_option_e"
                     name="memoryResults2_q3"
-                    value="absolutely sure"
+                    value="e"
                     required
                   />
                   Absolutely sure
                 </label>
               </div>
-              <button
-                id="memoryResults2_q3_submit"
-                class="submit-q3 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
           </div>
         </div>
@@ -585,14 +518,11 @@
                 Q1) Which do these results suggest students remember better?
               </p>
               <div id="memoryResults3_q1_form_controls" class="form-controls">
-                <label
-                  for="memoryResults3_q1-46468668-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults3_q1_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults3_q1-46468668-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults3_q1_option_a"
                     name="memoryResults3_q1"
                     value="words"
                     required
@@ -600,14 +530,11 @@
                   Words
                 </label>
 
-                <label
-                  for="memoryResults3_q1-46468669-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults3_q1_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults3_q1-46468669-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults3_q1_option_b"
                     name="memoryResults3_q1"
                     value="pictures"
                     required
@@ -615,14 +542,11 @@
                   Pictures
                 </label>
 
-                <label
-                  for="memoryResults3_q1-4646866a-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults3_q1_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults3_q1-4646866a-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults3_q1_option_c"
                     name="memoryResults3_q1"
                     value="neither"
                     required
@@ -630,12 +554,6 @@
                   Neither (they remember words and pictures the same)
                 </label>
               </div>
-              <button
-                id="memoryResults3_q1_submit"
-                class="submit-q1 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="memoryResults3_q2_form" class="form-centered">
@@ -649,98 +567,71 @@
                   required
                 ></textarea>
               </div>
-              <button
-                id="memoryResults3_q2_submit"
-                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="memoryResults3_q3_form" class="form-centered">
               <p id="memoryResults3_q3_text" class="question-text text-lg"></p>
               <div id="memoryResults3_q3_form_controls" class="form-controls">
-                <label
-                  for="memoryResults3_q3-4646866b-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults3_q3_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults3_q3-4646866b-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults3_q3_option_a"
                     name="memoryResults3_q3"
-                    value="not at all sure"
+                    value="a"
                     required
                   />
                   Not at all sure
                 </label>
 
-                <label
-                  for="memoryResults3_q3-4646866c-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults3_q3_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults3_q3-4646866c-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults3_q3_option_b"
                     name="memoryResults3_q3"
-                    value="a little sure"
+                    value="b"
                     required
                   />
                   A little sure
                 </label>
 
-                <label
-                  for="memoryResults3_q3-4646866d-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults3_q3_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults3_q3-4646866d-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults3_q3_option_c"
                     name="memoryResults3_q3"
-                    value="fairly sure"
+                    value="c"
                     required
                   />
                   Fairly sure
                 </label>
 
-                <label
-                  for="memoryResults3_q3-4646866e-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults3_q3_option_d" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults3_q3-4646866e-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults3_q3_option_d"
                     name="memoryResults3_q3"
-                    value="very sure"
+                    value="d"
                     required
                   />
                   Very sure
                 </label>
 
-                <label
-                  for="memoryResults3_q3-4646866f-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults3_q3_option_e" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults3_q3-4646866f-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults3_q3_option_e"
                     name="memoryResults3_q3"
-                    value="absolutely sure"
+                    value="e"
                     required
                   />
                   Absolutely sure
                 </label>
               </div>
-              <button
-                id="memoryResults3_q3_submit"
-                class="submit-q3 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
           </div>
         </div>
@@ -817,14 +708,11 @@
                 Q1) Which do these results suggest students remember better?
               </p>
               <div id="memoryResults4_q1_form_controls" class="form-controls">
-                <label
-                  for="memoryResults4_q1-4646d480-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults4_q1_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults4_q1-4646d480-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults4_q1_option_a"
                     name="memoryResults4_q1"
                     value="words"
                     required
@@ -832,14 +720,11 @@
                   Words
                 </label>
 
-                <label
-                  for="memoryResults4_q1-4646d481-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults4_q1_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults4_q1-4646d481-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults4_q1_option_b"
                     name="memoryResults4_q1"
                     value="pictures"
                     required
@@ -847,14 +732,11 @@
                   Pictures
                 </label>
 
-                <label
-                  for="memoryResults4_q1-4646d482-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults4_q1_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults4_q1-4646d482-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults4_q1_option_c"
                     name="memoryResults4_q1"
                     value="neither"
                     required
@@ -862,12 +744,6 @@
                   Neither (they remember words and pictures the same)
                 </label>
               </div>
-              <button
-                id="memoryResults4_q1_submit"
-                class="submit-q1 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="memoryResults4_q2_form" class="form-centered">
@@ -881,98 +757,71 @@
                   required
                 ></textarea>
               </div>
-              <button
-                id="memoryResults4_q2_submit"
-                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="memoryResults4_q3_form" class="form-centered">
               <p id="memoryResults4_q3_text" class="question-text text-lg"></p>
               <div id="memoryResults4_q3_form_controls" class="form-controls">
-                <label
-                  for="memoryResults4_q3-4646d483-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults4_q3_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults4_q3-4646d483-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults4_q3_option_a"
                     name="memoryResults4_q3"
-                    value="not at all sure"
+                    value="a"
                     required
                   />
                   Not at all sure
                 </label>
 
-                <label
-                  for="memoryResults4_q3-4646d484-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults4_q3_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults4_q3-4646d484-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults4_q3_option_b"
                     name="memoryResults4_q3"
-                    value="a little sure"
+                    value="b"
                     required
                   />
                   A little sure
                 </label>
 
-                <label
-                  for="memoryResults4_q3-4646d485-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults4_q3_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults4_q3-4646d485-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults4_q3_option_c"
                     name="memoryResults4_q3"
-                    value="fairly sure"
+                    value="c"
                     required
                   />
                   Fairly sure
                 </label>
 
-                <label
-                  for="memoryResults4_q3-4646d486-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults4_q3_option_d" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults4_q3-4646d486-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults4_q3_option_d"
                     name="memoryResults4_q3"
-                    value="very sure"
+                    value="d"
                     required
                   />
                   Very sure
                 </label>
 
-                <label
-                  for="memoryResults4_q3-4646d487-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults4_q3_option_e" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults4_q3-4646d487-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults4_q3_option_e"
                     name="memoryResults4_q3"
-                    value="absolutely sure"
+                    value="e"
                     required
                   />
                   Absolutely sure
                 </label>
               </div>
-              <button
-                id="memoryResults4_q3_submit"
-                class="submit-q3 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
           </div>
         </div>
@@ -1049,14 +898,11 @@
                 Q1) Which do these results suggest students remember better?
               </p>
               <div id="memoryResults5_q1_form_controls" class="form-controls">
-                <label
-                  for="memoryResults5_q1-4646ad70-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults5_q1_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults5_q1-4646ad70-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults5_q1_option_a"
                     name="memoryResults5_q1"
                     value="words"
                     required
@@ -1064,14 +910,11 @@
                   Words
                 </label>
 
-                <label
-                  for="memoryResults5_q1-4646ad71-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults5_q1_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults5_q1-4646ad71-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults5_q1_option_b"
                     name="memoryResults5_q1"
                     value="pictures"
                     required
@@ -1079,14 +922,11 @@
                   Pictures
                 </label>
 
-                <label
-                  for="memoryResults5_q1-4646ad72-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults5_q1_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults5_q1-4646ad72-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults5_q1_option_c"
                     name="memoryResults5_q1"
                     value="neither"
                     required
@@ -1094,12 +934,6 @@
                   Neither (they remember words and pictures the same)
                 </label>
               </div>
-              <button
-                id="memoryResults5_q1_submit"
-                class="submit-q1 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="memoryResults5_q2_form" class="form-centered">
@@ -1113,98 +947,71 @@
                   required
                 ></textarea>
               </div>
-              <button
-                id="memoryResults5_q2_submit"
-                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="memoryResults5_q3_form" class="form-centered">
               <p id="memoryResults5_q3_text" class="question-text text-lg"></p>
               <div id="memoryResults5_q3_form_controls" class="form-controls">
-                <label
-                  for="memoryResults5_q3-4646ad73-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults5_q3_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults5_q3-4646ad73-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults5_q3_option_a"
                     name="memoryResults5_q3"
-                    value="not at all sure"
+                    value="a"
                     required
                   />
                   Not at all sure
                 </label>
 
-                <label
-                  for="memoryResults5_q3-4646ad74-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults5_q3_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults5_q3-4646ad74-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults5_q3_option_b"
                     name="memoryResults5_q3"
-                    value="a little sure"
+                    value="b"
                     required
                   />
                   A little sure
                 </label>
 
-                <label
-                  for="memoryResults5_q3-4646ad75-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults5_q3_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults5_q3-4646ad75-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults5_q3_option_c"
                     name="memoryResults5_q3"
-                    value="fairly sure"
+                    value="c"
                     required
                   />
                   Fairly sure
                 </label>
 
-                <label
-                  for="memoryResults5_q3-4646ad76-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults5_q3_option_d" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults5_q3-4646ad76-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults5_q3_option_d"
                     name="memoryResults5_q3"
-                    value="very sure"
+                    value="d"
                     required
                   />
                   Very sure
                 </label>
 
-                <label
-                  for="memoryResults5_q3-4646ad77-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="memoryResults5_q3_option_e" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="memoryResults5_q3-4646ad77-c53f-11ea-b019-9bb131e3fb46"
+                    id="memoryResults5_q3_option_e"
                     name="memoryResults5_q3"
-                    value="absolutely sure"
+                    value="e"
                     required
                   />
                   Absolutely sure
                 </label>
               </div>
-              <button
-                id="memoryResults5_q3_submit"
-                class="submit-q3 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
           </div>
         </div>
@@ -1281,14 +1088,11 @@
                 Q1) Which type of rocket do these results suggest flew higher?
               </p>
               <div id="rocketsResults1_q1_form_controls" class="form-controls">
-                <label
-                  for="rocketsResults1_q1-464722a0-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults1_q1_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults1_q1-464722a0-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults1_q1_option_a"
                     name="rocketsResults1_q1"
                     value="curved"
                     required
@@ -1296,14 +1100,11 @@
                   Curved
                 </label>
 
-                <label
-                  for="rocketsResults1_q1-464749b0-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults1_q1_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults1_q1-464749b0-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults1_q1_option_b"
                     name="rocketsResults1_q1"
                     value="straight"
                     required
@@ -1311,14 +1112,11 @@
                   Straight
                 </label>
 
-                <label
-                  for="rocketsResults1_q1-464749b1-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults1_q1_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults1_q1-464749b1-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults1_q1_option_c"
                     name="rocketsResults1_q1"
                     value="neither"
                     required
@@ -1326,12 +1124,6 @@
                   Neither (both rockets flew the same height)
                 </label>
               </div>
-              <button
-                id="rocketsResults1_q1_submit"
-                class="submit-q1 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="rocketsResults1_q2_form" class="form-centered">
@@ -1345,98 +1137,71 @@
                   required
                 ></textarea>
               </div>
-              <button
-                id="rocketsResults1_q2_submit"
-                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="rocketsResults1_q3_form" class="form-centered">
               <p id="rocketsResults1_q3_text" class="question-text text-lg"></p>
               <div id="rocketsResults1_q3_form_controls" class="form-controls">
-                <label
-                  for="rocketsResults1_q3-464749b2-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults1_q3_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults1_q3-464749b2-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults1_q3_option_a"
                     name="rocketsResults1_q3"
-                    value="not at all sure"
+                    value="a"
                     required
                   />
                   Not at all sure
                 </label>
 
-                <label
-                  for="rocketsResults1_q3-464749b3-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults1_q3_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults1_q3-464749b3-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults1_q3_option_b"
                     name="rocketsResults1_q3"
-                    value="a little sure"
+                    value="b"
                     required
                   />
                   A little sure
                 </label>
 
-                <label
-                  for="rocketsResults1_q3-464749b4-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults1_q3_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults1_q3-464749b4-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults1_q3_option_c"
                     name="rocketsResults1_q3"
-                    value="fairly sure"
+                    value="c"
                     required
                   />
                   Fairly sure
                 </label>
 
-                <label
-                  for="rocketsResults1_q3-464749b5-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults1_q3_option_d" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults1_q3-464749b5-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults1_q3_option_d"
                     name="rocketsResults1_q3"
-                    value="very sure"
+                    value="d"
                     required
                   />
                   Very sure
                 </label>
 
-                <label
-                  for="rocketsResults1_q3-464749b6-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults1_q3_option_e" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults1_q3-464749b6-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults1_q3_option_e"
                     name="rocketsResults1_q3"
-                    value="absolutely sure"
+                    value="e"
                     required
                   />
                   Absolutely sure
                 </label>
               </div>
-              <button
-                id="rocketsResults1_q3_submit"
-                class="submit-q3 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
           </div>
         </div>
@@ -1513,14 +1278,11 @@
                 Q1) Which type of rocket do these results suggest flew higher?
               </p>
               <div id="rocketsResults2_q1_form_controls" class="form-controls">
-                <label
-                  for="rocketsResults2_q1-464770c0-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults2_q1_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults2_q1-464770c0-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults2_q1_option_a"
                     name="rocketsResults2_q1"
                     value="curved"
                     required
@@ -1528,14 +1290,11 @@
                   Curved
                 </label>
 
-                <label
-                  for="rocketsResults2_q1-464770c1-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults2_q1_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults2_q1-464770c1-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults2_q1_option_b"
                     name="rocketsResults2_q1"
                     value="straight"
                     required
@@ -1543,14 +1302,11 @@
                   Straight
                 </label>
 
-                <label
-                  for="rocketsResults2_q1-464770c2-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults2_q1_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults2_q1-464770c2-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults2_q1_option_c"
                     name="rocketsResults2_q1"
                     value="neither"
                     required
@@ -1558,12 +1314,6 @@
                   Neither (both rockets flew the same height)
                 </label>
               </div>
-              <button
-                id="rocketsResults2_q1_submit"
-                class="submit-q1 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="rocketsResults2_q2_form" class="form-centered">
@@ -1577,98 +1327,71 @@
                   required
                 ></textarea>
               </div>
-              <button
-                id="rocketsResults2_q2_submit"
-                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="rocketsResults2_q3_form" class="form-centered">
               <p id="rocketsResults2_q3_text" class="question-text text-lg"></p>
               <div id="rocketsResults2_q3_form_controls" class="form-controls">
-                <label
-                  for="rocketsResults2_q3-464770c3-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults2_q3_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults2_q3-464770c3-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults2_q3_option_a"
                     name="rocketsResults2_q3"
-                    value="not at all sure"
+                    value="a"
                     required
                   />
                   Not at all sure
                 </label>
 
-                <label
-                  for="rocketsResults2_q3-464770c4-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults2_q3_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults2_q3-464770c4-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults2_q3_option_b"
                     name="rocketsResults2_q3"
-                    value="a little sure"
+                    value="b"
                     required
                   />
                   A little sure
                 </label>
 
-                <label
-                  for="rocketsResults2_q3-464770c5-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults2_q3_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults2_q3-464770c5-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults2_q3_option_c"
                     name="rocketsResults2_q3"
-                    value="fairly sure"
+                    value="c"
                     required
                   />
                   Fairly sure
                 </label>
 
-                <label
-                  for="rocketsResults2_q3-464770c6-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults2_q3_option_d" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults2_q3-464770c6-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults2_q3_option_d"
                     name="rocketsResults2_q3"
-                    value="very sure"
+                    value="d"
                     required
                   />
                   Very sure
                 </label>
 
-                <label
-                  for="rocketsResults2_q3-464770c7-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults2_q3_option_e" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults2_q3-464770c7-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults2_q3_option_e"
                     name="rocketsResults2_q3"
-                    value="absolutely sure"
+                    value="e"
                     required
                   />
                   Absolutely sure
                 </label>
               </div>
-              <button
-                id="rocketsResults2_q3_submit"
-                class="submit-q3 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
           </div>
         </div>
@@ -1745,14 +1468,11 @@
                 Q1) Which type of rocket do these results suggest flew higher?
               </p>
               <div id="rocketsResults3_q1_form_controls" class="form-controls">
-                <label
-                  for="rocketsResults3_q1-4647e5f1-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults3_q1_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults3_q1-4647e5f1-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults3_q1_option_a"
                     name="rocketsResults3_q1"
                     value="curved"
                     required
@@ -1760,14 +1480,11 @@
                   Curved
                 </label>
 
-                <label
-                  for="rocketsResults3_q1-4647e5f2-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults3_q1_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults3_q1-4647e5f2-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults3_q1_option_b"
                     name="rocketsResults3_q1"
                     value="straight"
                     required
@@ -1775,14 +1492,11 @@
                   Straight
                 </label>
 
-                <label
-                  for="rocketsResults3_q1-4647e5f3-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults3_q1_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults3_q1-4647e5f3-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults3_q1_option_c"
                     name="rocketsResults3_q1"
                     value="neither"
                     required
@@ -1790,12 +1504,6 @@
                   Neither (both rockets flew the same height)
                 </label>
               </div>
-              <button
-                id="rocketsResults3_q1_submit"
-                class="submit-q1 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="rocketsResults3_q2_form" class="form-centered">
@@ -1809,98 +1517,71 @@
                   required
                 ></textarea>
               </div>
-              <button
-                id="rocketsResults3_q2_submit"
-                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="rocketsResults3_q3_form" class="form-centered">
               <p id="rocketsResults3_q3_text" class="question-text text-lg"></p>
               <div id="rocketsResults3_q3_form_controls" class="form-controls">
-                <label
-                  for="rocketsResults3_q3-4647e5f4-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults3_q3_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults3_q3-4647e5f4-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults3_q3_option_a"
                     name="rocketsResults3_q3"
-                    value="not at all sure"
+                    value="a"
                     required
                   />
                   Not at all sure
                 </label>
 
-                <label
-                  for="rocketsResults3_q3-4647e5f5-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults3_q3_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults3_q3-4647e5f5-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults3_q3_option_b"
                     name="rocketsResults3_q3"
-                    value="a little sure"
+                    value="b"
                     required
                   />
                   A little sure
                 </label>
 
-                <label
-                  for="rocketsResults3_q3-4647e5f6-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults3_q3_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults3_q3-4647e5f6-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults3_q3_option_c"
                     name="rocketsResults3_q3"
-                    value="fairly sure"
+                    value="c"
                     required
                   />
                   Fairly sure
                 </label>
 
-                <label
-                  for="rocketsResults3_q3-4647e5f7-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults3_q3_option_d" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults3_q3-4647e5f7-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults3_q3_option_d"
                     name="rocketsResults3_q3"
-                    value="very sure"
+                    value="d"
                     required
                   />
                   Very sure
                 </label>
 
-                <label
-                  for="rocketsResults3_q3-4647e5f8-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults3_q3_option_e" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults3_q3-4647e5f8-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults3_q3_option_e"
                     name="rocketsResults3_q3"
-                    value="absolutely sure"
+                    value="e"
                     required
                   />
                   Absolutely sure
                 </label>
               </div>
-              <button
-                id="rocketsResults3_q3_submit"
-                class="submit-q3 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
           </div>
         </div>
@@ -1977,14 +1658,11 @@
                 Q1) Which type of rocket do these results suggest flew higher?
               </p>
               <div id="rocketsResults4_q1_form_controls" class="form-controls">
-                <label
-                  for="rocketsResults4_q1-4647bee0-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults4_q1_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults4_q1-4647bee0-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults4_q1_option_a"
                     name="rocketsResults4_q1"
                     value="curved"
                     required
@@ -1992,14 +1670,11 @@
                   Curved
                 </label>
 
-                <label
-                  for="rocketsResults4_q1-4647bee1-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults4_q1_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults4_q1-4647bee1-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults4_q1_option_b"
                     name="rocketsResults4_q1"
                     value="straight"
                     required
@@ -2007,14 +1682,11 @@
                   Straight
                 </label>
 
-                <label
-                  for="rocketsResults4_q1-4647bee2-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults4_q1_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults4_q1-4647bee2-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults4_q1_option_c"
                     name="rocketsResults4_q1"
                     value="neither"
                     required
@@ -2022,12 +1694,6 @@
                   Neither (both rockets flew the same height)
                 </label>
               </div>
-              <button
-                id="rocketsResults4_q1_submit"
-                class="submit-q1 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="rocketsResults4_q2_form" class="form-centered">
@@ -2041,98 +1707,71 @@
                   required
                 ></textarea>
               </div>
-              <button
-                id="rocketsResults4_q2_submit"
-                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="rocketsResults4_q3_form" class="form-centered">
               <p id="rocketsResults4_q3_text" class="question-text text-lg"></p>
               <div id="rocketsResults4_q3_form_controls" class="form-controls">
-                <label
-                  for="rocketsResults4_q3-4647bee3-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults4_q3_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults4_q3-4647bee3-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults4_q3_option_a"
                     name="rocketsResults4_q3"
-                    value="not at all sure"
+                    value="a"
                     required
                   />
                   Not at all sure
                 </label>
 
-                <label
-                  for="rocketsResults4_q3-4647bee4-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults4_q3_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults4_q3-4647bee4-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults4_q3_option_b"
                     name="rocketsResults4_q3"
-                    value="a little sure"
+                    value="b"
                     required
                   />
                   A little sure
                 </label>
 
-                <label
-                  for="rocketsResults4_q3-4647bee5-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults4_q3_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults4_q3-4647bee5-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults4_q3_option_c"
                     name="rocketsResults4_q3"
-                    value="fairly sure"
+                    value="c"
                     required
                   />
                   Fairly sure
                 </label>
 
-                <label
-                  for="rocketsResults4_q3-4647bee6-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults4_q3_option_d" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults4_q3-4647bee6-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults4_q3_option_d"
                     name="rocketsResults4_q3"
-                    value="very sure"
+                    value="d"
                     required
                   />
                   Very sure
                 </label>
 
-                <label
-                  for="rocketsResults4_q3-4647e5f0-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults4_q3_option_e" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults4_q3-4647e5f0-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults4_q3_option_e"
                     name="rocketsResults4_q3"
-                    value="absolutely sure"
+                    value="e"
                     required
                   />
                   Absolutely sure
                 </label>
               </div>
-              <button
-                id="rocketsResults4_q3_submit"
-                class="submit-q3 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
           </div>
         </div>
@@ -2209,14 +1848,11 @@
                 Q1) Which type of rocket do these results suggest flew higher?
               </p>
               <div id="rocketsResults5_q1_form_controls" class="form-controls">
-                <label
-                  for="rocketsResults5_q1-46480d00-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults5_q1_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults5_q1-46480d00-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults5_q1_option_a"
                     name="rocketsResults5_q1"
                     value="curved"
                     required
@@ -2224,14 +1860,11 @@
                   Curved
                 </label>
 
-                <label
-                  for="rocketsResults5_q1-46480d01-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults5_q1_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults5_q1-46480d01-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults5_q1_option_b"
                     name="rocketsResults5_q1"
                     value="straight"
                     required
@@ -2239,14 +1872,11 @@
                   Straight
                 </label>
 
-                <label
-                  for="rocketsResults5_q1-46480d02-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults5_q1_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults5_q1-46480d02-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults5_q1_option_c"
                     name="rocketsResults5_q1"
                     value="neither"
                     required
@@ -2254,12 +1884,6 @@
                   Neither (both rockets flew the same height)
                 </label>
               </div>
-              <button
-                id="rocketsResults5_q1_submit"
-                class="submit-q1 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="rocketsResults5_q2_form" class="form-centered">
@@ -2273,98 +1897,71 @@
                   required
                 ></textarea>
               </div>
-              <button
-                id="rocketsResults5_q2_submit"
-                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="rocketsResults5_q3_form" class="form-centered">
               <p id="rocketsResults5_q3_text" class="question-text text-lg"></p>
               <div id="rocketsResults5_q3_form_controls" class="form-controls">
-                <label
-                  for="rocketsResults5_q3-46480d03-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults5_q3_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults5_q3-46480d03-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults5_q3_option_a"
                     name="rocketsResults5_q3"
-                    value="not at all sure"
+                    value="a"
                     required
                   />
                   Not at all sure
                 </label>
 
-                <label
-                  for="rocketsResults5_q3-46480d04-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults5_q3_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults5_q3-46480d04-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults5_q3_option_b"
                     name="rocketsResults5_q3"
-                    value="a little sure"
+                    value="b"
                     required
                   />
                   A little sure
                 </label>
 
-                <label
-                  for="rocketsResults5_q3-46480d05-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults5_q3_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults5_q3-46480d05-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults5_q3_option_c"
                     name="rocketsResults5_q3"
-                    value="fairly sure"
+                    value="c"
                     required
                   />
                   Fairly sure
                 </label>
 
-                <label
-                  for="rocketsResults5_q3-46480d06-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults5_q3_option_d" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults5_q3-46480d06-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults5_q3_option_d"
                     name="rocketsResults5_q3"
-                    value="very sure"
+                    value="d"
                     required
                   />
                   Very sure
                 </label>
 
-                <label
-                  for="rocketsResults5_q3-46480d07-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="rocketsResults5_q3_option_e" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="rocketsResults5_q3-46480d07-c53f-11ea-b019-9bb131e3fb46"
+                    id="rocketsResults5_q3_option_e"
                     name="rocketsResults5_q3"
-                    value="absolutely sure"
+                    value="e"
                     required
                   />
                   Absolutely sure
                 </label>
               </div>
-              <button
-                id="rocketsResults5_q3_submit"
-                class="submit-q3 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
           </div>
         </div>
@@ -2537,15 +2134,19 @@
             width="1000px"
             class="img-centered"
           />
+
           <p class="text-xxl">
             Welcome to the ISP User Testing Session! <br />
+          </p>
+
+          <p class="text-xxl">
             Click the "Start" button below to begin.
           </p>
+
           <p>
             <button
-              id="start_btn"
-              class="transition-to btn btn-xxl btn-success"
-              data-transition="next"
+              class="follow-edge btn btn-xxl btn-primary"
+              data-edge="next"
             >
               Start
             </button>

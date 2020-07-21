@@ -18,6 +18,23 @@
     <link rel="stylesheet" href="diprepost.bundle.css" />
   </head>
   <body>
+    <nav class="navbar">
+      <div class="navbar-items navbar-lhs">
+        <div class="brand">
+          <img src="img/site/icon.jpg" width="36" /> ISP Tutor
+        </div>
+      </div>
+      <div class="navbar-items navbar-center">
+        <div id="activity_title">Activity title goes here</div>
+        <div id="activity_section"></div>
+      </div>
+      <div id="user_info_region" class="navbar-items navbar-rhs invisible">
+        <button class="btn btn-sm navbar-btn" id="sign_out_button">
+          Sign Out
+        </button>
+        <div id="sign_in_text"></div>
+      </div>
+    </nav>
     <div id="scene_id_region"></div>
     <main>
       <section id="carsResults1" class="scene">
@@ -91,14 +108,11 @@
                 Q1) Which type of wheel do these results suggest was faster?
               </p>
               <div id="carsResults1_q1_form_controls" class="form-controls">
-                <label
-                  for="carsResults1_q1-46428ec0-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults1_q1_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults1_q1-46428ec0-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults1_q1_option_a"
                     name="carsResults1_q1"
                     value="thick wheels"
                     required
@@ -106,14 +120,11 @@
                   Thick Wheels
                 </label>
 
-                <label
-                  for="carsResults1_q1-46428ec1-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults1_q1_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults1_q1-46428ec1-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults1_q1_option_b"
                     name="carsResults1_q1"
                     value="thin wheels"
                     required
@@ -121,14 +132,11 @@
                   Thin Wheels
                 </label>
 
-                <label
-                  for="carsResults1_q1-46428ec2-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults1_q1_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults1_q1-46428ec2-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults1_q1_option_c"
                     name="carsResults1_q1"
                     value="neither wheels"
                     required
@@ -136,12 +144,6 @@
                   Neither Wheels
                 </label>
               </div>
-              <button
-                id="carsResults1_q1_submit"
-                class="submit-q1 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="carsResults1_q2_form" class="form-centered">
@@ -155,98 +157,71 @@
                   required
                 ></textarea>
               </div>
-              <button
-                id="carsResults1_q2_submit"
-                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="carsResults1_q3_form" class="form-centered">
               <p id="carsResults1_q3_text" class="question-text text-lg"></p>
               <div id="carsResults1_q3_form_controls" class="form-controls">
-                <label
-                  for="carsResults1_q3-46428ec3-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults1_q3_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults1_q3-46428ec3-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults1_q3_option_a"
                     name="carsResults1_q3"
-                    value="not at all sure"
+                    value="a"
                     required
                   />
                   Not at all sure
                 </label>
 
-                <label
-                  for="carsResults1_q3-46428ec4-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults1_q3_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults1_q3-46428ec4-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults1_q3_option_b"
                     name="carsResults1_q3"
-                    value="a little sure"
+                    value="b"
                     required
                   />
                   A little sure
                 </label>
 
-                <label
-                  for="carsResults1_q3-46428ec5-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults1_q3_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults1_q3-46428ec5-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults1_q3_option_c"
                     name="carsResults1_q3"
-                    value="fairly sure"
+                    value="c"
                     required
                   />
                   Fairly sure
                 </label>
 
-                <label
-                  for="carsResults1_q3-46428ec6-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults1_q3_option_d" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults1_q3-46428ec6-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults1_q3_option_d"
                     name="carsResults1_q3"
-                    value="very sure"
+                    value="d"
                     required
                   />
                   Very sure
                 </label>
 
-                <label
-                  for="carsResults1_q3-46428ec7-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults1_q3_option_e" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults1_q3-46428ec7-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults1_q3_option_e"
                     name="carsResults1_q3"
-                    value="absolutely sure"
+                    value="e"
                     required
                   />
                   Absolutely sure
                 </label>
               </div>
-              <button
-                id="carsResults1_q3_submit"
-                class="submit-q3 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
           </div>
         </div>
@@ -323,14 +298,11 @@
                 Q1) Which type of wheel do these results suggest was faster?
               </p>
               <div id="carsResults2_q1_form_controls" class="form-controls">
-                <label
-                  for="carsResults2_q1-4642b5d0-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults2_q1_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults2_q1-4642b5d0-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults2_q1_option_a"
                     name="carsResults2_q1"
                     value="thick wheels"
                     required
@@ -338,14 +310,11 @@
                   Thick Wheels
                 </label>
 
-                <label
-                  for="carsResults2_q1-4642b5d1-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults2_q1_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults2_q1-4642b5d1-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults2_q1_option_b"
                     name="carsResults2_q1"
                     value="thin wheels"
                     required
@@ -353,14 +322,11 @@
                   Thin Wheels
                 </label>
 
-                <label
-                  for="carsResults2_q1-4642b5d2-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults2_q1_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults2_q1-4642b5d2-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults2_q1_option_c"
                     name="carsResults2_q1"
                     value="neither wheels"
                     required
@@ -368,12 +334,6 @@
                   Neither Wheels
                 </label>
               </div>
-              <button
-                id="carsResults2_q1_submit"
-                class="submit-q1 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="carsResults2_q2_form" class="form-centered">
@@ -387,98 +347,71 @@
                   required
                 ></textarea>
               </div>
-              <button
-                id="carsResults2_q2_submit"
-                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="carsResults2_q3_form" class="form-centered">
               <p id="carsResults2_q3_text" class="question-text text-lg"></p>
               <div id="carsResults2_q3_form_controls" class="form-controls">
-                <label
-                  for="carsResults2_q3-4642b5d3-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults2_q3_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults2_q3-4642b5d3-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults2_q3_option_a"
                     name="carsResults2_q3"
-                    value="not at all sure"
+                    value="a"
                     required
                   />
                   Not at all sure
                 </label>
 
-                <label
-                  for="carsResults2_q3-4642b5d4-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults2_q3_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults2_q3-4642b5d4-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults2_q3_option_b"
                     name="carsResults2_q3"
-                    value="a little sure"
+                    value="b"
                     required
                   />
                   A little sure
                 </label>
 
-                <label
-                  for="carsResults2_q3-4642b5d5-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults2_q3_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults2_q3-4642b5d5-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults2_q3_option_c"
                     name="carsResults2_q3"
-                    value="fairly sure"
+                    value="c"
                     required
                   />
                   Fairly sure
                 </label>
 
-                <label
-                  for="carsResults2_q3-4642b5d6-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults2_q3_option_d" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults2_q3-4642b5d6-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults2_q3_option_d"
                     name="carsResults2_q3"
-                    value="very sure"
+                    value="d"
                     required
                   />
                   Very sure
                 </label>
 
-                <label
-                  for="carsResults2_q3-4642b5d7-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults2_q3_option_e" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults2_q3-4642b5d7-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults2_q3_option_e"
                     name="carsResults2_q3"
-                    value="absolutely sure"
+                    value="e"
                     required
                   />
                   Absolutely sure
                 </label>
               </div>
-              <button
-                id="carsResults2_q3_submit"
-                class="submit-q3 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
           </div>
         </div>
@@ -555,14 +488,11 @@
                 Q1) Which type of wheel do these results suggest was faster?
               </p>
               <div id="carsResults3_q1_form_controls" class="form-controls">
-                <label
-                  for="carsResults3_q1-4642dce8-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults3_q1_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults3_q1-4642dce8-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults3_q1_option_a"
                     name="carsResults3_q1"
                     value="thick wheels"
                     required
@@ -570,14 +500,11 @@
                   Thick Wheels
                 </label>
 
-                <label
-                  for="carsResults3_q1-464303f0-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults3_q1_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults3_q1-464303f0-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults3_q1_option_b"
                     name="carsResults3_q1"
                     value="thin wheels"
                     required
@@ -585,14 +512,11 @@
                   Thin Wheels
                 </label>
 
-                <label
-                  for="carsResults3_q1-464303f1-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults3_q1_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults3_q1-464303f1-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults3_q1_option_c"
                     name="carsResults3_q1"
                     value="neither wheels"
                     required
@@ -600,12 +524,6 @@
                   Neither Wheels
                 </label>
               </div>
-              <button
-                id="carsResults3_q1_submit"
-                class="submit-q1 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="carsResults3_q2_form" class="form-centered">
@@ -619,98 +537,71 @@
                   required
                 ></textarea>
               </div>
-              <button
-                id="carsResults3_q2_submit"
-                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="carsResults3_q3_form" class="form-centered">
               <p id="carsResults3_q3_text" class="question-text text-lg"></p>
               <div id="carsResults3_q3_form_controls" class="form-controls">
-                <label
-                  for="carsResults3_q3-464303f2-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults3_q3_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults3_q3-464303f2-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults3_q3_option_a"
                     name="carsResults3_q3"
-                    value="not at all sure"
+                    value="a"
                     required
                   />
                   Not at all sure
                 </label>
 
-                <label
-                  for="carsResults3_q3-464303f3-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults3_q3_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults3_q3-464303f3-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults3_q3_option_b"
                     name="carsResults3_q3"
-                    value="a little sure"
+                    value="b"
                     required
                   />
                   A little sure
                 </label>
 
-                <label
-                  for="carsResults3_q3-464303f4-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults3_q3_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults3_q3-464303f4-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults3_q3_option_c"
                     name="carsResults3_q3"
-                    value="fairly sure"
+                    value="c"
                     required
                   />
                   Fairly sure
                 </label>
 
-                <label
-                  for="carsResults3_q3-464303f5-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults3_q3_option_d" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults3_q3-464303f5-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults3_q3_option_d"
                     name="carsResults3_q3"
-                    value="very sure"
+                    value="d"
                     required
                   />
                   Very sure
                 </label>
 
-                <label
-                  for="carsResults3_q3-464303f6-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults3_q3_option_e" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults3_q3-464303f6-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults3_q3_option_e"
                     name="carsResults3_q3"
-                    value="absolutely sure"
+                    value="e"
                     required
                   />
                   Absolutely sure
                 </label>
               </div>
-              <button
-                id="carsResults3_q3_submit"
-                class="submit-q3 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
           </div>
         </div>
@@ -787,14 +678,11 @@
                 Q1) Which type of wheel do these results suggest was faster?
               </p>
               <div id="carsResults4_q1_form_controls" class="form-controls">
-                <label
-                  for="carsResults4_q1-4642dce0-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults4_q1_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults4_q1-4642dce0-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults4_q1_option_a"
                     name="carsResults4_q1"
                     value="thick wheels"
                     required
@@ -802,14 +690,11 @@
                   Thick Wheels
                 </label>
 
-                <label
-                  for="carsResults4_q1-4642dce1-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults4_q1_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults4_q1-4642dce1-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults4_q1_option_b"
                     name="carsResults4_q1"
                     value="thin wheels"
                     required
@@ -817,14 +702,11 @@
                   Thin Wheels
                 </label>
 
-                <label
-                  for="carsResults4_q1-4642dce2-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults4_q1_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults4_q1-4642dce2-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults4_q1_option_c"
                     name="carsResults4_q1"
                     value="neither wheels"
                     required
@@ -832,12 +714,6 @@
                   Neither Wheels
                 </label>
               </div>
-              <button
-                id="carsResults4_q1_submit"
-                class="submit-q1 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="carsResults4_q2_form" class="form-centered">
@@ -851,98 +727,71 @@
                   required
                 ></textarea>
               </div>
-              <button
-                id="carsResults4_q2_submit"
-                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="carsResults4_q3_form" class="form-centered">
               <p id="carsResults4_q3_text" class="question-text text-lg"></p>
               <div id="carsResults4_q3_form_controls" class="form-controls">
-                <label
-                  for="carsResults4_q3-4642dce3-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults4_q3_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults4_q3-4642dce3-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults4_q3_option_a"
                     name="carsResults4_q3"
-                    value="not at all sure"
+                    value="a"
                     required
                   />
                   Not at all sure
                 </label>
 
-                <label
-                  for="carsResults4_q3-4642dce4-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults4_q3_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults4_q3-4642dce4-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults4_q3_option_b"
                     name="carsResults4_q3"
-                    value="a little sure"
+                    value="b"
                     required
                   />
                   A little sure
                 </label>
 
-                <label
-                  for="carsResults4_q3-4642dce5-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults4_q3_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults4_q3-4642dce5-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults4_q3_option_c"
                     name="carsResults4_q3"
-                    value="fairly sure"
+                    value="c"
                     required
                   />
                   Fairly sure
                 </label>
 
-                <label
-                  for="carsResults4_q3-4642dce6-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults4_q3_option_d" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults4_q3-4642dce6-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults4_q3_option_d"
                     name="carsResults4_q3"
-                    value="very sure"
+                    value="d"
                     required
                   />
                   Very sure
                 </label>
 
-                <label
-                  for="carsResults4_q3-4642dce7-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults4_q3_option_e" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults4_q3-4642dce7-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults4_q3_option_e"
                     name="carsResults4_q3"
-                    value="absolutely sure"
+                    value="e"
                     required
                   />
                   Absolutely sure
                 </label>
               </div>
-              <button
-                id="carsResults4_q3_submit"
-                class="submit-q3 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
           </div>
         </div>
@@ -1019,14 +868,11 @@
                 Q1) Which type of wheel do these results suggest was faster?
               </p>
               <div id="carsResults5_q1_form_controls" class="form-controls">
-                <label
-                  for="carsResults5_q1-464303f7-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults5_q1_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults5_q1-464303f7-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults5_q1_option_a"
                     name="carsResults5_q1"
                     value="thick wheels"
                     required
@@ -1034,14 +880,11 @@
                   Thick Wheels
                 </label>
 
-                <label
-                  for="carsResults5_q1-464303f8-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults5_q1_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults5_q1-464303f8-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults5_q1_option_b"
                     name="carsResults5_q1"
                     value="thin wheels"
                     required
@@ -1049,14 +892,11 @@
                   Thin Wheels
                 </label>
 
-                <label
-                  for="carsResults5_q1-464303f9-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults5_q1_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults5_q1-464303f9-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults5_q1_option_c"
                     name="carsResults5_q1"
                     value="neither wheels"
                     required
@@ -1064,12 +904,6 @@
                   Neither Wheels
                 </label>
               </div>
-              <button
-                id="carsResults5_q1_submit"
-                class="submit-q1 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="carsResults5_q2_form" class="form-centered">
@@ -1083,98 +917,71 @@
                   required
                 ></textarea>
               </div>
-              <button
-                id="carsResults5_q2_submit"
-                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="carsResults5_q3_form" class="form-centered">
               <p id="carsResults5_q3_text" class="question-text text-lg"></p>
               <div id="carsResults5_q3_form_controls" class="form-controls">
-                <label
-                  for="carsResults5_q3-464303fa-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults5_q3_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults5_q3-464303fa-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults5_q3_option_a"
                     name="carsResults5_q3"
-                    value="not at all sure"
+                    value="a"
                     required
                   />
                   Not at all sure
                 </label>
 
-                <label
-                  for="carsResults5_q3-464303fb-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults5_q3_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults5_q3-464303fb-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults5_q3_option_b"
                     name="carsResults5_q3"
-                    value="a little sure"
+                    value="b"
                     required
                   />
                   A little sure
                 </label>
 
-                <label
-                  for="carsResults5_q3-464303fc-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults5_q3_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults5_q3-464303fc-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults5_q3_option_c"
                     name="carsResults5_q3"
-                    value="fairly sure"
+                    value="c"
                     required
                   />
                   Fairly sure
                 </label>
 
-                <label
-                  for="carsResults5_q3-464303fd-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults5_q3_option_d" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults5_q3-464303fd-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults5_q3_option_d"
                     name="carsResults5_q3"
-                    value="very sure"
+                    value="d"
                     required
                   />
                   Very sure
                 </label>
 
-                <label
-                  for="carsResults5_q3-464303fe-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="carsResults5_q3_option_e" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="carsResults5_q3-464303fe-c53f-11ea-b019-9bb131e3fb46"
+                    id="carsResults5_q3_option_e"
                     name="carsResults5_q3"
-                    value="absolutely sure"
+                    value="e"
                     required
                   />
                   Absolutely sure
                 </label>
               </div>
-              <button
-                id="carsResults5_q3_submit"
-                class="submit-q3 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
           </div>
         </div>
@@ -1281,14 +1088,11 @@
                 Q1) Where do these results suggest that students learn more?
               </p>
               <div id="libraryResults1_q1_form_controls" class="form-controls">
-                <label
-                  for="libraryResults1_q1-46448a90-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults1_q1_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults1_q1-46448a90-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults1_q1_option_a"
                     name="libraryResults1_q1"
                     value="the library"
                     required
@@ -1296,14 +1100,11 @@
                   The Library
                 </label>
 
-                <label
-                  for="libraryResults1_q1-46448a91-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults1_q1_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults1_q1-46448a91-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults1_q1_option_b"
                     name="libraryResults1_q1"
                     value="home"
                     required
@@ -1311,14 +1112,11 @@
                   Home
                 </label>
 
-                <label
-                  for="libraryResults1_q1-46448a92-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults1_q1_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults1_q1-46448a92-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults1_q1_option_c"
                     name="libraryResults1_q1"
                     value="neither location"
                     required
@@ -1326,12 +1124,6 @@
                   Neither
                 </label>
               </div>
-              <button
-                id="libraryResults1_q1_submit"
-                class="submit-q1 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="libraryResults1_q2_form" class="form-centered">
@@ -1345,98 +1137,71 @@
                   required
                 ></textarea>
               </div>
-              <button
-                id="libraryResults1_q2_submit"
-                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="libraryResults1_q3_form" class="form-centered">
               <p id="libraryResults1_q3_text" class="question-text text-lg"></p>
               <div id="libraryResults1_q3_form_controls" class="form-controls">
-                <label
-                  for="libraryResults1_q3-46448a93-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults1_q3_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults1_q3-46448a93-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults1_q3_option_a"
                     name="libraryResults1_q3"
-                    value="not at all sure"
+                    value="a"
                     required
                   />
                   Not at all sure
                 </label>
 
-                <label
-                  for="libraryResults1_q3-46448a94-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults1_q3_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults1_q3-46448a94-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults1_q3_option_b"
                     name="libraryResults1_q3"
-                    value="a little sure"
+                    value="b"
                     required
                   />
                   A little sure
                 </label>
 
-                <label
-                  for="libraryResults1_q3-46448a95-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults1_q3_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults1_q3-46448a95-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults1_q3_option_c"
                     name="libraryResults1_q3"
-                    value="fairly sure"
+                    value="c"
                     required
                   />
                   Fairly sure
                 </label>
 
-                <label
-                  for="libraryResults1_q3-46448a96-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults1_q3_option_d" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults1_q3-46448a96-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults1_q3_option_d"
                     name="libraryResults1_q3"
-                    value="very sure"
+                    value="d"
                     required
                   />
                   Very sure
                 </label>
 
-                <label
-                  for="libraryResults1_q3-46448a97-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults1_q3_option_e" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults1_q3-46448a97-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults1_q3_option_e"
                     name="libraryResults1_q3"
-                    value="absolutely sure"
+                    value="e"
                     required
                   />
                   Absolutely sure
                 </label>
               </div>
-              <button
-                id="libraryResults1_q3_submit"
-                class="submit-q3 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
           </div>
         </div>
@@ -1513,14 +1278,11 @@
                 Q1) Where do these results suggest that students learn more?
               </p>
               <div id="libraryResults2_q1_form_controls" class="form-controls">
-                <label
-                  for="libraryResults2_q1-4644b1a0-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults2_q1_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults2_q1-4644b1a0-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults2_q1_option_a"
                     name="libraryResults2_q1"
                     value="the library"
                     required
@@ -1528,14 +1290,11 @@
                   The Library
                 </label>
 
-                <label
-                  for="libraryResults2_q1-4644b1a1-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults2_q1_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults2_q1-4644b1a1-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults2_q1_option_b"
                     name="libraryResults2_q1"
                     value="home"
                     required
@@ -1543,14 +1302,11 @@
                   Home
                 </label>
 
-                <label
-                  for="libraryResults2_q1-4644b1a2-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults2_q1_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults2_q1-4644b1a2-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults2_q1_option_c"
                     name="libraryResults2_q1"
                     value="neither location"
                     required
@@ -1558,12 +1314,6 @@
                   Neither
                 </label>
               </div>
-              <button
-                id="libraryResults2_q1_submit"
-                class="submit-q1 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="libraryResults2_q2_form" class="form-centered">
@@ -1577,98 +1327,71 @@
                   required
                 ></textarea>
               </div>
-              <button
-                id="libraryResults2_q2_submit"
-                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="libraryResults2_q3_form" class="form-centered">
               <p id="libraryResults2_q3_text" class="question-text text-lg"></p>
               <div id="libraryResults2_q3_form_controls" class="form-controls">
-                <label
-                  for="libraryResults2_q3-4644b1a3-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults2_q3_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults2_q3-4644b1a3-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults2_q3_option_a"
                     name="libraryResults2_q3"
-                    value="not at all sure"
+                    value="a"
                     required
                   />
                   Not at all sure
                 </label>
 
-                <label
-                  for="libraryResults2_q3-4644b1a4-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults2_q3_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults2_q3-4644b1a4-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults2_q3_option_b"
                     name="libraryResults2_q3"
-                    value="a little sure"
+                    value="b"
                     required
                   />
                   A little sure
                 </label>
 
-                <label
-                  for="libraryResults2_q3-4644b1a5-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults2_q3_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults2_q3-4644b1a5-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults2_q3_option_c"
                     name="libraryResults2_q3"
-                    value="fairly sure"
+                    value="c"
                     required
                   />
                   Fairly sure
                 </label>
 
-                <label
-                  for="libraryResults2_q3-4644b1a6-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults2_q3_option_d" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults2_q3-4644b1a6-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults2_q3_option_d"
                     name="libraryResults2_q3"
-                    value="very sure"
+                    value="d"
                     required
                   />
                   Very sure
                 </label>
 
-                <label
-                  for="libraryResults2_q3-4644b1a7-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults2_q3_option_e" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults2_q3-4644b1a7-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults2_q3_option_e"
                     name="libraryResults2_q3"
-                    value="absolutely sure"
+                    value="e"
                     required
                   />
                   Absolutely sure
                 </label>
               </div>
-              <button
-                id="libraryResults2_q3_submit"
-                class="submit-q3 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
           </div>
         </div>
@@ -1745,14 +1468,11 @@
                 Q1) Where do these results suggest that students learn more?
               </p>
               <div id="libraryResults3_q1_form_controls" class="form-controls">
-                <label
-                  for="libraryResults3_q1-4644b1a8-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults3_q1_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults3_q1-4644b1a8-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults3_q1_option_a"
                     name="libraryResults3_q1"
                     value="the library"
                     required
@@ -1760,14 +1480,11 @@
                   The Library
                 </label>
 
-                <label
-                  for="libraryResults3_q1-4644b1a9-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults3_q1_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults3_q1-4644b1a9-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults3_q1_option_b"
                     name="libraryResults3_q1"
                     value="home"
                     required
@@ -1775,14 +1492,11 @@
                   Home
                 </label>
 
-                <label
-                  for="libraryResults3_q1-4644b1aa-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults3_q1_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults3_q1-4644b1aa-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults3_q1_option_c"
                     name="libraryResults3_q1"
                     value="neither location"
                     required
@@ -1790,12 +1504,6 @@
                   Neither
                 </label>
               </div>
-              <button
-                id="libraryResults3_q1_submit"
-                class="submit-q1 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="libraryResults3_q2_form" class="form-centered">
@@ -1809,98 +1517,71 @@
                   required
                 ></textarea>
               </div>
-              <button
-                id="libraryResults3_q2_submit"
-                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="libraryResults3_q3_form" class="form-centered">
               <p id="libraryResults3_q3_text" class="question-text text-lg"></p>
               <div id="libraryResults3_q3_form_controls" class="form-controls">
-                <label
-                  for="libraryResults3_q3-4644b1ab-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults3_q3_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults3_q3-4644b1ab-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults3_q3_option_a"
                     name="libraryResults3_q3"
-                    value="not at all sure"
+                    value="a"
                     required
                   />
                   Not at all sure
                 </label>
 
-                <label
-                  for="libraryResults3_q3-4644b1ac-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults3_q3_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults3_q3-4644b1ac-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults3_q3_option_b"
                     name="libraryResults3_q3"
-                    value="a little sure"
+                    value="b"
                     required
                   />
                   A little sure
                 </label>
 
-                <label
-                  for="libraryResults3_q3-4644b1ad-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults3_q3_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults3_q3-4644b1ad-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults3_q3_option_c"
                     name="libraryResults3_q3"
-                    value="fairly sure"
+                    value="c"
                     required
                   />
                   Fairly sure
                 </label>
 
-                <label
-                  for="libraryResults3_q3-4644b1ae-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults3_q3_option_d" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults3_q3-4644b1ae-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults3_q3_option_d"
                     name="libraryResults3_q3"
-                    value="very sure"
+                    value="d"
                     required
                   />
                   Very sure
                 </label>
 
-                <label
-                  for="libraryResults3_q3-4644b1af-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults3_q3_option_e" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults3_q3-4644b1af-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults3_q3_option_e"
                     name="libraryResults3_q3"
-                    value="absolutely sure"
+                    value="e"
                     required
                   />
                   Absolutely sure
                 </label>
               </div>
-              <button
-                id="libraryResults3_q3_submit"
-                class="submit-q3 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
           </div>
         </div>
@@ -1977,14 +1658,11 @@
                 Q1) Where do these results suggest that students learn more?
               </p>
               <div id="libraryResults4_q1_form_controls" class="form-controls">
-                <label
-                  for="libraryResults4_q1-4644d8b0-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults4_q1_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults4_q1-4644d8b0-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults4_q1_option_a"
                     name="libraryResults4_q1"
                     value="the library"
                     required
@@ -1992,14 +1670,11 @@
                   The Library
                 </label>
 
-                <label
-                  for="libraryResults4_q1-4644d8b1-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults4_q1_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults4_q1-4644d8b1-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults4_q1_option_b"
                     name="libraryResults4_q1"
                     value="home"
                     required
@@ -2007,14 +1682,11 @@
                   Home
                 </label>
 
-                <label
-                  for="libraryResults4_q1-4644d8b2-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults4_q1_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults4_q1-4644d8b2-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults4_q1_option_c"
                     name="libraryResults4_q1"
                     value="neither location"
                     required
@@ -2022,12 +1694,6 @@
                   Neither
                 </label>
               </div>
-              <button
-                id="libraryResults4_q1_submit"
-                class="submit-q1 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="libraryResults4_q2_form" class="form-centered">
@@ -2041,98 +1707,71 @@
                   required
                 ></textarea>
               </div>
-              <button
-                id="libraryResults4_q2_submit"
-                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="libraryResults4_q3_form" class="form-centered">
               <p id="libraryResults4_q3_text" class="question-text text-lg"></p>
               <div id="libraryResults4_q3_form_controls" class="form-controls">
-                <label
-                  for="libraryResults4_q3-4644d8b3-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults4_q3_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults4_q3-4644d8b3-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults4_q3_option_a"
                     name="libraryResults4_q3"
-                    value="not at all sure"
+                    value="a"
                     required
                   />
                   Not at all sure
                 </label>
 
-                <label
-                  for="libraryResults4_q3-4644d8b4-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults4_q3_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults4_q3-4644d8b4-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults4_q3_option_b"
                     name="libraryResults4_q3"
-                    value="a little sure"
+                    value="b"
                     required
                   />
                   A little sure
                 </label>
 
-                <label
-                  for="libraryResults4_q3-4644d8b5-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults4_q3_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults4_q3-4644d8b5-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults4_q3_option_c"
                     name="libraryResults4_q3"
-                    value="fairly sure"
+                    value="c"
                     required
                   />
                   Fairly sure
                 </label>
 
-                <label
-                  for="libraryResults4_q3-4644d8b6-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults4_q3_option_d" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults4_q3-4644d8b6-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults4_q3_option_d"
                     name="libraryResults4_q3"
-                    value="very sure"
+                    value="d"
                     required
                   />
                   Very sure
                 </label>
 
-                <label
-                  for="libraryResults4_q3-4644d8b7-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults4_q3_option_e" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults4_q3-4644d8b7-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults4_q3_option_e"
                     name="libraryResults4_q3"
-                    value="absolutely sure"
+                    value="e"
                     required
                   />
                   Absolutely sure
                 </label>
               </div>
-              <button
-                id="libraryResults4_q3_submit"
-                class="submit-q3 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
           </div>
         </div>
@@ -2209,14 +1848,11 @@
                 Q1) Where do these results suggest that students learn more?
               </p>
               <div id="libraryResults5_q1_form_controls" class="form-controls">
-                <label
-                  for="libraryResults5_q1-4644ffc0-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults5_q1_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults5_q1-4644ffc0-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults5_q1_option_a"
                     name="libraryResults5_q1"
                     value="the library"
                     required
@@ -2224,14 +1860,11 @@
                   The Library
                 </label>
 
-                <label
-                  for="libraryResults5_q1-4644ffc1-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults5_q1_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults5_q1-4644ffc1-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults5_q1_option_b"
                     name="libraryResults5_q1"
                     value="home"
                     required
@@ -2239,14 +1872,11 @@
                   Home
                 </label>
 
-                <label
-                  for="libraryResults5_q1-4644ffc2-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults5_q1_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults5_q1-4644ffc2-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults5_q1_option_c"
                     name="libraryResults5_q1"
                     value="neither location"
                     required
@@ -2254,12 +1884,6 @@
                   Neither
                 </label>
               </div>
-              <button
-                id="libraryResults5_q1_submit"
-                class="submit-q1 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="libraryResults5_q2_form" class="form-centered">
@@ -2273,98 +1897,71 @@
                   required
                 ></textarea>
               </div>
-              <button
-                id="libraryResults5_q2_submit"
-                class="submit-q2 form-submit-centered btn btn-lg btn-primary"
-              >
-                Submit
-              </button>
             </form>
 
             <form id="libraryResults5_q3_form" class="form-centered">
               <p id="libraryResults5_q3_text" class="question-text text-lg"></p>
               <div id="libraryResults5_q3_form_controls" class="form-controls">
-                <label
-                  for="libraryResults5_q3-4644ffc3-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults5_q3_option_a" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults5_q3-4644ffc3-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults5_q3_option_a"
                     name="libraryResults5_q3"
-                    value="not at all sure"
+                    value="a"
                     required
                   />
                   Not at all sure
                 </label>
 
-                <label
-                  for="libraryResults5_q3-4644ffc4-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults5_q3_option_b" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults5_q3-4644ffc4-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults5_q3_option_b"
                     name="libraryResults5_q3"
-                    value="a little sure"
+                    value="b"
                     required
                   />
                   A little sure
                 </label>
 
-                <label
-                  for="libraryResults5_q3-4644ffc5-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults5_q3_option_c" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults5_q3-4644ffc5-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults5_q3_option_c"
                     name="libraryResults5_q3"
-                    value="fairly sure"
+                    value="c"
                     required
                   />
                   Fairly sure
                 </label>
 
-                <label
-                  for="libraryResults5_q3-4644ffc6-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults5_q3_option_d" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults5_q3-4644ffc6-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults5_q3_option_d"
                     name="libraryResults5_q3"
-                    value="very sure"
+                    value="d"
                     required
                   />
                   Very sure
                 </label>
 
-                <label
-                  for="libraryResults5_q3-4644ffc7-c53f-11ea-b019-9bb131e3fb46"
-                  class="text-lg"
-                >
+                <label for="libraryResults5_q3_option_e" class="text-lg">
                   <input
                     type="radio"
                     class="radio-btn form-control"
-                    id="libraryResults5_q3-4644ffc7-c53f-11ea-b019-9bb131e3fb46"
+                    id="libraryResults5_q3_option_e"
                     name="libraryResults5_q3"
-                    value="absolutely sure"
+                    value="e"
                     required
                   />
                   Absolutely sure
                 </label>
               </div>
-              <button
-                id="libraryResults5_q3_submit"
-                class="submit-q3 form-submit-centered btn btn-lg"
-              >
-                Submit
-              </button>
             </form>
           </div>
         </div>
@@ -2534,15 +2131,19 @@
             width="1000px"
             class="img-centered"
           />
+
           <p class="text-xxl">
             Welcome to the ISP User Testing Session! <br />
+          </p>
+
+          <p class="text-xxl">
             Click the "Start" button below to begin.
           </p>
+
           <p>
             <button
-              id="start_btn"
-              class="transition-to btn btn-xxl btn-success"
-              data-transition="next"
+              class="follow-edge btn btn-xxl btn-primary"
+              data-edge="next"
             >
               Start
             </button>
