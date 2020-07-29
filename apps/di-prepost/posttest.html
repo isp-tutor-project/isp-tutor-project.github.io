@@ -20,24 +20,74 @@
   <body>
     <nav class="navbar">
       <div class="navbar-items navbar-lhs">
-        <div class="brand">
-          <img src="img/site/icon.jpg" width="36" /> ISP Tutor
-        </div>
-      </div>
-      <div class="navbar-items navbar-center">
-        <div id="activity_title">Activity title goes here</div>
-        <div id="activity_section"></div>
-      </div>
-      <div id="user_info_region" class="navbar-items navbar-rhs invisible">
-        <button class="btn btn-sm navbar-btn" id="sign_out_button">
-          Sign Out
+        <img class="brand" src="img/site/icon.jpg" width="36" />
+        <button class="navbar-btn btn btn-sm btn-danger" id="navbar_home_btn">
+          home icon
         </button>
-        <div id="sign_in_text"></div>
+        <div id="activity_title" class="navbar-text text-primary"></div>
+      </div>
+      <div class="navbar-items navbar-center invisible"></div>
+      <div class="navbar-items navbar-rhs">
+        <button class="navbar-btn btn btn-sm btn-info" id="glossary">
+          GLOSSARY
+        </button>
+        <button class="navbar-btn btn btn-sm btn-success" id="sign_out_button">
+          SIGN OUT
+        </button>
+        <div id="sign_in_text" class="navbar-text"></div>
       </div>
     </nav>
     <div id="scene_id_region"></div>
     <main>
+      <section id="completed" class="scene">
+        <div class="single_column_content">
+          <p class="text-xxl">
+            Great Work! You're finished with this part.
+          </p>
+          <p class="text-xl">
+            Click the "Home" button to return to your home page.
+          </p>
+          <p>
+            <button
+              type="button"
+              id="go_home_btn"
+              class="btn btn-huge btn-success"
+            >
+              Home
+            </button>
+          </p>
+        </div>
+      </section>
+
+      <section id="start" class="scene">
+        <div class="single_column_content">
+          <img
+            src="img/site/RevisedHeader.jpg"
+            width="1000px"
+            class="img-centered"
+          />
+
+          <p class="text-xxl">
+            Welcome to the ISP User Testing Session! <br />
+          </p>
+
+          <p class="text-xxl">
+            Click the "Start" button below to begin.
+          </p>
+
+          <p>
+            <button
+              class="follow-edge btn btn-huge btn-success"
+              data-edge="next"
+            >
+              Start
+            </button>
+          </p>
+        </div>
+      </section>
+
       <section id="carsResults1" class="scene">
+        <br />
         <header class="results-heading">
           Below is the first set of possible results for the speed of cars (in
           meters per second).
@@ -46,32 +96,113 @@
         <div class="results-top">
           <div class="results-top-left">
             <div class="results-centered">
-              <button
-                id="carsResults1_reveal_left_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Thick Wheels Mean
-              </button>
-              <div id="carsResults1_left_mean" class="left-mean hidden">
-                Thick Wheels Mean = 6.8
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Thick Wheels</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="carsResults1_left_mean" class="hidden">
+                        &nbsp; 6.8 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults1_reveal_left_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="carsResults1_left_median" class="hidden">
+                        &nbsp; 7 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults1_reveal_left_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="carsResults1_left_mode" class="hidden">
+                        &nbsp; 8 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults1_reveal_left_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="carsResults1_left_range" class="hidden">
+                        &nbsp; 3 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults1_reveal_left_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <div class="results-top-center">
             <div class="results-centered">
-              <div>
-                <img
-                  id="carsResults1_sorted"
-                  src="img/car_posttest_1/T1_Post_sorted.jpg"
-                  class="img-centered hidden"
-                />
-                <img
-                  id="carsResults1_unsorted"
-                  src="img/car_posttest_1/T1_Post_unsorted.jpg"
-                  class="img-centered"
-                />
+              <div class="side-by-side-tables">
+                <table class="data-table center-table" cellspacing="0">
+                  <thead style="color:white;background-color:blue;">
+                    <tr>
+                      <td>Thick<br />Wheels</td>
+                      <td>Thin<br />Wheels</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>5</td>
+                      <td>10</td>
+                    </tr>
+
+                    <tr>
+                      <td>8</td>
+                      <td>8</td>
+                    </tr>
+
+                    <tr>
+                      <td>6</td>
+                      <td>11</td>
+                    </tr>
+
+                    <tr>
+                      <td>8</td>
+                      <td>8</td>
+                    </tr>
+
+                    <tr>
+                      <td>7</td>
+                      <td>9</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
               <p>
                 <button
                   id="carsResults1_show_sorted_table"
@@ -88,15 +219,71 @@
 
           <div class="results-top-right">
             <div class="results-centered">
-              <button
-                id="carsResults1_reveal_right_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Thin Wheels Mean
-              </button>
-              <div id="carsResults1_right_mean" class="right-mean hidden">
-                Thin Wheels Mean = 9.2
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Thin Wheels</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="carsResults1_right_mean" class="hidden">
+                        &nbsp; 9.2 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults1_reveal_right_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="carsResults1_right_median" class="hidden">
+                        &nbsp; 9 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults1_reveal_right_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="carsResults1_right_mode" class="hidden">
+                        &nbsp; 8 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults1_reveal_right_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="carsResults1_right_range" class="hidden">
+                        &nbsp; 3 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults1_reveal_right_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -228,6 +415,7 @@
       </section>
 
       <section id="carsResults2" class="scene">
+        <br />
         <header class="results-heading">
           Below is the second set of possible results for the speed of cars (in
           meters per second).
@@ -236,32 +424,113 @@
         <div class="results-top">
           <div class="results-top-left">
             <div class="results-centered">
-              <button
-                id="carsResults2_reveal_left_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Thick Wheels Mean
-              </button>
-              <div id="carsResults2_left_mean" class="left-mean hidden">
-                Thick Wheels Mean = 8.2
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Thick Wheels</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="carsResults2_left_mean" class="hidden">
+                        &nbsp; 8.2 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults2_reveal_left_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="carsResults2_left_median" class="hidden">
+                        &nbsp; 8 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults2_reveal_left_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="carsResults2_left_mode" class="hidden">
+                        &nbsp; 7 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults2_reveal_left_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="carsResults2_left_range" class="hidden">
+                        &nbsp; 3 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults2_reveal_left_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <div class="results-top-center">
             <div class="results-centered">
-              <div>
-                <img
-                  id="carsResults2_sorted"
-                  src="img/car_posttest_1/T2_Post_sorted.jpg"
-                  class="img-centered hidden"
-                />
-                <img
-                  id="carsResults2_unsorted"
-                  src="img/car_posttest_1/T2_Post_unsorted.jpg"
-                  class="img-centered"
-                />
+              <div class="side-by-side-tables">
+                <table class="data-table center-table" cellspacing="0">
+                  <thead style="color:white;background-color:purple;">
+                    <tr>
+                      <td>Thick<br />Wheels</td>
+                      <td>Thin<br />Wheels</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>7</td>
+                      <td>7</td>
+                    </tr>
+
+                    <tr>
+                      <td>10</td>
+                      <td>5</td>
+                    </tr>
+
+                    <tr>
+                      <td>9</td>
+                      <td>6</td>
+                    </tr>
+
+                    <tr>
+                      <td>7</td>
+                      <td>8</td>
+                    </tr>
+
+                    <tr>
+                      <td>8</td>
+                      <td>5</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
               <p>
                 <button
                   id="carsResults2_show_sorted_table"
@@ -278,15 +547,71 @@
 
           <div class="results-top-right">
             <div class="results-centered">
-              <button
-                id="carsResults2_reveal_right_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Thin Wheels Mean
-              </button>
-              <div id="carsResults2_right_mean" class="right-mean hidden">
-                Thin Wheels Mean = 6.2
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Thin Wheels</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="carsResults2_right_mean" class="hidden">
+                        &nbsp; 6.2 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults2_reveal_right_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="carsResults2_right_median" class="hidden">
+                        &nbsp; 6 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults2_reveal_right_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="carsResults2_right_mode" class="hidden">
+                        &nbsp; 5 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults2_reveal_right_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="carsResults2_right_range" class="hidden">
+                        &nbsp; 3 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults2_reveal_right_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -418,6 +743,7 @@
       </section>
 
       <section id="carsResults3" class="scene">
+        <br />
         <header class="results-heading">
           Below is the third set of possible results for the speed of cars (in
           meters per second).
@@ -426,32 +752,113 @@
         <div class="results-top">
           <div class="results-top-left">
             <div class="results-centered">
-              <button
-                id="carsResults3_reveal_left_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Thick Wheels Mean
-              </button>
-              <div id="carsResults3_left_mean" class="left-mean hidden">
-                Thick Wheels Mean = 6.6
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Thick Wheels</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="carsResults3_left_mean" class="hidden">
+                        &nbsp; 6.6 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults3_reveal_left_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="carsResults3_left_median" class="hidden">
+                        &nbsp; 7 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults3_reveal_left_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="carsResults3_left_mode" class="hidden">
+                        &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults3_reveal_left_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="carsResults3_left_range" class="hidden">
+                        &nbsp; 5 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults3_reveal_left_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <div class="results-top-center">
             <div class="results-centered">
-              <div>
-                <img
-                  id="carsResults3_sorted"
-                  src="img/car_posttest_1/T3_Post_sorted.jpg"
-                  class="img-centered hidden"
-                />
-                <img
-                  id="carsResults3_unsorted"
-                  src="img/car_posttest_1/T3_Post_unsorted.jpg"
-                  class="img-centered"
-                />
+              <div class="side-by-side-tables">
+                <table class="data-table center-table" cellspacing="0">
+                  <thead style="color:white;background-color:green;">
+                    <tr>
+                      <td>Thick<br />Wheels</td>
+                      <td>Thin<br />Wheels</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>9</td>
+                      <td>8</td>
+                    </tr>
+
+                    <tr>
+                      <td>4</td>
+                      <td>9</td>
+                    </tr>
+
+                    <tr>
+                      <td>7</td>
+                      <td>11</td>
+                    </tr>
+
+                    <tr>
+                      <td>8</td>
+                      <td>7</td>
+                    </tr>
+
+                    <tr>
+                      <td>5</td>
+                      <td>12</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
               <p>
                 <button
                   id="carsResults3_show_sorted_table"
@@ -468,15 +875,71 @@
 
           <div class="results-top-right">
             <div class="results-centered">
-              <button
-                id="carsResults3_reveal_right_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Thin Wheels Mean
-              </button>
-              <div id="carsResults3_right_mean" class="right-mean hidden">
-                Thin Wheels Mean = 9.4
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Thin Wheels</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="carsResults3_right_mean" class="hidden">
+                        &nbsp; 9.4 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults3_reveal_right_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="carsResults3_right_median" class="hidden">
+                        &nbsp; 9 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults3_reveal_right_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="carsResults3_right_mode" class="hidden">
+                        &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults3_reveal_right_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="carsResults3_right_range" class="hidden">
+                        &nbsp; 5 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults3_reveal_right_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -608,6 +1071,7 @@
       </section>
 
       <section id="carsResults4" class="scene">
+        <br />
         <header class="results-heading">
           Below is the fourth set of possible results for the speed of cars (in
           meters per second).
@@ -616,32 +1080,113 @@
         <div class="results-top">
           <div class="results-top-left">
             <div class="results-centered">
-              <button
-                id="carsResults4_reveal_left_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Thick Wheels Mean
-              </button>
-              <div id="carsResults4_left_mean" class="left-mean hidden">
-                Thick Wheels Mean = 8.4
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Thick Wheels</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="carsResults4_left_mean" class="hidden">
+                        &nbsp; 8.4 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults4_reveal_left_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="carsResults4_left_median" class="hidden">
+                        &nbsp; 8 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults4_reveal_left_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="carsResults4_left_mode" class="hidden">
+                        &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults4_reveal_left_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="carsResults4_left_range" class="hidden">
+                        &nbsp; 5 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults4_reveal_left_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <div class="results-top-center">
             <div class="results-centered">
-              <div>
-                <img
-                  id="carsResults4_sorted"
-                  src="img/car_posttest_1/T4_Post_sorted.jpg"
-                  class="img-centered hidden"
-                />
-                <img
-                  id="carsResults4_unsorted"
-                  src="img/car_posttest_1/T4_Post_unsorted.jpg"
-                  class="img-centered"
-                />
+              <div class="side-by-side-tables">
+                <table class="data-table center-table" cellspacing="0">
+                  <thead style="color:white;background-color:orange;">
+                    <tr>
+                      <td>Thick<br />Wheels</td>
+                      <td>Thin<br />Wheels</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>10</td>
+                      <td>5</td>
+                    </tr>
+
+                    <tr>
+                      <td>8</td>
+                      <td>9</td>
+                    </tr>
+
+                    <tr>
+                      <td>11</td>
+                      <td>4</td>
+                    </tr>
+
+                    <tr>
+                      <td>7</td>
+                      <td>8</td>
+                    </tr>
+
+                    <tr>
+                      <td>6</td>
+                      <td>6</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
               <p>
                 <button
                   id="carsResults4_show_sorted_table"
@@ -658,15 +1203,71 @@
 
           <div class="results-top-right">
             <div class="results-centered">
-              <button
-                id="carsResults4_reveal_right_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Thin Wheels Mean
-              </button>
-              <div id="carsResults4_right_mean" class="right-mean hidden">
-                Thin Wheels Mean = 6.4
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Thin Wheels</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="carsResults4_right_mean" class="hidden">
+                        &nbsp; 6.4 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults4_reveal_right_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="carsResults4_right_median" class="hidden">
+                        &nbsp; 6 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults4_reveal_right_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="carsResults4_right_mode" class="hidden">
+                        &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults4_reveal_right_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="carsResults4_right_range" class="hidden">
+                        &nbsp; 5 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults4_reveal_right_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -798,6 +1399,7 @@
       </section>
 
       <section id="carsResults5" class="scene">
+        <br />
         <header class="results-heading">
           Below is the last set of possible results for the speed of cars (in
           meters per second).
@@ -806,32 +1408,113 @@
         <div class="results-top">
           <div class="results-top-left">
             <div class="results-centered">
-              <button
-                id="carsResults5_reveal_left_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Thick Wheels Mean
-              </button>
-              <div id="carsResults5_left_mean" class="left-mean hidden">
-                Thick Wheels Mean = 8.2
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Thick Wheels</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="carsResults5_left_mean" class="hidden">
+                        &nbsp; 8.2 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults5_reveal_left_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="carsResults5_left_median" class="hidden">
+                        &nbsp; 8 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults5_reveal_left_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="carsResults5_left_mode" class="hidden">
+                        &nbsp; 7 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults5_reveal_left_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="carsResults5_left_range" class="hidden">
+                        &nbsp; 3 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults5_reveal_left_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <div class="results-top-center">
             <div class="results-centered">
-              <div>
-                <img
-                  id="carsResults5_sorted"
-                  src="img/car_posttest_1/T5_Post_sorted.jpg"
-                  class="img-centered hidden"
-                />
-                <img
-                  id="carsResults5_unsorted"
-                  src="img/car_posttest_1/T5_Post_unsorted.jpg"
-                  class="img-centered"
-                />
+              <div class="side-by-side-tables">
+                <table class="data-table center-table" cellspacing="0">
+                  <thead style="color:white;background-color:red;">
+                    <tr>
+                      <td>Thick<br />Wheels</td>
+                      <td>Thin<br />Wheels</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>8</td>
+                      <td>6</td>
+                    </tr>
+
+                    <tr>
+                      <td>7</td>
+                      <td>7</td>
+                    </tr>
+
+                    <tr>
+                      <td>7</td>
+                      <td>8</td>
+                    </tr>
+
+                    <tr>
+                      <td>9</td>
+                      <td>10</td>
+                    </tr>
+
+                    <tr>
+                      <td>10</td>
+                      <td>6</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
               <p>
                 <button
                   id="carsResults5_show_sorted_table"
@@ -848,15 +1531,71 @@
 
           <div class="results-top-right">
             <div class="results-centered">
-              <button
-                id="carsResults5_reveal_right_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Thin Wheels Mean
-              </button>
-              <div id="carsResults5_right_mean" class="right-mean hidden">
-                Thin Wheels Mean = 7.4
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Thin Wheels</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="carsResults5_right_mean" class="hidden">
+                        &nbsp; 7.4 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults5_reveal_right_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="carsResults5_right_median" class="hidden">
+                        &nbsp; 7 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults5_reveal_right_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="carsResults5_right_mode" class="hidden">
+                        &nbsp; 6 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults5_reveal_right_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="carsResults5_right_range" class="hidden">
+                        &nbsp; 4 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="carsResults5_reveal_right_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -1018,6 +1757,7 @@
       </section>
 
       <section id="libraryResults1" class="scene">
+        <br />
         <header class="results-heading">
           Below is the first set of possible results for the number of correct
           answers on the quiz by each friend.
@@ -1026,32 +1766,156 @@
         <div class="results-top">
           <div class="results-top-left">
             <div class="results-centered">
-              <button
-                id="libraryResults1_reveal_left_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Table 1 Mean
-              </button>
-              <div id="libraryResults1_left_mean" class="left-mean hidden">
-                Table 1 Mean = 32
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Library</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="libraryResults1_left_mean" class="hidden">
+                        &nbsp; 32 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults1_reveal_left_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="libraryResults1_left_median" class="hidden">
+                        &nbsp; 33 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults1_reveal_left_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="libraryResults1_left_mode" class="hidden">
+                        &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults1_reveal_left_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="libraryResults1_left_range" class="hidden">
+                        &nbsp; 8 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults1_reveal_left_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <div class="results-top-center">
             <div class="results-centered">
-              <div>
-                <img
-                  id="libraryResults1_sorted"
-                  src="img/library_posttest_2/T6_Post_Sorted.jpg"
-                  class="img-centered hidden"
-                />
-                <img
-                  id="libraryResults1_unsorted"
-                  src="img/library_posttest_2/T6_Post_Unsorted.jpg"
-                  class="img-centered"
-                />
+              <div class="side-by-side-tables">
+                <table class="data-table left-table" cellspacing="0">
+                  <thead style="color:white;background-color:blue;">
+                    <tr>
+                      <th colspan="2">Table 1: Library</th>
+                    </tr>
+
+                    <tr>
+                      <td>Friend</td>
+                      <td># Correct</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Alan</td>
+                      <td>27</td>
+                    </tr>
+
+                    <tr>
+                      <td>Liz</td>
+                      <td>35</td>
+                    </tr>
+
+                    <tr>
+                      <td>Jen</td>
+                      <td>31</td>
+                    </tr>
+
+                    <tr>
+                      <td>Ian</td>
+                      <td>34</td>
+                    </tr>
+
+                    <tr>
+                      <td>Tom</td>
+                      <td>33</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="data-table right-table" cellspacing="0">
+                  <thead style="color:white;background-color:blue;">
+                    <tr>
+                      <th colspan="2">Table 2: Home</th>
+                    </tr>
+
+                    <tr>
+                      <td>Friend</td>
+                      <td># Correct</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Joe</td>
+                      <td>30</td>
+                    </tr>
+
+                    <tr>
+                      <td>Mya</td>
+                      <td>26</td>
+                    </tr>
+
+                    <tr>
+                      <td>Fin</td>
+                      <td>33</td>
+                    </tr>
+
+                    <tr>
+                      <td>Joy</td>
+                      <td>26</td>
+                    </tr>
+
+                    <tr>
+                      <td>Meg</td>
+                      <td>25</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
               <p>
                 <button
                   id="libraryResults1_show_sorted_table"
@@ -1068,15 +1932,71 @@
 
           <div class="results-top-right">
             <div class="results-centered">
-              <button
-                id="libraryResults1_reveal_right_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Table 2 Mean
-              </button>
-              <div id="libraryResults1_right_mean" class="right-mean hidden">
-                Table 2 Mean = 28
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Home</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="libraryResults1_right_mean" class="hidden">
+                        &nbsp; 28 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults1_reveal_right_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="libraryResults1_right_median" class="hidden">
+                        &nbsp; 26 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults1_reveal_right_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="libraryResults1_right_mode" class="hidden">
+                        &nbsp; 26 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults1_reveal_right_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="libraryResults1_right_range" class="hidden">
+                        &nbsp; 8 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults1_reveal_right_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -1208,6 +2128,7 @@
       </section>
 
       <section id="libraryResults2" class="scene">
+        <br />
         <header class="results-heading">
           Below is the second set of possible results for the number of correct
           answers on the quiz by each friend.
@@ -1216,32 +2137,156 @@
         <div class="results-top">
           <div class="results-top-left">
             <div class="results-centered">
-              <button
-                id="libraryResults2_reveal_left_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Table 1 Mean
-              </button>
-              <div id="libraryResults2_left_mean" class="left-mean hidden">
-                Table 1 Mean = 29
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Library</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="libraryResults2_left_mean" class="hidden">
+                        &nbsp; 29 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults2_reveal_left_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="libraryResults2_left_median" class="hidden">
+                        &nbsp; 29 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults2_reveal_left_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="libraryResults2_left_mode" class="hidden">
+                        &nbsp; 29 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults2_reveal_left_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="libraryResults2_left_range" class="hidden">
+                        &nbsp; 5 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults2_reveal_left_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <div class="results-top-center">
             <div class="results-centered">
-              <div>
-                <img
-                  id="libraryResults2_sorted"
-                  src="img/library_posttest_2/T7_Post_Sorted.jpg"
-                  class="img-centered hidden"
-                />
-                <img
-                  id="libraryResults2_unsorted"
-                  src="img/library_posttest_2/T7_Post_Unsorted.jpg"
-                  class="img-centered"
-                />
+              <div class="side-by-side-tables">
+                <table class="data-table left-table" cellspacing="0">
+                  <thead style="color:white;background-color:purple;">
+                    <tr>
+                      <th colspan="2">Table 1: Library</th>
+                    </tr>
+
+                    <tr>
+                      <td>Friend</td>
+                      <td># Correct</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Alan</td>
+                      <td>28</td>
+                    </tr>
+
+                    <tr>
+                      <td>Jen</td>
+                      <td>32</td>
+                    </tr>
+
+                    <tr>
+                      <td>Tom</td>
+                      <td>27</td>
+                    </tr>
+
+                    <tr>
+                      <td>Ian</td>
+                      <td>29</td>
+                    </tr>
+
+                    <tr>
+                      <td>Liz</td>
+                      <td>29</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="data-table right-table" cellspacing="0">
+                  <thead style="color:white;background-color:purple;">
+                    <tr>
+                      <th colspan="2">Table 2: Home</th>
+                    </tr>
+
+                    <tr>
+                      <td>Friend</td>
+                      <td># Correct</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Meg</td>
+                      <td>31</td>
+                    </tr>
+
+                    <tr>
+                      <td>Mya</td>
+                      <td>30</td>
+                    </tr>
+
+                    <tr>
+                      <td>Joy</td>
+                      <td>31</td>
+                    </tr>
+
+                    <tr>
+                      <td>Joe</td>
+                      <td>34</td>
+                    </tr>
+
+                    <tr>
+                      <td>Fin</td>
+                      <td>29</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
               <p>
                 <button
                   id="libraryResults2_show_sorted_table"
@@ -1258,15 +2303,71 @@
 
           <div class="results-top-right">
             <div class="results-centered">
-              <button
-                id="libraryResults2_reveal_right_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Table 2 Mean
-              </button>
-              <div id="libraryResults2_right_mean" class="right-mean hidden">
-                Table 2 Mean = 31
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Home</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="libraryResults2_right_mean" class="hidden">
+                        &nbsp; 31 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults2_reveal_right_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="libraryResults2_right_median" class="hidden">
+                        &nbsp; 31 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults2_reveal_right_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="libraryResults2_right_mode" class="hidden">
+                        &nbsp; 31 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults2_reveal_right_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="libraryResults2_right_range" class="hidden">
+                        &nbsp; 5 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults2_reveal_right_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -1398,6 +2499,7 @@
       </section>
 
       <section id="libraryResults3" class="scene">
+        <br />
         <header class="results-heading">
           Below is the third set of possible results for the number of correct
           answers on the quiz by each friend.
@@ -1406,32 +2508,156 @@
         <div class="results-top">
           <div class="results-top-left">
             <div class="results-centered">
-              <button
-                id="libraryResults3_reveal_left_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Table 1 Mean
-              </button>
-              <div id="libraryResults3_left_mean" class="left-mean hidden">
-                Table 1 Mean = 32
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Library</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="libraryResults3_left_mean" class="hidden">
+                        &nbsp; 32 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults3_reveal_left_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="libraryResults3_left_median" class="hidden">
+                        &nbsp; 32 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults3_reveal_left_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="libraryResults3_left_mode" class="hidden">
+                        &nbsp; 32 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults3_reveal_left_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="libraryResults3_left_range" class="hidden">
+                        &nbsp; 5 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults3_reveal_left_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <div class="results-top-center">
             <div class="results-centered">
-              <div>
-                <img
-                  id="libraryResults3_sorted"
-                  src="img/library_posttest_2/T8_Post_Sorted.jpg"
-                  class="img-centered hidden"
-                />
-                <img
-                  id="libraryResults3_unsorted"
-                  src="img/library_posttest_2/T8_Post_Unsorted.jpg"
-                  class="img-centered"
-                />
+              <div class="side-by-side-tables">
+                <table class="data-table left-table" cellspacing="0">
+                  <thead style="color:white;background-color:green;">
+                    <tr>
+                      <th colspan="2">Table 1: Library</th>
+                    </tr>
+
+                    <tr>
+                      <td>Friend</td>
+                      <td># Correct</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Alan</td>
+                      <td>29</td>
+                    </tr>
+
+                    <tr>
+                      <td>Jen</td>
+                      <td>32</td>
+                    </tr>
+
+                    <tr>
+                      <td>Tom</td>
+                      <td>33</td>
+                    </tr>
+
+                    <tr>
+                      <td>Ian</td>
+                      <td>32</td>
+                    </tr>
+
+                    <tr>
+                      <td>Liz</td>
+                      <td>33</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="data-table right-table" cellspacing="0">
+                  <thead style="color:white;background-color:green;">
+                    <tr>
+                      <th colspan="2">Table 2: Home</th>
+                    </tr>
+
+                    <tr>
+                      <td>Friend</td>
+                      <td># Correct</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Meg</td>
+                      <td>30</td>
+                    </tr>
+
+                    <tr>
+                      <td>Mya</td>
+                      <td>30</td>
+                    </tr>
+
+                    <tr>
+                      <td>Joy</td>
+                      <td>27</td>
+                    </tr>
+
+                    <tr>
+                      <td>Joe</td>
+                      <td>26</td>
+                    </tr>
+
+                    <tr>
+                      <td>Fin</td>
+                      <td>27</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
               <p>
                 <button
                   id="libraryResults3_show_sorted_table"
@@ -1448,15 +2674,71 @@
 
           <div class="results-top-right">
             <div class="results-centered">
-              <button
-                id="libraryResults3_reveal_right_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Table 2 Mean
-              </button>
-              <div id="libraryResults3_right_mean" class="right-mean hidden">
-                Table 2 Mean = 28
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Home</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="libraryResults3_right_mean" class="hidden">
+                        &nbsp; 28 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults3_reveal_right_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="libraryResults3_right_median" class="hidden">
+                        &nbsp; 27 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults3_reveal_right_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="libraryResults3_right_mode" class="hidden">
+                        &nbsp; 27 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults3_reveal_right_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="libraryResults3_right_range" class="hidden">
+                        &nbsp; 4 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults3_reveal_right_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -1588,6 +2870,7 @@
       </section>
 
       <section id="libraryResults4" class="scene">
+        <br />
         <header class="results-heading">
           Below is the fourth set of possible results for the number of correct
           answers on the quiz by each friend.
@@ -1596,32 +2879,156 @@
         <div class="results-top">
           <div class="results-top-left">
             <div class="results-centered">
-              <button
-                id="libraryResults4_reveal_left_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Table 1 Mean
-              </button>
-              <div id="libraryResults4_left_mean" class="left-mean hidden">
-                Table 1 Mean = 29
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Library</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="libraryResults4_left_mean" class="hidden">
+                        &nbsp; 29 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults4_reveal_left_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="libraryResults4_left_median" class="hidden">
+                        &nbsp; 29 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults4_reveal_left_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="libraryResults4_left_mode" class="hidden">
+                        &nbsp; 29 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults4_reveal_left_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="libraryResults4_left_range" class="hidden">
+                        &nbsp; 9 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults4_reveal_left_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <div class="results-top-center">
             <div class="results-centered">
-              <div>
-                <img
-                  id="libraryResults4_sorted"
-                  src="img/library_posttest_2/T9_Post_Sorted.jpg"
-                  class="img-centered hidden"
-                />
-                <img
-                  id="libraryResults4_unsorted"
-                  src="img/library_posttest_2/T9_Post_Unsorted.jpg"
-                  class="img-centered"
-                />
+              <div class="side-by-side-tables">
+                <table class="data-table left-table" cellspacing="0">
+                  <thead style="color:white;background-color:orange;">
+                    <tr>
+                      <th colspan="2">Table 1: Library</th>
+                    </tr>
+
+                    <tr>
+                      <td>Friend</td>
+                      <td># Correct</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Alan</td>
+                      <td>28</td>
+                    </tr>
+
+                    <tr>
+                      <td>Jen</td>
+                      <td>29</td>
+                    </tr>
+
+                    <tr>
+                      <td>Tom</td>
+                      <td>29</td>
+                    </tr>
+
+                    <tr>
+                      <td>Ian</td>
+                      <td>25</td>
+                    </tr>
+
+                    <tr>
+                      <td>Liz</td>
+                      <td>34</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="data-table right-table" cellspacing="0">
+                  <thead style="color:white;background-color:orange;">
+                    <tr>
+                      <th colspan="2">Table 2: Home</th>
+                    </tr>
+
+                    <tr>
+                      <td>Friend</td>
+                      <td># Correct</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Meg</td>
+                      <td>26</td>
+                    </tr>
+
+                    <tr>
+                      <td>Mya</td>
+                      <td>34</td>
+                    </tr>
+
+                    <tr>
+                      <td>Joy</td>
+                      <td>34</td>
+                    </tr>
+
+                    <tr>
+                      <td>Joe</td>
+                      <td>30</td>
+                    </tr>
+
+                    <tr>
+                      <td>Fin</td>
+                      <td>31</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
               <p>
                 <button
                   id="libraryResults4_show_sorted_table"
@@ -1638,15 +3045,71 @@
 
           <div class="results-top-right">
             <div class="results-centered">
-              <button
-                id="libraryResults4_reveal_right_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Table 2 Mean
-              </button>
-              <div id="libraryResults4_right_mean" class="right-mean hidden">
-                Table 2 Mean = 31
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Home</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="libraryResults4_right_mean" class="hidden">
+                        &nbsp; 31 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults4_reveal_right_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="libraryResults4_right_median" class="hidden">
+                        &nbsp; 31 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults4_reveal_right_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="libraryResults4_right_mode" class="hidden">
+                        &nbsp; 34 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults4_reveal_right_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="libraryResults4_right_range" class="hidden">
+                        &nbsp; 8 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults4_reveal_right_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -1778,6 +3241,7 @@
       </section>
 
       <section id="libraryResults5" class="scene">
+        <br />
         <header class="results-heading">
           Below is the last set of possible results for the number of correct
           answers on the quiz by each friend.
@@ -1786,32 +3250,156 @@
         <div class="results-top">
           <div class="results-top-left">
             <div class="results-centered">
-              <button
-                id="libraryResults5_reveal_left_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Table 1 Mean
-              </button>
-              <div id="libraryResults5_left_mean" class="left-mean hidden">
-                Table 1 Mean = 30.4
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Library</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="libraryResults5_left_mean" class="hidden">
+                        &nbsp; 30.4 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults5_reveal_left_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="libraryResults5_left_median" class="hidden">
+                        &nbsp; 30 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults5_reveal_left_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="libraryResults5_left_mode" class="hidden">
+                        &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults5_reveal_left_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="libraryResults5_left_range" class="hidden">
+                        &nbsp; 8 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults5_reveal_left_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <div class="results-top-center">
             <div class="results-centered">
-              <div>
-                <img
-                  id="libraryResults5_sorted"
-                  src="img/library_posttest_2/T10_Post_Sorted.jpg"
-                  class="img-centered hidden"
-                />
-                <img
-                  id="libraryResults5_unsorted"
-                  src="img/library_posttest_2/T10_Post_Unsorted.jpg"
-                  class="img-centered"
-                />
+              <div class="side-by-side-tables">
+                <table class="data-table left-table" cellspacing="0">
+                  <thead style="color:white;background-color:red;">
+                    <tr>
+                      <th colspan="2">Table 1: Library</th>
+                    </tr>
+
+                    <tr>
+                      <td>Friend</td>
+                      <td># Correct</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Alan</td>
+                      <td>29</td>
+                    </tr>
+
+                    <tr>
+                      <td>Jen</td>
+                      <td>26</td>
+                    </tr>
+
+                    <tr>
+                      <td>Tom</td>
+                      <td>34</td>
+                    </tr>
+
+                    <tr>
+                      <td>Ian</td>
+                      <td>33</td>
+                    </tr>
+
+                    <tr>
+                      <td>Liz</td>
+                      <td>30</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="data-table right-table" cellspacing="0">
+                  <thead style="color:white;background-color:red;">
+                    <tr>
+                      <th colspan="2">Table 2: Home</th>
+                    </tr>
+
+                    <tr>
+                      <td>Friend</td>
+                      <td># Correct</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Meg</td>
+                      <td>26</td>
+                    </tr>
+
+                    <tr>
+                      <td>Mya</td>
+                      <td>30</td>
+                    </tr>
+
+                    <tr>
+                      <td>Joy</td>
+                      <td>35</td>
+                    </tr>
+
+                    <tr>
+                      <td>Joe</td>
+                      <td>32</td>
+                    </tr>
+
+                    <tr>
+                      <td>Fin</td>
+                      <td>31</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
               <p>
                 <button
                   id="libraryResults5_show_sorted_table"
@@ -1828,15 +3416,71 @@
 
           <div class="results-top-right">
             <div class="results-centered">
-              <button
-                id="libraryResults5_reveal_right_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Table 2 Mean
-              </button>
-              <div id="libraryResults5_right_mean" class="right-mean hidden">
-                Table 2 Mean = 30.8
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Home</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="libraryResults5_right_mean" class="hidden">
+                        &nbsp; 30.8 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults5_reveal_right_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="libraryResults5_right_median" class="hidden">
+                        &nbsp; 31 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults5_reveal_right_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="libraryResults5_right_mode" class="hidden">
+                        &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults5_reveal_right_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="libraryResults5_right_range" class="hidden">
+                        &nbsp; 9 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="libraryResults5_reveal_right_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -2121,53 +3765,6 @@
             src="img/library_posttest_2/S5_Students.jpg"
             class="img-centered"
           />
-        </div>
-      </section>
-
-      <section id="start" class="scene">
-        <div class="single_column_content">
-          <img
-            src="img/site/RevisedHeader.jpg"
-            width="1000px"
-            class="img-centered"
-          />
-
-          <p class="text-xxl">
-            Welcome to the ISP User Testing Session! <br />
-          </p>
-
-          <p class="text-xxl">
-            Click the "Start" button below to begin.
-          </p>
-
-          <p>
-            <button
-              class="follow-edge btn btn-xxl btn-primary"
-              data-edge="next"
-            >
-              Start
-            </button>
-          </p>
-        </div>
-      </section>
-
-      <section id="completed" class="scene">
-        <div class="single_column_content">
-          <p class="text-xxl">
-            Great Work! You're finished with this part.
-          </p>
-          <p class="text-xl">
-            Click the "Home" button to return to your home page.
-          </p>
-          <p>
-            <button
-              type="button"
-              id="go_home_btn"
-              class="btn btn-xxl btn-primary"
-            >
-              Home
-            </button>
-          </p>
         </div>
       </section>
     </main>
