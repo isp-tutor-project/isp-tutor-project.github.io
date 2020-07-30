@@ -20,23 +20,72 @@
   <body>
     <nav class="navbar">
       <div class="navbar-items navbar-lhs">
-        <div class="brand">
-          <img src="img/site/icon.jpg" width="36" /> ISP Tutor
-        </div>
-      </div>
-      <div class="navbar-items navbar-center">
-        <div id="activity_title">Activity title goes here</div>
-        <div id="activity_section"></div>
-      </div>
-      <div id="user_info_region" class="navbar-items navbar-rhs invisible">
-        <button class="btn btn-sm navbar-btn" id="sign_out_button">
-          Sign Out
+        <img class="brand" src="img/site/icon.jpg" width="36" />
+        <button class="navbar-btn btn btn-sm btn-danger" id="navbar_home_btn">
+          home icon
         </button>
-        <div id="sign_in_text"></div>
+        <div id="activity_title" class="navbar-text text-primary"></div>
+      </div>
+      <div class="navbar-items navbar-center invisible"></div>
+      <div class="navbar-items navbar-rhs">
+        <button class="navbar-btn btn btn-sm btn-info" id="glossary">
+          GLOSSARY
+        </button>
+        <button class="navbar-btn btn btn-sm btn-success" id="sign_out_button">
+          SIGN OUT
+        </button>
+        <div id="sign_in_text" class="navbar-text"></div>
       </div>
     </nav>
     <div id="scene_id_region"></div>
     <main>
+      <section id="completed" class="scene">
+        <div class="single_column_content">
+          <p class="text-xxl">
+            Great Work! You're finished with this part.
+          </p>
+          <p class="text-xl">
+            Click the "Home" button to return to your home page.
+          </p>
+          <p>
+            <button
+              type="button"
+              id="go_home_btn"
+              class="btn btn-huge btn-success"
+            >
+              Home
+            </button>
+          </p>
+        </div>
+      </section>
+
+      <section id="start" class="scene">
+        <div class="single_column_content">
+          <img
+            src="img/site/RevisedHeader.jpg"
+            width="1000px"
+            class="img-centered"
+          />
+
+          <p class="text-xxl">
+            Welcome to the ISP User Testing Session! <br />
+          </p>
+
+          <p class="text-xxl">
+            Click the "Start" button below to begin.
+          </p>
+
+          <p>
+            <button
+              class="follow-edge btn btn-huge btn-success"
+              data-edge="next"
+            >
+              Start
+            </button>
+          </p>
+        </div>
+      </section>
+
       <section id="memoryResults1Intro" class="scene">
         <div class="single_column_content">
           <h1>Possible Memory Results: #1 of 5</h1>
@@ -68,6 +117,7 @@
       </section>
 
       <section id="memoryResults1" class="scene">
+        <br />
         <header class="results-heading">
           Below is the first set of possible results for the number of correct
           responses for each friend.
@@ -76,32 +126,156 @@
         <div class="results-top">
           <div class="results-top-left">
             <div class="results-centered">
-              <button
-                id="memoryResults1_reveal_left_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Table 1 Mean
-              </button>
-              <div id="memoryResults1_left_mean" class="left-mean hidden">
-                Table 1 Mean = 7
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Words</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="memoryResults1_left_mean" class="hidden">
+                        &nbsp; 7 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults1_reveal_left_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="memoryResults1_left_median" class="hidden">
+                        &nbsp; 8 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults1_reveal_left_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="memoryResults1_left_mode" class="hidden">
+                        &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults1_reveal_left_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="memoryResults1_left_range" class="hidden">
+                        &nbsp; 8 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults1_reveal_left_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <div class="results-top-center">
             <div class="results-centered">
-              <div>
-                <img
-                  id="memoryResults1_sorted"
-                  src="img/memory_pretest_1/Pre_T1_sorted.jpg"
-                  class="img-centered hidden"
-                />
-                <img
-                  id="memoryResults1_unsorted"
-                  src="img/memory_pretest_1/Pre_T1_unsorted.jpg"
-                  class="img-centered"
-                />
+              <div class="side-by-side-tables">
+                <table class="data-table left-table" cellspacing="0">
+                  <thead style="color:white;background-color:blue;">
+                    <tr>
+                      <th colspan="2">Table 1: Words</th>
+                    </tr>
+
+                    <tr>
+                      <td>Friend</td>
+                      <td># Correct</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Alan</td>
+                      <td>2</td>
+                    </tr>
+
+                    <tr>
+                      <td>Jen</td>
+                      <td>10</td>
+                    </tr>
+
+                    <tr>
+                      <td>Tom</td>
+                      <td>6</td>
+                    </tr>
+
+                    <tr>
+                      <td>Ian</td>
+                      <td>9</td>
+                    </tr>
+
+                    <tr>
+                      <td>Liz</td>
+                      <td>8</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="data-table right-table" cellspacing="0">
+                  <thead style="color:white;background-color:blue;">
+                    <tr>
+                      <th colspan="2">Table 2: Pictures</th>
+                    </tr>
+
+                    <tr>
+                      <td>Friend</td>
+                      <td># Correct</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Meg</td>
+                      <td>5</td>
+                    </tr>
+
+                    <tr>
+                      <td>Mya</td>
+                      <td>1</td>
+                    </tr>
+
+                    <tr>
+                      <td>Joy</td>
+                      <td>8</td>
+                    </tr>
+
+                    <tr>
+                      <td>Joe</td>
+                      <td>1</td>
+                    </tr>
+
+                    <tr>
+                      <td>Fin</td>
+                      <td>0</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
               <p>
                 <button
                   id="memoryResults1_show_sorted_table"
@@ -118,15 +292,71 @@
 
           <div class="results-top-right">
             <div class="results-centered">
-              <button
-                id="memoryResults1_reveal_right_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Table 2 Mean
-              </button>
-              <div id="memoryResults1_right_mean" class="right-mean hidden">
-                Table 2 Mean = 3
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Pictures</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="memoryResults1_right_mean" class="hidden">
+                        &nbsp; 3 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults1_reveal_right_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="memoryResults1_right_median" class="hidden">
+                        &nbsp; 1 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults1_reveal_right_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="memoryResults1_right_mode" class="hidden">
+                        &nbsp; 1 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults1_reveal_right_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="memoryResults1_right_range" class="hidden">
+                        &nbsp; 8 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults1_reveal_right_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -258,6 +488,7 @@
       </section>
 
       <section id="memoryResults2" class="scene">
+        <br />
         <header class="results-heading">
           Below is the second set of possible results for the number of correct
           responses for each friend.
@@ -266,32 +497,156 @@
         <div class="results-top">
           <div class="results-top-left">
             <div class="results-centered">
-              <button
-                id="memoryResults2_reveal_left_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Table 1 Mean
-              </button>
-              <div id="memoryResults2_left_mean" class="left-mean hidden">
-                Table 1 Mean = 4
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Words</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="memoryResults2_left_mean" class="hidden">
+                        &nbsp; 4 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults2_reveal_left_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="memoryResults2_left_median" class="hidden">
+                        &nbsp; 4 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults2_reveal_left_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="memoryResults2_left_mode" class="hidden">
+                        &nbsp; 4 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults2_reveal_left_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="memoryResults2_left_range" class="hidden">
+                        &nbsp; 5 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults2_reveal_left_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <div class="results-top-center">
             <div class="results-centered">
-              <div>
-                <img
-                  id="memoryResults2_sorted"
-                  src="img/memory_pretest_1/Pre_T2_sorted.jpg"
-                  class="img-centered hidden"
-                />
-                <img
-                  id="memoryResults2_unsorted"
-                  src="img/memory_pretest_1/Pre_T2_unsorted.jpg"
-                  class="img-centered"
-                />
+              <div class="side-by-side-tables">
+                <table class="data-table left-table" cellspacing="0">
+                  <thead style="color:white;background-color:purple;">
+                    <tr>
+                      <th colspan="2">Table 1: Words</th>
+                    </tr>
+
+                    <tr>
+                      <td>Friend</td>
+                      <td># Correct</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Alan</td>
+                      <td>3</td>
+                    </tr>
+
+                    <tr>
+                      <td>Jen</td>
+                      <td>7</td>
+                    </tr>
+
+                    <tr>
+                      <td>Tom</td>
+                      <td>2</td>
+                    </tr>
+
+                    <tr>
+                      <td>Ian</td>
+                      <td>4</td>
+                    </tr>
+
+                    <tr>
+                      <td>Liz</td>
+                      <td>4</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="data-table right-table" cellspacing="0">
+                  <thead style="color:white;background-color:purple;">
+                    <tr>
+                      <th colspan="2">Table 2: Pictures</th>
+                    </tr>
+
+                    <tr>
+                      <td>Friend</td>
+                      <td># Correct</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Fin</td>
+                      <td>4</td>
+                    </tr>
+
+                    <tr>
+                      <td>Mya</td>
+                      <td>5</td>
+                    </tr>
+
+                    <tr>
+                      <td>Joy</td>
+                      <td>6</td>
+                    </tr>
+
+                    <tr>
+                      <td>Joe</td>
+                      <td>9</td>
+                    </tr>
+
+                    <tr>
+                      <td>Meg</td>
+                      <td>4</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
               <p>
                 <button
                   id="memoryResults2_show_sorted_table"
@@ -308,15 +663,71 @@
 
           <div class="results-top-right">
             <div class="results-centered">
-              <button
-                id="memoryResults2_reveal_right_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Table 2 Mean
-              </button>
-              <div id="memoryResults2_right_mean" class="right-mean hidden">
-                Table 2 Mean = 6
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Pictures</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="memoryResults2_right_mean" class="hidden">
+                        &nbsp; 6 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults2_reveal_right_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="memoryResults2_right_median" class="hidden">
+                        &nbsp; 6 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults2_reveal_right_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="memoryResults2_right_mode" class="hidden">
+                        &nbsp; 6 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults2_reveal_right_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="memoryResults2_right_range" class="hidden">
+                        &nbsp; 5 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults2_reveal_right_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -448,6 +859,7 @@
       </section>
 
       <section id="memoryResults3" class="scene">
+        <br />
         <header class="results-heading">
           Below is the third set of possible results for the number of correct
           responses for each friend.
@@ -456,32 +868,156 @@
         <div class="results-top">
           <div class="results-top-left">
             <div class="results-centered">
-              <button
-                id="memoryResults3_reveal_left_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Table 1 Mean
-              </button>
-              <div id="memoryResults3_left_mean" class="left-mean hidden">
-                Table 1 Mean = 7
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Words</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="memoryResults3_left_mean" class="hidden">
+                        &nbsp; 7 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults3_reveal_left_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="memoryResults3_left_median" class="hidden">
+                        &nbsp; 7 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults3_reveal_left_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="memoryResults3_left_mode" class="hidden">
+                        &nbsp; 7 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults3_reveal_left_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="memoryResults3_left_range" class="hidden">
+                        &nbsp; 5 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults3_reveal_left_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <div class="results-top-center">
             <div class="results-centered">
-              <div>
-                <img
-                  id="memoryResults3_sorted"
-                  src="img/memory_pretest_1/Pre_T3_sorted.jpg"
-                  class="img-centered hidden"
-                />
-                <img
-                  id="memoryResults3_unsorted"
-                  src="img/memory_pretest_1/Pre_T3_unsorted.jpg"
-                  class="img-centered"
-                />
+              <div class="side-by-side-tables">
+                <table class="data-table left-table" cellspacing="0">
+                  <thead style="color:white;background-color:green;">
+                    <tr>
+                      <th colspan="2">Table 1: Words</th>
+                    </tr>
+
+                    <tr>
+                      <td>Friend</td>
+                      <td># Correct</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Alan</td>
+                      <td>4</td>
+                    </tr>
+
+                    <tr>
+                      <td>Jen</td>
+                      <td>7</td>
+                    </tr>
+
+                    <tr>
+                      <td>Tom</td>
+                      <td>9</td>
+                    </tr>
+
+                    <tr>
+                      <td>Ian</td>
+                      <td>7</td>
+                    </tr>
+
+                    <tr>
+                      <td>Liz</td>
+                      <td>8</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="data-table right-table" cellspacing="0">
+                  <thead style="color:white;background-color:green;">
+                    <tr>
+                      <th colspan="2">Table 2: Pictures</th>
+                    </tr>
+
+                    <tr>
+                      <td>Friend</td>
+                      <td># Correct</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Meg</td>
+                      <td>5</td>
+                    </tr>
+
+                    <tr>
+                      <td>Mya</td>
+                      <td>5</td>
+                    </tr>
+
+                    <tr>
+                      <td>Joy</td>
+                      <td>2</td>
+                    </tr>
+
+                    <tr>
+                      <td>Joe</td>
+                      <td>1</td>
+                    </tr>
+
+                    <tr>
+                      <td>Fin</td>
+                      <td>2</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
               <p>
                 <button
                   id="memoryResults3_show_sorted_table"
@@ -498,15 +1034,71 @@
 
           <div class="results-top-right">
             <div class="results-centered">
-              <button
-                id="memoryResults3_reveal_right_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Table 2 Mean
-              </button>
-              <div id="memoryResults3_right_mean" class="right-mean hidden">
-                Table 2 Mean = 3
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Pictures</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="memoryResults3_right_mean" class="hidden">
+                        &nbsp; 3 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults3_reveal_right_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="memoryResults3_right_median" class="hidden">
+                        &nbsp; 2 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults3_reveal_right_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="memoryResults3_right_mode" class="hidden">
+                        &nbsp; 2 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults3_reveal_right_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="memoryResults3_right_range" class="hidden">
+                        &nbsp; 5 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults3_reveal_right_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -638,6 +1230,7 @@
       </section>
 
       <section id="memoryResults4" class="scene">
+        <br />
         <header class="results-heading">
           Below is the fourth set of possible results for the number of correct
           responses for each friend.
@@ -646,32 +1239,156 @@
         <div class="results-top">
           <div class="results-top-left">
             <div class="results-centered">
-              <button
-                id="memoryResults4_reveal_left_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Table 1 Mean
-              </button>
-              <div id="memoryResults4_left_mean" class="left-mean hidden">
-                Table 1 Mean = 4
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Words</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="memoryResults4_left_mean" class="hidden">
+                        &nbsp; 4 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults4_reveal_left_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="memoryResults4_left_median" class="hidden">
+                        &nbsp; 4 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults4_reveal_left_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="memoryResults4_left_mode" class="hidden">
+                        &nbsp; 4 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults4_reveal_left_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="memoryResults4_left_range" class="hidden">
+                        &nbsp; 9 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults4_reveal_left_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <div class="results-top-center">
             <div class="results-centered">
-              <div>
-                <img
-                  id="memoryResults4_sorted"
-                  src="img/memory_pretest_1/Pre_T4_sorted.jpg"
-                  class="img-centered hidden"
-                />
-                <img
-                  id="memoryResults4_unsorted"
-                  src="img/memory_pretest_1/Pre_T4_unsorted.jpg"
-                  class="img-centered"
-                />
+              <div class="side-by-side-tables">
+                <table class="data-table left-table" cellspacing="0">
+                  <thead style="color:white;background-color:orange;">
+                    <tr>
+                      <th colspan="2">Table 1: Words</th>
+                    </tr>
+
+                    <tr>
+                      <td>Friend</td>
+                      <td># Correct</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Alan</td>
+                      <td>3</td>
+                    </tr>
+
+                    <tr>
+                      <td>Jen</td>
+                      <td>4</td>
+                    </tr>
+
+                    <tr>
+                      <td>Tom</td>
+                      <td>4</td>
+                    </tr>
+
+                    <tr>
+                      <td>Ian</td>
+                      <td>0</td>
+                    </tr>
+
+                    <tr>
+                      <td>Liz</td>
+                      <td>9</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="data-table right-table" cellspacing="0">
+                  <thead style="color:white;background-color:orange;">
+                    <tr>
+                      <th colspan="2">Table 2: Pictures</th>
+                    </tr>
+
+                    <tr>
+                      <td>Friend</td>
+                      <td># Correct</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Meg</td>
+                      <td>1</td>
+                    </tr>
+
+                    <tr>
+                      <td>Mya</td>
+                      <td>9</td>
+                    </tr>
+
+                    <tr>
+                      <td>Joy</td>
+                      <td>9</td>
+                    </tr>
+
+                    <tr>
+                      <td>Joe</td>
+                      <td>5</td>
+                    </tr>
+
+                    <tr>
+                      <td>Fin</td>
+                      <td>6</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
               <p>
                 <button
                   id="memoryResults4_show_sorted_table"
@@ -688,15 +1405,71 @@
 
           <div class="results-top-right">
             <div class="results-centered">
-              <button
-                id="memoryResults4_reveal_right_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Table 2 Mean
-              </button>
-              <div id="memoryResults4_right_mean" class="right-mean hidden">
-                Table 2 Mean = 6
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Pictures</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="memoryResults4_right_mean" class="hidden">
+                        &nbsp; 6 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults4_reveal_right_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="memoryResults4_right_median" class="hidden">
+                        &nbsp; 6 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults4_reveal_right_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="memoryResults4_right_mode" class="hidden">
+                        &nbsp; 9 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults4_reveal_right_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="memoryResults4_right_range" class="hidden">
+                        &nbsp; 8 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults4_reveal_right_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -828,6 +1601,7 @@
       </section>
 
       <section id="memoryResults5" class="scene">
+        <br />
         <header class="results-heading">
           Below is the last set of possible results for the number of correct
           responses for each friend.
@@ -836,32 +1610,156 @@
         <div class="results-top">
           <div class="results-top-left">
             <div class="results-centered">
-              <button
-                id="memoryResults5_reveal_left_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Table 1 Mean
-              </button>
-              <div id="memoryResults5_left_mean" class="left-mean hidden">
-                Table 1 Mean = 5.4
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Words</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="memoryResults5_left_mean" class="hidden">
+                        &nbsp; 5.4 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults5_reveal_left_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="memoryResults5_left_median" class="hidden">
+                        &nbsp; 5 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults5_reveal_left_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="memoryResults5_left_mode" class="hidden">
+                        &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults5_reveal_left_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="memoryResults5_left_range" class="hidden">
+                        &nbsp; 8 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults5_reveal_left_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <div class="results-top-center">
             <div class="results-centered">
-              <div>
-                <img
-                  id="memoryResults5_sorted"
-                  src="img/memory_pretest_1/Pre_T5_sorted.jpg"
-                  class="img-centered hidden"
-                />
-                <img
-                  id="memoryResults5_unsorted"
-                  src="img/memory_pretest_1/Pre_T5_unsorted.jpg"
-                  class="img-centered"
-                />
+              <div class="side-by-side-tables">
+                <table class="data-table left-table" cellspacing="0">
+                  <thead style="color:white;background-color:red;">
+                    <tr>
+                      <th colspan="2">Table 1: Words</th>
+                    </tr>
+
+                    <tr>
+                      <td>Friend</td>
+                      <td># Correct</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Alan</td>
+                      <td>4</td>
+                    </tr>
+
+                    <tr>
+                      <td>Jen</td>
+                      <td>1</td>
+                    </tr>
+
+                    <tr>
+                      <td>Tom</td>
+                      <td>9</td>
+                    </tr>
+
+                    <tr>
+                      <td>Ian</td>
+                      <td>8</td>
+                    </tr>
+
+                    <tr>
+                      <td>Liz</td>
+                      <td>5</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="data-table right-table" cellspacing="0">
+                  <thead style="color:white;background-color:red;">
+                    <tr>
+                      <th colspan="2">Table 2: Pictures</th>
+                    </tr>
+
+                    <tr>
+                      <td>Friend</td>
+                      <td># Correct</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Meg</td>
+                      <td>1</td>
+                    </tr>
+
+                    <tr>
+                      <td>Mya</td>
+                      <td>5</td>
+                    </tr>
+
+                    <tr>
+                      <td>Joy</td>
+                      <td>10</td>
+                    </tr>
+
+                    <tr>
+                      <td>Joe</td>
+                      <td>7</td>
+                    </tr>
+
+                    <tr>
+                      <td>Fin</td>
+                      <td>6</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
               <p>
                 <button
                   id="memoryResults5_show_sorted_table"
@@ -878,15 +1776,71 @@
 
           <div class="results-top-right">
             <div class="results-centered">
-              <button
-                id="memoryResults5_reveal_right_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Table 2 Mean
-              </button>
-              <div id="memoryResults5_right_mean" class="right-mean hidden">
-                Table 2 Mean = 5.8
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Pictures</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="memoryResults5_right_mean" class="hidden">
+                        &nbsp; 5.8 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults5_reveal_right_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="memoryResults5_right_median" class="hidden">
+                        &nbsp; 6 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults5_reveal_right_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="memoryResults5_right_mode" class="hidden">
+                        &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults5_reveal_right_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="memoryResults5_right_range" class="hidden">
+                        &nbsp; 9 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="memoryResults5_reveal_right_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -1018,6 +1972,7 @@
       </section>
 
       <section id="rocketsResults1" class="scene">
+        <br />
         <header class="results-heading">
           Below is the first set of possible results for each <u>height</u> the
           rocket traveled (in meters).
@@ -1026,32 +1981,113 @@
         <div class="results-top">
           <div class="results-top-left">
             <div class="results-centered">
-              <button
-                id="rocketsResults1_reveal_left_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Curved Mean
-              </button>
-              <div id="rocketsResults1_left_mean" class="left-mean hidden">
-                Curved Mean = 20
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Curved body</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="rocketsResults1_left_mean" class="hidden">
+                        &nbsp; 20 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults1_reveal_left_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="rocketsResults1_left_median" class="hidden">
+                        &nbsp; 20 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults1_reveal_left_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="rocketsResults1_left_mode" class="hidden">
+                        &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults1_reveal_left_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="rocketsResults1_left_range" class="hidden">
+                        &nbsp; 10 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults1_reveal_left_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <div class="results-top-center">
             <div class="results-centered">
-              <div>
-                <img
-                  id="rocketsResults1_sorted"
-                  src="img/rockets_pretest_2/Pre_T6_sorted.jpg"
-                  class="img-centered hidden"
-                />
-                <img
-                  id="rocketsResults1_unsorted"
-                  src="img/rockets_pretest_2/Pre_T6_unsorted.jpg"
-                  class="img-centered"
-                />
+              <div class="side-by-side-tables">
+                <table class="data-table center-table" cellspacing="0">
+                  <thead style="color:white;background-color:blue;">
+                    <tr>
+                      <td>Curved<br />body</td>
+                      <td>Straight<br />body</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>15</td>
+                      <td>31</td>
+                    </tr>
+
+                    <tr>
+                      <td>25</td>
+                      <td>25</td>
+                    </tr>
+
+                    <tr>
+                      <td>17</td>
+                      <td>33</td>
+                    </tr>
+
+                    <tr>
+                      <td>23</td>
+                      <td>23</td>
+                    </tr>
+
+                    <tr>
+                      <td>20</td>
+                      <td>28</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
               <p>
                 <button
                   id="rocketsResults1_show_sorted_table"
@@ -1068,15 +2104,71 @@
 
           <div class="results-top-right">
             <div class="results-centered">
-              <button
-                id="rocketsResults1_reveal_right_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Straight Mean
-              </button>
-              <div id="rocketsResults1_right_mean" class="right-mean hidden">
-                Straight Mean = 28
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Straight body</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="rocketsResults1_right_mean" class="hidden">
+                        &nbsp; 28 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults1_reveal_right_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="rocketsResults1_right_median" class="hidden">
+                        &nbsp; 28 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults1_reveal_right_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="rocketsResults1_right_mode" class="hidden">
+                        &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults1_reveal_right_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="rocketsResults1_right_range" class="hidden">
+                        &nbsp; 10 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults1_reveal_right_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -1208,6 +2300,7 @@
       </section>
 
       <section id="rocketsResults2" class="scene">
+        <br />
         <header class="results-heading">
           Below is the second set of possible results for each <u>height</u> the
           rocket traveled (in meters).
@@ -1216,32 +2309,113 @@
         <div class="results-top">
           <div class="results-top-left">
             <div class="results-centered">
-              <button
-                id="rocketsResults2_reveal_left_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Curved Mean
-              </button>
-              <div id="rocketsResults2_left_mean" class="left-mean hidden">
-                Curved Mean = 25
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Curved body</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="rocketsResults2_left_mean" class="hidden">
+                        &nbsp; 25 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults2_reveal_left_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="rocketsResults2_left_median" class="hidden">
+                        &nbsp; 25 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults2_reveal_left_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="rocketsResults2_left_mode" class="hidden">
+                        &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults2_reveal_left_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="rocketsResults2_left_range" class="hidden">
+                        &nbsp; 10 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults2_reveal_left_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <div class="results-top-center">
             <div class="results-centered">
-              <div>
-                <img
-                  id="rocketsResults2_sorted"
-                  src="img/rockets_pretest_2/Pre_T7_sorted.jpg"
-                  class="img-centered hidden"
-                />
-                <img
-                  id="rocketsResults2_unsorted"
-                  src="img/rockets_pretest_2/Pre_T7_unsorted.jpg"
-                  class="img-centered"
-                />
+              <div class="side-by-side-tables">
+                <table class="data-table center-table" cellspacing="0">
+                  <thead style="color:white;background-color:purple;">
+                    <tr>
+                      <td>Curved<br />body</td>
+                      <td>Straight<br />body</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>20</td>
+                      <td>22</td>
+                    </tr>
+
+                    <tr>
+                      <td>30</td>
+                      <td>16</td>
+                    </tr>
+
+                    <tr>
+                      <td>28</td>
+                      <td>19</td>
+                    </tr>
+
+                    <tr>
+                      <td>22</td>
+                      <td>24</td>
+                    </tr>
+
+                    <tr>
+                      <td>25</td>
+                      <td>14</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
               <p>
                 <button
                   id="rocketsResults2_show_sorted_table"
@@ -1258,15 +2432,71 @@
 
           <div class="results-top-right">
             <div class="results-centered">
-              <button
-                id="rocketsResults2_reveal_right_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Straight Mean
-              </button>
-              <div id="rocketsResults2_right_mean" class="right-mean hidden">
-                Straight Mean = 19
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Straight body</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="rocketsResults2_right_mean" class="hidden">
+                        &nbsp; 19 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults2_reveal_right_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="rocketsResults2_right_median" class="hidden">
+                        &nbsp; 19 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults2_reveal_right_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="rocketsResults2_right_mode" class="hidden">
+                        &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults2_reveal_right_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="rocketsResults2_right_range" class="hidden">
+                        &nbsp; 10 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults2_reveal_right_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -1398,6 +2628,7 @@
       </section>
 
       <section id="rocketsResults3" class="scene">
+        <br />
         <header class="results-heading">
           Below is the third set of possible results for each <u>height</u> the
           rocket traveled (in meters).
@@ -1406,32 +2637,113 @@
         <div class="results-top">
           <div class="results-top-left">
             <div class="results-centered">
-              <button
-                id="rocketsResults3_reveal_left_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Curved Mean
-              </button>
-              <div id="rocketsResults3_left_mean" class="left-mean hidden">
-                Curved Mean = 20
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Curved body</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="rocketsResults3_left_mean" class="hidden">
+                        &nbsp; 20 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults3_reveal_left_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="rocketsResults3_left_median" class="hidden">
+                        &nbsp; 20 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults3_reveal_left_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="rocketsResults3_left_mode" class="hidden">
+                        &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults3_reveal_left_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="rocketsResults3_left_range" class="hidden">
+                        &nbsp; 16 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults3_reveal_left_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <div class="results-top-center">
             <div class="results-centered">
-              <div>
-                <img
-                  id="rocketsResults3_sorted"
-                  src="img/rockets_pretest_2/Pre_T8_sorted.jpg"
-                  class="img-centered hidden"
-                />
-                <img
-                  id="rocketsResults3_unsorted"
-                  src="img/rockets_pretest_2/Pre_T8_unsorted.jpg"
-                  class="img-centered"
-                />
+              <div class="side-by-side-tables">
+                <table class="data-table center-table" cellspacing="0">
+                  <thead style="color:white;background-color:green;">
+                    <tr>
+                      <td>Curved<br />body</td>
+                      <td>Straight<br />body</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>28</td>
+                      <td>23</td>
+                    </tr>
+
+                    <tr>
+                      <td>12</td>
+                      <td>28</td>
+                    </tr>
+
+                    <tr>
+                      <td>20</td>
+                      <td>33</td>
+                    </tr>
+
+                    <tr>
+                      <td>25</td>
+                      <td>20</td>
+                    </tr>
+
+                    <tr>
+                      <td>15</td>
+                      <td>36</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
               <p>
                 <button
                   id="rocketsResults3_show_sorted_table"
@@ -1448,15 +2760,71 @@
 
           <div class="results-top-right">
             <div class="results-centered">
-              <button
-                id="rocketsResults3_reveal_right_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Straight Mean
-              </button>
-              <div id="rocketsResults3_right_mean" class="right-mean hidden">
-                Straight Mean = 28
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Straight body</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="rocketsResults3_right_mean" class="hidden">
+                        &nbsp; 28 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults3_reveal_right_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="rocketsResults3_right_median" class="hidden">
+                        &nbsp; 28 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults3_reveal_right_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="rocketsResults3_right_mode" class="hidden">
+                        &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults3_reveal_right_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="rocketsResults3_right_range" class="hidden">
+                        &nbsp; 16 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults3_reveal_right_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -1588,6 +2956,7 @@
       </section>
 
       <section id="rocketsResults4" class="scene">
+        <br />
         <header class="results-heading">
           Below is the fourth set of possible results for each <u>height</u> the
           rocket traveled (in meters).
@@ -1596,32 +2965,113 @@
         <div class="results-top">
           <div class="results-top-left">
             <div class="results-centered">
-              <button
-                id="rocketsResults4_reveal_left_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Curved Mean
-              </button>
-              <div id="rocketsResults4_left_mean" class="left-mean hidden">
-                Curved Mean = 25
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Curved body</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="rocketsResults4_left_mean" class="hidden">
+                        &nbsp; 25 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults4_reveal_left_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="rocketsResults4_left_median" class="hidden">
+                        &nbsp; 25 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults4_reveal_left_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="rocketsResults4_left_mode" class="hidden">
+                        &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults4_reveal_left_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="rocketsResults4_left_range" class="hidden">
+                        &nbsp; 16 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults4_reveal_left_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <div class="results-top-center">
             <div class="results-centered">
-              <div>
-                <img
-                  id="rocketsResults4_sorted"
-                  src="img/rockets_pretest_2/Pre_T9_sorted.jpg"
-                  class="img-centered hidden"
-                />
-                <img
-                  id="rocketsResults4_unsorted"
-                  src="img/rockets_pretest_2/Pre_T9_unsorted.jpg"
-                  class="img-centered"
-                />
+              <div class="side-by-side-tables">
+                <table class="data-table center-table" cellspacing="0">
+                  <thead style="color:white;background-color:orange;">
+                    <tr>
+                      <td>Curved<br />body</td>
+                      <td>Straight<br />body</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>30</td>
+                      <td>14</td>
+                    </tr>
+
+                    <tr>
+                      <td>25</td>
+                      <td>27</td>
+                    </tr>
+
+                    <tr>
+                      <td>33</td>
+                      <td>11</td>
+                    </tr>
+
+                    <tr>
+                      <td>20</td>
+                      <td>24</td>
+                    </tr>
+
+                    <tr>
+                      <td>17</td>
+                      <td>19</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
               <p>
                 <button
                   id="rocketsResults4_show_sorted_table"
@@ -1638,15 +3088,71 @@
 
           <div class="results-top-right">
             <div class="results-centered">
-              <button
-                id="rocketsResults4_reveal_right_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Straight Mean
-              </button>
-              <div id="rocketsResults4_right_mean" class="right-mean hidden">
-                Straight Mean = 19
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Straight body</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="rocketsResults4_right_mean" class="hidden">
+                        &nbsp; 19 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults4_reveal_right_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="rocketsResults4_right_median" class="hidden">
+                        &nbsp; 19 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults4_reveal_right_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="rocketsResults4_right_mode" class="hidden">
+                        &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults4_reveal_right_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="rocketsResults4_right_range" class="hidden">
+                        &nbsp; 16 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults4_reveal_right_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -1778,6 +3284,7 @@
       </section>
 
       <section id="rocketsResults5" class="scene">
+        <br />
         <header class="results-heading">
           Below is the last set of possible results for each <u>height</u> the
           rocket traveled (in meters).
@@ -1786,32 +3293,113 @@
         <div class="results-top">
           <div class="results-top-left">
             <div class="results-centered">
-              <button
-                id="rocketsResults5_reveal_left_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Curved Mean
-              </button>
-              <div id="rocketsResults5_left_mean" class="left-mean hidden">
-                Curved Mean = 24.4
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Curved body</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="rocketsResults5_left_mean" class="hidden">
+                        &nbsp; 24.4 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults5_reveal_left_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="rocketsResults5_left_median" class="hidden">
+                        &nbsp; 24 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults5_reveal_left_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="rocketsResults5_left_mode" class="hidden">
+                        &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults5_reveal_left_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="rocketsResults5_left_range" class="hidden">
+                        &nbsp; 10 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults5_reveal_left_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <div class="results-top-center">
             <div class="results-centered">
-              <div>
-                <img
-                  id="rocketsResults5_sorted"
-                  src="img/rockets_pretest_2/Pre_T10_sorted.jpg"
-                  class="img-centered hidden"
-                />
-                <img
-                  id="rocketsResults5_unsorted"
-                  src="img/rockets_pretest_2/Pre_T10_unsorted.jpg"
-                  class="img-centered"
-                />
+              <div class="side-by-side-tables">
+                <table class="data-table center-table" cellspacing="0">
+                  <thead style="color:white;background-color:red;">
+                    <tr>
+                      <td>Curved<br />body</td>
+                      <td>Straight<br />body</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>24</td>
+                      <td>19</td>
+                    </tr>
+
+                    <tr>
+                      <td>20</td>
+                      <td>22</td>
+                    </tr>
+
+                    <tr>
+                      <td>21</td>
+                      <td>25</td>
+                    </tr>
+
+                    <tr>
+                      <td>27</td>
+                      <td>28</td>
+                    </tr>
+
+                    <tr>
+                      <td>30</td>
+                      <td>18</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
               <p>
                 <button
                   id="rocketsResults5_show_sorted_table"
@@ -1828,15 +3416,71 @@
 
           <div class="results-top-right">
             <div class="results-centered">
-              <button
-                id="rocketsResults5_reveal_right_mean"
-                class="reveal-mean btn btn-lg btn-primary"
-              >
-                Reveal Straight Mean
-              </button>
-              <div id="rocketsResults5_right_mean" class="right-mean hidden">
-                Straight Mean = 22.4
-              </div>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Straight body</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Mean:</th>
+                    <td>
+                      <span id="rocketsResults5_right_mean" class="hidden">
+                        &nbsp; 22.4 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults5_reveal_right_mean"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Median:</th>
+                    <td>
+                      <span id="rocketsResults5_right_median" class="hidden">
+                        &nbsp; 22 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults5_reveal_right_median"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Mode:</th>
+                    <td>
+                      <span id="rocketsResults5_right_mode" class="hidden">
+                        &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults5_reveal_right_mode"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Range:</th>
+                    <td>
+                      <span id="rocketsResults5_right_range" class="hidden">
+                        &nbsp; 10 &nbsp; &nbsp; &nbsp;
+                      </span>
+                      <button
+                        id="rocketsResults5_reveal_right_range"
+                        class="reveal-stat btn btn-rect btn-sm btn-primary"
+                      >
+                        Reveal
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -2000,83 +3644,112 @@
       <section id="intro" class="scene">
         <div class="single_column_content">
           <h1>Introduction to data interpretation questions</h1>
-          <p class="text-lg">
+
+          <p class="text-xl">
             Now, we will interpret some results. We'll show you two different
             scenarios:
           </p>
-          <p class="text-lg">
+
+          <p class="text-xl">
             Testing students' memories and Launching Rockets.
           </p>
-          <p class="text-lg">
+
+          <p class="text-xl">
             For each scenario, we will as you to interpret 5 different sets of
             possible results.
           </p>
-          <p class="text-lg">
+
+          <p class="text-xl">
             OK, let's start!
           </p>
+
+          <br />
         </div>
       </section>
 
       <section id="memoryIntro1" class="scene">
         <div class="single_column_content">
           <h1>Memory Experiment</h1>
-          <p class="text-lg">
+
+          <p class="text-xl">
             Chris wanted to see whether people are able to remember more
             pictures or words.
           </p>
-          <p class="text-lg">
+
+          <p class="text-xl">
             Chris wrote a word on each of 16 cue cards.
           </p>
-          <p class="text-lg">
+
+          <p class="text-xl">
             Then Chris drew a picture for each of the same 15 words on a second
             set of 15 cue cards.
           </p>
+
+          <br />
+
           <img
             src="img/memory_pretest_1/S1_Flashcards.jpg"
             class="img-centered"
           />
+          <br />
         </div>
       </section>
 
       <section id="memoryIntro2" class="scene">
         <div class="single_column_content">
-          <p class="text-lg">
+          <p class="text-xl">
             Chris asked each of his 5 friends to study the cards with words for
             one minute on their own.
           </p>
+
+          <br />
+
           <img
             src="img/memory_pretest_1/S2_MemoryGroup.jpg"
             class="img-centered"
           />
+
+          <br />
         </div>
       </section>
 
       <section id="memoryIntro3" class="scene">
         <div class="single_column_content">
-          <p class="text-lg">
+          <p class="text-xl">
             Then he gathered 5 different friends and he asked them to study the
             set of cards with <i>pictures</i> for one minute on their own.
           </p>
+
+          <br />
+
           <img
             src="img/memory_pretest_1/S3_MemoryGroup.jpg"
             class="img-centered"
           />
+
+          <br />
         </div>
       </section>
 
       <section id="memoryIntro4" class="scene">
         <div class="single_column_content">
-          <p class="text-lg">
+          <p class="text-xl">
             After one minute was up, each friend write down all of the words or
             picture they could remember.
           </p>
-          <p class="text-lg">
+
+          <p class="text-xl">
             (Chris gave them all one minute to do that.)
           </p>
+
+          <br />
+
           <img
             src="img/memory_pretest_1/S5_ComMemoryGroups.jpg"
             class="img-centered"
           />
+
+          <br />
         </div>
       </section>
 
@@ -2104,53 +3777,6 @@
             person.
           </h1>
           <img src="img/memory_pretest_1/S6_Names.jpg" class="img-centered" />
-        </div>
-      </section>
-
-      <section id="completed" class="scene">
-        <div class="single_column_content">
-          <p class="text-xxl">
-            Great Work! You're finished with this part.
-          </p>
-          <p class="text-xl">
-            Click the "Home" button to return to your home page.
-          </p>
-          <p>
-            <button
-              type="button"
-              id="go_home_btn"
-              class="btn btn-xxl btn-primary"
-            >
-              Home
-            </button>
-          </p>
-        </div>
-      </section>
-
-      <section id="start" class="scene">
-        <div class="single_column_content">
-          <img
-            src="img/site/RevisedHeader.jpg"
-            width="1000px"
-            class="img-centered"
-          />
-
-          <p class="text-xxl">
-            Welcome to the ISP User Testing Session! <br />
-          </p>
-
-          <p class="text-xxl">
-            Click the "Start" button below to begin.
-          </p>
-
-          <p>
-            <button
-              class="follow-edge btn btn-xxl btn-primary"
-              data-edge="next"
-            >
-              Start
-            </button>
-          </p>
         </div>
       </section>
 
