@@ -1,7 +1,7 @@
 cp.imagesJSONCacheForLocal=true;cp.imageToJSONPathMap={ 
+"dr/19820_256_399Sh84.png": "img1.json",
 "dr/19820_257_367Sh86.png": "img1.json",
 "dr/19820_257_367Sh87.png": "img1.json",
-"dr/19820_257_399Sh84.png": "img1.json",
 "dr/19820_258_367Sh82.png": "img1.json",
 "dr/19974_269_397Sh41.png": "img1.json",
 "dr/19974_269_397Sh80.png": "img1.json",
@@ -62,7 +62,7 @@ cp.imagesJSONCacheForLocal=true;cp.imageToJSONPathMap={
 "dr/47639.png": "img2.json",
 "dr/47720_99_76.png": "img2.json",
 "dr/47732_276_385.png": "img2.json",
-"dr/49799_268_399Sh84.png": "img2.json",
+"dr/49799_267_399Sh84.png": "img2.json",
 "dr/51859_130_133.png": "img2.json",
 "dr/51859_93_86.png": "img2.json",
 "dr/51859_95_86.png": "img2.json",
