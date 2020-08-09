@@ -287,10 +287,14 @@ class Database {
     getActivityData(activityKey, decodeJSON = true) {
 
     }
-    
+
+    setActivityData(activityKey, object) {
+
+    }
+
     getRQData() {
 
-    }   
+    }
 
     getCurrHypoTask() {
 
@@ -551,12 +555,16 @@ class LocalStorageDB extends _database__WEBPACK_IMPORTED_MODULE_0__["Database"] 
     getActivityData(activityKey, decodeJSON = true) {
         return this.getJSONValue(activityKey)
         .then((data) => {
-            if (data && decodeJSON) {
-                return JSON.parse(data);
+            if (data && !decodeJSON) {
+                return JSON.stringify(data);
             } else {
                 return data;
             }
         });
+    }
+
+    setActivityData(activityKey, object) {
+        return this.saveJSONValue(activityKey, object);
     }
 
     getRQData() {
@@ -779,7 +787,12 @@ const COND_ONE_DIR = "one-directional";
 const COND_BI_DIR  = "bi-directional";
 
 const TRACKED_VARS = [
-    "condition", "prediction", "gender", "VINname", "twinName"
+    "condition",
+    "gender",
+    "prediction",
+    "sibling",
+    "VINName",
+    "VINTwinName"
 ];
 
 function undefinedOrSame(currState, value) {

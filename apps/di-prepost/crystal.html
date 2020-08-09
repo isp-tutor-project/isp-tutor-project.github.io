@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Google Material Icons (Home Icon) -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- Google Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-firestore.js"></script>
+
+    <title>Crystal Growth Data Interpretation</title>
+
+    <link rel="stylesheet" href="diprepost.bundle.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-items navbar-lhs">
+        <img class="brand" src="img/site/icon.jpg" width="36" />
+
+        <i class="material-icons navbar-text text-lg" id="navbar_home_btn"
+          >home</i
+        >
+
+        <div id="activity_title" class="navbar-text text-primary"></div>
+      </div>
+      <div class="navbar-items navbar-center invisible"></div>
+      <div class="navbar-items navbar-rhs">
+        <button class="navbar-btn btn btn-sm" id="navbar_glossary_btn">
+          GLOSSARY
+        </button>
+
+        <button class="navbar-btn btn btn-sm btn-success" id="sign_out_button">
+          SIGN OUT
+        </button>
+        <div id="sign_in_text" class="navbar-text"></div>
+      </div>
+      <div class="navbar-glossary-popup hidden">
+        <iframe
+          src="https://go.isptutor.org/brm/glossary/"
+          width="100%"
+          height="100%"
+        ></iframe>
+      </div>
+    </nav>
+    <div id="scene_id_region"></div>
+    <main>
+      <section id="completed" class="scene">
+        <div class="scene-content">
+          <div class="single_column_content">
+            <p class="text-xxl">
+              Great Work! You're finished with this part.
+            </p>
+            <p class="text-xl">
+              Click the "Home" button to return to your home page.
+            </p>
+            <p>
+              <button
+                type="button"
+                id="go_home_btn"
+                class="btn btn-huge btn-success"
+              >
+                Home
+              </button>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="start" class="scene">
+        <div class="scene-content">
+          <div class="single_column_content">
+            <img
+              src="img/site/RevisedHeader.jpg"
+              width="1000px"
+              class="img-centered"
+            />
+
+            <p class="text-xxl">
+              Welcome to the ISP User Testing Session! <br />
+            </p>
+
+            <p class="text-xxl">
+              Click the "Start" button below to begin.
+            </p>
+
+            <p>
+              <button
+                class="follow-edge btn btn-huge btn-success"
+                data-edge="next"
+              >
+                Start
+              </button>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="crystalResults1" class="scene">
+        <div class="scene-content">
+          <br />
+          <header class="results-heading">
+            Below is the first set of possible results for the weight of crystal
+            growth for each condition's trials.
+          </header>
+
+          <div class="results-top">
+            <div class="results-top-left">
+              <div class="stats-left-wrapper">
+                <table class="stats-table">
+                  <thead>
+                    <tr>
+                      <th colspan="2">Hot Water</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Mean:</th>
+                      <td>
+                        <span id="crystalResults1_left_mean" class="hidden">
+                          &nbsp; 25 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults1_reveal_left_mean"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Median:</th>
+                      <td>
+                        <span id="crystalResults1_left_median" class="hidden">
+                          &nbsp; 25 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults1_reveal_left_median"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Mode:</th>
+                      <td>
+                        <span id="crystalResults1_left_mode" class="hidden">
+                          &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults1_reveal_left_mode"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Range:</th>
+                      <td>
+                        <span id="crystalResults1_left_range" class="hidden">
+                          &nbsp; 16 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults1_reveal_left_range"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="results-top-center">
+              <div class="results-centered">
+                <div class="side-by-side-tables">
+                  <table class="data-table left-table set1" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th colspan="2">Condition 1: Hot Water</th>
+                      </tr>
+
+                      <tr>
+                        <td>Trial #</td>
+                        <td>Weight</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>30</td>
+                      </tr>
+
+                      <tr>
+                        <td>2</td>
+                        <td>25</td>
+                      </tr>
+
+                      <tr>
+                        <td>3</td>
+                        <td>33</td>
+                      </tr>
+
+                      <tr>
+                        <td>4</td>
+                        <td>20</td>
+                      </tr>
+
+                      <tr>
+                        <td>5</td>
+                        <td>17</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <table class="data-table right-table set1" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th colspan="2">Condition 2: Cold Water</th>
+                      </tr>
+
+                      <tr>
+                        <td>Trial #</td>
+                        <td>Weight</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>15</td>
+                      </tr>
+
+                      <tr>
+                        <td>2</td>
+                        <td>28</td>
+                      </tr>
+
+                      <tr>
+                        <td>3</td>
+                        <td>12</td>
+                      </tr>
+
+                      <tr>
+                        <td>4</td>
+                        <td>25</td>
+                      </tr>
+
+                      <tr>
+                        <td>5</td>
+                        <td>20</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p>
+                  <button
+                    id="crystalResults1_show_sorted_table"
+                    class="show-sorted-img btn btn-md btn-rect btn-primary"
+                  >
+                    Sort results from lowest to highest
+                  </button>
+                </p>
+                <p id="crystalResults1_sorted_text" class="hidden text-md">
+                  (Results are sorted from lowest to highest)
+                </p>
+              </div>
+            </div>
+
+            <div class="results-top-right">
+              <div class="stats-right-wrapper">
+                <table class="stats-table">
+                  <thead>
+                    <tr>
+                      <th colspan="2">Cold Water</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Mean:</th>
+                      <td>
+                        <span id="crystalResults1_right_mean" class="hidden">
+                          &nbsp; 20 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults1_reveal_right_mean"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Median:</th>
+                      <td>
+                        <span id="crystalResults1_right_median" class="hidden">
+                          &nbsp; 20 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults1_reveal_right_median"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Mode:</th>
+                      <td>
+                        <span id="crystalResults1_right_mode" class="hidden">
+                          &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults1_reveal_right_mode"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Range:</th>
+                      <td>
+                        <span id="crystalResults1_right_range" class="hidden">
+                          &nbsp; 16 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults1_reveal_right_range"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="results-bottom">
+            <div class="question-region">
+              <form id="crystalResults1_q1_form" class="form-centered">
+                <p id="crystalResults1_q1_text" class="question-text text-lg">
+                  Q1) Which initial water temperature do these results suggest
+                  cause crystals to grow better?
+                </p>
+                <div
+                  id="crystalResults1_q1_form_controls"
+                  class="form-controls"
+                >
+                  <label for="crystalResults1_q1_option_a" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults1_q1_option_a"
+                      name="crystalResults1_q1"
+                      value="hot water"
+                      required
+                    />
+                    Hot water
+                  </label>
+
+                  <label for="crystalResults1_q1_option_b" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults1_q1_option_b"
+                      name="crystalResults1_q1"
+                      value="cold water"
+                      required
+                    />
+                    Cold water
+                  </label>
+
+                  <label for="crystalResults1_q1_option_c" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults1_q1_option_c"
+                      name="crystalResults1_q1"
+                      value="neither"
+                      required
+                    />
+                    Neither (Crystals grow the same in both hot and cold water)
+                  </label>
+                </div>
+              </form>
+
+              <form id="crystalResults1_q2_form" class="form-centered">
+                <p
+                  id="crystalResults1_q2_text"
+                  class="question-text text-lg"
+                ></p>
+                <div
+                  id="crystalResults1_q2_form_controls"
+                  class="form-controls"
+                >
+                  <textarea
+                    id="crystalResults1_q2_answer"
+                    class="text-area text-lg form-control"
+                    rows="4"
+                    cols="60"
+                    required
+                  ></textarea>
+                </div>
+              </form>
+
+              <form id="crystalResults1_q3_form" class="form-centered">
+                <p
+                  id="crystalResults1_q3_text"
+                  class="question-text text-lg"
+                ></p>
+                <div
+                  id="crystalResults1_q3_form_controls"
+                  class="form-controls"
+                >
+                  <label for="crystalResults1_q3_option_a" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults1_q3_option_a"
+                      name="crystalResults1_q3"
+                      value="a"
+                      required
+                    />
+                    Not at all sure
+                  </label>
+
+                  <label for="crystalResults1_q3_option_b" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults1_q3_option_b"
+                      name="crystalResults1_q3"
+                      value="b"
+                      required
+                    />
+                    A little sure
+                  </label>
+
+                  <label for="crystalResults1_q3_option_c" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults1_q3_option_c"
+                      name="crystalResults1_q3"
+                      value="c"
+                      required
+                    />
+                    Fairly sure
+                  </label>
+
+                  <label for="crystalResults1_q3_option_d" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults1_q3_option_d"
+                      name="crystalResults1_q3"
+                      value="d"
+                      required
+                    />
+                    Very sure
+                  </label>
+
+                  <label for="crystalResults1_q3_option_e" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults1_q3_option_e"
+                      name="crystalResults1_q3"
+                      value="e"
+                      required
+                    />
+                    Absolutely sure
+                  </label>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="crystalResults2" class="scene">
+        <div class="scene-content">
+          <br />
+          <header class="results-heading">
+            Below is the 2nd set of possible results for the weight of crystal
+            growth for each condition's trials.
+          </header>
+
+          <div class="results-top">
+            <div class="results-top-left">
+              <div class="stats-left-wrapper">
+                <table class="stats-table">
+                  <thead>
+                    <tr>
+                      <th colspan="2">Hot Water</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Mean:</th>
+                      <td>
+                        <span id="crystalResults2_left_mean" class="hidden">
+                          &nbsp; 20 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults2_reveal_left_mean"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Median:</th>
+                      <td>
+                        <span id="crystalResults2_left_median" class="hidden">
+                          &nbsp; 20 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults2_reveal_left_median"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Mode:</th>
+                      <td>
+                        <span id="crystalResults2_left_mode" class="hidden">
+                          &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults2_reveal_left_mode"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Range:</th>
+                      <td>
+                        <span id="crystalResults2_left_range" class="hidden">
+                          &nbsp; 10 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults2_reveal_left_range"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="results-top-center">
+              <div class="results-centered">
+                <div class="side-by-side-tables">
+                  <table class="data-table left-table set2" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th colspan="2">Condition 1: Hot Water</th>
+                      </tr>
+
+                      <tr>
+                        <td>Trial #</td>
+                        <td>Weight</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>15</td>
+                      </tr>
+
+                      <tr>
+                        <td>2</td>
+                        <td>25</td>
+                      </tr>
+
+                      <tr>
+                        <td>3</td>
+                        <td>17</td>
+                      </tr>
+
+                      <tr>
+                        <td>4</td>
+                        <td>23</td>
+                      </tr>
+
+                      <tr>
+                        <td>5</td>
+                        <td>20</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <table class="data-table right-table set2" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th colspan="2">Condition 2: Cold Water</th>
+                      </tr>
+
+                      <tr>
+                        <td>Trial #</td>
+                        <td>Weight</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>33</td>
+                      </tr>
+
+                      <tr>
+                        <td>2</td>
+                        <td>27</td>
+                      </tr>
+
+                      <tr>
+                        <td>3</td>
+                        <td>35</td>
+                      </tr>
+
+                      <tr>
+                        <td>4</td>
+                        <td>25</td>
+                      </tr>
+
+                      <tr>
+                        <td>5</td>
+                        <td>30</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p>
+                  <button
+                    id="crystalResults2_show_sorted_table"
+                    class="show-sorted-img btn btn-md btn-rect btn-primary"
+                  >
+                    Sort results from lowest to highest
+                  </button>
+                </p>
+                <p id="crystalResults2_sorted_text" class="hidden text-md">
+                  (Results are sorted from lowest to highest)
+                </p>
+              </div>
+            </div>
+
+            <div class="results-top-right">
+              <div class="stats-right-wrapper">
+                <table class="stats-table">
+                  <thead>
+                    <tr>
+                      <th colspan="2">Cold Water</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Mean:</th>
+                      <td>
+                        <span id="crystalResults2_right_mean" class="hidden">
+                          &nbsp; 30 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults2_reveal_right_mean"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Median:</th>
+                      <td>
+                        <span id="crystalResults2_right_median" class="hidden">
+                          &nbsp; 30 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults2_reveal_right_median"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Mode:</th>
+                      <td>
+                        <span id="crystalResults2_right_mode" class="hidden">
+                          &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults2_reveal_right_mode"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Range:</th>
+                      <td>
+                        <span id="crystalResults2_right_range" class="hidden">
+                          &nbsp; 10 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults2_reveal_right_range"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="results-bottom">
+            <div class="question-region">
+              <form id="crystalResults2_q1_form" class="form-centered">
+                <p id="crystalResults2_q1_text" class="question-text text-lg">
+                  Q1) Which initial water temperature do these results suggest
+                  cause crystals to grow better?
+                </p>
+                <div
+                  id="crystalResults2_q1_form_controls"
+                  class="form-controls"
+                >
+                  <label for="crystalResults2_q1_option_a" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults2_q1_option_a"
+                      name="crystalResults2_q1"
+                      value="hot water"
+                      required
+                    />
+                    Hot water
+                  </label>
+
+                  <label for="crystalResults2_q1_option_b" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults2_q1_option_b"
+                      name="crystalResults2_q1"
+                      value="cold water"
+                      required
+                    />
+                    Cold water
+                  </label>
+
+                  <label for="crystalResults2_q1_option_c" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults2_q1_option_c"
+                      name="crystalResults2_q1"
+                      value="neither"
+                      required
+                    />
+                    Neither (Crystals grow the same in both hot and cold water)
+                  </label>
+                </div>
+              </form>
+
+              <form id="crystalResults2_q2_form" class="form-centered">
+                <p
+                  id="crystalResults2_q2_text"
+                  class="question-text text-lg"
+                ></p>
+                <div
+                  id="crystalResults2_q2_form_controls"
+                  class="form-controls"
+                >
+                  <textarea
+                    id="crystalResults2_q2_answer"
+                    class="text-area text-lg form-control"
+                    rows="4"
+                    cols="60"
+                    required
+                  ></textarea>
+                </div>
+              </form>
+
+              <form id="crystalResults2_q3_form" class="form-centered">
+                <p
+                  id="crystalResults2_q3_text"
+                  class="question-text text-lg"
+                ></p>
+                <div
+                  id="crystalResults2_q3_form_controls"
+                  class="form-controls"
+                >
+                  <label for="crystalResults2_q3_option_a" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults2_q3_option_a"
+                      name="crystalResults2_q3"
+                      value="a"
+                      required
+                    />
+                    Not at all sure
+                  </label>
+
+                  <label for="crystalResults2_q3_option_b" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults2_q3_option_b"
+                      name="crystalResults2_q3"
+                      value="b"
+                      required
+                    />
+                    A little sure
+                  </label>
+
+                  <label for="crystalResults2_q3_option_c" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults2_q3_option_c"
+                      name="crystalResults2_q3"
+                      value="c"
+                      required
+                    />
+                    Fairly sure
+                  </label>
+
+                  <label for="crystalResults2_q3_option_d" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults2_q3_option_d"
+                      name="crystalResults2_q3"
+                      value="d"
+                      required
+                    />
+                    Very sure
+                  </label>
+
+                  <label for="crystalResults2_q3_option_e" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults2_q3_option_e"
+                      name="crystalResults2_q3"
+                      value="e"
+                      required
+                    />
+                    Absolutely sure
+                  </label>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="crystalResults3" class="scene">
+        <div class="scene-content">
+          <br />
+          <header class="results-heading">
+            Below is the 3rd set of possible results for the weight of crystal
+            growth for each condition's trials.
+          </header>
+
+          <div class="results-top">
+            <div class="results-top-left">
+              <div class="stats-left-wrapper">
+                <table class="stats-table">
+                  <thead>
+                    <tr>
+                      <th colspan="2">Hot Water</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Mean:</th>
+                      <td>
+                        <span id="crystalResults3_left_mean" class="hidden">
+                          &nbsp; 25 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults3_reveal_left_mean"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Median:</th>
+                      <td>
+                        <span id="crystalResults3_left_median" class="hidden">
+                          &nbsp; 24 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults3_reveal_left_median"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Mode:</th>
+                      <td>
+                        <span id="crystalResults3_left_mode" class="hidden">
+                          &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults3_reveal_left_mode"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Range:</th>
+                      <td>
+                        <span id="crystalResults3_left_range" class="hidden">
+                          &nbsp; 10 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults3_reveal_left_range"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="results-top-center">
+              <div class="results-centered">
+                <div class="side-by-side-tables">
+                  <table class="data-table left-table set3" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th colspan="2">Condition 1: Hot Water</th>
+                      </tr>
+
+                      <tr>
+                        <td>Trial #</td>
+                        <td>Weight</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>24</td>
+                      </tr>
+
+                      <tr>
+                        <td>2</td>
+                        <td>21</td>
+                      </tr>
+
+                      <tr>
+                        <td>3</td>
+                        <td>22</td>
+                      </tr>
+
+                      <tr>
+                        <td>4</td>
+                        <td>27</td>
+                      </tr>
+
+                      <tr>
+                        <td>5</td>
+                        <td>31</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <table class="data-table right-table set3" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th colspan="2">Condition 2: Cold Water</th>
+                      </tr>
+
+                      <tr>
+                        <td>Trial #</td>
+                        <td>Weight</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>20</td>
+                      </tr>
+
+                      <tr>
+                        <td>2</td>
+                        <td>22</td>
+                      </tr>
+
+                      <tr>
+                        <td>3</td>
+                        <td>25</td>
+                      </tr>
+
+                      <tr>
+                        <td>4</td>
+                        <td>29</td>
+                      </tr>
+
+                      <tr>
+                        <td>5</td>
+                        <td>19</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p>
+                  <button
+                    id="crystalResults3_show_sorted_table"
+                    class="show-sorted-img btn btn-md btn-rect btn-primary"
+                  >
+                    Sort results from lowest to highest
+                  </button>
+                </p>
+                <p id="crystalResults3_sorted_text" class="hidden text-md">
+                  (Results are sorted from lowest to highest)
+                </p>
+              </div>
+            </div>
+
+            <div class="results-top-right">
+              <div class="stats-right-wrapper">
+                <table class="stats-table">
+                  <thead>
+                    <tr>
+                      <th colspan="2">Cold Water</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Mean:</th>
+                      <td>
+                        <span id="crystalResults3_right_mean" class="hidden">
+                          &nbsp; 23 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults3_reveal_right_mean"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Median:</th>
+                      <td>
+                        <span id="crystalResults3_right_median" class="hidden">
+                          &nbsp; 22 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults3_reveal_right_median"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Mode:</th>
+                      <td>
+                        <span id="crystalResults3_right_mode" class="hidden">
+                          &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults3_reveal_right_mode"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Range:</th>
+                      <td>
+                        <span id="crystalResults3_right_range" class="hidden">
+                          &nbsp; 10 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults3_reveal_right_range"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="results-bottom">
+            <div class="question-region">
+              <form id="crystalResults3_q1_form" class="form-centered">
+                <p id="crystalResults3_q1_text" class="question-text text-lg">
+                  Q1) Which initial water temperature do these results suggest
+                  cause crystals to grow better?
+                </p>
+                <div
+                  id="crystalResults3_q1_form_controls"
+                  class="form-controls"
+                >
+                  <label for="crystalResults3_q1_option_a" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults3_q1_option_a"
+                      name="crystalResults3_q1"
+                      value="hot water"
+                      required
+                    />
+                    Hot water
+                  </label>
+
+                  <label for="crystalResults3_q1_option_b" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults3_q1_option_b"
+                      name="crystalResults3_q1"
+                      value="cold water"
+                      required
+                    />
+                    Cold water
+                  </label>
+
+                  <label for="crystalResults3_q1_option_c" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults3_q1_option_c"
+                      name="crystalResults3_q1"
+                      value="neither"
+                      required
+                    />
+                    Neither (Crystals grow the same in both hot and cold water)
+                  </label>
+                </div>
+              </form>
+
+              <form id="crystalResults3_q2_form" class="form-centered">
+                <p
+                  id="crystalResults3_q2_text"
+                  class="question-text text-lg"
+                ></p>
+                <div
+                  id="crystalResults3_q2_form_controls"
+                  class="form-controls"
+                >
+                  <textarea
+                    id="crystalResults3_q2_answer"
+                    class="text-area text-lg form-control"
+                    rows="4"
+                    cols="60"
+                    required
+                  ></textarea>
+                </div>
+              </form>
+
+              <form id="crystalResults3_q3_form" class="form-centered">
+                <p
+                  id="crystalResults3_q3_text"
+                  class="question-text text-lg"
+                ></p>
+                <div
+                  id="crystalResults3_q3_form_controls"
+                  class="form-controls"
+                >
+                  <label for="crystalResults3_q3_option_a" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults3_q3_option_a"
+                      name="crystalResults3_q3"
+                      value="a"
+                      required
+                    />
+                    Not at all sure
+                  </label>
+
+                  <label for="crystalResults3_q3_option_b" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults3_q3_option_b"
+                      name="crystalResults3_q3"
+                      value="b"
+                      required
+                    />
+                    A little sure
+                  </label>
+
+                  <label for="crystalResults3_q3_option_c" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults3_q3_option_c"
+                      name="crystalResults3_q3"
+                      value="c"
+                      required
+                    />
+                    Fairly sure
+                  </label>
+
+                  <label for="crystalResults3_q3_option_d" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults3_q3_option_d"
+                      name="crystalResults3_q3"
+                      value="d"
+                      required
+                    />
+                    Very sure
+                  </label>
+
+                  <label for="crystalResults3_q3_option_e" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults3_q3_option_e"
+                      name="crystalResults3_q3"
+                      value="e"
+                      required
+                    />
+                    Absolutely sure
+                  </label>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="crystalResults4" class="scene">
+        <div class="scene-content">
+          <br />
+          <header class="results-heading">
+            Below is the 4th set of possible results for the weight of crystal
+            growth for each condition's trials.
+          </header>
+
+          <div class="results-top">
+            <div class="results-top-left">
+              <div class="stats-left-wrapper">
+                <table class="stats-table">
+                  <thead>
+                    <tr>
+                      <th colspan="2">Hot Water</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Mean:</th>
+                      <td>
+                        <span id="crystalResults4_left_mean" class="hidden">
+                          &nbsp; 20 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults4_reveal_left_mean"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Median:</th>
+                      <td>
+                        <span id="crystalResults4_left_median" class="hidden">
+                          &nbsp; 20 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults4_reveal_left_median"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Mode:</th>
+                      <td>
+                        <span id="crystalResults4_left_mode" class="hidden">
+                          &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults4_reveal_left_mode"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Range:</th>
+                      <td>
+                        <span id="crystalResults4_left_range" class="hidden">
+                          &nbsp; 16 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults4_reveal_left_range"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="results-top-center">
+              <div class="results-centered">
+                <div class="side-by-side-tables">
+                  <table class="data-table left-table set4" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th colspan="2">Condition 1: Hot Water</th>
+                      </tr>
+
+                      <tr>
+                        <td>Trial #</td>
+                        <td>Weight</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>28</td>
+                      </tr>
+
+                      <tr>
+                        <td>2</td>
+                        <td>12</td>
+                      </tr>
+
+                      <tr>
+                        <td>3</td>
+                        <td>20</td>
+                      </tr>
+
+                      <tr>
+                        <td>4</td>
+                        <td>25</td>
+                      </tr>
+
+                      <tr>
+                        <td>5</td>
+                        <td>15</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <table class="data-table right-table set4" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th colspan="2">Condition 2: Cold Water</th>
+                      </tr>
+
+                      <tr>
+                        <td>Trial #</td>
+                        <td>Weight</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>25</td>
+                      </tr>
+
+                      <tr>
+                        <td>2</td>
+                        <td>30</td>
+                      </tr>
+
+                      <tr>
+                        <td>3</td>
+                        <td>35</td>
+                      </tr>
+
+                      <tr>
+                        <td>4</td>
+                        <td>22</td>
+                      </tr>
+
+                      <tr>
+                        <td>5</td>
+                        <td>38</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p>
+                  <button
+                    id="crystalResults4_show_sorted_table"
+                    class="show-sorted-img btn btn-md btn-rect btn-primary"
+                  >
+                    Sort results from lowest to highest
+                  </button>
+                </p>
+                <p id="crystalResults4_sorted_text" class="hidden text-md">
+                  (Results are sorted from lowest to highest)
+                </p>
+              </div>
+            </div>
+
+            <div class="results-top-right">
+              <div class="stats-right-wrapper">
+                <table class="stats-table">
+                  <thead>
+                    <tr>
+                      <th colspan="2">Cold Water</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Mean:</th>
+                      <td>
+                        <span id="crystalResults4_right_mean" class="hidden">
+                          &nbsp; 30 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults4_reveal_right_mean"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Median:</th>
+                      <td>
+                        <span id="crystalResults4_right_median" class="hidden">
+                          &nbsp; 30 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults4_reveal_right_median"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Mode:</th>
+                      <td>
+                        <span id="crystalResults4_right_mode" class="hidden">
+                          &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults4_reveal_right_mode"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Range:</th>
+                      <td>
+                        <span id="crystalResults4_right_range" class="hidden">
+                          &nbsp; 16 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults4_reveal_right_range"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="results-bottom">
+            <div class="question-region">
+              <form id="crystalResults4_q1_form" class="form-centered">
+                <p id="crystalResults4_q1_text" class="question-text text-lg">
+                  Q1) Which initial water temperature do these results suggest
+                  cause crystals to grow better?
+                </p>
+                <div
+                  id="crystalResults4_q1_form_controls"
+                  class="form-controls"
+                >
+                  <label for="crystalResults4_q1_option_a" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults4_q1_option_a"
+                      name="crystalResults4_q1"
+                      value="hot water"
+                      required
+                    />
+                    Hot water
+                  </label>
+
+                  <label for="crystalResults4_q1_option_b" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults4_q1_option_b"
+                      name="crystalResults4_q1"
+                      value="cold water"
+                      required
+                    />
+                    Cold water
+                  </label>
+
+                  <label for="crystalResults4_q1_option_c" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults4_q1_option_c"
+                      name="crystalResults4_q1"
+                      value="neither"
+                      required
+                    />
+                    Neither (Crystals grow the same in both hot and cold water)
+                  </label>
+                </div>
+              </form>
+
+              <form id="crystalResults4_q2_form" class="form-centered">
+                <p
+                  id="crystalResults4_q2_text"
+                  class="question-text text-lg"
+                ></p>
+                <div
+                  id="crystalResults4_q2_form_controls"
+                  class="form-controls"
+                >
+                  <textarea
+                    id="crystalResults4_q2_answer"
+                    class="text-area text-lg form-control"
+                    rows="4"
+                    cols="60"
+                    required
+                  ></textarea>
+                </div>
+              </form>
+
+              <form id="crystalResults4_q3_form" class="form-centered">
+                <p
+                  id="crystalResults4_q3_text"
+                  class="question-text text-lg"
+                ></p>
+                <div
+                  id="crystalResults4_q3_form_controls"
+                  class="form-controls"
+                >
+                  <label for="crystalResults4_q3_option_a" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults4_q3_option_a"
+                      name="crystalResults4_q3"
+                      value="a"
+                      required
+                    />
+                    Not at all sure
+                  </label>
+
+                  <label for="crystalResults4_q3_option_b" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults4_q3_option_b"
+                      name="crystalResults4_q3"
+                      value="b"
+                      required
+                    />
+                    A little sure
+                  </label>
+
+                  <label for="crystalResults4_q3_option_c" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults4_q3_option_c"
+                      name="crystalResults4_q3"
+                      value="c"
+                      required
+                    />
+                    Fairly sure
+                  </label>
+
+                  <label for="crystalResults4_q3_option_d" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults4_q3_option_d"
+                      name="crystalResults4_q3"
+                      value="d"
+                      required
+                    />
+                    Very sure
+                  </label>
+
+                  <label for="crystalResults4_q3_option_e" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults4_q3_option_e"
+                      name="crystalResults4_q3"
+                      value="e"
+                      required
+                    />
+                    Absolutely sure
+                  </label>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="crystalResults5" class="scene">
+        <div class="scene-content">
+          <br />
+          <header class="results-heading">
+            Below is the last set of possible results for the weight of crystal
+            growth for each condition's trials.
+          </header>
+
+          <div class="results-top">
+            <div class="results-top-left">
+              <div class="stats-left-wrapper">
+                <table class="stats-table">
+                  <thead>
+                    <tr>
+                      <th colspan="2">Hot Water</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Mean:</th>
+                      <td>
+                        <span id="crystalResults5_left_mean" class="hidden">
+                          &nbsp; 25 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults5_reveal_left_mean"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Median:</th>
+                      <td>
+                        <span id="crystalResults5_left_median" class="hidden">
+                          &nbsp; 25 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults5_reveal_left_median"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Mode:</th>
+                      <td>
+                        <span id="crystalResults5_left_mode" class="hidden">
+                          &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults5_reveal_left_mode"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Range:</th>
+                      <td>
+                        <span id="crystalResults5_left_range" class="hidden">
+                          &nbsp; 10 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults5_reveal_left_range"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="results-top-center">
+              <div class="results-centered">
+                <div class="side-by-side-tables">
+                  <table class="data-table left-table set5" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th colspan="2">Condition 1: Hot Water</th>
+                      </tr>
+
+                      <tr>
+                        <td>Trial #</td>
+                        <td>Weight</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>20</td>
+                      </tr>
+
+                      <tr>
+                        <td>2</td>
+                        <td>30</td>
+                      </tr>
+
+                      <tr>
+                        <td>3</td>
+                        <td>28</td>
+                      </tr>
+
+                      <tr>
+                        <td>4</td>
+                        <td>22</td>
+                      </tr>
+
+                      <tr>
+                        <td>5</td>
+                        <td>25</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <table class="data-table right-table set5" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th colspan="2">Condition 2: Cold Water</th>
+                      </tr>
+
+                      <tr>
+                        <td>Trial #</td>
+                        <td>Weight</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>23</td>
+                      </tr>
+
+                      <tr>
+                        <td>2</td>
+                        <td>17</td>
+                      </tr>
+
+                      <tr>
+                        <td>3</td>
+                        <td>20</td>
+                      </tr>
+
+                      <tr>
+                        <td>4</td>
+                        <td>25</td>
+                      </tr>
+
+                      <tr>
+                        <td>5</td>
+                        <td>15</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p>
+                  <button
+                    id="crystalResults5_show_sorted_table"
+                    class="show-sorted-img btn btn-md btn-rect btn-primary"
+                  >
+                    Sort results from lowest to highest
+                  </button>
+                </p>
+                <p id="crystalResults5_sorted_text" class="hidden text-md">
+                  (Results are sorted from lowest to highest)
+                </p>
+              </div>
+            </div>
+
+            <div class="results-top-right">
+              <div class="stats-right-wrapper">
+                <table class="stats-table">
+                  <thead>
+                    <tr>
+                      <th colspan="2">Cold Water</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Mean:</th>
+                      <td>
+                        <span id="crystalResults5_right_mean" class="hidden">
+                          &nbsp; 20 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults5_reveal_right_mean"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Median:</th>
+                      <td>
+                        <span id="crystalResults5_right_median" class="hidden">
+                          &nbsp; 20 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults5_reveal_right_median"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Mode:</th>
+                      <td>
+                        <span id="crystalResults5_right_mode" class="hidden">
+                          &nbsp; n/a &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults5_reveal_right_mode"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Range:</th>
+                      <td>
+                        <span id="crystalResults5_right_range" class="hidden">
+                          &nbsp; 10 &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <button
+                          id="crystalResults5_reveal_right_range"
+                          class="reveal-stat btn btn-rect btn-sm btn-primary"
+                        >
+                          Show
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="results-bottom">
+            <div class="question-region">
+              <form id="crystalResults5_q1_form" class="form-centered">
+                <p id="crystalResults5_q1_text" class="question-text text-lg">
+                  Q1) Which initial water temperature do these results suggest
+                  cause crystals to grow better?
+                </p>
+                <div
+                  id="crystalResults5_q1_form_controls"
+                  class="form-controls"
+                >
+                  <label for="crystalResults5_q1_option_a" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults5_q1_option_a"
+                      name="crystalResults5_q1"
+                      value="hot water"
+                      required
+                    />
+                    Hot water
+                  </label>
+
+                  <label for="crystalResults5_q1_option_b" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults5_q1_option_b"
+                      name="crystalResults5_q1"
+                      value="cold water"
+                      required
+                    />
+                    Cold water
+                  </label>
+
+                  <label for="crystalResults5_q1_option_c" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults5_q1_option_c"
+                      name="crystalResults5_q1"
+                      value="neither"
+                      required
+                    />
+                    Neither (Crystals grow the same in both hot and cold water)
+                  </label>
+                </div>
+              </form>
+
+              <form id="crystalResults5_q2_form" class="form-centered">
+                <p
+                  id="crystalResults5_q2_text"
+                  class="question-text text-lg"
+                ></p>
+                <div
+                  id="crystalResults5_q2_form_controls"
+                  class="form-controls"
+                >
+                  <textarea
+                    id="crystalResults5_q2_answer"
+                    class="text-area text-lg form-control"
+                    rows="4"
+                    cols="60"
+                    required
+                  ></textarea>
+                </div>
+              </form>
+
+              <form id="crystalResults5_q3_form" class="form-centered">
+                <p
+                  id="crystalResults5_q3_text"
+                  class="question-text text-lg"
+                ></p>
+                <div
+                  id="crystalResults5_q3_form_controls"
+                  class="form-controls"
+                >
+                  <label for="crystalResults5_q3_option_a" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults5_q3_option_a"
+                      name="crystalResults5_q3"
+                      value="a"
+                      required
+                    />
+                    Not at all sure
+                  </label>
+
+                  <label for="crystalResults5_q3_option_b" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults5_q3_option_b"
+                      name="crystalResults5_q3"
+                      value="b"
+                      required
+                    />
+                    A little sure
+                  </label>
+
+                  <label for="crystalResults5_q3_option_c" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults5_q3_option_c"
+                      name="crystalResults5_q3"
+                      value="c"
+                      required
+                    />
+                    Fairly sure
+                  </label>
+
+                  <label for="crystalResults5_q3_option_d" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults5_q3_option_d"
+                      name="crystalResults5_q3"
+                      value="d"
+                      required
+                    />
+                    Very sure
+                  </label>
+
+                  <label for="crystalResults5_q3_option_e" class="text-lg">
+                    <input
+                      type="radio"
+                      class="radio-btn form-control"
+                      id="crystalResults5_q3_option_e"
+                      name="crystalResults5_q3"
+                      value="e"
+                      required
+                    />
+                    Absolutely sure
+                  </label>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="crystalResults1Intro" class="scene">
+        <div class="scene-content">
+          <div class="single_column_content">
+            <h1>Possible Crystal Growth Results: #1 of 5</h1>
+          </div>
+        </div>
+      </section>
+
+      <section id="crystalResults2Intro" class="scene">
+        <div class="scene-content">
+          <div class="single_column_content">
+            <h1>Possible Crystal Growth Results: #2 of 5</h1>
+          </div>
+        </div>
+      </section>
+
+      <section id="crystalResults3Intro" class="scene">
+        <div class="scene-content">
+          <div class="single_column_content">
+            <h1>Possible Crystal Growth Results: #3 of 5</h1>
+          </div>
+        </div>
+      </section>
+
+      <section id="crystalResults4Intro" class="scene">
+        <div class="scene-content">
+          <div class="single_column_content">
+            <h1>Possible Crystal Growth Results: #4 of 5</h1>
+          </div>
+        </div>
+      </section>
+
+      <section id="crystalResults5Intro" class="scene">
+        <div class="scene-content">
+          <div class="single_column_content">
+            <h1>Possible Crystal Growth Results: #5 of 5</h1>
+          </div>
+        </div>
+      </section>
+    </main>
+    <img id="prev_btn" class="nav-btn prev-btn" />
+    <img id="next_btn" class="nav-btn next-btn" />
+    <div id="snackbar"></div>
+
+    <script src="dicrystal.bundle.js"></script>
+  </body>
+</html>
