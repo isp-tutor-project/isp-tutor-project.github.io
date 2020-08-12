@@ -86,6 +86,32 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "../../common/activity-config/index.js":
+/*!****************************************************************************************!*\
+  !*** /home/ckot/projects/work/isptutorproject_website/common/activity-config/index.js ***!
+  \****************************************************************************************/
+/*! exports provided: getActivityConfiguration */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getActivityConfiguration", function() { return getActivityConfiguration; });
+function getActivityConfiguration() {
+    let currentActivity = JSON.parse(localStorage.getItem("currentActivity"));
+    let activityConfig = {
+        userID: localStorage.getItem("userID"),
+        database: localStorage.getItem("database"),
+        homepage: localStorage.getItem("homepage"),
+        activityID: currentActivity.id,
+        activityKey: currentActivity.key,
+        activityFeatures: currentActivity.features.split(":").filter((item) => item !== "")
+    };
+    console.log(activityConfig);
+    return activityConfig;
+}
+
+/***/ }),
+
 /***/ "../../common/isp-captivate/index.js":
 /*!**************************************************************************************!*\
   !*** /home/ckot/projects/work/isptutorproject_website/common/isp-captivate/index.js ***!
@@ -100,6 +126,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EVT_ON_SLIDE_EXIT", function() { return EVT_ON_SLIDE_EXIT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EVT_ON_QUES_SUBMIT", function() { return EVT_ON_QUES_SUBMIT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ISPCaptivateActivity", function() { return ISPCaptivateActivity; });
+/* harmony import */ var _isptutorproject_isp_database__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @isptutorproject/isp-database */ "../../common/isp-database/index.js");
+
+
 const EVT_ON_VAR_CHANGE  = "CPAPI_VARIABLEVALUECHANGED";
 const EVT_ON_SLIDE_ENTER = "CPAPI_SLIDEENTER";
 const EVT_ON_SLIDE_EXIT  = "CPAPI_SLIDEEXIT";
@@ -112,34 +141,56 @@ const INITIAL_STATE = {
     variableChanges: []
 };
 
+// allows us to log to the parent windows console
+// NOTE: the parent window needs to have some companion
+// code to make this work
+const _log = console.log;
+// Override the console
+console.log = function (...rest) {
+    // window.parent is the parent frame that made this window
+    window.parent.postMessage(
+        {
+            source: 'iframe',
+            message: rest,
+        },
+        '*'
+    );
+    // Finally applying the console statements to saved instance earlier
+    _log.apply(console, arguments);
+};
+
+
 class ISPCaptivateActivity {
-    constructor(cpAPI, db, variablesToTrack) {
+    constructor(activityConfig, cpAPI, variablesToTrack) {
+        console.log(activityConfig);
+        this.activityConfig = activityConfig;
+        this.db = Object(_isptutorproject_isp_database__WEBPACK_IMPORTED_MODULE_0__["getDBConnection"])(activityConfig.database);
+        this.userID = activityConfig.userID;
+        this.activityID = activityConfig.activityID;
+        this.activityKey = activityConfig.activityKey;
+        this.features = activityConfig.activityFeatures;
         // bind event handlers
         this.onSlideEnter = this.onSlideEnter.bind(this);
-        // this.onSlideTransition = this.onSlideTransition.bind(this);
         this.onQuestionSubmit = this.onQuestionSubmit.bind(this);
         this.onVarChange = this.onVarChange.bind(this);
+        // this.onSlideTransition = this.onSlideTransition.bind(this);
         this.cpAPI = cpAPI;
         this.cpEventEmitter = this.cpAPI.getEventEmitter();
         this.variablesToTrack = variablesToTrack;
-        this.userID = localStorage.getItem("userID");
-        this.classCode = localStorage.getItem("classCode");
-        this.currentActivity = localStorage.getItem("currentActivity");
-        this.features = (localStorage.getItem("currentActivityFeatures") || "")
-                        .split(":").filter((item) => item !== "");
-        this.db = db;
-    }
+        }
 
 
     init() {
-        this.db.setCredentials(this.classCode, this.userID);
-        this.db.getActivityData(this.currentActivity)
-        .then((data) => {
-            if (typeof(data) === "undefined" || null === data) {
+        this.db.setCredentials(this.userID);
+        this.getAppData()
+        .then((state) => {
+            console.log("getAppData() returned:", state);
+            if (typeof(state) === "undefined" || null === state) {
                 // if no state exists in db, copy INITIAL_STATE
                 this.state = { ...INITIAL_STATE };
             } else {
-                this.state = data;
+                console.log("Restoring App State from database");
+                this.state = state;
             }
             this.showState();
             return this.state;
@@ -160,6 +211,19 @@ class ISPCaptivateActivity {
 
     restoreCaptivateState() {
 
+        for (let varName of this.variablesToTrack) {
+            if (varName in this.state) {
+                console.log(`Restoring Captivate Variable "${varName}" to ${this.state[varName]}`);
+                this.setCaptivateVariable(varName, this.state[varName]);
+            }
+        }
+        if ("currentSlide" in this.state) {
+            console.log(`restoring to slide number ${this.state.currentSlide}`);
+            this.gotoSlide(this.state.currentSlide);
+        } else {
+            console.log("skipping slide 1");
+            this.gotoSlide(2);
+        }
     }
 
     showState() {
@@ -169,6 +233,7 @@ class ISPCaptivateActivity {
     pushTransition(transition) {
         // console.log(transition);
         this.state.transitions.push(transition);
+        this.state.currentSlide = transition.slide_number;
         this.showState();
     }
 
@@ -212,8 +277,22 @@ class ISPCaptivateActivity {
             slide_label: evt.cpData.lb,
             timestamp: Date.now()
         });
+        this.saveAppData();
     }
 
+    getAppData() {
+        console.log("looking for saved app data in database");
+        return this.db.getActivityData(this.activityKey)
+        .then((data) => {
+            console.log(data);
+            return data;
+        });
+    }
+
+    saveAppData() {
+        console.log("saving app data");
+        this.db.setActivityData(this.activityKey, this.state)
+    }
     // onSlideTransition(evt) {
     //     // console.log(evt);
     //     const transitionType = ("CPSlideEnter" === evt.cpName) ? "enter" : "exit";
@@ -246,8 +325,10 @@ class ISPCaptivateActivity {
     }
 
     gotoSlide(slideNumber) {
+        // wierd. when animate reports the slide number you are on, they
+        // are one-based, but gotoSlide() is 0 based
         console.log("manually navigating to slide:", slideNumber);
-        this.cpAPI.gotoSlide(slideNumber);
+        this.cpAPI.gotoSlide(slideNumber-1);
     }
 
     setCaptivateVariable(varName, value) {
@@ -263,21 +344,59 @@ class ISPCaptivateActivity {
 /*!****************************************************************************************!*\
   !*** /home/ckot/projects/work/isptutorproject_website/common/isp-database/database.js ***!
   \****************************************************************************************/
-/*! exports provided: Database */
+/*! exports provided: STUDY3, Database */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "STUDY3", function() { return STUDY3; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Database", function() { return Database; });
+
+const STUDY3 = {
+    conditionActivities: {
+        1: [
+            "matsPreTest",
+            "diPreTest",
+            "reSelectBL",
+            "hypoWEoneDir",
+            "diInstrGR",
+            "diCrystalGrowthTest",
+            "diPostTest",
+            "matsPostTest"
+        ],
+        2: [
+            "matsPreTest",
+            "diPreTest",
+            "reSelectBL",
+            "hypoWEbiDir",
+            "diInstrGR",
+            "diCrystalGrowthTest",
+            "diPostTest",
+            "matsPostTest"
+        ]
+    }
+};
+
 // abstract class - interface
 class Database {
-    constructor() {
+    constructor(dbType) {
+        this.dbType = dbType;
+    }
+
+    setCredentials(userID) {
+        this.userID = userID;
+    }
+
+    lookupUserID(formData) {
 
     }
 
-    setCredentials(classCode, userID) {
-        this.classCode = classCode;
-        this.userID = userID;
+    loginUser(userID) {
+
+    }
+
+    registerUser(formData) {
+
     }
 
     getUserData() {
@@ -366,45 +485,187 @@ const firebaseConfig = {
 class FirestoreDB extends _database__WEBPACK_IMPORTED_MODULE_0__["Database"] {
 
     constructor() {
-        super();
+        super("firestore");
         firebase.initializeApp(firebaseConfig);
         this.store = firebase.firestore();
     }
 
-    setCredentials(classCode, userID) {
-        super.setCredentials(classCode, userID);
-        this.userRef = this.store.collection(this.classCode).doc(this.userID);
+    setCredentials(userID) {
+        super.setCredentials(userID);
+        this.userRef = this.store.collection("STUDY_3").doc(userID);
     }
 
-    getUserData() {
-        // returns promise with 'doc' if it exists, null otherwise
-        return this.userRef.get()
+    getNextUserNum() {
+        return this.store.collection("STUDY_3").doc("study_data").update({
+            usernum: firebase.firestore.FieldValue.increment(1)
+        }).then(() => this.store.collection("STUDY_3").doc("study_data").get())
         .then((doc) => {
-            if (doc.exists) {
-                return doc.data;
+            return doc.data().usernum;
+        })
+        .catch((error) => console.error(error));
+    }
+
+    // loginUser(classCode, userID) {
+    //     let retVal;
+    //     return this.store.collection("STUDY_3")
+    //         .where("classCode", "==", classCode)
+    //         .where("userID", "==", userID)
+    //         .get()
+    //         .then((snapshot) => {
+    //             if (1 !== snapshot.size) {
+    //                 return false;
+    //             }
+    //             this.userRef = snapshot.docs[0];
+    //             return true;
+    //         })
+    // }
+
+    loginUser(userID) {
+        let docRef = this.store.collection("STUDY_3").doc(userID);
+        return docRef.get()
+        .then((doc) => {
+            if (!doc.exists) {
+                return false;
             } else {
-                return null;
+                this.userRef = docRef;
+                return this.getUserData()
             }
         });
     }
 
+    lookupUserID(formData) {
+        // returns userID (truthy) or false
+        return this.store.collection("STUDY_3")
+            .where("classCode", "==", formData.classCode)
+            .where("FN",        "==", formData.FN)
+            .where("LN",        "==", formData.LN)
+            .where("MON",       "==", formData.MON)
+            .where("DAY",       "==", formData.DAY)
+            .get()
+            .then((snapshot) => {
+                // console.log(snapshot);
+                if (1 !== snapshot.size) {
+                    return false;
+                } else {
+                    console.log('record found');
+                    let userID = false;
+                    let data = snapshot.docs[0].data();
+                    if (data.userID) {
+                        userID = data.userID;
+                    } else {
+                        console.log("no userID field", data);
+                    }
+                    return userID;
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                return false;
+            });
+    }
+
+    registerUser(formData) {
+        let userID = false;
+        console.log('registering user');
+        return this.getNextUserNum()
+        .then((userNum) => {
+            // if even cond1 if odd cond2
+            let conditionNum = (userNum % 2) + 1;
+            let conditionStr = `${conditionNum}`;
+            userID = `USER${userNum}_${conditionNum}`;
+            let activityList = _database__WEBPACK_IMPORTED_MODULE_0__["STUDY3"].conditionActivities[conditionStr];
+            let data = Object.assign(formData, {
+                userID: userID,
+                condition: conditionStr,
+                assignments: JSON.stringify(activityList),
+                completedAssignments: JSON.stringify([])
+            })
+            return this.store.collection("STUDY_3").doc(userID).set(data)
+        })
+        .then(() => {
+            return userID;
+        })
+        .catch((error) => {
+            console.error(error);
+            return false;
+        })
+    }
+
+    getUserData() {
+        // returns promise with 'doc' if it exists, false otherwise
+        let userData = false;
+        return this.userRef.get()
+        .then((doc) => {
+            if (doc.exists) {
+                let data = doc.data();
+                userData = {
+                    userID: data.userID,
+                    condition: data.condition,
+                    assignments: JSON.parse(data.assignments),
+                    completedAssignments: JSON.parse(data.completedAssignments)
+                }
+            }
+            return userData;
+        });
+    }
+
+    markActivityAsCompleted(activityId) {
+        // console.log(`markActivityAsCompleted(${activityId})`);
+        return this.userRef.get()
+        .then((doc) => {
+            let data = doc.data();
+            return JSON.parse(data.completedAssignments)
+        })
+        .then((completedAssignments) => {
+            // console.log("BEFORE:", completedAssignments);
+            if (!completedAssignments.includes(activityId)) {
+                completedAssignments.push(activityId);
+            }
+            // console.log("AFTER", completedAssignments)
+            return this.userRef.update({
+                completedAssignments: JSON.stringify(completedAssignments)
+            });
+        });
+    }
 
     getCurrHypoTask() {
 
     }
-  
+
     getActivityData(activityKey, decodeJSON=true) {
-        return this.getUserData()
+        return this.userRef.get()
+        .then((doc) => doc.data())
         .then((userData) => {
+            console.log("userData", userData);
+            if (!userData) {
+                return null;
+            }
             let data = userData[activityKey];
+            if (!data) {
+                return null;
+            }
             if (data && decodeJSON) {
                 return JSON.parse(data);
             } else {
                 return data;
             }
+        }).catch((error) => {
+            console.error(error);
+            return null;
         });
     }
 
+    setActivityData(activityKey, state) {
+        let activityState = JSON.stringify(state);
+        return this.userRef.update({
+            [activityKey]: activityState
+        })
+        .then(() => {
+            console.log("app data saved successefully")
+        }).catch((error) => {
+            console.error(error);
+        });
+    }
     // getRQData() {
     //     return this.getAppData("rqted");
     // }
@@ -421,7 +682,7 @@ class FirestoreDB extends _database__WEBPACK_IMPORTED_MODULE_0__["Database"] {
 
     setValues(object, overwrite=false) {
         // default to {merge: true} option for safety
-        return this.userRef.set(object, {merge: !overwrite});       
+        return this.userRef.set(object, {merge: !overwrite});
     }
 
     updateValues(object) {
@@ -446,8 +707,8 @@ class FirestoreDB extends _database__WEBPACK_IMPORTED_MODULE_0__["Database"] {
 
     // getIntValue(varName) {
 
-    // }   
-    
+    // }
+
     // getFloatValue(varName) {
 
     // }
@@ -478,7 +739,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function getDBConnection(dbType) {
+function getDBConnection(dbType, schema) {
     let db;
     switch(dbType) {
         case "firestore":
@@ -487,7 +748,7 @@ function getDBConnection(dbType) {
         default:
             db = new _localStorageDB__WEBPACK_IMPORTED_MODULE_0__["LocalStorageDB"]();
     }
-    return db; 
+    return db;
 }
 
 
@@ -775,7 +1036,7 @@ class LocalStorageDB extends _database__WEBPACK_IMPORTED_MODULE_0__["Database"] 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _isptutorproject_isp_captivate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @isptutorproject/isp-captivate */ "../../common/isp-captivate/index.js");
-/* harmony import */ var _isptutorproject_isp_database__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @isptutorproject/isp-database */ "../../common/isp-database/index.js");
+/* harmony import */ var _isptutorproject_activity_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @isptutorproject/activity-config */ "../../common/activity-config/index.js");
 
 
 
@@ -800,8 +1061,8 @@ function undefinedOrSame(currState, value) {
 }
 
 class HypoWECaptivateActivity extends _isptutorproject_isp_captivate__WEBPACK_IMPORTED_MODULE_0__["ISPCaptivateActivity"] {
-    constructor(cpAPI, db, varsToTrack) {
-        super(cpAPI, db, varsToTrack);
+    constructor(activityConfig, cpAPI, varsToTrack) {
+        super(activityConfig, cpAPI, varsToTrack);
     }
 
     processFeatures() {
@@ -840,10 +1101,11 @@ class HypoWECaptivateActivity extends _isptutorproject_isp_captivate__WEBPACK_IM
 
 function initApp(event) {
     console.log("initApp()");
+    let activityConfig = Object(_isptutorproject_activity_config__WEBPACK_IMPORTED_MODULE_1__["getActivityConfiguration"])();
+
     // event.Data is the same as window.cpAPIInterface
     const cpAPI = event.Data;
-    const db = Object(_isptutorproject_isp_database__WEBPACK_IMPORTED_MODULE_1__["getDBConnection"])("localstorage");
-    const app = new HypoWECaptivateActivity(cpAPI, db, TRACKED_VARS);
+    const app = new HypoWECaptivateActivity(activityConfig, cpAPI, TRACKED_VARS);
     app.init();
 }
 
