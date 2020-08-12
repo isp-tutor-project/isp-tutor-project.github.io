@@ -315,6 +315,7 @@ class ISPCaptivateActivity {
         const varName = evt.cpData.varName;
         const newVal = evt.cpData.newVal;
         const oldVal = evt.cpData.oldVal;
+        console.log(`Captivate variable ${varName} changed from: ${oldVal} to: ${newVal}`);
         this.state[varName] = newVal;
         this.pushVarChange({
             variable: varName,
@@ -335,6 +336,12 @@ class ISPCaptivateActivity {
         this.cpAPI.setVariableValue(varName, value);
     }
 
+    goHomePage() {
+        // top instead of window because we're in an iframe
+        let url = this.activityConfig.homepage;
+        // console.log(url);
+        top.location.href = url;
+    }
 }
 
 
@@ -1063,6 +1070,7 @@ function undefinedOrSame(currState, value) {
 class HypoWECaptivateActivity extends _isptutorproject_isp_captivate__WEBPACK_IMPORTED_MODULE_0__["ISPCaptivateActivity"] {
     constructor(activityConfig, cpAPI, varsToTrack) {
         super(activityConfig, cpAPI, varsToTrack);
+        this.onFinished = this.onFinished.bind(this);
     }
 
     processFeatures() {
@@ -1097,7 +1105,30 @@ class HypoWECaptivateActivity extends _isptutorproject_isp_captivate__WEBPACK_IM
         console.log("# remaining feats", feats.length);
     }
 
+    setupCustomEventHandlers() {
+        this.cpEventEmitter.addEventListener(_isptutorproject_isp_captivate__WEBPACK_IMPORTED_MODULE_0__["EVT_ON_VAR_CHANGE"], this.onFinished, "Finished")
+    }
+
+    onFinished(evt) {
+        // console.log(evt);
+        const varName = evt.cpData.varName;
+        const newVal = evt.cpData.newVal;
+        const oldVal = evt.cpData.oldVal;
+        if (varName !== "Finished") {
+            console.error(`WTF! This event handler is only supposed be called on changes to 'Finished' var. varName '${varName}'`);
+            return;
+        }
+        if (newVal !== 1) {
+            console.log("I only act when the value of Finished is set to 1. aborting");
+            return;
+        }
+        console.log("marking HypoWE as completed")
+        this.db.markActivityAsCompleted(this.activityID)
+            .then(() => this.goHomePage());
+
+    }
 }
+
 
 function initApp(event) {
     console.log("initApp()");
