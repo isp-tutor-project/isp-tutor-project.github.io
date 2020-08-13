@@ -174,6 +174,7 @@ class ISPCaptivateActivity {
         this.onQuestionSubmit = this.onQuestionSubmit.bind(this);
         this.onVarChange = this.onVarChange.bind(this);
         // this.onSlideTransition = this.onSlideTransition.bind(this);
+        this.cp = document.Captivate;
         this.cpAPI = cpAPI;
         this.cpEventEmitter = this.cpAPI.getEventEmitter();
         this.variablesToTrack = variablesToTrack;
@@ -224,7 +225,11 @@ class ISPCaptivateActivity {
             console.log("skipping slide 1");
             this.gotoSlide(2);
         }
+
+        this.restoreMultiStateObjects();
     }
+
+    restoreMultiStateObjects() {}
 
     showState() {
         console.log(this.state);
@@ -1063,6 +1068,19 @@ const TRACKED_VARS = [
     "VINTwinName"
 ];
 
+const VINImages = [
+    "VINImageall",
+    "VINImageall_bi",
+    "VINImageall_bi_681"
+];
+
+const VINTwinImages = [
+    "VINTwin_all",
+    "VINTwin_bi",
+    "VINTwin_bi_682",
+    "VINTwin_all_724"
+];
+
 function undefinedOrSame(currState, value) {
     return ("undefined" === typeof(currState) || currState === value)
 }
@@ -1125,7 +1143,27 @@ class HypoWECaptivateActivity extends _isptutorproject_isp_captivate__WEBPACK_IM
         console.log("marking HypoWE as completed")
         this.db.markActivityAsCompleted(this.activityID)
             .then(() => this.goHomePage());
+    }
 
+    overrideDefaultWithNormal(value, defaultVal) {
+        return (value === defaultVal) ? "Normal" : value;
+    }
+
+    restoreMultiStateObjects() {
+        if ("VINName" in this.state) {
+            let val = this.overrideDefaultWithNormal(this.state.VINName, "Joy");
+            for (let smartObjName of VINImages) {
+                console.log(`Restoring state of object "${smartObjName}" to "${val}`);
+                this.cp.changeState(smartObjName, val);
+            }
+        }
+        if ("VINTwinName" in this.state) {
+            let val = this.overrideDefaultWithNormal(this.state.VINTwinName, "Ari");
+            for (let smartObjName of VINTwinImages) {
+                console.log(`Restoring state of object "${smartObjName}" to "${val}`);
+                this.cp.changeState(smartObjName, val);
+            }
+        }
     }
 }
 
