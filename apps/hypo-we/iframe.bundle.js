@@ -369,7 +369,7 @@ const STUDY3 = {
         1: [
             "matsPreTest",
             "diPreTest",
-            "reSelectBL",
+            "rqSelectBL",
             "hypoWEoneDir",
             "diInstrGR",
             "diCrystalGrowthTest",
@@ -379,7 +379,7 @@ const STUDY3 = {
         2: [
             "matsPreTest",
             "diPreTest",
-            "reSelectBL",
+            "rqSelectBL",
             "hypoWEbiDir",
             "diInstrGR",
             "diCrystalGrowthTest",
@@ -589,9 +589,9 @@ class FirestoreDB extends _database__WEBPACK_IMPORTED_MODULE_0__["Database"] {
             let data = Object.assign(formData, {
                 userID: userID,
                 condition: conditionStr,
-                assignments: JSON.stringify(activityList),
                 completedAssignments: JSON.stringify([])
-            })
+            });
+            // assignments: JSON.stringify(activityList),
             return this.store.collection("STUDY_3").doc(userID).set(data)
         })
         .then(() => {
@@ -613,10 +613,11 @@ class FirestoreDB extends _database__WEBPACK_IMPORTED_MODULE_0__["Database"] {
                 userData = {
                     userID: data.userID,
                     condition: data.condition,
-                    assignments: JSON.parse(data.assignments),
+                    assignments: _database__WEBPACK_IMPORTED_MODULE_0__["STUDY3"].conditionActivities[data.condition],
                     completedAssignments: JSON.parse(data.completedAssignments)
                 }
             }
+
             return userData;
         });
     }
