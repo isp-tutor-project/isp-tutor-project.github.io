@@ -585,7 +585,7 @@ class FirestoreDB extends _database__WEBPACK_IMPORTED_MODULE_0__["Database"] {
             let conditionNum = (userNum % 2) + 1;
             let conditionStr = `${conditionNum}`;
             userID = `USER${userNum}_${conditionNum}`;
-            let activityList = _database__WEBPACK_IMPORTED_MODULE_0__["STUDY3"].conditionActivities[conditionStr];
+            // let activityList = STUDY3.conditionActivities[conditionStr];
             let data = Object.assign(formData, {
                 userID: userID,
                 condition: conditionStr,

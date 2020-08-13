@@ -26,16 +26,22 @@
 <!-- Google Firebase -->
 <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-firestore.js"></script>
+<!--
 <script src="./firebase.js"></script>
+-->
+<script src="/libs/isp-api.js"></script>
+
 <script src="https://code.createjs.com/createjs-2015.11.26.combined.js"></script>
 <!-- <script src="./dist/createjs-2015.11.26.min.js"></script> -->
 <script>
+	var ispAPI = new ISP_API.IspAPI();
     var EFRootTutor='EFTED_Mats'
-	var EFtutorFeatures = "FTR_WEB:FTR_POST"
+	// var EFtutorFeatures = "FTR_WEB:FTR_POST"
+	var EFtutorFeatures = ispAPI.getFeaturesString();
 	//var EFloginhibit = true;
 	var EFloginhibit = false;
-	var collectionID = "TESTSCHOOL1";
-	var userID = "MO_HA_JAN_O3";
+	// var collectionID = "TESTSCHOOL1";
+	// var userID = "MO_HA_JAN_O3";
 </script>
 <!--script src="https://code.createjs.com/createjs-2015.11.26.combined.js"></script-->
 <!-- Load the SystemJS module loader and the tutor engine module -->
