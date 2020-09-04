@@ -116,7 +116,7 @@ function getActivityConfiguration() {
 /*!**************************************************************************************!*\
   !*** /home/ckot/projects/work/isptutorproject_website/common/isp-captivate/index.js ***!
   \**************************************************************************************/
-/*! exports provided: EVT_ON_VAR_CHANGE, EVT_ON_SLIDE_ENTER, EVT_ON_SLIDE_EXIT, EVT_ON_QUES_SUBMIT, ISPCaptivateActivity */
+/*! exports provided: EVT_ON_VAR_CHANGE, EVT_ON_SLIDE_ENTER, EVT_ON_SLIDE_EXIT, EVT_ON_QUES_SUBMIT, EVT_ON_INTERACTION_SUBMIT, ISPCaptivateActivity */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -125,6 +125,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EVT_ON_SLIDE_ENTER", function() { return EVT_ON_SLIDE_ENTER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EVT_ON_SLIDE_EXIT", function() { return EVT_ON_SLIDE_EXIT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EVT_ON_QUES_SUBMIT", function() { return EVT_ON_QUES_SUBMIT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EVT_ON_INTERACTION_SUBMIT", function() { return EVT_ON_INTERACTION_SUBMIT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ISPCaptivateActivity", function() { return ISPCaptivateActivity; });
 /* harmony import */ var _isptutorproject_isp_database__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @isptutorproject/isp-database */ "../../common/isp-database/index.js");
 
@@ -133,7 +134,7 @@ const EVT_ON_VAR_CHANGE  = "CPAPI_VARIABLEVALUECHANGED";
 const EVT_ON_SLIDE_ENTER = "CPAPI_SLIDEENTER";
 const EVT_ON_SLIDE_EXIT  = "CPAPI_SLIDEEXIT";
 const EVT_ON_QUES_SUBMIT = "CPAPI_QUESTIONSUBMIT";
-
+const EVT_ON_INTERACTION_SUBMIT = "CPAPI_INTERACTIVEITEM_SUBMIT";
 
 const INITIAL_STATE = {
     transitions: [],
@@ -172,6 +173,7 @@ class ISPCaptivateActivity {
         // bind event handlers
         this.onSlideEnter = this.onSlideEnter.bind(this);
         this.onQuestionSubmit = this.onQuestionSubmit.bind(this);
+        this.onInteractiveItemSubmit = this.onInteractiveItemSubmit.bind(this);
         this.onVarChange = this.onVarChange.bind(this);
         // this.onSlideTransition = this.onSlideTransition.bind(this);
         this.cp = document.Captivate;
@@ -201,6 +203,9 @@ class ISPCaptivateActivity {
             // setting up event handlers
             this.processFeatures();
             this.restoreCaptivateState();
+            // call hook to do app-specific stuff - primarily for
+            // development, but I suppose it could be useful for other stuff
+            this.appSpecificInit();
             this.setupEventHandlers();
         });
 
@@ -230,6 +235,10 @@ class ISPCaptivateActivity {
     }
 
     restoreMultiStateObjects() {}
+
+    appSpecificInit() {
+
+    }
 
     showState() {
         console.log(this.state);
@@ -264,6 +273,8 @@ class ISPCaptivateActivity {
         //                                      this.onSlideTransition);
         this.cpEventEmitter.addEventListener(EVT_ON_QUES_SUBMIT,
                                              this.onQuestionSubmit);
+        this.cpEventEmitter.addEventListener(EVT_ON_INTERACTION_SUBMIT,
+                                             this.onInteractiveItemSubmit);
         for (let varName of this.variablesToTrack) {
             this.cpEventEmitter.addEventListener(
                 EVT_ON_VAR_CHANGE, this.onVarChange, varName
@@ -313,6 +324,12 @@ class ISPCaptivateActivity {
     onQuestionSubmit(evt) {
         let data = Object.assign(evt.cpData, {timestamp: Date.now()});
         this.pushAnswer(data);
+    }
+
+    onInteractiveItemSubmit(evt) {
+        console.log("onInteractiveItemSubmit()")
+        let data = Object.assign(evt.cpData, {timestamp: Date.now()});
+        console.log(data);
     }
 
     onVarChange(evt) {
@@ -1164,6 +1181,12 @@ class HypoWECaptivateActivity extends _isptutorproject_isp_captivate__WEBPACK_IM
                 console.log(`Restoring state of object "${smartObjName}" to "${val}`);
                 this.cp.changeState(smartObjName, val);
             }
+        }
+    }
+
+    appSpecificInit() {
+        if (false) {} else {
+            console.log("appSpecificInit() NOT running in dev mode");
         }
     }
 }
