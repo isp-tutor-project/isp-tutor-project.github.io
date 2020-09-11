@@ -1,9 +1,9 @@
 cp.imagesJSONCacheForLocal=true;cp.imageToJSONPathMap={ 
 "dr/4467_52_47.png": "img1.json",
-"dr/4579_1920_1280.png": "img2.json",
-"dr/Failure_Shape_1.png": "img3.json",
-"dr/Hint_Shape_1.png": "img3.json",
-"dr/SmartShape_1.png": "img3.json",
-"dr/Success_Shape_1.png": "img3.json",
+"dr/4579_1920_1280_Sa38.png": "img2.json",
+"dr/Failure_Shape_2.png": "img3.json",
+"dr/Hint_Shape_2.png": "img3.json",
+"dr/SmartShape_2.png": "img3.json",
+"dr/Success_Shape_2.png": "img3.json",
 "dr/loading.gif": "img3.json",
 "___":"___"};
