@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Google Material Icons (Home Icon) -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- Google Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-firestore.js"></script>
+
+    <title>Crystal Growth Experiment Intro</title>
+    <link rel="stylesheet" href="rqintro.bundle.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-items navbar-lhs">
+        <img class="brand" src="img/site/icon.jpg" width="36" />
+
+        <i class="material-icons navbar-text text-lg" id="navbar_home_btn"
+          >home</i
+        >
+
+        <div id="activity_title" class="navbar-text text-primary"></div>
+      </div>
+      <div class="navbar-items navbar-center invisible"></div>
+      <div class="navbar-items navbar-rhs">
+        <button class="navbar-btn btn btn-sm" id="navbar_glossary_btn">
+          GLOSSARY
+        </button>
+
+        <button class="navbar-btn btn btn-sm btn-success" id="sign_out_button">
+          SIGN OUT
+        </button>
+        <div id="sign_in_text" class="navbar-text"></div>
+      </div>
+      <div class="navbar-glossary-popup hidden">
+        <iframe
+          src="https://go.isptutor.org/brm/glossary/"
+          width="100%"
+          height="100%"
+        ></iframe>
+      </div>
+    </nav>
+    <div id="scene_id_region"></div>
+    <main>
+      <section id="start" class="scene">
+        <div class="scene-content">
+          <div class="single_column_content">
+            <img
+              src="img/site/RevisedHeader.jpg"
+              width="1000px"
+              class="img-centered"
+            />
+
+            <p class="text-xxl">
+              Welcome to the ....
+            </p>
+            <p class="text-xxl">
+              Click the "Start" buton below to begin
+            </p>
+
+            <p>
+              <button
+                class="follow-edge btn btn-huge btn-success"
+                data-edge="next"
+              >
+                Start
+              </button>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene1" class="scene">
+        <div class="scene-content">
+          <div class="single_column_content">
+            <p class="text-lg">
+              For the next few study activities, we will be talking about an
+              experiment about salt crystals building up on a string in water.
+              To help you understand what we’re talking about, please watch one
+              trial run of that experiment in this animation:
+            </p>
+
+            <div class="text-centered">
+              <video id="crystals_video" width="800" controls>
+                <source
+                  src="https://go.isptutor.org/brm/CrystalsAnimation/CrystalsVideo2020.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+            <p class="text-lg">
+              You can watch this video more than once if you want…
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene2" class="scene">
+        <div class="scene-content">
+          <div class="single_column_content">
+            <p class="text-lg">
+              In the next lesson, you will see high school students who
+              understand the science concepts related to this experiment. The
+              students will talk about their hypothesis for their research
+              question for this experiment:
+            </p>
+
+            <p class="text-lg">
+              Does the initial water temperature affect the weight of the
+              crystal growth after two weeks?
+            </p>
+
+            <div class="text-centered">
+              <img
+                width="650"
+                src="img/crystalsimageslide2.png"
+                class="img-centered"
+              />
+              <br />
+              <span>
+                Cool (16&deg;C) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Hot
+                (50&deg;C)
+              </span>
+            </div>
+
+            <p class="text-lg">
+              The students will make a prediction and then explain their
+              prediction <br />
+              using related scientific ideas.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="completed" class="scene">
+        <div class="scene-content">
+          <div class="single_column_content">
+            <p class="text-xxl">
+              Great Work! You're finished with this part.
+            </p>
+            <p class="text-xl">
+              Click the "Home" button to return to your home page.
+            </p>
+            <p>
+              <button
+                type="button"
+                id="go_home_btn"
+                class="btn btn-huge btn-success"
+              >
+                Home
+              </button>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <img id="prev_btn" class="nav-btn prev-btn" />
+    <img id="next_btn" class="nav-btn next-btn" />
+    <div id="snackbar"></div>
+
+    <script src="rqintro.bundle.js"></script>
+  </body>
+</html>
